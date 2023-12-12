@@ -1,0 +1,40 @@
+# More advanced commands
+
+::: {.callout-note}
+## Prior experience
+
+You can skip this section and proceed directly to the exercises if you are already familiar with commands like `grep`, `sort` and `cut`.
+:::
+
+::: {.callout-tip}
+Remember that we have provided a list of helpful tips and hints in the appendix: @sec-unix-tips.
+:::
+
+
+## Searching in files
+
+## Searching through files
+
+## file manipulations
+
+sort 
+uniq -c
+count duplicate lines
+
+## tabular data
+cut
+
+## Compressed files
+
+## Storage
+
+## basename
+
+introduce this when we look at scripting
+
+## cut
+
+## sed
+
+## awk
+

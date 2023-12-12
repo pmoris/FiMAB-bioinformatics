@@ -1,0 +1,24 @@
+# Preface/welcome/about {.unnumbered}
+
+Welcome to the Bioinformatics Module of the Fighting Malaria Across Borders (FiMAB) created by the Institute of Tropical Medicine (ITM) in Antwerp (Belgium). This is an international training programme (a VLIR-UOS project) to support the implementation of targeted NGS AmpliSeq assays to strengthen malaria molecular surveillance and help guide national control programmes. In conjunction with laboratory training, this bioinformatics course is intended to allow young academics around the globe to become familiar with molecular surveillance as a key activity to monitor transmission, sources of epidemics and the emergence and spread of drug resistant mutations in the _Plasmodium_ parasite.
+
+## Scope of the course
+
+This course aims to provide an overview of key bioinformatics aspects related to performing population genetics and molecular epidemiological research in _Plasmodium_. It is divided into the following sections:
+
+1. Introduction to the Unix shell (command line interface) and basic scripting
+2. Introduction to R
+3. Genomic files and tools
+4. Population genetics and molecular epidemiology for _Plasmodium_
+
+Section 1-3 are online self-paced modules, whereas section 4 will include classroom lectures and practical sessions. Evaluation exercises will be conducted on [the ITM course page](https://campus.itg.be/course/view.php?id=217).
+
+# Acknowledgements {.unnumbered}
+
+<!-- This course was made possible thanks to the support of [VLIR-UOS](https://www.vliruos.be) and the [Institute of Tropical Medicine](https://www.itg.be/en). -->
+
+Development of this course was supported by [VLIR-UOS](https://www.vliruos.be) and the [Institute of Tropical Medicine](https://www.itg.be/en).
+
+# License {.unnumbered}
+
+This work is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), which means that you are free to copy, redistribute or adapt any of its contents, provided that you **do** reference us (see [citation information below](...)) and the original license, **do** indicate if modifications were made, **do** distribute those contributions under the same license and **do not** use the material for commercial purposes. 

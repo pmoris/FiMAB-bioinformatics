@@ -1,0 +1,176 @@
+# Various Unix topics
+
+## Tips and hints {#sec-unix-tips}
+
+::: {.callout-note}
+## Naming conventions and cases
+
+Never (never!) use spaces in your file or directory names. This will only lead to pain... Instead, use hyphens (`-`) or underscores (`_`) to separate words. E.g., `my_first_script` and `3B207-2_S92_L001_R1_001.fastq.gz`.
+
+Additionally, unlike in Windows, in Unix everything is case-sensitive. Thus, `/home/documents` != `/home/Documents`. Be mindful of this when naming or pointing to files/directories.
+:::
+
+::: {.callout-note}
+## Autocompletion and command history
+
+Avoid unnecessary typing and just make things easy for yourself!
+
+While typing commands in the shell, you can almost always use the `tab` key for **auto-completion**. This will automatically type out paths, file names or known commands. If there exist multiple matches, a single press of `tab` will not appear to do anything, but if you press the button twice, a list of possible options will appear on your screen. This is incredibly useful, not only for speeding things up, but also for avoiding typos when dealing with long or complex file names.
+
+An equally useful tool is your **command history**. While on the shell prompt, pressing the up arrow (`↑`) will bring up your most recent previous command. Pressing it again will cycle through the entire history, in reverse order. You can also search through your history by pressing `ctrl+r` allows you to search through your command history. Just start typing and you will see the search try to narrow down on the command that you are looking for. Once you find it, just press `enter` to run it directly or `tab` to copy it to your prompt (in case you still want to change it). The search form will look like this: ``(reverse-i-search)`world': echo "Hello world!"``
+:::
+
+::: {.callout-note}
+## Don't panic when you lose control of your shell!
+
+If a command seems to hang or get stuck, your terminal becomes unresponsive, or if you tried to print a very large text file to your screen, you can use `CTRL+C` to interrupt almost any operation and regain control.
+
+Similarly, CTRL+D is an often used shortcut for exiting/logging out (e.g., when dealing with remote servers of nested shells).
+
+In some cases, like when using an interactive terminal program such as the text editors `nano` and `vim` or a text viewer like `less`, you will only be able to exit them using that particular program's shortcut keys (`CTRL+X`, `:` followed by `q` and `enter`, and `Q`, for these applications respectively). 
+:::
+
+::: {.callout-warning}
+## Watch out...
+
+Be careful while learning your way around the command-line. The Unix shell will do _exactly_ what you tell it to, often without hesitation or asking for confirmation. This means that you might accidentally move, overwrite or delete files without intending to do so. For example, when creating, copying or moving files, they can overwrite existing ones if you give them the same name. Similarly, when a file is deleted, it will be removed completely, without first passing by a recycle bin.
+
+**No matter how much experience you have, it is a good idea to remain cautious when performing these types of operations.**
+
+For the purposes of learning, if you are using your own device instead of a cloud environment, we recommend that you work in a dedicated playground directory or even create a new user profile to be extra safe. And like always, backups of your important files are invaluable regardless of what you are doing.
+:::
+
+::: {.callout-note}
+## Copying and pasting
+
+Copying and pasting might work slightly different to what you are used to, depending on the terminal application that you are using. If `ctrl+c` and `ctrl+v` do not appear to work, you can try`ctrl+shift+c` and `ctrl+shift+v` instead. Often times, the mouse middle or right click can also be used for pasting.
+
+For the native WSL terminal specifically, you can refer to this site for more info: https://devblogs.microsoft.com/commandline/copy-and-paste-arrives-for-linuxwsl-consoles/
+:::
+
+::: {.callout-note}
+## Google and `--help` are your friends.
+
+At the beginning things will be awkward, so don’t worry about having to search for the same information multiple times. That's part of the learning process.
+
+It can be a good idea though to keep a list of commands that you often use, but have a difficult time committing to memory. Moreover, for more complex scripts, it is a good idea to add some comments on how they work, because code that seems clear while you are writing it, has the unfortunate tendency of becoming confusing when you refer back to it at a later time.
+:::
+
+::: {.callout-note}
+## Google and `--help` are your friends.
+
+At the beginning things will be awkward, so don’t worry about having to search for the same information multiple times. That's part of the learning process.
+
+It can be a good idea though to keep a list of commands that you often use, but have a difficult time committing to memory. Moreover, for more complex scripts, it is a good idea to add some comments on how they work, because code that seems clear while you are writing it, has the unfortunate tendency of becoming confusing when you refer back to it at a later time.
+:::
+
+::: {.callout-note}
+## Make your scripts easier to read by using comments and breaking up long lines
+
+Remember that you can always write comments inside of your scripts by starting a line with `#`. That way you can add a short explainer or extra info to the different sections of a script.
+
+```bash
+#!/usr/bin/env bash
+
+##########################################################
+# Script to map fastq files to reference genome with bwa #
+##########################################################
+
+# make sure to run this script from within the directory where it is stored!
+
+# move to the directory containing the fastq files
+cd ../data/fastq
+
+# create a directory to store the results and store the path as a variable
+output_dir="../../results/bwa"
+mkdir -p ${output_dir}
+
+...
+```
+
+Additionally, you can break up long commands using a `\` to make them easier to read. You can do this both in scripts or on the command line. E.g.,
+
+```bash
+bwa mem \
+  ../reference/PlasmoDB-65_Pfalciparum3D7_Genome.fasta \
+  ${read_1} \
+  ${sample_name}_R2_001.fastq.gz
+
+```
+
+:::
+
+::: {.callout-note}
+## https://explainshell.com/
+
+This website is tremendously useful for figuring out what a command and all of its options do; use it to your advantage! [https://explainshell.com/](https://explainshell.com/)
+:::
+
+## Overview of special syntax {#sec-table-special-syntax}
+
+The table below gives you an overview of some of the special characters that we will encounter. You do not need to memorize them, but you can always refer back to this section if you see a symbol later on and are not quite sure what its purpose is.
+
+|     Symbol      |     Name                    |     Uses                                                                |
+|-----------------|-----------------------------|-------------------------------------------------------------------------|
+|     `/`         |     Forward slash           |     File path separator or root location/file path                      |
+|     `\`         |     Back slash              |     Split long command to a new line and escape special characters (+ file path separator in Windows)      |
+|     `~`         |     Tilde                   |     Shortcut for home directory in file paths                                     |
+|     `|`         |     Pipe or vertical bar    |     Chains the output of one command to the input of another one (piping)                |
+|     `#`         |     Hash                    |     Part of the shebang at the top of scripts `#!` and used for comments in shell scripts |
+|     `$`         |     Dollar sign             |     Used to access variables in bash                                    |
+|     `*`         |     Asterisk or wildcard    |     Globbing operator                                                   |
+|     `>`         |     Greater than symbol    |     Redirect output of a command (`>>` redirect and append instead of overwriting)                                                  |
+|     `<`         |     Less than symbol    |     Redirect input to a command                                                   |
+| `.` | Dot | In the context of a path, it represents the current working directory |
+| `..` | Double dot | In the context of a path, it represents the parent directory of the working directory |
+
+## What is `$PATH`? {#unix-path}
+
+The `$PATH` is a way of letting your computer know where specific tools or other special locations are stored on your file system. Unless you tell it explicitly, it won't know where to find any new software you install. Fortunately, most methods of installing software automatically take care of this for you, but every now and then you will need to manually add things to your `$PATH`. If you don't, you will be greeted by messages like `Command 'python' not found, did you mean:`. 
+
+The `$PATH` is nothing more than a list of locations on your computer. Everything that is found in those locations, will become available to use directly on the CLI without having to type out its full location. Even the basic Unix commands, like `ls` and `cd` are only known to your shell because they are in a location that is indexed by your path.
+
+In the following example, we will demonstrate how you can add a custom directory with scripts to your `$PATH`, making them callable from anywhere.
+
+```bash
+# show the contents of PATH
+echo $PATH
+/home/pmoris/miniforge3/bin:/home/pmoris/miniforge3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0:/mnt/c/windows/System32/OpenSSH:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/dotnet:/mnt/c/Users/pmoris/AppData/Local/Programs/Quarto/bin:/mnt/c/Users/pmoris/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/pmoris/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
+
+# temporarily add directory of scripts to PATH
+$ ls ~/itg/FiMAB-bioinformatics/training/scripts
+call_variants.sh  download_reference.sh  map.sh  remove_dups.sh  trim.sh
+$ export PATH="$PATH:~/itg/FiMAB-bioinformatics/training/scripts"
+
+# now these scripts can be invoked directly without having to type out their full location
+# e.g., map.sh works just as well as ~/itg/FiMAB-bioinformatics/training/scripts/map.sh
+```
+
+To make these changes permanent, you'd have to add that `export` statement to your `.bashrc` file (stored in your home directory). This file is run every time you launch a new shell, so that will allow the `$PATH` to be modified every time during startup.
+
+You can find more information on modifying the PATH [here](https://astrobiomike.github.io/unix/modifying_your_path).
+
+Lastly, be careful when modifying your PATH. If you mess it up, it can cause all kinds of havoc.
+
+## Dealing with file permissions {#sec-permissions}
+
+You can find an excellent explanation on file permissions [here](https://datacarpentry.org/shell-genomics/aio.html#file-permissions).
+
+## Working with remote machines via SSH {#sec-ssh}
+
+In some cases, you will need to work on a Linux machine that is physically located somewhere else, i.e. a remote server. Access to these is usually managed via a command-line tool called SSH (or a stand-alone GUI tool like Putty in Windows). The syntax of the `ssh` command is as follows:
+
+```
+ssh username@domain
+```
+
+Where username is a name given to you by the admin of the system and domain is the address of the server (can be a URL or an IP address).
+
+The connection is secured via _SSH keys_: a pair of files used for authentication stored in `~/.ssh`.
+
+1. Public key: e.g., `id_rsa.pub` or `id_ed25519.pub`, located on the remote server.
+2. Private file: e.g., `id_rsa` or `id_ed25519.pub`, located on your own machine. *Never share this file with anyone else!**
+
+Instructions to generate new SSH keys can be found [https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+
+A common problem when connecting is that the file permissions of your keys or credential files are messed up. This can happen if you generate them in Windows and later move them to a Linux file system. To fix this, check [https://superuser.com/a/215506](https://superuser.com/a/215506).

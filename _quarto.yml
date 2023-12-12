@@ -1,0 +1,158 @@
+project:
+  type: book
+  output-dir: docs
+  execute-dir: project
+
+book:
+  title: "Introduction to Bioinformatics for Malaria Molecular Surveillance"
+  subtitle: "Fighting Malaria Across Borders"
+
+  author:
+    - name: Pieter Moris
+      orcid: 0000-0003-4242-4939
+      url: https://pmoris.github.io
+      email: pmoris@itg.be
+      affiliations:
+        - Institute of Tropical Medicine Antwerp
+    # - name: Eline Kattenberg
+    #   orcid: 0000-0002-2971-5136
+    #   email: ekattenberg@itg.be
+    #   affiliations:
+    #     - Institute of Tropical Medicine Antwerp
+    # - name: Pieter Monsieurs
+    #   orcid: 0000-0003-2214-6652
+    #   email: pmonsieurs@itg.be
+    #   affiliations:
+    #     - Institute of Tropical Medicine Antwerp
+  date: "2023-08-02"
+  date-format: long
+
+  # description: ...
+  # abstract: ...
+
+  # references: ...
+
+  # cover-image: cover.png
+
+  # downloads: [pdf,epub]
+
+  # copyright: "Copyright Pieter Moris, 2023. All Rights Reserved"
+  license: "CC BY-NC-SA 4.0" # https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+  chapters:
+    - index.qmd
+    - content/intro.qmd
+    - part: "Introduction to the Unix shell"
+      chapters:
+      - content/unix/1-unix-intro.qmd
+      - content/unix/2-unix-setup.qmd
+      - content/unix/3-unix-enter-the-shell.qmd
+      - content/unix/4-unix-navigation.qmd
+      - content/unix/5-unix-files-and-dirs.qmd
+      - content/unix/6-unix-more-commands.qmd
+    - part: "R basics"
+      chapters:
+        - content/r/r-intro.qmd
+        - content/r/r-continued.qmd
+    - part: "Bioinformatics file formats and tools"
+      # chapters:
+        # - content/bioinf/bioinf-file-formats.qmd
+    # - content/references.qmd
+
+    # https://quarto.org/docs/books/book-structure.html#parts-appendices
+    # parts can either be a stand-alone file with intro
+    # or just a name for only grouping files below
+
+  appendices:
+    - content/unix/appendix-unix.qmd
+
+  # references: https://quarto.org/docs/books/book-structure.html#references
+
+  back-to-top-navigation: true
+  page-navigation: true
+
+  page-footer:
+    # &copy; Eline Kattenberg, Pieter Monsieurs & Pieter Moris, 2023.
+    left: |
+      All content licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+      <br>
+      &copy; Pieter Moris, 2023.
+    right: Built with [Quarto](https://quarto.org/).
+    # background: "#f8f9fa"
+
+  reader-mode: true
+
+  search:
+    location: sidebar
+    type: overlay
+  # https://quarto.org/docs/reference/projects/books.html#search
+
+  sidebar:
+  # https://quarto.org/docs/websites/website-navigation.html#side-navigation
+    style: "docked"
+    # style: "floating"
+    search: true
+    # background: dark
+
+  # navbar:
+  #   search: false
+  # https://quarto.org/docs/websites/website-navigation.html#hybrid-navigation
+
+  # page-footer:
+  #     center:
+  #       - text: "About"
+  #         href: about.qmd
+  #       - text: "License"
+  #         href: license.qmd
+  #       - text: "Trademark"
+  #         href: trademark.qmd
+
+  # favicon: logo.png
+  # twitter-card: true
+  # site-url: https://example.com
+  # repo-url: https://github.com/pmoris/FiMAB-bioinformatics
+  # repo-actions: [source]
+  # sharing: [twitter, facebook]
+
+# comments:
+#   hypothesis: true
+
+toc: true
+# toc-depth: 3
+toc-expand: true
+# toc-location: left
+number-sections: true
+# number-depth: 2
+
+reference-location: margin
+citation-location: margin
+
+# bibliography: content/references.bib
+
+appendix-style: default
+
+# highlight-style: nord
+
+format:
+  html:
+    theme:
+      light: [flatly, ./styles/custom.scss]
+      dark: [darkly, ./styles/custom.scss]
+      # https://quarto.org/docs/websites/website-tools.html#dark-mode
+      # If a navbar has been specified, the toggle will appear in the top right corner of the nav bar.
+      # If there is no navbar present, but a sidebar has been specified, the toggle will appear in the same location that the sidebar tools appears (adjacent to the title or logo in the sidebar).
+      # If there is no navbar or sidebar present, the toggle will appear in the top right corner of the page.
+    mainfont: 'Source Sans Variable'
+    # mainfont: \"Source Sans 3 VF\"
+    # mainfont: 'Mulish'
+    # mainfont: 'Lato'
+    monofont: 'Fira Code'
+    linestretch: 1.5
+    code-fold: true
+    html-math-method: katex
+  # pdf:
+  #   documentclass: scrreprt
+
+strip-comments: true
+
+editor: source
