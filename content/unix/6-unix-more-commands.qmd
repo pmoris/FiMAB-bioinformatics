@@ -10,31 +10,273 @@ You can skip this section and proceed directly to the exercises if you are alrea
 Remember that we have provided a list of helpful tips and hints in the appendix: @sec-unix-tips.
 :::
 
+## Searching in files: `grep`
 
-## Searching in files
+Being able to search through (long) text files is incredibly useful in a wide range of scenarios. For this, we make use of the `grep` command. It is a very powerful and complex command, with many different options to tweak its behaviour, but even just the basic version can already be a lifesaver. The basic syntax is
 
-## Searching through files
+    grep "PATTERN" <path/to/target_file>
 
-## file manipulations
+For example, we can look for the word _"evolution"_ in the Origin of Species:
 
-sort 
-uniq -c
-count duplicate lines
+```bash
+$ grep "evolution" long.txt
+evolutionists that mammals are descended from a marsupial form; and if
+At the present day almost all naturalists admit evolution under some
+evolutionists; but there is no need, as it seems to me, to invoke any
+Everyone who believes in slow and gradual evolution, will of course
+of gradual evolution, through the preservation of a large number of
+a strong disbeliever in evolution, but he appears to have been so much
+historian will recognise as having produced a revolution in natural
+the fact would be fatal to the theory of evolution through natural
+the revolution in our palæontological knowledge effected by the
+opposed to the admission of such prodigious geographical revolutions
+has thus been arrived at; and the belief in the revolution of the earth
+subject of evolution, and never once met with any sympathetic
+agreement. It is probable that some did then believe in evolution, but
+evolution. There are, however, some who still think that species have
+we can dimly foresee that there will be a considerable revolution in
+```
 
-## tabular data
-cut
+It might not be obvious from the above snippet, but inside your own terminal, the matching words in the search results will be highlighted. As you can see, `grep` will return each line that contains a match. Also note how partial matches like _r**evolution**_ are returned as well.
 
-## Compressed files
+::: {.callout-tip collapse="true"}
+## Try searching for the string "species" instead. Do you think these are all the hits? (Click me to expand!)
 
-## Storage
+When you run `grep "species" long.txt`, you will indeed find many occurrences of this word. However, we are missing all the occurrences of "Species". Try running `grep "Species" long.txt` to compare the results. Lastly, try running the command `grep -i "species" long.txt`. This option will
 
-## basename
+Remember, capitalization matters to `grep` (and to unix as a whole)!
+:::
 
-introduce this when we look at scripting
+Aside from the `-i` option explained in the box above, there exist several other flags to improve your search results.
 
-## cut
+|     Option                            |     Effect                                              |
+|---------------------------------------|---------------------------------------------------------|
+|     `-i`                                |     Case insensitive (i.e., `ACTG` = `actg`)               |
+|     `-n`                                |     Also print the line number of the result          |
+|     `-c`                                |     Count the number of matches                         |
+|     `-5 `                               |     Print 5 lines surrounding each match              |
+|     `-e`/`-E`/`-P`                            |     Use regular or extended regular expressions       |
+|     `-r`                                |     Recursive search through all files in a folder    |
 
-## sed
+The `-#` option is particularly useful to learn more about the context around you search result. You can supply any number of lines here, which will get printed both before and after each match. The example below, you can see how it helps us find the identifier of a DNA read that contains a particular sequence (`AACCGGGGT`):
 
-## awk
+```bash
+$ grep -3 AACCGGGGT PF0512_S47_L001_R1_001.fastq
++
+CCCCCGGCFGGGGFGGGGDGCEFGGGGGGGGGGGGGGGGGGGGGGFGGGGGGGGFFGGGFGGGGGGGGGGGGGGFGGGGGGGGGGGGGGGGGGGGGGGGGD+,A=FG,:<?F5FGGGD>F9BDBDE9FEDAFGAFGGB=EDF,,>@FCCF;@;D;CF;,5;DEGG84,@@,3@ED<@,,@7,;@,7EC2=E>C977=
+@M05795:43:000000000-CFLMP:1:2106:16840:21815 1:N:0:47
+AGCCATACCAAGACCACAATTCTGAAGAGGAAACAAAACAAAAAAAAAAAAATAATTAAAAAAAAAAAAATTTAAAATTAAAAAAAAAATTTTTTTATTAAAATAATAAATATTAATTTTTATAATATAAATAAAATCCTATTTTACCCCACCAACCGGGGTTCATCCCCGGGCTCTTATACACATTTCCTAACCCACAAAAAGTACGAACAACACGCAACCCCCCTTCTGCCTTAAAAAAAAAACAAATCAAAATACACAAATATATCGAACATACAGCAACTACAAATGAAGATGTGGT
++
+CCCCCGGFGGGFGGGGCFG9@@C<FGDG8EGGGFGGGGGGGGGGGGGGGGGD,:C,96CFD,8>FG7FGG,,,,B<B9,9CFFGGCG+3,,8BF@@,=8,8,=,C,,3@,,,3,3@,DGGFC,,,,,,7,,,,7>C,,3,,,7@@@:9,6**5,,**4*1*=8,,+5>=:****3/+>2;;92++2+++4++29*/:**9*1**3*0*/*/95)1*1))))29*05)202.:96*/-@=<(7:(.)00()))))))).-,)(())--)-(((.().,.:)8..(,).).))-4))..)))(
+@M05795:43:000000000-CFLMP:1:2106:14940:21820 1:N:0:47
+```
 
+
+The `-c` options makes `grep` return the total number of matches it found. This method of counting is useful to complement the `wc` command, in case you are presented with a file that does not have such an orderly structure as the FASTQ format we saw earlier. To demonstrate, consider the `penguins.csv` file, which [contains morphological data on three different penguin species](https://www.kaggle.com/datasets/parulpandey/palmer-archipelago-antarctica-penguin-data).^[Gorman KB, Williams TD, Fraser WR (2014) Ecological Sexual Dimorphism and Environmental Variability within a Community of Antarctic Penguins (Genus Pygoscelis). PLoS ONE 9(3): e90081. doi:10.1371/journal.pone.0090081] We can count the number of Adelie penguin records via:
+
+```bash
+grep -c "Adelie" penguins.csv
+152
+```
+
+In some situations we want to search through multiple files simultaneously. This is where the `-r/--recursive` flag comes in. It allows us to target a directory and search through all of its contents (including subdirectories). Let us try searching for the same DNA sequence as before, but this time targeting all the files in the `unix-demo` directory:
+
+```bash
+$ grep -r "AACCGGGGT" .
+./PF0512_S47_L001_R1_001.fastq:AGCCATACCAAGACCACAATTCTGAAGAGGAAACAAAACAAAAAAAAAAAAATAATTAAAAAAAAAAAAATTTAAAATTAAAAAAAAAATTTTTTTATTAAAATAATAAATATTAATTTTTATAATATAAATAAAATCCTATTTTACCCCACCAACCGGGGTTCATCCCCGGGCTCTTATACACATTTCCTAACCCACAAAAAGTACGAACAACACGCAACCCCCCTTCTGCCTTAAAAAAAAAACAAATCAAAATACACAAATATATCGAACATACAGCAACTACAAATGAAGATGTGGT
+./Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa:AATAAAACCGGGGTTGATACCACCACTTCCAGGTTCCCACATTCCAAGTCCCCTCAGCCA
+./Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa:CTGGAGTCAGGACGTGAGCCGACTTGCTTAAAAATAAATCCACATGGCTGAACCGGGGTT
+./Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa:ACAGCTAACCGGGGTTTTAGTATATGTGCCACATCTCTGTAAATGTTCACTTCCTAGGCA
+./Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa:TATGATCGTGCCACTGCACTTCAACCGGGGTGACAAAGCGAAAACCGTGTCTCTAAAAAA
+```
+
+::: {.callout-tip collapse="true"}
+## How would you search through `.txt` files only? (Click me to expand!)
+
+Instead of using the `-r` flag, we can also rely on globbing again (see @sec-globbing). To search for the string "needle" in all `.txt` files in a particular folder, we can do the following:
+
+```bash
+grep "needle" path/to/directory_with_txt_files/*.txt
+```
+:::
+
+We already mentioned _regular expressions_ in the previous section: they allow you to search for particular patterns that can match more than one exact string of text. This is [tremendously useful](https://xkcd.com/208/), but we will not dive into how they work during this course. If you are interested, you can check out an [excellent tutorial here](https://open.oregonstate.education/computationalbiology/chapter/patterns-regular-expressions/).
+
+We will see more elaborate use cases for `grep` when we introduce the unix concepts of piping and redirection.
+
+## Tabular data: `cut`
+
+We already encountered tabular data (the penguin dataset in `.csv` format) when talking about `grep`. Tabular data files like `.csv` are a very common format, and not just in bioinformatics.
+
+::: {.callout-tip}
+## Tabular data and `.csv` files
+
+Tabular data files are usually plain text files, where each row corresponds to a record (e.g., an individual penguin), and each column represents a particular field (e.g., species, flipper length, body mass, etc.). The columns can be separated by different _field delimiters_ or _separators_. In `.csv` files, these are usually commas (_comma separated values_), but they can also be TABS (`.tsv`) or semicolons (`;`).
+:::
+
+A particularly useful unix tool for manipulating tabular data files, is `cut`. It allows us to extract particular columns from these files. The syntax is as follows:
+
+    cut [OPTIONS] target_file
+
+|     Option                            |     Effect                                              |
+|---------------------------------------|---------------------------------------------------------|
+|     `-d ","`/`--delimiter ";"`                      |     Change the default delimiter (TAB) to another character like `,`              |
+|     `-f 1`                                |     Select the first column           |
+|     `-f 2,3`                                |     Select the second and third column                         |
+|     `-f 1-3,6`                                |     Select columns one through three and columns six            |
+|     --complement -f 1                             |     Select all columns _except_ for the first one       |
+|     -r                                |     Recursive search through all files in a folder    |
+
+## File sizes: `du`
+
+We already saw that the `ls -lh` can be used to figure out the file size of files in a particular directory. `du` is another tool to do this, but it operates on individual files or directories directly. Like `ls`, it also provides the `-h`/`--human-readable` option to return file sizes in KB/MB/GB, so it is generally recommended to always use this option. When used on a file, it will simply return its size, but when used on a directory, it will output information for all files, as well as the total file size of the entire directory (the final line of the output).
+
+```bash
+# targetting an individual file
+$ du -h Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa
+5.9M    Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa
+
+# targetting a directory
+$ du -h training/data/
+284M    training/data/fastq
+62M     training/data/reference
+346M    training/data/
+```
+
+## Compressed files: `gzip`
+
+We already introduced the concept of file compression when talking about the FASTQ files in the `training/data/fastq` directory. As a reminder, compressed files are binary files (as opposed to human-readable plain text files) that are used to reduce the file size for more efficient storage. Many of the files that we use in bioinformatics tend to be compressed. Some of the tools we use, will not work on compressed files (e.g., try to `cat` a compressed file and see what happens), so we either need to 1) use specialized tools that expect compressed files as their input, or 2) decompress or extract the files first.
+
+For gzipped (`.gz`) files specifically, we can do this via the `gzip` and `gunzip` commands. The former allows us to create a gzip-compressed version of the file, whereas the latter will extract one back to a plain text file. The basic syntax is `gzip/gunzip <path/to/file>`, but a very useful option is the `-k`/`--keep` flag. Without it, compressing a file would replace the uncompressed file with the new compressed one (vice versa: extracting would replace the compressed version with the extracted one), but when using the flag both files will be retained.
+
+::: {.callout-tip collapse="true"}
+## Try compressing the FASTQ file in the `unix-demo` directory. By how much does its file size change? (Click me to expand!)
+
+```bash
+$ du -h PF0512_S47_L001_R1_001.fastq
+67M     PF0512_S47_L001_R1_001.fastq
+$ gzip --keep PF0512_S47_L001_R1_001.fastq
+$ du -h PF0512_S47_L001_R1_001.fastq.gz
+17M     PF0512_S47_L001_R1_001.fastq.gz
+```
+
+After compressing the FASTQ file with `gzip`, it shrunk to less than a third of its original size.
+:::
+
+Do note that there exist other types of file compression besides gzip, like `.zip`/`.7zip`. In unix we also often make use of `tar` (which technically is not a compression tool, but a file archiver). File compression and tar can even be combined, leading to files with suffixes like `.tar.gz`. This allows us to compress entire directories, instead of only individual files.
+
+To extract these so called _tarballs_, we need to use the `tar` command:
+
+```bash
+# extract .tar.gz archive
+$ tar -xzvf tar_archive.tar.gz
+tar_archive/
+tar_archive/3
+tar_archive/2
+tar_archive/1
+
+$ ls tar_archive
+1  2  3
+
+# create .tar.gz archive
+$ tar -czvf new_archive.tar.gz <path/to/target_directory>
+```
+
+This command is [notorious for how arcane its option flags are](https://xkcd.com/1168/), but you can either try to remember it using a mnemonic (_"e**X**tract/**C**ompress **Z**e **V**ucking **F**iles"_, pronounced like a B-movie vampire) or the meaning of the individual flags (`z` tells tar that we are using gzip compression, `-v` stands for `--verbose` to make the command show more information and output, `-c`/`x` switches between compression and extraction mode,  `-f` is the last option and points to the tar file) . And of course, the correct syntax is only a google/[tldr](https://tldr.inbrowser.app/pages/common/tar) search or `tar --help` call away.
+
+## Downloading files: `wget`
+
+`wget` is a command that allows you to download files from a particular web address or URL and place them in your working directory. While there are several optional flags, in its most basic form the syntax is simply: `wget URL`. This command is not only useful when automating certain tasks, but also crucial if you ever find yourself in a unix environment that does not have a GUI at all (e.g., compute clusters or cloud servers).
+
+::: {.callout-tip collapse="true"}
+## Try downloading the _Plasmodium falciparum_ 3D7 reference genome in FASTA format from [PlasmoDB](https://plasmodb.org/plasmo/app) and store it in `./training/data/results`. (Click me to expand!)
+
+- At the top of the page, click on _Data_ -> _Download data files_.
+- Search for _falciparum 3D7_ and then narrow down your search by selecting the most recent release and the FASTA file format. Alternatively, you can click on the [Download Archive](https://plasmodb.org/common/downloads/) link in the top and navigate the file directory to the current release.
+- The file name of the 3D7 reference genome in FASTA format is `PlasmoDB-66_Pfalciparum3D7_Genome.fasta`.
+- Right click the file and copy its URL to your clipboard: [https://plasmodb.org/common/downloads/release-66/Pfalciparum3D7/fasta/data/PlasmoDB-66_Pfalciparum3D7_Genome.fasta](https://plasmodb.org/common/downloads/release-66/Pfalciparum3D7/fasta/data/PlasmoDB-66_Pfalciparum3D7_Genome.fasta).
+- Create and navigate to the output directory (`mkdir -p ./training/data/results` and `cd ./training/data/results`)
+- Download the file here using the command: `wget https://plasmodb.org/common/downloads/release-66/Pfalciparum3D7/fasta/data/PlasmoDB-66_Pfalciparum3D7_Genome.fasta`.
+:::
+
+Two optional flags that you might find useful are: 1) `-o` allows you to rename the download file, and 2) `-P <path/to/directory` saves the file in a directory of your choice instead of the current working directory. Of course, these are just small convenient timesavers, since you can always `cd` to a particular location and use `mv` to rename the file afterwards.
+
+Lastly, an alternative to `wget` that you might encounter at some point is `curl`. On the whole, it acts quite similar to `wget` for the most part.
+
+## Retrieving file names: `basename`
+
+`basename` is a rather simple command: if you give it a long file path, it will return the final section (i.e., the file name).
+
+```bash
+# starting in the `training` directory
+$ pwd
+/home/pmoris/itg/FiMAB-bioinformatics/training
+
+# get the file name for the reference genome we just downloaded
+$ basename data/reference/PlasmoDB-65_Pfalciparum3D7_Genome.fasta
+PlasmoDB-65_Pfalciparum3D7_Genome.fasta
+```
+
+At this point in time, it might not seem particularly useful to be able to extract the file name of a file, but when we introduce the concept of for loops and bash scripting, it will become more clear why this can be so useful.
+
+## Sorting and removing duplicates: `sort` and `uniq`
+
+The final two commands that we will introduce are yet again tools to manipulate plain text files. The first is `sort`, which does exactly that you expect it to. It can sort all the rows in a text file. Its syntax is:
+
+    sort [OPTIONS] <./path/to/file>`
+
+There are optional flags that allow you to choose the type of order to use (e.g., numerical `-n`/`--numeric-sort` instead of alphabetical ), reverse the order of the sort (`-r`/`--reverse`) or ignore capitals (`-f`/`--ignore-case`).
+
+The second command, `uniq`, is used to remove duplicate lines in a file.
+
+These two commands are often used in conjunction, because `uniq` on its own is not capable of filtering out identical lines that are not adjacent. So to truly remove all duplicate lines in a file, we would first need to sort it. In the next section, we will introduce a method of combining commands in a more convenient way than running them one by one and without needing to create any intermediary files.
+
+## Other commands
+
+Of course, there exist many more unix commands than the ones we introduced here. We will end this section by briefly mentioning two that you might run into at some point `awk` and `sed`. Both of them allow you to search and replace patterns in text files, and with `awk` you can even perform more complex operations including calculations. We will not dive into them here, but keep them in the back of your mind for the future.
+
+---
+
+## Exercises
+
+1. Create a new directory named "my_dir" inside the `./training/unix-demo` directory. Next, without using `cd` first, create another directory named `my_sub_dir` inside of it. Finally, again without using `cd`, create a final directory named `my_sub_sub_dir` inside of that one.
+2. Read the last 20 lines of the FASTA file in the `./training/unix-demo` directory.
+3. Create a new text file named `lines` inside `my_subdir` using `nano`. Store the number of lines of the file `long.txt` inside. Then read it using `cat` and `less`.
+4. Navigate to the `files_to_copy` directory and copy its contents to the `my_sub_dir` directory. What is the relative path of the destination to use?
+5. Move the file under `files_to_move` to its parent directory.
+6. Remove all the files under `files_to_delete` using a glob pattern.
+7. Rename the directory `files_to_delete` to `empty_dir`.
+8. List the contents of the `./training/unix-demo` directory.
+
+
+1. Visit PlasmoDB again and download the _Plasmodium vivax_ P01 reference genome sequence in FASTA format and store it in `./training/data/reference`.
+2. Report the file size of this reference genome in MBs.
+3. Find out how many lines of text the file contains.
+4. Search through the file for the `>` character, which is used to denote every chromosome/contig.
+5. Use a single command to count the number of chromosomes.
+6. Compress the FASTQ file `PF0512_S47_L001_R1_001.fastq` in the `unix-demo` directory using `gzip`.
+7. Navigate to the directory `./training/data/fastq` and in a single command, extract the forward (`PF0097_S43_L001_R1_001.fastq.gz`) and reverse (`PF0097_S43_L001_R2_001.fastq.gz`) of the `PF0097_S43` sample, without removing the compressed files. Hint: use globbing!
+8. Search both FASTQ files for the read fragment with identifier `@M05795:43:000000000-CFLMP:1:1101:21518:5740 2:N:0:43` using a single command.
+9. Compare the file sizes of the two compressed and uncompressed FASTQ files.
+10. Extract the columns containing the _island_ and _flipper length_ of each penguin from the `./training/unix-demo/penguins.csv` file.
+11. Count how many times the sequence `CATCATCATCATCAT` occurs in the FASTA file `./training/unix-demo/Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa`.
+
+---
+
+## Summary
+
+::: {.callout-tip collapse="false"}
+## Overview of concepts and commands
+
+- Tabular data: `.csv`, `.tsv`
+
+| Command                               | Result |
+|---------------------------------------|---------------------------------------------------------|
+| `grep <pattern> <path/to/file>`     | Search through a (very large) file for the supplied pattern |
+| `du <-h> <path/to/file_or_directory>`     | Check how much space a file or directory occupies |
+| `cut -f [--delimiter ","] <path/to/file>`  | Extract columns from tabular data using the specified delimiter |
+| `gzip / gunzip (-keep) <path/to/file>` | Compress or extract a gzip compressed file (`.gz`)       |
+| `wget <url>`            | Downloads a file from the URL to the current directory  |
+| `basename <path/to/file>` |  Returns the name of the file without the path prefix |
+
+:::

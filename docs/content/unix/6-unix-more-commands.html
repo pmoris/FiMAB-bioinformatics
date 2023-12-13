@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -67,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar docked slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -112,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface/welcome/about</span></a>
+ <span class="menu-text">About</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -222,21 +256,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#searching-in-files" id="toc-searching-in-files" class="nav-link active" data-scroll-target="#searching-in-files"><span class="header-section-number">6.1</span> Searching in files</a></li>
-  <li><a href="#searching-through-files" id="toc-searching-through-files" class="nav-link" data-scroll-target="#searching-through-files"><span class="header-section-number">6.2</span> Searching through files</a></li>
-  <li><a href="#file-manipulations" id="toc-file-manipulations" class="nav-link" data-scroll-target="#file-manipulations"><span class="header-section-number">6.3</span> file manipulations</a></li>
-  <li><a href="#tabular-data" id="toc-tabular-data" class="nav-link" data-scroll-target="#tabular-data"><span class="header-section-number">6.4</span> tabular data</a></li>
-  <li><a href="#compressed-files" id="toc-compressed-files" class="nav-link" data-scroll-target="#compressed-files"><span class="header-section-number">6.5</span> Compressed files</a></li>
-  <li><a href="#storage" id="toc-storage" class="nav-link" data-scroll-target="#storage"><span class="header-section-number">6.6</span> Storage</a></li>
-  <li><a href="#basename" id="toc-basename" class="nav-link" data-scroll-target="#basename"><span class="header-section-number">6.7</span> basename</a></li>
-  <li><a href="#cut" id="toc-cut" class="nav-link" data-scroll-target="#cut"><span class="header-section-number">6.8</span> cut</a></li>
-  <li><a href="#sed" id="toc-sed" class="nav-link" data-scroll-target="#sed"><span class="header-section-number">6.9</span> sed</a></li>
-  <li><a href="#awk" id="toc-awk" class="nav-link" data-scroll-target="#awk"><span class="header-section-number">6.10</span> awk</a></li>
+  <li><a href="#searching-in-files-grep" id="toc-searching-in-files-grep" class="nav-link active" data-scroll-target="#searching-in-files-grep"><span class="header-section-number">6.1</span> Searching in files: <code>grep</code></a></li>
+  <li><a href="#tabular-data-cut" id="toc-tabular-data-cut" class="nav-link" data-scroll-target="#tabular-data-cut"><span class="header-section-number">6.2</span> Tabular data: <code>cut</code></a></li>
+  <li><a href="#file-sizes-du" id="toc-file-sizes-du" class="nav-link" data-scroll-target="#file-sizes-du"><span class="header-section-number">6.3</span> File sizes: <code>du</code></a></li>
+  <li><a href="#compressed-files-gzip" id="toc-compressed-files-gzip" class="nav-link" data-scroll-target="#compressed-files-gzip"><span class="header-section-number">6.4</span> Compressed files: <code>gzip</code></a></li>
+  <li><a href="#downloading-files-wget" id="toc-downloading-files-wget" class="nav-link" data-scroll-target="#downloading-files-wget"><span class="header-section-number">6.5</span> Downloading files: <code>wget</code></a></li>
+  <li><a href="#retrieving-file-names-basename" id="toc-retrieving-file-names-basename" class="nav-link" data-scroll-target="#retrieving-file-names-basename"><span class="header-section-number">6.6</span> Retrieving file names: <code>basename</code></a></li>
+  <li><a href="#sorting-and-removing-duplicates-sort-and-uniq" id="toc-sorting-and-removing-duplicates-sort-and-uniq" class="nav-link" data-scroll-target="#sorting-and-removing-duplicates-sort-and-uniq"><span class="header-section-number">6.7</span> Sorting and removing duplicates: <code>sort</code> and <code>uniq</code></a></li>
+  <li><a href="#other-commands" id="toc-other-commands" class="nav-link" data-scroll-target="#other-commands"><span class="header-section-number">6.8</span> Other commands</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.9</span> Exercises</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">6.10</span> Summary</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -281,41 +315,375 @@ Tip
 <p>Remember that we have provided a list of helpful tips and hints in the appendix: <a href="appendix-unix.html#sec-unix-tips"><span>Section&nbsp;A.1</span></a>.</p>
 </div>
 </div>
-<section id="searching-in-files" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="searching-in-files"><span class="header-section-number">6.1</span> Searching in files</h2>
+<section id="searching-in-files-grep" class="level2 page-columns page-full" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="searching-in-files-grep"><span class="header-section-number">6.1</span> Searching in files: <code>grep</code></h2>
+<p>Being able to search through (long) text files is incredibly useful in a wide range of scenarios. For this, we make use of the <code>grep</code> command. It is a very powerful and complex command, with many different options to tweak its behaviour, but even just the basic version can already be a lifesaver. The basic syntax is</p>
+<pre><code>grep "PATTERN" &lt;path/to/target_file&gt;</code></pre>
+<p>For example, we can look for the word <em>“evolution”</em> in the Origin of Species:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">"evolution"</span> long.txt</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">evolutionists</span> that mammals are descended from a marsupial form<span class="kw">;</span> <span class="ex">and</span> if</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">At</span> the present day almost all naturalists admit evolution under some</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">evolutionists</span><span class="kw">;</span> <span class="ex">but</span> there is no need, as it seems to me, to invoke any</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Everyone</span> who believes in slow and gradual evolution, will of course</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">of</span> gradual evolution, through the preservation of a large number of</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">a</span> strong disbeliever in evolution, but he appears to have been so much</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">historian</span> will recognise as having produced a revolution in natural</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">the</span> fact would be fatal to the theory of evolution through natural</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">the</span> revolution in our palæontological knowledge effected by the</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">opposed</span> to the admission of such prodigious geographical revolutions</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">has</span> thus been arrived at<span class="kw">;</span> <span class="ex">and</span> the belief in the revolution of the earth</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">subject</span> of evolution, and never once met with any sympathetic</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ex">agreement.</span> It is probable that some did then believe in evolution, but</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ex">evolution.</span> There are, however, some who still think that species have</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ex">we</span> can dimly foresee that there will be a considerable revolution in</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It might not be obvious from the above snippet, but inside your own terminal, the matching words in the search results will be highlighted. As you can see, <code>grep</code> will return each line that contains a match. Also note how partial matches like <em>r<strong>evolution</strong></em> are returned as well.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Try searching for the string “species” instead. Do you think these are all the hits? (Click me to expand!)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When you run <code>grep "species" long.txt</code>, you will indeed find many occurrences of this word. However, we are missing all the occurrences of “Species”. Try running <code>grep "Species" long.txt</code> to compare the results. Lastly, try running the command <code>grep -i "species" long.txt</code>. This option will</p>
+<p>Remember, capitalization matters to <code>grep</code> (and to unix as a whole)!</p>
+</div>
+</div>
+</div>
+<p>Aside from the <code>-i</code> option explained in the box above, there exist several other flags to improve your search results.</p>
+<table class="table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 59%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-i</code></td>
+<td>Case insensitive (i.e., <code>ACTG</code> = <code>actg</code>)</td>
+</tr>
+<tr class="even">
+<td><code>-n</code></td>
+<td>Also print the line number of the result</td>
+</tr>
+<tr class="odd">
+<td><code>-c</code></td>
+<td>Count the number of matches</td>
+</tr>
+<tr class="even">
+<td><code>-5</code></td>
+<td>Print 5 lines surrounding each match</td>
+</tr>
+<tr class="odd">
+<td><code>-e</code>/<code>-E</code>/<code>-P</code></td>
+<td>Use regular or extended regular expressions</td>
+</tr>
+<tr class="even">
+<td><code>-r</code></td>
+<td>Recursive search through all files in a folder</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>-#</code> option is particularly useful to learn more about the context around you search result. You can supply any number of lines here, which will get printed both before and after each match. The example below, you can see how it helps us find the identifier of a DNA read that contains a particular sequence (<code>AACCGGGGT</code>):</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-3</span> AACCGGGGT PF0512_S47_L001_R1_001.fastq</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">CCCCCGGCFGGGGFGGGGDGCEFGGGGGGGGGGGGGGGGGGGGGGFGGGGGGGGFFGGGFGGGGGGGGGGGGGGFGGGGGGGGGGGGGGGGGGGGGGGGGD+,A=FG,:</span><span class="op">&lt;</span><span class="pp">?</span>F5FGGGD<span class="op">&gt;</span>F9BDBDE9FEDAFGAFGGB=EDF,,<span class="op">&gt;</span>@FCCF<span class="kw">;</span><span class="ex">@</span><span class="kw">;</span><span class="ex">D</span><span class="kw">;</span><span class="ex">CF</span><span class="kw">;</span><span class="ex">,5</span><span class="kw">;</span><span class="ex">DEGG84,@@,3@ED</span><span class="op">&lt;</span>@,,@7,<span class="kw">;</span><span class="ex">@,7EC2=E</span><span class="op">&gt;</span>C977=</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">@M05795:43:000000000-CFLMP:1:2106:16840:21815</span> 1:N:0:47</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">AGCCATACCAAGACCACAATTCTGAAGAGGAAACAAAACAAAAAAAAAAAAATAATTAAAAAAAAAAAAATTTAAAATTAAAAAAAAAATTTTTTTATTAAAATAATAAATATTAATTTTTATAATATAAATAAAATCCTATTTTACCCCACCAACCGGGGTTCATCCCCGGGCTCTTATACACATTTCCTAACCCACAAAAAGTACGAACAACACGCAACCCCCCTTCTGCCTTAAAAAAAAAACAAATCAAAATACACAAATATATCGAACATACAGCAACTACAAATGAAGATGTGGT</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">CCCCCGGFGGGFGGGGCFG9@@C</span><span class="op">&lt;</span>FGDG8EGGGFGGGGGGGGGGGGGGGGGD,:C,96CFD,8<span class="op">&gt;</span>FG7FGG,,,,B<span class="op">&lt;</span>B9,9CFFGGCG+3,,8BF@@,=8,8,=,C,,3@,,,3,3@,DGGFC,,,,,,7,,,,7<span class="op">&gt;</span>C,,3,,,7@@@:9,6<span class="pp">**</span>5,,<span class="pp">**</span>4<span class="pp">*</span>1<span class="pp">*</span>=8,,+5<span class="op">&gt;</span>=:<span class="pp">****</span>3/+<span class="op">&gt;</span>2<span class="kw">;;</span><span class="ex">92++2+++4++29*/:**9*1**3*0*/*/95</span><span class="er">)</span><span class="ex">1*1</span><span class="er">))))</span><span class="ex">29*05</span><span class="er">)</span><span class="ex">202.:96*/-@=</span><span class="op">&lt;(</span><span class="ex">7:</span><span class="er">(</span><span class="bu">.</span><span class="kw">)</span><span class="fu">00()</span><span class="op">)</span><span class="er">))))))</span><span class="ex">.-,</span><span class="er">)</span><span class="kw">(())</span><span class="ex">--</span><span class="er">)</span><span class="ex">-</span><span class="er">((</span>(.().<span class="kw">,</span>.<span class="op">:</span>)<span class="dv">8</span>..(<span class="kw">,</span>).<span class="kw">)</span><span class="bu">.</span><span class="kw">)</span><span class="er">)</span><span class="ex">-4</span><span class="er">))</span><span class="ex">..</span><span class="er">)))</span><span class="kw">(</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">@M05795:43:000000000-CFLMP:1:2106:14940:21820</span> 1:N:0:47</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="page-columns page-full"><p>The <code>-c</code> options makes <code>grep</code> return the total number of matches it found. This method of counting is useful to complement the <code>wc</code> command, in case you are presented with a file that does not have such an orderly structure as the FASTQ format we saw earlier. To demonstrate, consider the <code>penguins.csv</code> file, which <a href="https://www.kaggle.com/datasets/parulpandey/palmer-archipelago-antarctica-penguin-data">contains morphological data on three different penguin species</a>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> We can count the number of Adelie penguin records via:</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Gorman KB, Williams TD, Fraser WR (2014) Ecological Sexual Dimorphism and Environmental Variability within a Community of Antarctic Penguins (Genus Pygoscelis). PLoS ONE 9(3): e90081. doi:10.1371/journal.pone.0090081</p></li></div></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"Adelie"</span> penguins.csv</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">152</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In some situations we want to search through multiple files simultaneously. This is where the <code>-r/--recursive</code> flag comes in. It allows us to target a directory and search through all of its contents (including subdirectories). Let us try searching for the same DNA sequence as before, but this time targeting all the files in the <code>unix-demo</code> directory:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-r</span> <span class="st">"AACCGGGGT"</span> .</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./PF0512_S47_L001_R1_001.fastq:AGCCATACCAAGACCACAATTCTGAAGAGGAAACAAAACAAAAAAAAAAAAATAATTAAAAAAAAAAAAATTTAAAATTAAAAAAAAAATTTTTTTATTAAAATAATAAATATTAATTTTTATAATATAAATAAAATCCTATTTTACCCCACCAACCGGGGTTCATCCCCGGGCTCTTATACACATTTCCTAACCCACAAAAAGTACGAACAACACGCAACCCCCCTTCTGCCTTAAAAAAAAAACAAATCAAAATACACAAATATATCGAACATACAGCAACTACAAATGAAGATGTGGT</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa:AATAAAACCGGGGTTGATACCACCACTTCCAGGTTCCCACATTCCAAGTCCCCTCAGCCA</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">./Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa:CTGGAGTCAGGACGTGAGCCGACTTGCTTAAAAATAAATCCACATGGCTGAACCGGGGTT</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">./Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa:ACAGCTAACCGGGGTTTTAGTATATGTGCCACATCTCTGTAAATGTTCACTTCCTAGGCA</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa:TATGATCGTGCCACTGCACTTCAACCGGGGTGACAAAGCGAAAACCGTGTCTCTAAAAAA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How would you search through <code>.txt</code> files only? (Click me to expand!)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Instead of using the <code>-r</code> flag, we can also rely on globbing again (see <a href="5-unix-files-and-dirs.html#sec-globbing"><span>Section&nbsp;5.3.2</span></a>). To search for the string “needle” in all <code>.txt</code> files in a particular folder, we can do the following:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"needle"</span> path/to/directory_with_txt_files/<span class="pp">*</span>.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>We already mentioned <em>regular expressions</em> in the previous section: they allow you to search for particular patterns that can match more than one exact string of text. This is <a href="https://xkcd.com/208/">tremendously useful</a>, but we will not dive into how they work during this course. If you are interested, you can check out an <a href="https://open.oregonstate.education/computationalbiology/chapter/patterns-regular-expressions/">excellent tutorial here</a>.</p>
+<p>We will see more elaborate use cases for <code>grep</code> when we introduce the unix concepts of piping and redirection.</p>
 </section>
-<section id="searching-through-files" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="searching-through-files"><span class="header-section-number">6.2</span> Searching through files</h2>
+<section id="tabular-data-cut" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="tabular-data-cut"><span class="header-section-number">6.2</span> Tabular data: <code>cut</code></h2>
+<p>We already encountered tabular data (the penguin dataset in <code>.csv</code> format) when talking about <code>grep</code>. Tabular data files like <code>.csv</code> are a very common format, and not just in bioinformatics.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tabular data and <code>.csv</code> files
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Tabular data files are usually plain text files, where each row corresponds to a record (e.g., an individual penguin), and each column represents a particular field (e.g., species, flipper length, body mass, etc.). The columns can be separated by different <em>field delimiters</em> or <em>separators</em>. In <code>.csv</code> files, these are usually commas (<em>comma separated values</em>), but they can also be TABS (<code>.tsv</code>) or semicolons (<code>;</code>).</p>
+</div>
+</div>
+<p>A particularly useful unix tool for manipulating tabular data files, is <code>cut</code>. It allows us to extract particular columns from these files. The syntax is as follows:</p>
+<pre><code>cut [OPTIONS] target_file</code></pre>
+<table class="table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 59%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-d ","</code>/<code>--delimiter ";"</code></td>
+<td>Change the default delimiter (TAB) to another character like <code>,</code></td>
+</tr>
+<tr class="even">
+<td><code>-f 1</code></td>
+<td>Select the first column</td>
+</tr>
+<tr class="odd">
+<td><code>-f 2,3</code></td>
+<td>Select the second and third column</td>
+</tr>
+<tr class="even">
+<td><code>-f 1-3,6</code></td>
+<td>Select columns one through three and columns six</td>
+</tr>
+<tr class="odd">
+<td>–complement -f 1</td>
+<td>Select all columns <em>except</em> for the first one</td>
+</tr>
+<tr class="even">
+<td>-r</td>
+<td>Recursive search through all files in a folder</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="file-manipulations" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="file-manipulations"><span class="header-section-number">6.3</span> file manipulations</h2>
-<p>sort uniq -c count duplicate lines</p>
+<section id="file-sizes-du" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="file-sizes-du"><span class="header-section-number">6.3</span> File sizes: <code>du</code></h2>
+<p>We already saw that the <code>ls -lh</code> can be used to figure out the file size of files in a particular directory. <code>du</code> is another tool to do this, but it operates on individual files or directories directly. Like <code>ls</code>, it also provides the <code>-h</code>/<code>--human-readable</code> option to return file sizes in KB/MB/GB, so it is generally recommended to always use this option. When used on a file, it will simply return its size, but when used on a directory, it will output information for all files, as well as the total file size of the entire directory (the final line of the output).</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># targetting an individual file</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> du <span class="at">-h</span> Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">5.9M</span>    Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># targetting a directory</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> du <span class="at">-h</span> training/data/</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ex">284M</span>    training/data/fastq</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">62M</span>     training/data/reference</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="ex">346M</span>    training/data/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="tabular-data" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="tabular-data"><span class="header-section-number">6.4</span> tabular data</h2>
-<p>cut</p>
+<section id="compressed-files-gzip" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="compressed-files-gzip"><span class="header-section-number">6.4</span> Compressed files: <code>gzip</code></h2>
+<p>We already introduced the concept of file compression when talking about the FASTQ files in the <code>training/data/fastq</code> directory. As a reminder, compressed files are binary files (as opposed to human-readable plain text files) that are used to reduce the file size for more efficient storage. Many of the files that we use in bioinformatics tend to be compressed. Some of the tools we use, will not work on compressed files (e.g., try to <code>cat</code> a compressed file and see what happens), so we either need to 1) use specialized tools that expect compressed files as their input, or 2) decompress or extract the files first.</p>
+<p>For gzipped (<code>.gz</code>) files specifically, we can do this via the <code>gzip</code> and <code>gunzip</code> commands. The former allows us to create a gzip-compressed version of the file, whereas the latter will extract one back to a plain text file. The basic syntax is <code>gzip/gunzip &lt;path/to/file&gt;</code>, but a very useful option is the <code>-k</code>/<code>--keep</code> flag. Without it, compressing a file would replace the uncompressed file with the new compressed one (vice versa: extracting would replace the compressed version with the extracted one), but when using the flag both files will be retained.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Try compressing the FASTQ file in the <code>unix-demo</code> directory. By how much does its file size change? (Click me to expand!)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> du <span class="at">-h</span> PF0512_S47_L001_R1_001.fastq</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">67M</span>     PF0512_S47_L001_R1_001.fastq</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gzip <span class="at">--keep</span> PF0512_S47_L001_R1_001.fastq</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> du <span class="at">-h</span> PF0512_S47_L001_R1_001.fastq.gz</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">17M</span>     PF0512_S47_L001_R1_001.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After compressing the FASTQ file with <code>gzip</code>, it shrunk to less than a third of its original size.</p>
+</div>
+</div>
+</div>
+<p>Do note that there exist other types of file compression besides gzip, like <code>.zip</code>/<code>.7zip</code>. In unix we also often make use of <code>tar</code> (which technically is not a compression tool, but a file archiver). File compression and tar can even be combined, leading to files with suffixes like <code>.tar.gz</code>. This allows us to compress entire directories, instead of only individual files.</p>
+<p>To extract these so called <em>tarballs</em>, we need to use the <code>tar</code> command:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract .tar.gz archive</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tar <span class="at">-xzvf</span> tar_archive.tar.gz</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">tar_archive/</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">tar_archive/3</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">tar_archive/2</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">tar_archive/1</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls tar_archive</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span>  2  3</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create .tar.gz archive</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tar <span class="at">-czvf</span> new_archive.tar.gz <span class="op">&lt;</span>path/to/target_directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This command is <a href="https://xkcd.com/1168/">notorious for how arcane its option flags are</a>, but you can either try to remember it using a mnemonic (<em>“e<strong>X</strong>tract/<strong>C</strong>ompress <strong>Z</strong>e <strong>V</strong>ucking <strong>F</strong>iles”</em>, pronounced like a B-movie vampire) or the meaning of the individual flags (<code>z</code> tells tar that we are using gzip compression, <code>-v</code> stands for <code>--verbose</code> to make the command show more information and output, <code>-c</code>/<code>x</code> switches between compression and extraction mode, <code>-f</code> is the last option and points to the tar file) . And of course, the correct syntax is only a google/<a href="https://tldr.inbrowser.app/pages/common/tar">tldr</a> search or <code>tar --help</code> call away.</p>
 </section>
-<section id="compressed-files" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="compressed-files"><span class="header-section-number">6.5</span> Compressed files</h2>
+<section id="downloading-files-wget" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="downloading-files-wget"><span class="header-section-number">6.5</span> Downloading files: <code>wget</code></h2>
+<p><code>wget</code> is a command that allows you to download files from a particular web address or URL and place them in your working directory. While there are several optional flags, in its most basic form the syntax is simply: <code>wget URL</code>. This command is not only useful when automating certain tasks, but also crucial if you ever find yourself in a unix environment that does not have a GUI at all (e.g., compute clusters or cloud servers).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Try downloading the <em>Plasmodium falciparum</em> 3D7 reference genome in FASTA format from <a href="https://plasmodb.org/plasmo/app">PlasmoDB</a> and store it in <code>./training/data/results</code>. (Click me to expand!)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>At the top of the page, click on <em>Data</em> -&gt; <em>Download data files</em>.</li>
+<li>Search for <em>falciparum 3D7</em> and then narrow down your search by selecting the most recent release and the FASTA file format. Alternatively, you can click on the <a href="https://plasmodb.org/common/downloads/">Download Archive</a> link in the top and navigate the file directory to the current release.</li>
+<li>The file name of the 3D7 reference genome in FASTA format is <code>PlasmoDB-66_Pfalciparum3D7_Genome.fasta</code>.</li>
+<li>Right click the file and copy its URL to your clipboard: <a href="https://plasmodb.org/common/downloads/release-66/Pfalciparum3D7/fasta/data/PlasmoDB-66_Pfalciparum3D7_Genome.fasta">https://plasmodb.org/common/downloads/release-66/Pfalciparum3D7/fasta/data/PlasmoDB-66_Pfalciparum3D7_Genome.fasta</a>.</li>
+<li>Create and navigate to the output directory (<code>mkdir -p ./training/data/results</code> and <code>cd ./training/data/results</code>)</li>
+<li>Download the file here using the command: <code>wget https://plasmodb.org/common/downloads/release-66/Pfalciparum3D7/fasta/data/PlasmoDB-66_Pfalciparum3D7_Genome.fasta</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+<p>Two optional flags that you might find useful are: 1) <code>-o</code> allows you to rename the download file, and 2) <code>-P &lt;path/to/directory</code> saves the file in a directory of your choice instead of the current working directory. Of course, these are just small convenient timesavers, since you can always <code>cd</code> to a particular location and use <code>mv</code> to rename the file afterwards.</p>
+<p>Lastly, an alternative to <code>wget</code> that you might encounter at some point is <code>curl</code>. On the whole, it acts quite similar to <code>wget</code> for the most part.</p>
 </section>
-<section id="storage" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="storage"><span class="header-section-number">6.6</span> Storage</h2>
+<section id="retrieving-file-names-basename" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="retrieving-file-names-basename"><span class="header-section-number">6.6</span> Retrieving file names: <code>basename</code></h2>
+<p><code>basename</code> is a rather simple command: if you give it a long file path, it will return the final section (i.e., the file name).</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># starting in the `training` directory</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/pmoris/itg/FiMAB-bioinformatics/training</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># get the file name for the reference genome we just downloaded</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> basename data/reference/PlasmoDB-65_Pfalciparum3D7_Genome.fasta</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">PlasmoDB-65_Pfalciparum3D7_Genome.fasta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>At this point in time, it might not seem particularly useful to be able to extract the file name of a file, but when we introduce the concept of for loops and bash scripting, it will become more clear why this can be so useful.</p>
 </section>
-<section id="basename" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="basename"><span class="header-section-number">6.7</span> basename</h2>
-<p>introduce this when we look at scripting</p>
+<section id="sorting-and-removing-duplicates-sort-and-uniq" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="sorting-and-removing-duplicates-sort-and-uniq"><span class="header-section-number">6.7</span> Sorting and removing duplicates: <code>sort</code> and <code>uniq</code></h2>
+<p>The final two commands that we will introduce are yet again tools to manipulate plain text files. The first is <code>sort</code>, which does exactly that you expect it to. It can sort all the rows in a text file. Its syntax is:</p>
+<pre><code>sort [OPTIONS] &lt;./path/to/file&gt;`</code></pre>
+<p>There are optional flags that allow you to choose the type of order to use (e.g., numerical <code>-n</code>/<code>--numeric-sort</code> instead of alphabetical ), reverse the order of the sort (<code>-r</code>/<code>--reverse</code>) or ignore capitals (<code>-f</code>/<code>--ignore-case</code>).</p>
+<p>The second command, <code>uniq</code>, is used to remove duplicate lines in a file.</p>
+<p>These two commands are often used in conjunction, because <code>uniq</code> on its own is not capable of filtering out identical lines that are not adjacent. So to truly remove all duplicate lines in a file, we would first need to sort it. In the next section, we will introduce a method of combining commands in a more convenient way than running them one by one and without needing to create any intermediary files.</p>
 </section>
-<section id="cut" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="cut"><span class="header-section-number">6.8</span> cut</h2>
+<section id="other-commands" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="other-commands"><span class="header-section-number">6.8</span> Other commands</h2>
+<p>Of course, there exist many more unix commands than the ones we introduced here. We will end this section by briefly mentioning two that you might run into at some point <code>awk</code> and <code>sed</code>. Both of them allow you to search and replace patterns in text files, and with <code>awk</code> you can even perform more complex operations including calculations. We will not dive into them here, but keep them in the back of your mind for the future.</p>
+<hr>
 </section>
-<section id="sed" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="sed"><span class="header-section-number">6.9</span> sed</h2>
+<section id="exercises" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.9</span> Exercises</h2>
+<ol type="1">
+<li><p>Create a new directory named “my_dir” inside the <code>./training/unix-demo</code> directory. Next, without using <code>cd</code> first, create another directory named <code>my_sub_dir</code> inside of it. Finally, again without using <code>cd</code>, create a final directory named <code>my_sub_sub_dir</code> inside of that one.</p></li>
+<li><p>Read the last 20 lines of the FASTA file in the <code>./training/unix-demo</code> directory.</p></li>
+<li><p>Create a new text file named <code>lines</code> inside <code>my_subdir</code> using <code>nano</code>. Store the number of lines of the file <code>long.txt</code> inside. Then read it using <code>cat</code> and <code>less</code>.</p></li>
+<li><p>Navigate to the <code>files_to_copy</code> directory and copy its contents to the <code>my_sub_dir</code> directory. What is the relative path of the destination to use?</p></li>
+<li><p>Move the file under <code>files_to_move</code> to its parent directory.</p></li>
+<li><p>Remove all the files under <code>files_to_delete</code> using a glob pattern.</p></li>
+<li><p>Rename the directory <code>files_to_delete</code> to <code>empty_dir</code>.</p></li>
+<li><p>List the contents of the <code>./training/unix-demo</code> directory.</p></li>
+<li><p>Visit PlasmoDB again and download the <em>Plasmodium vivax</em> P01 reference genome sequence in FASTA format and store it in <code>./training/data/reference</code>.</p></li>
+<li><p>Report the file size of this reference genome in MBs.</p></li>
+<li><p>Find out how many lines of text the file contains.</p></li>
+<li><p>Search through the file for the <code>&gt;</code> character, which is used to denote every chromosome/contig.</p></li>
+<li><p>Use a single command to count the number of chromosomes.</p></li>
+<li><p>Compress the FASTQ file <code>PF0512_S47_L001_R1_001.fastq</code> in the <code>unix-demo</code> directory using <code>gzip</code>.</p></li>
+<li><p>Navigate to the directory <code>./training/data/fastq</code> and in a single command, extract the forward (<code>PF0097_S43_L001_R1_001.fastq.gz</code>) and reverse (<code>PF0097_S43_L001_R2_001.fastq.gz</code>) of the <code>PF0097_S43</code> sample, without removing the compressed files. Hint: use globbing!</p></li>
+<li><p>Search both FASTQ files for the read fragment with identifier <code>@M05795:43:000000000-CFLMP:1:1101:21518:5740 2:N:0:43</code> using a single command.</p></li>
+<li><p>Compare the file sizes of the two compressed and uncompressed FASTQ files.</p></li>
+<li><p>Extract the columns containing the <em>island</em> and <em>flipper length</em> of each penguin from the <code>./training/unix-demo/penguins.csv</code> file.</p></li>
+<li><p>Count how many times the sequence <code>CATCATCATCATCAT</code> occurs in the FASTA file <code>./training/unix-demo/Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</code>.</p></li>
+</ol>
+<hr>
 </section>
-<section id="awk" class="level2" data-number="6.10">
-<h2 data-number="6.10" class="anchored" data-anchor-id="awk"><span class="header-section-number">6.10</span> awk</h2>
+<section id="summary" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="summary"><span class="header-section-number">6.10</span> Summary</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Overview of concepts and commands
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Tabular data: <code>.csv</code>, <code>.tsv</code></li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 59%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>grep &lt;pattern&gt; &lt;path/to/file&gt;</code></td>
+<td>Search through a (very large) file for the supplied pattern</td>
+</tr>
+<tr class="even">
+<td><code>du &lt;-h&gt; &lt;path/to/file_or_directory&gt;</code></td>
+<td>Check how much space a file or directory occupies</td>
+</tr>
+<tr class="odd">
+<td><code>cut -f [--delimiter ","] &lt;path/to/file&gt;</code></td>
+<td>Extract columns from tabular data using the specified delimiter</td>
+</tr>
+<tr class="even">
+<td><code>gzip / gunzip (-keep) &lt;path/to/file&gt;</code></td>
+<td>Compress or extract a gzip compressed file (<code>.gz</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>wget &lt;url&gt;</code></td>
+<td>Downloads a file from the URL to the current directory</td>
+</tr>
+<tr class="even">
+<td><code>basename &lt;path/to/file&gt;</code></td>
+<td>Returns the name of the file without the path prefix</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 
 
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

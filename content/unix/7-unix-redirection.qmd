@@ -1,0 +1,17 @@
+grep
+
+**redirect ls output, better approach is find**
+
+
+grep > uniq -c
+cut > uniq -c
+head > cut
+
+gzip all files in directory
+
+
+
+
+sort
+uniq -c
+count duplicate lines

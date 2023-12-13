@@ -16,7 +16,7 @@ This section of the course will introduce you to the general concept of the Unix
 
 This section of the course draws inspiration from the following resources:
 
--   [Conor Meehan's UNIX shell tutorial](https://conmeehan.github.io/UNIXtutorial.html) (CC BY-NC-SA 4.0).
+-   [Conor Meehan's UNIX shell tutorial](https://conmeehan.github.io/UNIXtutorial.html) (CC BY-NC-SA 4.0)
 -   [Mike Lee's Unix Crash Course](https://astrobiomike.github.io/unix/) (<https://doi.org/10.21105/jose.00053>)
 -   [Data Carpentry's Introduction to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/ (<https://doi.org/10.5281/zenodo.3260560> CC-BY 4.0)
 -   [Ronan Harrington's Bioinformatics Notebook](https://rnnh.github.io/bioinfo-notebook/docs/cl_intro.html) (MIT)
@@ -58,7 +58,9 @@ As a concrete example of what we will be using the shell for, consider the task 
 
 Learning to use the shell, or learning programming languages and bioinformatics skills in general, can be daunting if you have had little experience with these types of tasks in the past. Don't worry though, just take your time and things will become easier over time as you gain more experience.
 
-The [next section]() of the course also contains a bunch of tips and tricks to keep in mind while learning your way around the shell.
+We do not expect you to be able to memorize every single command and all of its option. Instead, it is more important to be aware of the existence of commands to perform particular tasks, and to be able to independently retrieve information on how to use them when the need arises.
+
+Finally, the appendix (@sec-unix-tips) of the course also contains a bunch of tips and tricks to keep in mind while learning your way around the shell.
 
 ## A note on terminology
 

@@ -103,7 +103,7 @@ By default, the files and directories are listed in alphabetically order and dep
 |     `ls -a`     |  List all files and directories, including _hidden_ ones |
 |     `ls -lha`     |  Combine all options into one command |
 |     `ls --help`     |  Show more information on the ls command and its options |
-| ls 
+| ls
 
 ::: {.callout-note}
 ## What are hidden files?
@@ -113,7 +113,7 @@ Earlier, we mentioned that `.` is used to refer to the current working directory
 Linux often hides system or configuration files to avoid cluttering up your (home) directory. We will not deal with hidden files directly in this course, but one of the situations where you might encounter them are when modifying your `.bashrc` file (e.g., when creating custom functions, aliases or tweaking your `PATH` @sec-unix-path) or when managing SSH keys for remote server access @sec-ssh).
 :::
 
-The `ls -l` command is particularly useful, because it shows all types of additional information. 
+The `ls -l` command is particularly useful, because it shows all types of additional information.
 
 ::: {.callout-tip collapse="true"}
 ## What do the different columns in the output of `ls -l` represent?
@@ -149,8 +149,11 @@ The first column represents the permissions of the files/folders. In a nutshell,
 
 - *Absolute* versus *relative* file paths
 - Root (`/`) and home directory (`~`)
+- `.` represents the current working directory
+- `..` represents the parent directory
 - `pwd`: print the path of the current working directory
 - `cd <path>`: navigate to the given directory
 - `ls <path>`: list files and directories in the given location
+- Hidden files contain a `.` at the start of their name and are not visible by default
 
 :::

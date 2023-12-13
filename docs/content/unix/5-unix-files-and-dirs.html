@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/r/r-intro.html" rel="next">
+<link href="../../content/unix/6-unix-more-commands.html" rel="next">
 <link href="../../content/unix/4-unix-navigation.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -162,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface/welcome/about</span></a>
+ <span class="menu-text">About</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -210,6 +210,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with files and directories</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/unix/6-unix-more-commands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More advanced commands</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -224,13 +230,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
   </div>
 </li>
       </ul>
@@ -277,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#moving-things-around" id="toc-moving-things-around" class="nav-link" data-scroll-target="#moving-things-around"><span class="header-section-number">5.3</span> Moving things around</a>
   <ul class="collapse">
   <li><a href="#cp-copying-files-and-directories" id="toc-cp-copying-files-and-directories" class="nav-link" data-scroll-target="#cp-copying-files-and-directories"><span class="header-section-number">5.3.1</span> <code>cp</code>: copying files and directories</a></li>
-  <li><a href="#intermezzo-globbing-and-wildcards" id="toc-intermezzo-globbing-and-wildcards" class="nav-link" data-scroll-target="#intermezzo-globbing-and-wildcards"><span class="header-section-number">5.3.2</span> Intermezzo: globbing and wildcards</a></li>
+  <li><a href="#sec-globbing" id="toc-sec-globbing" class="nav-link" data-scroll-target="#sec-globbing"><span class="header-section-number">5.3.2</span> Intermezzo: globbing and wildcards</a></li>
   <li><a href="#mv-moving-or-renaming-files-and-directories" id="toc-mv-moving-or-renaming-files-and-directories" class="nav-link" data-scroll-target="#mv-moving-or-renaming-files-and-directories"><span class="header-section-number">5.3.3</span> <code>mv</code> Moving or renaming files and directories</a></li>
   </ul></li>
   <li><a href="#creation-and-destruction" id="toc-creation-and-destruction" class="nav-link" data-scroll-target="#creation-and-destruction"><span class="header-section-number">5.4</span> Creation and destruction</a>
@@ -422,23 +428,56 @@ DNA sequence file formats: FASTA
 <p>We will learn more about these DNA sequence file formats in a later chapter. For the time being, it is enough to know that both of these files are usually very large and that they are commonly used in genomics.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Try inspecting the contents of one of the <code>.fastq.gz</code> files in the <code>training/data/fastq</code> directory (Click me to expand!)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The <code>less</code> command behaves as we expect it to.</p>
-<p>If you were to try <code>cat</code>, you would see a lot of gibberish being printed to your screen. The reason is that these FASTQ files are compressed using <code>gzip</code> (which is why the file extension ends in <code>.gz</code>). Because of this, they are no longer plain text files, but compressed binary versions. We will learn more about compressed files and how to deal with them in a later section of this course.</p>
-</div>
-</div>
-</div>
+</section>
+<section id="head-and-tail-viewing-the-start-or-end-of-files" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="head-and-tail-viewing-the-start-or-end-of-files"><span class="header-section-number">5.1.3</span> <code>head</code> and <code>tail</code>: viewing the start or end of files</h3>
+<p>Sometimes we are not interested in viewing the entire file, but just the first few or last lines. The commands <code>head</code> and <code>tail</code> were created for exactly this use case. The basic usage is simply <code>head &lt;filepath&gt;</code>, but there again are a few optional flags that can alter the default behaviour.</p>
+<table class="table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>head file</code></td>
+<td>Print the first 10 lines of a file</td>
+</tr>
+<tr class="even">
+<td><code>tail file</code></td>
+<td>Print the last 10 lines of a file</td>
+</tr>
+<tr class="odd">
+<td><code>head -n # file</code></td>
+<td>Display the first # lines of a file</td>
+</tr>
+<tr class="even">
+<td><code>tail -n # file</code></td>
+<td>Display the final # lines of a file</td>
+</tr>
+<tr class="odd">
+<td><code>tail -n +2 file</code></td>
+<td>Display all lines except for the first one (i.e., perform <code>tail</code>, but start at line 2)</td>
+</tr>
+</tbody>
+</table>
+<p>Let us inspect the first lines of one of the (uncompressed) FASTQ files in the <code>unix-demo</code> directory:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> head PF0512_S47_L001_R1_001.fastq</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">@M05795:43:000000000-CFLMP:1:1101:16134:1717</span> 1:N:0:47</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">TTGGTCAAGATCTTTTACATTCCATGCACACAAAAGAATTCTTCTACTTGTCTGATCCTTTTTCATTATATTTATTATCTTTTTTTATTTTTCCTCTCCTTTATTTTCATAATTATCATACATATTTTTATATTCATCACCTAAATGTCTCCATTTAAAACCATAAATAGTTCCTAATTCGTTAACTTCTCTATGACATAATTTTCTATTATCTCTTTCTCTTATCCACATCTCCGAGCCCACGAGACGTCGCACCCTCTCCTATGCCCTCTTCTGCTTGAAACACAAACGCCACCACCT</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-8B</span><span class="op">&lt;</span>CGGFGGGDGGGGGEFGGGAFFEFCFGGDC888C,CF@@FFG,6FC,C,,,,<span class="op">&lt;&lt;,&lt;&lt;CCE,,&lt;</span>C,,,<span class="op">&lt;</span>6B,<span class="kw">;</span><span class="ex">B,</span><span class="op">&lt;</span>,<span class="op">&lt;</span>A@EEC+,:@,,94,,5549@<span class="pp">?</span>F,@@<span class="pp">?</span>D<span class="op">&lt;</span>,C,,9@,A<span class="kw">;</span><span class="ex">,C,9,A,:A=,</span><span class="op">&gt;</span>,9,9@<span class="kw">;</span><span class="ex">,,,,94,,,,9,9499=,9</span><span class="op">&gt;</span>,,,,,9+,9,,,9,,,493@,,,99+60++6==93=C+C++++6++4<span class="op">&lt;</span>=<span class="kw">;</span><span class="ex">=D+?=+42+43+33*?=</span><span class="kw">;</span><span class="ex">+**5*1*</span><span class="er">)</span><span class="ex">0*108</span><span class="er">))</span><span class="ex">18=</span><span class="er">)</span><span class="bu">:</span><span class="er">))))</span><span class="ex">0</span><span class="er">)</span><span class="ex">185</span><span class="er">)))</span><span class="ex">1</span><span class="er">))</span><span class="ex">--:</span><span class="er">)</span><span class="ex">1*/*16</span><span class="er">)</span><span class="ex">0/</span><span class="er">(</span><span class="ex">01//8***</span><span class="er">(</span><span class="kw">)</span><span class="ex">**</span><span class="er">((</span>((((<span class="kw">,</span>(((<span class="op">/</span>((<span class="kw">,</span>(<span class="kw">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>@<span class="va">M05795</span><span class="op">:</span><span class="dv">43</span><span class="op">:</span><span class="dv">000000000</span><span class="op">-</span><span class="va">CFLMP</span><span class="op">:</span><span class="dv">1</span><span class="op">:</span><span class="dv">1101</span><span class="op">:</span><span class="dv">20605</span><span class="op">:</span><span class="dv">1731</span> <span class="dv">1</span><span class="op">:</span><span class="va">N</span><span class="op">:</span><span class="dv">0</span><span class="op">:</span><span class="dv">47</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="va">GAAAAAGGAAGAGAATTGAACTTTTGGCAGCAAACTCAAACATTATAAGTGAAATTAAGATGCCCAAGTCTGTGCTCAATCTCATTTTTTGTTTTTGTGTTTTTCCTTCAATCTCTTCATGTATTCAGTTATTTTTAAT</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="op">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="op">-</span>@<span class="va">CCCGGGGGGGGCGFG</span>@<span class="op">&lt;</span><span class="va">EFGGGGAFFFEGGC8FEF9</span><span class="kw">,,</span>;<span class="kw">,</span><span class="va">CE</span><span class="kw">,</span><span class="va">C</span><span class="kw">,,,</span><span class="op">&lt;</span><span class="kw">,,,,</span><span class="op">&lt;</span><span class="va">C</span><span class="kw">,,,,</span><span class="op">&lt;</span><span class="kw">,,</span><span class="dv">6</span>;<span class="kw">,,,</span>;;<span class="va">C</span><span class="kw">,</span><span class="op">&lt;</span><span class="kw">,</span><span class="dv">6</span>;<span class="va">C</span><span class="kw">,,</span><span class="op">&lt;</span><span class="kw">,,</span><span class="op">:</span><span class="kw">,</span><span class="op">:</span>@<span class="kw">,</span><span class="dv">5</span><span class="kw">,</span><span class="dv">8</span><span class="op">+</span><span class="kw">,,</span><span class="dv">9</span><span class="op">:</span>@<span class="op">+:</span><span class="kw">,,</span><span class="dv">9</span><span class="kw">,</span><span class="dv">9</span><span class="kw">,</span><span class="dv">99AE?,,,959AA?,9</span><span class="kw">,,,</span><span class="dv">994</span><span class="kw">,,</span><span class="dv">9</span><span class="op">=</span><span class="kw">,</span><span class="dv">9</span><span class="op">&gt;</span><span class="va">ED</span><span class="kw">,,,</span><span class="dv">9</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>@<span class="va">M05795</span><span class="op">:</span><span class="dv">43</span><span class="op">:</span><span class="dv">000000000</span><span class="op">-</span><span class="va">CFLMP</span><span class="op">:</span><span class="dv">1</span><span class="op">:</span><span class="dv">1101</span><span class="op">:</span><span class="dv">9135</span><span class="op">:</span><span class="dv">1768</span> <span class="dv">1</span><span class="op">:</span><span class="va">N</span><span class="op">:</span><span class="dv">0</span><span class="op">:</span><span class="dv">47</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="va">CGTTAAAATCTTGCTCCTCATCACTACTAACCTTTTGTTCATTCTCATCACAAATATTATCCTTATCTTCATTATCTACTTCATCTACATTATTTTTTAT</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -484,55 +523,36 @@ ACTACTAGGATTGAGGACGTCCTCCCAACAGGGAGTTGGTTGGGCGCCCGGTGCCGTCATGTCCGATCGCTATCTACGTC
 </tr>
 </tbody>
 </table>
-<p>There will be a more in-depth dive into FASTQ files in a later chapter of the course.</p>
 </div>
 </div>
-</section>
-<section id="head-and-tail-viewing-the-start-or-end-of-files" class="level3" data-number="5.1.3">
-<h3 data-number="5.1.3" class="anchored" data-anchor-id="head-and-tail-viewing-the-start-or-end-of-files"><span class="header-section-number">5.1.3</span> <code>head</code> and <code>tail</code>: viewing the start or end of files</h3>
-<p>Sometimes we are not interested in viewing the entire file, but just the first few or last lines. The commands <code>head</code> and <code>tail</code> were created for exactly this use case. The basic usage is simply <code>head &lt;filepath&gt;</code>, but there again are a few optional flags that can alter the default behaviour.</p>
-<table class="table">
-<colgroup>
-<col style="width: 31%">
-<col style="width: 68%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Command</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>head file</td>
-<td>Print the first 10 lines of a file</td>
-</tr>
-<tr class="even">
-<td>tail file</td>
-<td>Print the last 10 lines of a file</td>
-</tr>
-<tr class="odd">
-<td>head -n # file</td>
-<td>Display the first # lines of a file</td>
-</tr>
-<tr class="even">
-<td>tail (-n #) file</td>
-<td>Display the final # lines of a file</td>
-</tr>
-</tbody>
-</table>
-<p>Let us inspect the first lines of one of the FASTQ files in the <code>training/data/fastq</code> directory:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> head 3B207-2_S92_L001_R1_001.fastq</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">TODO</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Try inspecting the contents of one of the <code>.fastq.gz</code> files in the <code>training/data/fastq</code> directory (Click me to expand!)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The <code>less</code> command most likely behaves as we expect it to, but if we were to try <code>cat</code>, <code>head</code> or <code>tail</code>, you would see a lot of gibberish being printed to your screen.</p>
+<p>The reason is that these FASTQ files are compressed using <code>gzip</code> (which is why the file extension ends in <code>.gz</code>). Because of this, they are no longer plain text files, but compressed binary versions. We will learn more about compressed files and how to deal with them in a later section of this course. In a nutshell though, compressed files either need to be unpacked or they require a tool that was designed to handle them (e.g., <code>zcat</code>, <code>zgrep</code>, <code>zless</code>. In most linux distributions, <code>zless</code> is called automatically when you try to <code>less</code> a file with the <code>.gz</code> extension, which is why the text seemed normal.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="wc-counting-lines" class="level3" data-number="5.1.4">
 <h3 data-number="5.1.4" class="anchored" data-anchor-id="wc-counting-lines"><span class="header-section-number">5.1.4</span> <code>wc</code>: counting lines</h3>
 <p>Sometimes we’re not interested in the specific contents of a file, but only in how long it is in terms of text (not file size). For this we can use the <code>wc</code> command: it can count the number of lines, words and characters in a text file. By default, it prints all of this information, but by providing the <code>-l</code> flag, you can tell the command to only return the number of lines. Taking the example of our FASTQ file again, we see:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wc 3B207-2_S92_L001_R1_001.fastq</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">460600</span>   575750 46746025 3B207-2_S92_L001_R1_001.fastq</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> 3B207-2_S92_L001_R1_001.fastq</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">460600</span> 3B207-2_S92_L001_R1_001.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of lines, words and characters</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wc PF0512_S47_L001_R1_001.fastq</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">582940</span>   728675 69598721 PF0512_S47_L001_R1_001.fastq</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># number of lines only</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> PF0512_S47_L001_R1_001.fastq</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">582940</span> PF0512_S47_L001_R1_001.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -545,7 +565,7 @@ How many reads are there in this FASTQ file? (Click me to expand!)
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Each read in a FASTQ file consists of four lines (see <span class="quarto-unresolved-ref">?sec-fastq</span>). Therefore, we can simply divide the output of <code>wc -l</code> by four to figure out the number of reads. In this case: <span class="math display"> {460,600 \over 4} = 115,150</span> reads.</p>
+<p>Each read in a FASTQ file consists of four lines (see <span class="quarto-unresolved-ref">?sec-fastq</span>). Therefore, we can simply divide the output of <code>wc -l</code> by four to figure out the number of reads. In this case: <span class="math display"> {582,940 \over 4} = 145,735</span> reads.</p>
 </div>
 </div>
 </div>
@@ -595,12 +615,12 @@ Navigating inside <code>nano</code>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls /path/to/destination</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">file_1</span> file_2 file_3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="intermezzo-globbing-and-wildcards" class="level3" data-number="5.3.2">
-<h3 data-number="5.3.2" class="anchored" data-anchor-id="intermezzo-globbing-and-wildcards"><span class="header-section-number">5.3.2</span> Intermezzo: globbing and wildcards</h3>
+<section id="sec-globbing" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="sec-globbing"><span class="header-section-number">5.3.2</span> Intermezzo: globbing and wildcards</h3>
 <p>Now seems like a good time to introduce the concept of the globbing and wildcards. Globbing allows you to perform operations on multiple files. By providing specific patterns, the shell will be able to expand them into a list of matching file names. The patterns are built using wildcards, one of the most common ones being the asterisk <code>*</code>.</p>
 <p>How does this work? Well, <code>*</code> can represent any number of other characters. For example, the string <code>*.txt</code> can match all file names ending with <code>.txt</code> in your directory. Let’s look at a concrete example, using the <code>ls</code> command we saw earlier:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</span>  long.txt  short.txt  tabular_data.csv</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</span>  PF0512_S47_L001_R1_001.fastq  files_to_copy  files_to_delete  files_to_move  long.txt  short.txt  penguins.csv</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="pp">*</span>.txt</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">long.txt</span>  short.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -668,25 +688,6 @@ What do you think this previous command will do? (Click me to expand!)
 </section>
 <section id="rm-removing-things" class="level3" data-number="5.4.3">
 <h3 data-number="5.4.3" class="anchored" data-anchor-id="rm-removing-things"><span class="header-section-number">5.4.3</span> <code>rm</code>: removing things</h3>
-<p>The <code>rm</code> command (<em>remove</em>) is used to delete files and directories. Be warned though, once deleted, things are really gone. There is no recycle bin or trash folder where you can restore deleted items!</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for files:</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="op">&lt;</span>file path<span class="op">&gt;</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># for directories</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> <span class="op">&lt;</span>directory path<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>For files, this works as expected, but for directories you need to provide the <code>-r</code> flag (or <code>--recursive</code>). This tells unix to remove the directory recursively, i.e.&nbsp;all of its contents need to be removed as well. If you don’t use this option, you will see the following warning:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> directory</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rm:</span> cannot remove <span class="st">'test/'</span>: Is a directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Sometimes, files will be protected and you will get another warning message when you try to remove them. If you are really sure that you want to delete them, you can type <code>y</code> and press enter. Alternatively, you can cancel the operation (by entering <code>n</code> or by pressing <code>ctrl+c</code>) and try again, but this time providing the <code>-f/--force</code> option.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new empty file</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch protected-file</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># change its permissions so that it is protected against writing and deleting (see appendix for more info on file permissions)</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> chmod a-w protected-file</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># try to remove it</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm protected-file</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="ex">rm:</span> remove write-protected regular empty file <span class="st">'protected-file'</span><span class="pp">?</span> n</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># use the --force flag</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm <span class="at">-f</span> protected-file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -702,6 +703,40 @@ Watch out…
 <p>For the purposes of learning, if you are using your own device instead of a cloud environment, we recommend that you work in a dedicated playground directory or even create a new user profile to be extra safe. And like always, backups of your important files are invaluable regardless of what you are doing.</p>
 </div>
 </div>
+<p>The <code>rm</code> command (<em>remove</em>) is used to delete files and directories. Be warned though, once deleted, things are really gone. There is no recycle bin or trash folder where you can restore deleted items!</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for files:</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="op">&lt;</span>file path<span class="op">&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># for directories</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> <span class="op">&lt;</span>directory path<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For files, this works as expected, but for directories you need to provide the <code>-r</code> flag (or <code>--recursive</code>). This tells unix to remove the directory recursively, i.e.&nbsp;all of its contents need to be removed as well. If you don’t use this option, you will see the following warning:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> directory</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rm:</span> cannot remove <span class="st">'test/'</span>: Is a directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Protected files
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Sometimes, files will be protected and you will get another warning message when you try to remove them. If you are really sure that you want to delete them, you can type <code>y</code> and press enter. Alternatively, you can cancel the operation (by entering <code>n</code> or by pressing <code>ctrl+c</code>) and try again, but this time providing the <code>-f/--force</code> option.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new empty file</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch protected-file</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># change its permissions so that it is protected against writing and deleting (see appendix for more info on file permissions)</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> chmod a-w protected-file</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># try to remove it</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm protected-file</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="ex">rm:</span> remove write-protected regular empty file <span class="st">'protected-file'</span><span class="pp">?</span> n</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># use the --force flag</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm <span class="at">-f</span> protected-file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 <hr>
 </section>
 </section>
@@ -709,8 +744,7 @@ Watch out…
 <h2 data-number="5.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.5</span> Exercises</h2>
 <ol type="1">
 <li>Create a new directory named “my_dir” inside the <code>./training/unix-demo</code> directory. Next, without using <code>cd</code> first, create another directory named <code>my_sub_dir</code> inside of it. Finally, again without using <code>cd</code>, create a final directory named <code>my_sub_sub_dir</code> inside of that one.</li>
-<li>Read the last 20 lines of the FASTA file in the <code>./training/unix-demo</code> directory.<br>
-</li>
+<li>Read the last 20 lines of the FASTA file in the <code>./training/unix-demo</code> directory.</li>
 <li>Create a new text file named <code>lines</code> inside <code>my_subdir</code> using <code>nano</code>. Store the number of lines of the file <code>long.txt</code> inside. Then read it using <code>cat</code> and <code>less</code>.</li>
 <li>Navigate to the <code>files_to_copy</code> directory and copy its contents to the <code>my_sub_dir</code> directory. What is the relative path of the destination to use?</li>
 <li>Move the file under <code>files_to_move</code> to its parent directory.</li>
@@ -723,7 +757,7 @@ Watch out…
 <section id="summary" class="level2" data-number="5.6">
 <h2 data-number="5.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">5.6</span> Summary</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -732,8 +766,14 @@ Overview of concepts and commands
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse show">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
+<ul>
+<li>FASTA file format is used to store DNA sequences</li>
+<li>FASTQ file format is used to store sequence reads and their quality scores</li>
+<li>Compressed files (e.g., <code>.gz</code>) are smaller in file size, but are no longer plain text files and require special tools.</li>
+<li>The permission of files can be set to prevent users from reading, writing or (re)moving them.</li>
+</ul>
 <table class="table">
 <colgroup>
 <col style="width: 38%">
@@ -1147,8 +1187,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/r/r-intro.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">R introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/unix/6-unix-more-commands.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More advanced commands</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
