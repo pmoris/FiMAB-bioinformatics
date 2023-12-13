@@ -150,8 +150,10 @@ format:
     linestretch: 1.5
     code-fold: true
     html-math-method: katex
-  # pdf:
-  #   documentclass: scrreprt
+  pdf:
+    documentclass: scrreprt
+  # epub:
+  #   toc: true
 
 strip-comments: true
 
