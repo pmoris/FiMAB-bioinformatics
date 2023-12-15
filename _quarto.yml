@@ -50,6 +50,7 @@ book:
       - content/unix/4-unix-navigation.qmd
       - content/unix/5-unix-files-and-dirs.qmd
       - content/unix/6-unix-more-commands.qmd
+      - content/unix/7-unix-redirection.qmd
     - part: "R basics"
       chapters:
         - content/r/r-intro.qmd

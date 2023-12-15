@@ -50,7 +50,7 @@ Using `less`, we can have a look at the (truncated) version of the human Y chrom
 $ less Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa
 ```
 
-![Opening a FASTQ file in `less`](../assets/less-fastq.png)
+![Opening a FASTA file in `less`](../assets/less-fasta.png)
 
 ::: {.callout-note collapse="false"}
 ## Navigating inside `less`
@@ -309,7 +309,7 @@ rm <file path>
 rm -r <directory path>
 ```
 
-For files, this works as expected, but for directories you need to provide the `-r` flag (or `--recursive`). This tells unix to remove the directory recursively, i.e. all of its contents need to be removed as well. If you don't use this option, you will see the following warning:
+For files, this works as expected, but for directories you need to provide the `-r` flag (or `--recursive`). This tells Unix to remove the directory recursively, i.e. all of its contents need to be removed as well. If you don't use this option, you will see the following warning:
 
 ```bash
 rm directory

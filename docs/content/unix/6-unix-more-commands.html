@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/r/r-intro.html" rel="next">
+<link href="../../content/unix/7-unix-redirection.html" rel="next">
 <link href="../../content/unix/5-unix-files-and-dirs.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -200,6 +200,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More advanced commands</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/unix/7-unix-redirection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Streams, redirection and piping</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -214,13 +220,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
   </div>
 </li>
       </ul>
@@ -350,7 +356,7 @@ Try searching for the string “species” instead. Do you think these are all t
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>When you run <code>grep "species" long.txt</code>, you will indeed find many occurrences of this word. However, we are missing all the occurrences of “Species”. Try running <code>grep "Species" long.txt</code> to compare the results. Lastly, try running the command <code>grep -i "species" long.txt</code>. This option will</p>
-<p>Remember, capitalization matters to <code>grep</code> (and to unix as a whole)!</p>
+<p>Remember, capitalization matters to <code>grep</code> (and to Unix as a whole)!</p>
 </div>
 </div>
 </div>
@@ -430,7 +436,7 @@ How would you search through <code>.txt</code> files only? (Click me to expand!)
 </div>
 </div>
 <p>We already mentioned <em>regular expressions</em> in the previous section: they allow you to search for particular patterns that can match more than one exact string of text. This is <a href="https://xkcd.com/208/">tremendously useful</a>, but we will not dive into how they work during this course. If you are interested, you can check out an <a href="https://open.oregonstate.education/computationalbiology/chapter/patterns-regular-expressions/">excellent tutorial here</a>.</p>
-<p>We will see more elaborate use cases for <code>grep</code> when we introduce the unix concepts of piping and redirection.</p>
+<p>We will see more elaborate use cases for <code>grep</code> when we introduce the Unix concepts of piping and redirection.</p>
 </section>
 <section id="tabular-data-cut" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="tabular-data-cut"><span class="header-section-number">6.2</span> Tabular data: <code>cut</code></h2>
@@ -448,7 +454,7 @@ Tabular data and <code>.csv</code> files
 <p>Tabular data files are usually plain text files, where each row corresponds to a record (e.g., an individual penguin), and each column represents a particular field (e.g., species, flipper length, body mass, etc.). The columns can be separated by different <em>field delimiters</em> or <em>separators</em>. In <code>.csv</code> files, these are usually commas (<em>comma separated values</em>), but they can also be TABS (<code>.tsv</code>) or semicolons (<code>;</code>).</p>
 </div>
 </div>
-<p>A particularly useful unix tool for manipulating tabular data files, is <code>cut</code>. It allows us to extract particular columns from these files. The syntax is as follows:</p>
+<p>A particularly useful Unix tool for manipulating tabular data files, is <code>cut</code>. It allows us to extract particular columns from these files. The syntax is as follows:</p>
 <pre><code>cut [OPTIONS] target_file</code></pre>
 <table class="table">
 <colgroup>
@@ -545,7 +551,7 @@ Try compressing the FASTQ file in the <code>unix-demo</code> directory. By how m
 </section>
 <section id="downloading-files-wget" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="downloading-files-wget"><span class="header-section-number">6.5</span> Downloading files: <code>wget</code></h2>
-<p><code>wget</code> is a command that allows you to download files from a particular web address or URL and place them in your working directory. While there are several optional flags, in its most basic form the syntax is simply: <code>wget URL</code>. This command is not only useful when automating certain tasks, but also crucial if you ever find yourself in a unix environment that does not have a GUI at all (e.g., compute clusters or cloud servers).</p>
+<p><code>wget</code> is a command that allows you to download files from a particular web address or URL and place them in your working directory. While there are several optional flags, in its most basic form the syntax is simply: <code>wget URL</code>. This command is not only useful when automating certain tasks, but also crucial if you ever find yourself in a Unix environment that does not have a GUI at all (e.g., compute clusters or cloud servers).</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -589,36 +595,42 @@ Try downloading the <em>Plasmodium falciparum</em> 3D7 reference genome in FASTA
 <p>The final two commands that we will introduce are yet again tools to manipulate plain text files. The first is <code>sort</code>, which does exactly that you expect it to. It can sort all the rows in a text file. Its syntax is:</p>
 <pre><code>sort [OPTIONS] &lt;./path/to/file&gt;`</code></pre>
 <p>There are optional flags that allow you to choose the type of order to use (e.g., numerical <code>-n</code>/<code>--numeric-sort</code> instead of alphabetical ), reverse the order of the sort (<code>-r</code>/<code>--reverse</code>) or ignore capitals (<code>-f</code>/<code>--ignore-case</code>).</p>
-<p>The second command, <code>uniq</code>, is used to remove duplicate lines in a file.</p>
-<p>These two commands are often used in conjunction, because <code>uniq</code> on its own is not capable of filtering out identical lines that are not adjacent. So to truly remove all duplicate lines in a file, we would first need to sort it. In the next section, we will introduce a method of combining commands in a more convenient way than running them one by one and without needing to create any intermediary files.</p>
+<p>The second command, <code>uniq</code>, is used to remove duplicate lines in a file. It also offers the option to count the frequency of each unique line.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># given the following file</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat file_with_duplicates.txt</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">a</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">a</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">b</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ex">b</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="ex">b</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ex">b</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="ex">c</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> uniq <span class="at">-c</span> file_with_duplicates.txt</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="ex">2</span> a</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="ex">4</span> b</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span> c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>These two commands are often used in conjunction, because <code>uniq</code> on its own is not capable of filtering out identical lines that are not adjacent. So to truly remove all duplicate lines in a file, we would first need to sort it. In the next section, we will introduce a method of combining these commands in a more convenient way than running them one by one and without needing to create any intermediary files.</p>
 </section>
 <section id="other-commands" class="level2" data-number="6.8">
 <h2 data-number="6.8" class="anchored" data-anchor-id="other-commands"><span class="header-section-number">6.8</span> Other commands</h2>
-<p>Of course, there exist many more unix commands than the ones we introduced here. We will end this section by briefly mentioning two that you might run into at some point <code>awk</code> and <code>sed</code>. Both of them allow you to search and replace patterns in text files, and with <code>awk</code> you can even perform more complex operations including calculations. We will not dive into them here, but keep them in the back of your mind for the future.</p>
+<p>Of course, there exist many more Unix commands than the ones we introduced here. We will end this section by briefly mentioning two that you might run into at some point <code>awk</code> and <code>sed</code>. Both of them allow you to search and replace patterns in text files, and with <code>awk</code> you can even perform more complex operations including calculations. We will not dive into them here, but keep them in the back of your mind for the future.</p>
 <hr>
 </section>
 <section id="exercises" class="level2" data-number="6.9">
 <h2 data-number="6.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.9</span> Exercises</h2>
 <ol type="1">
-<li><p>Create a new directory named “my_dir” inside the <code>./training/unix-demo</code> directory. Next, without using <code>cd</code> first, create another directory named <code>my_sub_dir</code> inside of it. Finally, again without using <code>cd</code>, create a final directory named <code>my_sub_sub_dir</code> inside of that one.</p></li>
-<li><p>Read the last 20 lines of the FASTA file in the <code>./training/unix-demo</code> directory.</p></li>
-<li><p>Create a new text file named <code>lines</code> inside <code>my_subdir</code> using <code>nano</code>. Store the number of lines of the file <code>long.txt</code> inside. Then read it using <code>cat</code> and <code>less</code>.</p></li>
-<li><p>Navigate to the <code>files_to_copy</code> directory and copy its contents to the <code>my_sub_dir</code> directory. What is the relative path of the destination to use?</p></li>
-<li><p>Move the file under <code>files_to_move</code> to its parent directory.</p></li>
-<li><p>Remove all the files under <code>files_to_delete</code> using a glob pattern.</p></li>
-<li><p>Rename the directory <code>files_to_delete</code> to <code>empty_dir</code>.</p></li>
-<li><p>List the contents of the <code>./training/unix-demo</code> directory.</p></li>
-<li><p>Visit PlasmoDB again and download the <em>Plasmodium vivax</em> P01 reference genome sequence in FASTA format and store it in <code>./training/data/reference</code>.</p></li>
-<li><p>Report the file size of this reference genome in MBs.</p></li>
-<li><p>Find out how many lines of text the file contains.</p></li>
-<li><p>Search through the file for the <code>&gt;</code> character, which is used to denote every chromosome/contig.</p></li>
-<li><p>Use a single command to count the number of chromosomes.</p></li>
-<li><p>Compress the FASTQ file <code>PF0512_S47_L001_R1_001.fastq</code> in the <code>unix-demo</code> directory using <code>gzip</code>.</p></li>
-<li><p>Navigate to the directory <code>./training/data/fastq</code> and in a single command, extract the forward (<code>PF0097_S43_L001_R1_001.fastq.gz</code>) and reverse (<code>PF0097_S43_L001_R2_001.fastq.gz</code>) of the <code>PF0097_S43</code> sample, without removing the compressed files. Hint: use globbing!</p></li>
-<li><p>Search both FASTQ files for the read fragment with identifier <code>@M05795:43:000000000-CFLMP:1:1101:21518:5740 2:N:0:43</code> using a single command.</p></li>
-<li><p>Compare the file sizes of the two compressed and uncompressed FASTQ files.</p></li>
-<li><p>Extract the columns containing the <em>island</em> and <em>flipper length</em> of each penguin from the <code>./training/unix-demo/penguins.csv</code> file.</p></li>
-<li><p>Count how many times the sequence <code>CATCATCATCATCAT</code> occurs in the FASTA file <code>./training/unix-demo/Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</code>.</p></li>
+<li>Visit PlasmoDB again and download the <em>Plasmodium vivax</em> P01 reference genome sequence in FASTA format and store it in <code>./training/data/reference</code>.</li>
+<li>Report the file size of this reference genome in MBs.</li>
+<li>Find out how many lines of text the file contains.</li>
+<li>Search through the file for the <code>&gt;</code> character, which is used to denote every chromosome/contig.</li>
+<li>Use a single command to count the number of chromosomes.</li>
+<li>Compress the FASTQ file <code>PF0512_S47_L001_R1_001.fastq</code> in the <code>unix-demo</code> directory using <code>gzip</code>.</li>
+<li>Navigate to the directory <code>./training/data/fastq</code> and in a single command, extract the forward (<code>PF0097_S43_L001_R1_001.fastq.gz</code>) and reverse (<code>PF0097_S43_L001_R2_001.fastq.gz</code>) of the <code>PF0097_S43</code> sample, without removing the compressed files. Hint: use globbing!</li>
+<li>Search both FASTQ files for the read fragment with identifier <code>@M05795:43:000000000-CFLMP:1:1101:21518:5740 2:N:0:43</code> using a single command.</li>
+<li>Compare the file sizes of the two compressed and uncompressed FASTQ files.</li>
+<li>Extract the columns containing the <em>island</em> and <em>flipper length</em> of each penguin from the <code>./training/unix-demo/penguins.csv</code> file.</li>
+<li>Count how often the sequence <code>CATCATCATCATCAT</code> occurs in the FASTA file <code>./training/unix-demo/Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</code>.</li>
 </ol>
 <hr>
 </section>
@@ -1041,8 +1053,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/r/r-intro.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/unix/7-unix-redirection.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Streams, redirection and piping</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

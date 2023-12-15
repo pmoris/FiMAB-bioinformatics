@@ -3,7 +3,7 @@
 ::: {.callout-note}
 ## Prior experience
 
-You can skip this section and proceed directly to the exercises if you are already familiar with the basic syntax of unix commands. We still recommend checking out the tips and hints in @sec-unix-tips and the special syntax overview in @sec-table-special-syntax though.
+You can skip this section and proceed directly to the exercises if you are already familiar with the basic syntax of Unix commands. We still recommend checking out the tips and hints in @sec-unix-tips and the special syntax overview in @sec-table-special-syntax though.
 :::
 
 ## Interacting with the shell
@@ -12,7 +12,7 @@ When you launch your (Bash) shell, you will be greeted by what is called a shell
 
 ![A bash shell prompt waiting for user input](../assets/prompt.png)
 
-Already note that you cannot use your mouse cursor to move around your terminal. You will need to use your arrow keys (or [shortcuts](https://kapeli.com/cheat_sheets/Bash_Shortcuts.docset/Contents/Resources/Documents/index 
+Already note that you cannot use your mouse cursor to move around your terminal. You will need to use your arrow keys (or [shortcuts](https://kapeli.com/cheat_sheets/Bash_Shortcuts.docset/Contents/Resources/Documents/index
 )) to move around while typing commands.
 
 ## Command syntax

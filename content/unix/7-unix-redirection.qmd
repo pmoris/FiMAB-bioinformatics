@@ -1,17 +1,208 @@
-grep
+# Streams, redirection and piping
 
-**redirect ls output, better approach is find**
+::: {.callout-tip}
+Remember that we have provided a list of helpful tips and hints in the appendix: @sec-unix-tips.
+:::
 
+Up until now, most of the commands that we have used, printed their output directly to the terminal screen. But what if we want to save that output to a file? Or similarly, if we want to run program X on the output of program Y? This is where redirection and piping come into play. But first, we will have to briefly introduce the concept of streams.
 
-grep > uniq -c
-cut > uniq -c
-head > cut
+## Streams
 
-gzip all files in directory
+The general flow of Unix commands is that we supply a specific input on the terminal, which is supplied to a command, and any output is printed back to the terminal screen. In other words, processes have three different _data streams_ connected to them.
 
+![Unix input and output streams](../assets/unix-streams.png)
 
+The output for most commands, like that of `echo`, `cat` and `ls`, is called the _standard output_ or _stdout_, and it is printed to our terminal screen by default. However, there exists another output stream in Unix, namely the _standard error_ or _stderr_. This stream will contain error or warning messages produced by commands, and it is also printed to the terminal screen by default. There also exists an input stream, called _standard input_ or _stdin_, which provides the data that is fed into a program.
 
+Redirection and piping allows us to make these data streams go to or come from another file or process, instead of the terminal. Connecting these streams in different combination allows us to perform all kinds of useful operations.
 
-sort
-uniq -c
-count duplicate lines
+### Redirecting output
+
+One of the most common uses of redirection is redirecting the output to a file. For this, we make use of the greater than operator `>`:
+
+```bash
+$ ls > redirected_output.txt
+some     files     in   a   directory
+
+$ cat redirected_output.txt
+some     files     in   a   directory
+```
+
+In the example above, the output of `ls` was not printed to the screen, but redirected to a file named `ls_output.txt`. Note that if the file does not exist, it will be created for us. However, if the file already exists, it will be overwritten (i.e., its contents will be removed entirely and replaced by our new output).
+
+A related operator is `>>`. It will behave similar, with the difference being that `>>` will instead append its output to existing files, rather than overwriting them.
+
+```bash
+$ ls > redirected_output.txt
+some     files     in   a   directory
+
+$ echo "A second line!" >> redirected_output.txt
+
+$ cat redirected_output.txt
+some     files     in   a   directory
+A second line!
+```
+
+Technically, whenever we use redirection, we are targeting a specific stream. Stdout is the default stream, so in the previous examples, `>` and `>>` were actually shorthand for `1>` and `1>>`.
+
+### Redirecting errors
+
+Without redirection, most commands print their error and warning messages to the terminal screen. If we use `>` (or `1>`) to redirect the output stream, the stderr will still be printed to the screen (and not be stored in the file that we are redirecting to). To redirect and store the error messages, we need to specify stderr as the stream via `2<`.
+
+```bash
+# cat on two files normally prints the output of both,
+# but in this case fake_file does not exist
+$ cat real_file fake_file
+foobar
+cat: fake_file: No such file or directory
+
+# when we redirect stdout to a file
+# stderr is still printed to the screen
+$ cat real_file fake_file > redirected_output.txt
+cat: fake_file: No such file or directory
+
+# when we redirect stderr to a file
+# stdout is still printed to the screen
+$ cat real_file fake_file 2> redirected_errors.txt
+foobar
+```
+
+If we want to **redirect both stdout and stderr**, we have to use a slightly more complex command:
+
+```bash
+# redirect both stdout and stderr to a file
+$ cat real_file fake_file > redirection.txt 2>&1
+
+$ ls redirection.txt
+foobar
+cat: fake_file: No such file or directory
+```
+
+### Input redirection
+
+The input stream (stdin) can also be redirected. Most commands like `cat` can open and process a file, but some commands cannot operate directly on a file. Instead, they need to be supplied with data directly. This is where input redirection (`<`) comes in. We have not yet encountered any commands that need to work on however, so the example below would work equally well without input redirection.
+
+```bash
+$ cat < input_file.txt
+lines in
+input_file.txt
+```
+
+### Overview of redirection operators
+
+|          Redirection operator         |                       Result                       |
+|-------------------------------------|---------------------------------------------------------------|
+|   `command > file`           |  write stdout to file, overwriting if file exists             |
+|   `command >> file`  |  write stdout to file, appending if file exists               |
+|   `command 2> file`    |  write stderr to file, overwriting if file exists             |
+|   `command > file 2>&1`       |  write both stdout and stderr to file, overwriting if file exists|
+|   `command < file`    |  read input from file and pass it to command |
+
+## Piping
+
+Piping allows us to redirect the output of one command, to the input of another command. It is the more common way of redirecting the input stream. Pipes can chain multiple commands one after another so that a complex series of steps can be run in one go, without any intermediary output files. In its simplest form, piping looks like this:
+
+    command_1 | command_2
+
+Where the first command produces some kind of output that can be used by the second one. For example, we could pipe the output of `ls` to `grep` to search through a list of directories and files:
+
+```bash
+$ ls
+PF0080_S44_L001_R1_001.fastq.gz  PF0157_S55_L001_R2_001.fastq.gz  PF0329_S56_L001_R1_001.fastq.gz
+PF0080_S44_L001_R2_001.fastq.gz  PF0275_S68_L001_R1_001.fastq.gz  PF0329_S56_L001_R2_001.fastq.gz
+PF0097_S43_L001_R1_001.fastq.gz  PF0275_S68_L001_R2_001.fastq.gz  PF0512_S47_L001_R1_001.fastq.gz
+PF0097_S43_L001_R2_001.fastq.gz  PF0302_S20_L001_R1_001.fastq.gz  PF0512_S47_L001_R2_001.fastq.gz
+PF0157_S55_L001_R1_001.fastq.gz  PF0302_S20_L001_R2_001.fastq.gz
+
+# search through the list of files in the
+# current directory for a particular sample name
+$ ls | grep "PF0275"
+PF0275_S68_L001_R1_001.fastq.gz
+PF0275_S68_L001_R2_001.fastq.gz
+```
+
+Note that in this case the syntax of `grep "pattern" <file>` changes slightly: we only supply the pattern, and the target file is now replaced by the stdout stream of `ls`. Piping makes it a lot more convenient to manipulate and chain commands in this manner. Doing the same thing without making use of piping takes a lot more work:
+
+```bash
+# write the output of ls to a file
+$ ls > ls_output.txt
+
+$ grep "PF0275" ls_output.txt
+
+$ rm ls_output.txt
+```
+
+Clearly, the above approach is not very convenient. Especially if you consider the fact that you can chain as many pipes and redirections as you want: `command < input.txt | command | command > output.txt`. Let's take a look at a few more examples:
+
+::: {.callout-tip collapse="true"}
+## Try counting the number of `grep` matches using a pipe instead of the `-c` flag. (Click me to expand!)
+
+```bash
+# count the number of matches in grep search results
+$ grep "pattern" file | wc -l
+```
+
+`grep` will return a single line for each match that it finds. These lines are passed to the stdin of `wc -l`, which will count the number of lines.
+:::
+
+::: {.callout-tip collapse="true"}
+## How can we remove non-consecutive duplicate lines from a file? (Click me to expand!)
+
+```bash
+# consider a file with non-consecutive duplicate lines
+$ cat file.txt
+a
+a
+b
+c
+b
+
+# using uniq will only remove the consecutive duplicate line
+$ uniq file.txt
+a
+b
+c
+b
+
+# if we first sort and then run uniq, we get the desired output
+$ sort file | uniq
+a
+b
+c
+```
+
+`sort` will sort the file alphabetically, which results in all duplicates on consecutive lines. If we then pipe this output into `uniq`, all duplicates will be removed.
+:::
+
+As a final tip on the usages of piping, consider that you can pipe the output of any command to `| less`. This is extremely convenient whenever the output of a particular command is too long and does not fit on your terminal screen. Of course, in some situations you are probably better of storing the output in a file using a stdout `>` redirection.
+
+## Further reading
+
+Redirection operations and pipes can be combined in many more complex ways than what we saw here. For example, in case we want to redirect output to both a file and the terminal, we can make use of the `tee` command, [as described here](https://stackoverflow.com/a/418899). It is even possible to create more complex nested processes, where you feed the output of multiple different commands into a single command: `diff <(ls old) <(ls new)`; this is called _process substitution_.
+
+You do not need to concern yourself with learning these more advanced concepts for the time being, but just keep in mind that whatever you want to do, the Unix shell likely offers a way of doing it.
+
+---
+
+## Exercises
+
+1. Search for the DNA sequence _"aacct"_ in the truncated human Y chromosome FASTA file and store the output in a file called `aacct-hits.txt`.
+2. Count the number of chromosomes in the _P. falciparum_ reference genome fasta file.
+3. Store the chromosome identifiers of the _P. falciparum_ reference genome fasta file in a file.
+4. Store the last 40 lines of `PF0512_S47_L001_R1_001.fastq` in a file named `PF0512_S47_L001_R1_001.subset.fastq`.
+5. How many penguin records are there for each island in `penguins.csv`? Hint: Try to do it in one go, without `grep`, by combining multiple pipes (`cut`, `sort` and `uniq`).
+6. How can you count the number of unique commands in your command history?
+
+---
+
+## Summary
+
+::: {.callout-tip collapse="false"}
+## Overview of concepts and commands
+
+- Data streams: stdin, stdout and stderr
+- Redirecting output to a file to replace (`>`) or append (`>>`)
+- Redirecting errors to a file (`2>`)
+- Piping the output of one command to the input of another command via `|`
+
+:::

@@ -44,7 +44,7 @@ It might not be obvious from the above snippet, but inside your own terminal, th
 
 When you run `grep "species" long.txt`, you will indeed find many occurrences of this word. However, we are missing all the occurrences of "Species". Try running `grep "Species" long.txt` to compare the results. Lastly, try running the command `grep -i "species" long.txt`. This option will
 
-Remember, capitalization matters to `grep` (and to unix as a whole)!
+Remember, capitalization matters to `grep` (and to Unix as a whole)!
 :::
 
 Aside from the `-i` option explained in the box above, there exist several other flags to improve your search results.
@@ -102,7 +102,7 @@ grep "needle" path/to/directory_with_txt_files/*.txt
 
 We already mentioned _regular expressions_ in the previous section: they allow you to search for particular patterns that can match more than one exact string of text. This is [tremendously useful](https://xkcd.com/208/), but we will not dive into how they work during this course. If you are interested, you can check out an [excellent tutorial here](https://open.oregonstate.education/computationalbiology/chapter/patterns-regular-expressions/).
 
-We will see more elaborate use cases for `grep` when we introduce the unix concepts of piping and redirection.
+We will see more elaborate use cases for `grep` when we introduce the Unix concepts of piping and redirection.
 
 ## Tabular data: `cut`
 
@@ -114,7 +114,7 @@ We already encountered tabular data (the penguin dataset in `.csv` format) when 
 Tabular data files are usually plain text files, where each row corresponds to a record (e.g., an individual penguin), and each column represents a particular field (e.g., species, flipper length, body mass, etc.). The columns can be separated by different _field delimiters_ or _separators_. In `.csv` files, these are usually commas (_comma separated values_), but they can also be TABS (`.tsv`) or semicolons (`;`).
 :::
 
-A particularly useful unix tool for manipulating tabular data files, is `cut`. It allows us to extract particular columns from these files. The syntax is as follows:
+A particularly useful Unix tool for manipulating tabular data files, is `cut`. It allows us to extract particular columns from these files. The syntax is as follows:
 
     cut [OPTIONS] target_file
 
@@ -186,7 +186,7 @@ This command is [notorious for how arcane its option flags are](https://xkcd.com
 
 ## Downloading files: `wget`
 
-`wget` is a command that allows you to download files from a particular web address or URL and place them in your working directory. While there are several optional flags, in its most basic form the syntax is simply: `wget URL`. This command is not only useful when automating certain tasks, but also crucial if you ever find yourself in a unix environment that does not have a GUI at all (e.g., compute clusters or cloud servers).
+`wget` is a command that allows you to download files from a particular web address or URL and place them in your working directory. While there are several optional flags, in its most basic form the syntax is simply: `wget URL`. This command is not only useful when automating certain tasks, but also crucial if you ever find yourself in a Unix environment that does not have a GUI at all (e.g., compute clusters or cloud servers).
 
 ::: {.callout-tip collapse="true"}
 ## Try downloading the _Plasmodium falciparum_ 3D7 reference genome in FASTA format from [PlasmoDB](https://plasmodb.org/plasmo/app) and store it in `./training/data/results`. (Click me to expand!)
@@ -227,27 +227,34 @@ The final two commands that we will introduce are yet again tools to manipulate 
 
 There are optional flags that allow you to choose the type of order to use (e.g., numerical `-n`/`--numeric-sort` instead of alphabetical ), reverse the order of the sort (`-r`/`--reverse`) or ignore capitals (`-f`/`--ignore-case`).
 
-The second command, `uniq`, is used to remove duplicate lines in a file.
+The second command, `uniq`, is used to remove duplicate lines in a file. It also offers the option to count the frequency of each unique line.
 
-These two commands are often used in conjunction, because `uniq` on its own is not capable of filtering out identical lines that are not adjacent. So to truly remove all duplicate lines in a file, we would first need to sort it. In the next section, we will introduce a method of combining commands in a more convenient way than running them one by one and without needing to create any intermediary files.
+```bash
+# given the following file
+$ cat file_with_duplicates.txt
+a
+a
+b
+b
+b
+b
+c
+
+$ uniq -c file_with_duplicates.txt
+2 a
+4 b
+1 c
+```
+
+These two commands are often used in conjunction, because `uniq` on its own is not capable of filtering out identical lines that are not adjacent. So to truly remove all duplicate lines in a file, we would first need to sort it. In the next section, we will introduce a method of combining these commands in a more convenient way than running them one by one and without needing to create any intermediary files.
 
 ## Other commands
 
-Of course, there exist many more unix commands than the ones we introduced here. We will end this section by briefly mentioning two that you might run into at some point `awk` and `sed`. Both of them allow you to search and replace patterns in text files, and with `awk` you can even perform more complex operations including calculations. We will not dive into them here, but keep them in the back of your mind for the future.
+Of course, there exist many more Unix commands than the ones we introduced here. We will end this section by briefly mentioning two that you might run into at some point `awk` and `sed`. Both of them allow you to search and replace patterns in text files, and with `awk` you can even perform more complex operations including calculations. We will not dive into them here, but keep them in the back of your mind for the future.
 
 ---
 
 ## Exercises
-
-1. Create a new directory named "my_dir" inside the `./training/unix-demo` directory. Next, without using `cd` first, create another directory named `my_sub_dir` inside of it. Finally, again without using `cd`, create a final directory named `my_sub_sub_dir` inside of that one.
-2. Read the last 20 lines of the FASTA file in the `./training/unix-demo` directory.
-3. Create a new text file named `lines` inside `my_subdir` using `nano`. Store the number of lines of the file `long.txt` inside. Then read it using `cat` and `less`.
-4. Navigate to the `files_to_copy` directory and copy its contents to the `my_sub_dir` directory. What is the relative path of the destination to use?
-5. Move the file under `files_to_move` to its parent directory.
-6. Remove all the files under `files_to_delete` using a glob pattern.
-7. Rename the directory `files_to_delete` to `empty_dir`.
-8. List the contents of the `./training/unix-demo` directory.
-
 
 1. Visit PlasmoDB again and download the _Plasmodium vivax_ P01 reference genome sequence in FASTA format and store it in `./training/data/reference`.
 2. Report the file size of this reference genome in MBs.
@@ -259,7 +266,7 @@ Of course, there exist many more unix commands than the ones we introduced here.
 8. Search both FASTQ files for the read fragment with identifier `@M05795:43:000000000-CFLMP:1:1101:21518:5740 2:N:0:43` using a single command.
 9. Compare the file sizes of the two compressed and uncompressed FASTQ files.
 10. Extract the columns containing the _island_ and _flipper length_ of each penguin from the `./training/unix-demo/penguins.csv` file.
-11. Count how many times the sequence `CATCATCATCATCAT` occurs in the FASTA file `./training/unix-demo/Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa`.
+11. Count how often the sequence `CATCATCATCATCAT` occurs in the FASTA file `./training/unix-demo/Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa`.
 
 ---
 

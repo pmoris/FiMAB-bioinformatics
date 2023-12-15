@@ -10,7 +10,7 @@ Never (never!) use spaces in your file or directory names. This will only lead t
 Additionally, unlike in Windows, in Unix everything is case-sensitive. Thus, `/home/documents` != `/home/Documents`. Be mindful of this when naming or pointing to files/directories.
 :::
 
-::: {.callout-note}
+::: {.callout-tip}
 ## Autocompletion and command history
 
 Avoid unnecessary typing and just make things easy for yourself!
@@ -21,6 +21,14 @@ An equally useful tool is your **command history**. While on the shell prompt, p
 :::
 
 ::: {.callout-note}
+## Copying and pasting
+
+Copying and pasting might work slightly different to what you are used to, depending on the terminal application that you are using. If `ctrl+c` and `ctrl+v` do not appear to work, you can try`ctrl+shift+c` and `ctrl+shift+v` instead. Often times, the mouse middle or right click can also be used for pasting.
+
+For the native WSL terminal specifically, you can refer to this site for more info: https://devblogs.microsoft.com/commandline/copy-and-paste-arrives-for-linuxwsl-consoles/
+:::
+
+::: {.callout-warning}
 ## Don't panic when you lose control of your shell!
 
 If a command seems to hang or get stuck, your terminal becomes unresponsive, or if you tried to print a very large text file to your screen, you can use `CTRL+C` to interrupt almost any operation and regain control.
@@ -30,7 +38,7 @@ Similarly, CTRL+D is an often used shortcut for exiting/logging out (e.g., when 
 In some cases, like when using an interactive terminal program such as the text editors `nano` and `vim` or a text viewer like `less`, you will only be able to exit them using that particular program's shortcut keys (`CTRL+X`, `:` followed by `q` and `enter`, and `Q`, for these applications respectively).
 :::
 
-::: {.callout-warning}
+::: {.callout-important}
 ## Watch out...
 
 Be careful while learning your way around the command-line. The Unix shell will do _exactly_ what you tell it to, often without hesitation or asking for confirmation. This means that you might accidentally move, overwrite or delete files without intending to do so. For example, when creating, copying or moving files, they can overwrite existing ones if you give them the same name. Similarly, when a file is deleted, it will be removed completely, without first passing by a recycle bin.
@@ -40,34 +48,20 @@ Be careful while learning your way around the command-line. The Unix shell will 
 For the purposes of learning, if you are using your own device instead of a cloud environment, we recommend that you work in a dedicated playground directory or even create a new user profile to be extra safe. And like always, backups of your important files are invaluable regardless of what you are doing.
 :::
 
-::: {.callout-note}
-## Copying and pasting
+::: {.callout-tip}
+## Google, `-h`/`--help` and comments are your friends.
 
-Copying and pasting might work slightly different to what you are used to, depending on the terminal application that you are using. If `ctrl+c` and `ctrl+v` do not appear to work, you can try`ctrl+shift+c` and `ctrl+shift+v` instead. Often times, the mouse middle or right click can also be used for pasting.
+At the beginning things will be awkward, so don’t worry about having to search for the same information multiple times. That is all part of the learning process. Moreover, being able to retrieve information when you are in need of a particular command is more useful than memorizing everything.
 
-For the native WSL terminal specifically, you can refer to this site for more info: https://devblogs.microsoft.com/commandline/copy-and-paste-arrives-for-linuxwsl-consoles/
+It can still be a good idea though to keep a list of commands that you often use, but have a difficult time committing to memory.
+
+Many commands will also display a short help text when called with the `-h`/`--help` flag. For some tools, you will need to call them without any arguments to display the help. Lastly, for some tools, you can use the `man <tool_name>` to open up an even more in-depth manual.
 :::
 
-::: {.callout-note}
-## Google and `--help` are your friends.
-
-At the beginning things will be awkward, so don’t worry about having to search for the same information multiple times. That's part of the learning process.
-
-It can be a good idea though to keep a list of commands that you often use, but have a difficult time committing to memory. Moreover, for more complex scripts, it is a good idea to add some comments on how they work, because code that seems clear while you are writing it, has the unfortunate tendency of becoming confusing when you refer back to it at a later time.
-:::
-
-::: {.callout-note}
-## Google and `--help` are your friends.
-
-At the beginning things will be awkward, so don’t worry about having to search for the same information multiple times. That's part of the learning process.
-
-It can be a good idea though to keep a list of commands that you often use, but have a difficult time committing to memory. Moreover, for more complex scripts, it is a good idea to add some comments on how they work, because code that seems clear while you are writing it, has the unfortunate tendency of becoming confusing when you refer back to it at a later time.
-:::
-
-::: {.callout-note}
+::: {.callout-tip}
 ## Make your scripts easier to read by using comments and breaking up long lines
 
-Remember that you can always write comments inside of your scripts by starting a line with `#`. That way you can add a short explainer or extra info to the different sections of a script.
+Remember that you can always write comments inside of your scripts by starting a line with `#`. That way you can add a short explainer or extra info to the different sections of a script. Code that seems clear while you are writing it, has the unfortunate tendency of becoming much more confusing when you refer back to it at a later time.
 
 ```bash
 #!/usr/bin/env bash
@@ -106,7 +100,6 @@ bwa mem \
 The first website is tremendously useful for figuring out what a command and all of its options mean. Whereas the second shows you a quick summary of the most command usages of a particular command.
 
 Use both of these to your advantage! But do not forget that most commands also have a built-in help page that can be accessed using the `--help` flag (in some cases just typing the command without any arguments also shows some help information).
-
 :::
 
 ## Overview of special syntax {#sec-table-special-syntax}

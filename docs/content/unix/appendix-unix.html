@@ -199,6 +199,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More advanced commands</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/unix/7-unix-redirection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Streams, redirection and piping</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -213,13 +219,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
   </div>
 </li>
       </ul>
@@ -299,7 +305,7 @@ Naming conventions and cases
 <p>Additionally, unlike in Windows, in Unix everything is case-sensitive. Thus, <code>/home/documents</code> != <code>/home/Documents</code>. Be mindful of this when naming or pointing to files/directories.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -320,6 +326,20 @@ Autocompletion and command history
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
+Copying and pasting
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Copying and pasting might work slightly different to what you are used to, depending on the terminal application that you are using. If <code>ctrl+c</code> and <code>ctrl+v</code> do not appear to work, you can try<code>ctrl+shift+c</code> and <code>ctrl+shift+v</code> instead. Often times, the mouse middle or right click can also be used for pasting.</p>
+<p>For the native WSL terminal specifically, you can refer to this site for more info: https://devblogs.microsoft.com/commandline/copy-and-paste-arrives-for-linuxwsl-consoles/</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
 Don’t panic when you lose control of your shell!
 </div>
 </div>
@@ -329,7 +349,7 @@ Don’t panic when you lose control of your shell!
 <p>In some cases, like when using an interactive terminal program such as the text editors <code>nano</code> and <code>vim</code> or a text viewer like <code>less</code>, you will only be able to exit them using that particular program’s shortcut keys (<code>CTRL+X</code>, <code>:</code> followed by <code>q</code> and <code>enter</code>, and <code>Q</code>, for these applications respectively).</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -344,49 +364,22 @@ Watch out…
 <p>For the purposes of learning, if you are using your own device instead of a cloud environment, we recommend that you work in a dedicated playground directory or even create a new user profile to be extra safe. And like always, backups of your important files are invaluable regardless of what you are doing.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Copying and pasting
+Google, <code>-h</code>/<code>--help</code> and comments are your friends.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Copying and pasting might work slightly different to what you are used to, depending on the terminal application that you are using. If <code>ctrl+c</code> and <code>ctrl+v</code> do not appear to work, you can try<code>ctrl+shift+c</code> and <code>ctrl+shift+v</code> instead. Often times, the mouse middle or right click can also be used for pasting.</p>
-<p>For the native WSL terminal specifically, you can refer to this site for more info: https://devblogs.microsoft.com/commandline/copy-and-paste-arrives-for-linuxwsl-consoles/</p>
+<p>At the beginning things will be awkward, so don’t worry about having to search for the same information multiple times. That is all part of the learning process. Moreover, being able to retrieve information when you are in need of a particular command is more useful than memorizing everything.</p>
+<p>It can still be a good idea though to keep a list of commands that you often use, but have a difficult time committing to memory.</p>
+<p>Many commands will also display a short help text when called with the <code>-h</code>/<code>--help</code> flag. For some tools, you will need to call them without any arguments to display the help. Lastly, for some tools, you can use the <code>man &lt;tool_name&gt;</code> to open up an even more in-depth manual.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Google and <code>--help</code> are your friends.
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>At the beginning things will be awkward, so don’t worry about having to search for the same information multiple times. That’s part of the learning process.</p>
-<p>It can be a good idea though to keep a list of commands that you often use, but have a difficult time committing to memory. Moreover, for more complex scripts, it is a good idea to add some comments on how they work, because code that seems clear while you are writing it, has the unfortunate tendency of becoming confusing when you refer back to it at a later time.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Google and <code>--help</code> are your friends.
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>At the beginning things will be awkward, so don’t worry about having to search for the same information multiple times. That’s part of the learning process.</p>
-<p>It can be a good idea though to keep a list of commands that you often use, but have a difficult time committing to memory. Moreover, for more complex scripts, it is a good idea to add some comments on how they work, because code that seems clear while you are writing it, has the unfortunate tendency of becoming confusing when you refer back to it at a later time.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -396,7 +389,7 @@ Make your scripts easier to read by using comments and breaking up long lines
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Remember that you can always write comments inside of your scripts by starting a line with <code>#</code>. That way you can add a short explainer or extra info to the different sections of a script.</p>
+<p>Remember that you can always write comments inside of your scripts by starting a line with <code>#</code>. That way you can add a short explainer or extra info to the different sections of a script. Code that seems clear while you are writing it, has the unfortunate tendency of becoming much more confusing when you refer back to it at a later time.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">##########################################################</span></span>
@@ -902,7 +895,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../content/r/r-continued.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

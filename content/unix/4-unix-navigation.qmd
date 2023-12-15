@@ -9,7 +9,7 @@ You can skip this section and proceed directly to the exercises if you are alrea
 ::: {.callout-tip}
 We have provided a list of helpful tips and hints in the appendix: @sec-unix-tips. Have a look already and refer back to it after you have worked your way through the next sections on navigation and basic commands.
 
-Additionally, there is an overview of some of the most common symbols that are used by the unix shell here: @sec-table-special-syntax.
+Additionally, there is an overview of some of the most common symbols that are used by the Unix shell here: @sec-table-special-syntax.
 :::
 
 ## Layout of the Unix file system
