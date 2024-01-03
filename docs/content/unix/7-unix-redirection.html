@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/r/r-intro.html" rel="next">
+<link href="../../content/unix/8-unix-variables-loops-scripts.html" rel="next">
 <link href="../../content/unix/6-unix-more-commands.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -206,6 +206,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Streams, redirection and piping</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/unix/8-unix-variables-loops-scripts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Variables, loops and scripts</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -220,13 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
   </div>
 </li>
       </ul>
@@ -263,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#streams" id="toc-streams" class="nav-link active" data-scroll-target="#streams"><span class="header-section-number">7.1</span> Streams</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#redirecting-output" id="toc-redirecting-output" class="nav-link" data-scroll-target="#redirecting-output"><span class="header-section-number">7.1.1</span> Redirecting output</a></li>
   <li><a href="#redirecting-errors" id="toc-redirecting-errors" class="nav-link" data-scroll-target="#redirecting-errors"><span class="header-section-number">7.1.2</span> Redirecting errors</a></li>
   <li><a href="#input-redirection" id="toc-input-redirection" class="nav-link" data-scroll-target="#input-redirection"><span class="header-section-number">7.1.3</span> Input redirection</a></li>
@@ -491,6 +497,42 @@ How can we remove non-consecutive duplicate lines from a file? (Click me to expa
 </div>
 </div>
 </div>
+<p>Here is another example of how to use pipes, this time applied to the SAM files that we saw earlier. SAM files sometimes contain a few lines of additional information - called the header and starting with an <code>@</code> symbol - before the start of the tab-delimited alignments (1 read per line). If we were to use the <code>cut</code> command to extract a particular column from such a file, the first few lines matching the header would cause problems, because these lines do not correspond to the tabular structure of the rest of the file.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How can we use a pipe to only apply the <code>cut -f10</code> command to only the lines after the header? (Click me to expand!)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># count the number of lines in the header</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-c</span> <span class="st">"@"</span> alignment-with.header.sam</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">2</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use tail -n +3 to print the output of the file starting</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># the 3rd line, then pipe this output into the cut command</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">-n</span> +3 alignment-with-header.sam <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f10</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ex">TTAGATAAAGAGGATACTG</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ex">AAAAGATAAGGGATAAA</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="ex">AGCTAA</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="ex">ATAGCTCTCAGC</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="ex">TAGGC</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="ex">CAGCGCCAT</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="ex">aggttttataaaacaaataa</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="ex">ggttttataaaacaaataatt</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="ex">ttataaaacAAATaattaagtctaca</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="ex">CaaaTaattaagtctacagagcaac</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="ex">aaTaattaagtctacagagcaact</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="ex">Taattaagtctacagagcaacta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We use the <code>tail</code> command to first extract the parts of the file that we are interested in, and then feed this output into the <code>cut</code> command to select a particular column (in this case, the 10th column corresponds to the sequence).</p>
+</div>
+</div>
+</div>
 <p>As a final tip on the usages of piping, consider that you can pipe the output of any command to <code>| less</code>. This is extremely convenient whenever the output of a particular command is too long and does not fit on your terminal screen. Of course, in some situations you are probably better of storing the output in a file using a stdout <code>&gt;</code> redirection.</p>
 </section>
 <section id="further-reading" class="level2" data-number="7.3">
@@ -514,7 +556,7 @@ How can we remove non-consecutive duplicate lines from a file? (Click me to expa
 <section id="summary" class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="summary"><span class="header-section-number">7.5</span> Summary</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -523,7 +565,7 @@ Overview of concepts and commands
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Data streams: stdin, stdout and stderr</li>
@@ -894,8 +936,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/r/r-intro.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/unix/8-unix-variables-loops-scripts.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Variables, loops and scripts</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

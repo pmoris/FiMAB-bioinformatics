@@ -205,6 +205,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Streams, redirection and piping</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/unix/8-unix-variables-loops-scripts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Variables, loops and scripts</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -219,13 +225,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
   </div>
 </li>
       </ul>
@@ -266,6 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#unix-path" id="toc-unix-path" class="nav-link" data-scroll-target="#unix-path"><span class="header-section-number">A.3</span> What is <code>$PATH</code>?</a></li>
   <li><a href="#sec-permissions" id="toc-sec-permissions" class="nav-link" data-scroll-target="#sec-permissions"><span class="header-section-number">A.4</span> Dealing with file permissions</a></li>
   <li><a href="#sec-ssh" id="toc-sec-ssh" class="nav-link" data-scroll-target="#sec-ssh"><span class="header-section-number">A.5</span> Working with remote machines via SSH</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">A.6</span> Further reading</a></li>
   </ul>
 </nav>
     </div>
@@ -539,6 +546,24 @@ Make your scripts easier to read by using comments and breaking up long lines
 </ol>
 <p>Instructions to generate new SSH keys can be found <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent</a>.</p>
 <p>A common problem when connecting is that the file permissions of your keys or credential files are messed up. This can happen if you generate them in Windows and later move them to a Linux file system. To fix this, check <a href="https://superuser.com/a/215506">https://superuser.com/a/215506</a>.</p>
+</section>
+<section id="further-reading" class="level2" data-number="A.6">
+<h2 data-number="A.6" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">A.6</span> Further reading</h2>
+<p>There are still many facets of Unix that we have not covered here yet, but we hope that you can pick these up on your own if were to ever need them. For now though, the basics that we covered here, will hopefully already go a long way in helping you use Unix and read scripts written by others.</p>
+<p>A selection of more advanced topics to explore at a later time could be:</p>
+<ul>
+<li>Installing software on Linux machines, <a href="https://sgbc.github.io/course/software/">from source or via <code>apt</code> (Ubuntu)</a>, <code>dnf</code> (Fedora) or <code>pacman</code> (Arch), or through tools like <a href="https://kirenz.github.io/codelabs/codelabs/miniforge-setup/#0">conda/Miniforge</a> and <a href="https://bioconda.github.io/">bioconda</a>.</li>
+<li><a href="https://www.redhat.com/sysadmin/linux-find-command">The <code>find</code> command</a>: useful for finding files in your file system.</li>
+<li><a href="https://pressbooks.senecacollege.ca/uli101/chapter/shell-scripting-conditions-and-if-command/">If/else conditions</a>: allow you to execute parts of scripts if certain conditions are fulfilled.</li>
+<li>Command substitution and process substitution: run commands in a subshell to allow more complex ways of redirecting and piping outputs/inputs.</li>
+<li><code>sed</code>/<code>awk</code> are commands that let you do things like search and replace, calculations or other manipulations based on all the lines of a file.</li>
+<li>the <code>join</code> command: combining columns of (multiple) tabular data files in particular ways.</li>
+<li>Environment variables: variables that are always available, like <code>PATH</code>.</li>
+<li><a href="https://rse.shef.ac.uk/blog/tmux-intro/">Using <code>screen</code> or <code>tmux</code></a> to spawn persistent background terminal sessions. This allows you to run commands on a remote server and shutdown your own machine, without the remote process being interrupted.</li>
+<li>Learn about the difference in line endings on Unix (<code>\n</code>) and Windows (<code>\r\n</code>), how to switch between them (<code>dos2unix</code>) and how to set a preference in your editors like RStudio.</li>
+<li>Learn about <code>sudo</code>, allowing you to perform actions as an administrator.</li>
+<li>Regular expressions, to power up your <code>grep</code> searches and <code>sed</code>/<code>awk</code> commands.</li>
+</ul>
 
 
 </section>
@@ -895,7 +920,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../content/r/r-continued.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

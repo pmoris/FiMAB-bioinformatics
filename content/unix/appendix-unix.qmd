@@ -170,3 +170,21 @@ The connection is secured via _SSH keys_: a pair of files used for authenticatio
 Instructions to generate new SSH keys can be found [https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
 
 A common problem when connecting is that the file permissions of your keys or credential files are messed up. This can happen if you generate them in Windows and later move them to a Linux file system. To fix this, check [https://superuser.com/a/215506](https://superuser.com/a/215506).
+
+## Further reading
+
+There are still many facets of Unix that we have not covered here yet, but we hope that you can pick these up on your own if were to ever need them. For now though, the basics that we covered here, will hopefully already go a long way in helping you use Unix and read scripts written by others.
+
+A selection of more advanced topics to explore at a later time could be:
+
+- Installing software on Linux machines, [from source or via `apt` (Ubuntu)](https://sgbc.github.io/course/software/), `dnf` (Fedora) or `pacman` (Arch), or through tools like [conda/Miniforge](https://kirenz.github.io/codelabs/codelabs/miniforge-setup/#0) and [bioconda](https://bioconda.github.io/).
+- [The `find` command](https://www.redhat.com/sysadmin/linux-find-command): useful for finding files in your file system.
+- [If/else conditions](https://pressbooks.senecacollege.ca/uli101/chapter/shell-scripting-conditions-and-if-command/): allow you to execute parts of scripts if certain conditions are fulfilled.
+- Command substitution and process substitution: run commands in a subshell to allow more complex ways of redirecting and piping outputs/inputs.
+- `sed`/`awk` are commands that let you do things like search and replace, calculations or other manipulations based on all the lines of a file.
+- the `join` command: combining columns of (multiple) tabular data files in particular ways.
+- Environment variables: variables that are always available, like `PATH`.
+- [Using `screen` or `tmux`](https://rse.shef.ac.uk/blog/tmux-intro/) to spawn persistent background terminal sessions. This allows you to run commands on a remote server and shutdown your own machine, without the remote process being interrupted.
+- Learn about the difference in line endings on Unix (`\n`) and Windows (`\r\n`), how to switch between them (`dos2unix`) and how to set a preference in your editors like RStudio.
+- Learn about `sudo`, allowing you to perform actions as an administrator.
+- Regular expressions, to power up your `grep` searches and `sed`/`awk` commands.

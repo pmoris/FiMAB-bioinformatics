@@ -222,6 +222,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Streams, redirection and piping</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/unix/8-unix-variables-loops-scripts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Variables, loops and scripts</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -236,13 +242,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
   </div>
 </li>
       </ul>
@@ -279,21 +285,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#examining-files" id="toc-examining-files" class="nav-link active" data-scroll-target="#examining-files"><span class="header-section-number">5.1</span> Examining files</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#cat-viewing-short-files" id="toc-cat-viewing-short-files" class="nav-link" data-scroll-target="#cat-viewing-short-files"><span class="header-section-number">5.1.1</span> <code>cat</code>: viewing short files</a></li>
-  <li><a href="#less-viewing-large-files" id="toc-less-viewing-large-files" class="nav-link" data-scroll-target="#less-viewing-large-files"><span class="header-section-number">5.1.2</span> <code>less</code>: viewing large files</a></li>
-  <li><a href="#head-and-tail-viewing-the-start-or-end-of-files" id="toc-head-and-tail-viewing-the-start-or-end-of-files" class="nav-link" data-scroll-target="#head-and-tail-viewing-the-start-or-end-of-files"><span class="header-section-number">5.1.3</span> <code>head</code> and <code>tail</code>: viewing the start or end of files</a></li>
+  <li><a href="#less-viewing-large-files" id="toc-less-viewing-large-files" class="nav-link" data-scroll-target="#less-viewing-large-files"><span class="header-section-number">5.1.2</span> <code>less</code>: viewing large files</a>
+  <ul class="collapse">
+  <li><a href="#fasta-file-format" id="toc-fasta-file-format" class="nav-link" data-scroll-target="#fasta-file-format"><span class="header-section-number">5.1.2.1</span> FASTA file format</a></li>
+  </ul></li>
+  <li><a href="#head-and-tail-viewing-the-start-or-end-of-files" id="toc-head-and-tail-viewing-the-start-or-end-of-files" class="nav-link" data-scroll-target="#head-and-tail-viewing-the-start-or-end-of-files"><span class="header-section-number">5.1.3</span> <code>head</code> and <code>tail</code>: viewing the start or end of files</a>
+  <ul class="collapse">
+  <li><a href="#fastq-file-format" id="toc-fastq-file-format" class="nav-link" data-scroll-target="#fastq-file-format"><span class="header-section-number">5.1.3.1</span> FASTQ file format</a></li>
+  </ul></li>
   <li><a href="#wc-counting-lines" id="toc-wc-counting-lines" class="nav-link" data-scroll-target="#wc-counting-lines"><span class="header-section-number">5.1.4</span> <code>wc</code>: counting lines</a></li>
   </ul></li>
   <li><a href="#editing-files" id="toc-editing-files" class="nav-link" data-scroll-target="#editing-files"><span class="header-section-number">5.2</span> Editing files</a></li>
   <li><a href="#moving-things-around" id="toc-moving-things-around" class="nav-link" data-scroll-target="#moving-things-around"><span class="header-section-number">5.3</span> Moving things around</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#cp-copying-files-and-directories" id="toc-cp-copying-files-and-directories" class="nav-link" data-scroll-target="#cp-copying-files-and-directories"><span class="header-section-number">5.3.1</span> <code>cp</code>: copying files and directories</a></li>
   <li><a href="#sec-globbing" id="toc-sec-globbing" class="nav-link" data-scroll-target="#sec-globbing"><span class="header-section-number">5.3.2</span> Intermezzo: globbing and wildcards</a></li>
   <li><a href="#mv-moving-or-renaming-files-and-directories" id="toc-mv-moving-or-renaming-files-and-directories" class="nav-link" data-scroll-target="#mv-moving-or-renaming-files-and-directories"><span class="header-section-number">5.3.3</span> <code>mv</code> Moving or renaming files and directories</a></li>
   </ul></li>
   <li><a href="#creation-and-destruction" id="toc-creation-and-destruction" class="nav-link" data-scroll-target="#creation-and-destruction"><span class="header-section-number">5.4</span> Creation and destruction</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#creating-files" id="toc-creating-files" class="nav-link" data-scroll-target="#creating-files"><span class="header-section-number">5.4.1</span> Creating files</a></li>
   <li><a href="#mkdir-creating-directories" id="toc-mkdir-creating-directories" class="nav-link" data-scroll-target="#mkdir-creating-directories"><span class="header-section-number">5.4.2</span> <code>mkdir</code>: creating directories</a></li>
   <li><a href="#rm-removing-things" id="toc-rm-removing-things" class="nav-link" data-scroll-target="#rm-removing-things"><span class="header-section-number">5.4.3</span> <code>rm</code>: removing things</a></li>
@@ -419,6 +431,8 @@ Navigating inside <code>less</code>
 </div>
 </div>
 </div>
+<section id="fasta-file-format" class="level4" data-number="5.1.2.1">
+<h4 data-number="5.1.2.1" class="anchored" data-anchor-id="fasta-file-format"><span class="header-section-number">5.1.2.1</span> FASTA file format</h4>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -431,9 +445,20 @@ DNA sequence file formats: FASTA
 <div class="callout-body-container callout-body">
 <p>The FASTA file format (usually denoted by a <code>.fa</code> or <code>.fasta</code> file extension) is very common in bioinformatics. As you can see, the FASTA files contain a long stretch of nucleotides, which in our case represent the sequence of the human Y chromosome (or at least the first ~6,000,000 basepairs). The sequence itself is usually broken up over multiple lines. At the very top of the file there is a header or identifier, which always starts with the <code>&gt;</code> symbol, followed by a short description. FASTA files can store one or multiple sequences, each with their own header.</p>
 <p>FASTA files are a type of text-based or <em>plain text files</em>, meaning that we can simply read them using a tool like <code>cat</code> or <code>less</code>. This seems obvious, but we will later encounter another file type, namely <em>binary files</em>, where this is not the case.</p>
-<p>We will learn more about these DNA sequence file formats in a later chapter. For the time being, it is enough to know that both of these files are usually very large and that they are commonly used in genomics.</p>
+<p>FASTA files are commonly used in genomics to store the reference genome of the organism we are studying. A reference genome can be used as a template to which we map (or align) new DNA sequence reads we have generated.</p>
+<pre><code>&gt;Pf3D7_01_v3 | organism=Plasmodium_falciparum_3D7 | version=2020-09-01 | length=640851 | SO=chromosome
+TGAACCCTAAAACCTAAACCCTAAACCCTAAACCCTGAACCCTAAACCCTGAACCCTAAA
+CCCTAAACCCTGAACCCTAAACCCTAAACCCTGAACCCTAAACCCTGAAACCTAAACCCT
+GAACCCTAAACCCTGAACCCTGAACCCTAACCCTAAACCCTAAACCTAAAACCCTGAACC
+CTAAACCCTGAACCCTGAACCCTAAACCCTGAACCCTAAACCCTAAACCCTGAACCCTAA
+ACCCTGAACCCTAAACCCTAAACCCTGAACCCTGAACCCTAAAACCTAAACCCTAAACCC
+TAAACCCTAAACCCTGAACCTAAACCTAAAACCTAAAACCTAAAACCCTGAACCCTTACT
+TTTCATTTCTTCTTCTTATCTTCTTACTTTTCATTCTTTACTCTTACTTACTTAGTCTTA
+CTTACTTACTCTTACTTACTTACTCTTATCTTCTTACTTTTCATTTCTTAGTCTTACTTA
+...</code></pre>
 </div>
 </div>
+</section>
 </section>
 <section id="head-and-tail-viewing-the-start-or-end-of-files" class="level3" data-number="5.1.3">
 <h3 data-number="5.1.3" class="anchored" data-anchor-id="head-and-tail-viewing-the-start-or-end-of-files"><span class="header-section-number">5.1.3</span> <code>head</code> and <code>tail</code>: viewing the start or end of files</h3>
@@ -473,17 +498,19 @@ DNA sequence file formats: FASTA
 </tbody>
 </table>
 <p>Let us inspect the first lines of one of the (uncompressed) FASTQ files in the <code>unix-demo</code> directory:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> head PF0512_S47_L001_R1_001.fastq</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">@M05795:43:000000000-CFLMP:1:1101:16134:1717</span> 1:N:0:47</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">TTGGTCAAGATCTTTTACATTCCATGCACACAAAAGAATTCTTCTACTTGTCTGATCCTTTTTCATTATATTTATTATCTTTTTTTATTTTTCCTCTCCTTTATTTTCATAATTATCATACATATTTTTATATTCATCACCTAAATGTCTCCATTTAAAACCATAAATAGTTCCTAATTCGTTAACTTCTCTATGACATAATTTTCTATTATCTCTTTCTCTTATCCACATCTCCGAGCCCACGAGACGTCGCACCCTCTCCTATGCCCTCTTCTGCTTGAAACACAAACGCCACCACCT</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">+</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-8B</span><span class="op">&lt;</span>CGGFGGGDGGGGGEFGGGAFFEFCFGGDC888C,CF@@FFG,6FC,C,,,,<span class="op">&lt;&lt;,&lt;&lt;CCE,,&lt;</span>C,,,<span class="op">&lt;</span>6B,<span class="kw">;</span><span class="ex">B,</span><span class="op">&lt;</span>,<span class="op">&lt;</span>A@EEC+,:@,,94,,5549@<span class="pp">?</span>F,@@<span class="pp">?</span>D<span class="op">&lt;</span>,C,,9@,A<span class="kw">;</span><span class="ex">,C,9,A,:A=,</span><span class="op">&gt;</span>,9,9@<span class="kw">;</span><span class="ex">,,,,94,,,,9,9499=,9</span><span class="op">&gt;</span>,,,,,9+,9,,,9,,,493@,,,99+60++6==93=C+C++++6++4<span class="op">&lt;</span>=<span class="kw">;</span><span class="ex">=D+?=+42+43+33*?=</span><span class="kw">;</span><span class="ex">+**5*1*</span><span class="er">)</span><span class="ex">0*108</span><span class="er">))</span><span class="ex">18=</span><span class="er">)</span><span class="bu">:</span><span class="er">))))</span><span class="ex">0</span><span class="er">)</span><span class="ex">185</span><span class="er">)))</span><span class="ex">1</span><span class="er">))</span><span class="ex">--:</span><span class="er">)</span><span class="ex">1*/*16</span><span class="er">)</span><span class="ex">0/</span><span class="er">(</span><span class="ex">01//8***</span><span class="er">(</span><span class="kw">)</span><span class="ex">**</span><span class="er">((</span>((((<span class="kw">,</span>(((<span class="op">/</span>((<span class="kw">,</span>(<span class="kw">,</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>@<span class="va">M05795</span><span class="op">:</span><span class="dv">43</span><span class="op">:</span><span class="dv">000000000</span><span class="op">-</span><span class="va">CFLMP</span><span class="op">:</span><span class="dv">1</span><span class="op">:</span><span class="dv">1101</span><span class="op">:</span><span class="dv">20605</span><span class="op">:</span><span class="dv">1731</span> <span class="dv">1</span><span class="op">:</span><span class="va">N</span><span class="op">:</span><span class="dv">0</span><span class="op">:</span><span class="dv">47</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="va">GAAAAAGGAAGAGAATTGAACTTTTGGCAGCAAACTCAAACATTATAAGTGAAATTAAGATGCCCAAGTCTGTGCTCAATCTCATTTTTTGTTTTTGTGTTTTTCCTTCAATCTCTTCATGTATTCAGTTATTTTTAAT</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="op">+</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="op">-</span>@<span class="va">CCCGGGGGGGGCGFG</span>@<span class="op">&lt;</span><span class="va">EFGGGGAFFFEGGC8FEF9</span><span class="kw">,,</span>;<span class="kw">,</span><span class="va">CE</span><span class="kw">,</span><span class="va">C</span><span class="kw">,,,</span><span class="op">&lt;</span><span class="kw">,,,,</span><span class="op">&lt;</span><span class="va">C</span><span class="kw">,,,,</span><span class="op">&lt;</span><span class="kw">,,</span><span class="dv">6</span>;<span class="kw">,,,</span>;;<span class="va">C</span><span class="kw">,</span><span class="op">&lt;</span><span class="kw">,</span><span class="dv">6</span>;<span class="va">C</span><span class="kw">,,</span><span class="op">&lt;</span><span class="kw">,,</span><span class="op">:</span><span class="kw">,</span><span class="op">:</span>@<span class="kw">,</span><span class="dv">5</span><span class="kw">,</span><span class="dv">8</span><span class="op">+</span><span class="kw">,,</span><span class="dv">9</span><span class="op">:</span>@<span class="op">+:</span><span class="kw">,,</span><span class="dv">9</span><span class="kw">,</span><span class="dv">9</span><span class="kw">,</span><span class="dv">99AE?,,,959AA?,9</span><span class="kw">,,,</span><span class="dv">994</span><span class="kw">,,</span><span class="dv">9</span><span class="op">=</span><span class="kw">,</span><span class="dv">9</span><span class="op">&gt;</span><span class="va">ED</span><span class="kw">,,,</span><span class="dv">9</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>@<span class="va">M05795</span><span class="op">:</span><span class="dv">43</span><span class="op">:</span><span class="dv">000000000</span><span class="op">-</span><span class="va">CFLMP</span><span class="op">:</span><span class="dv">1</span><span class="op">:</span><span class="dv">1101</span><span class="op">:</span><span class="dv">9135</span><span class="op">:</span><span class="dv">1768</span> <span class="dv">1</span><span class="op">:</span><span class="va">N</span><span class="op">:</span><span class="dv">0</span><span class="op">:</span><span class="dv">47</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="va">CGTTAAAATCTTGCTCCTCATCACTACTAACCTTTTGTTCATTCTCATCACAAATATTATCCTTATCTTCATTATCTACTTCATCTACATTATTTTTTAT</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> head PF0512_S47_L001_R1_001.fastq</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">@M05795:43:000000000-CFLMP:1:1101:16134:1717</span> 1:N:0:47</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">TTGGTCAAGATCTTTTACATTCCATGCACACAAAAGAATTCTTCTACTTGTCTGATCCTTTTTCATTATATTTATTATCTTTTTTTATTTTTCCTCTCCTTTATTTTCATAATTATCATACATATTTTTATATTCATCACCTAAATGTCTCCATTTAAAACCATAAATAGTTCCTAATTCGTTAACTTCTCTATGACATAATTTTCTATTATCTCTTTCTCTTATCCACATCTCCGAGCCCACGAGACGTCGCACCCTCTCCTATGCCCTCTTCTGCTTGAAACACAAACGCCACCACCT</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-8B</span><span class="op">&lt;</span>CGGFGGGDGGGGGEFGGGAFFEFCFGGDC888C,CF@@FFG,6FC,C,,,,<span class="op">&lt;&lt;,&lt;&lt;CCE,,&lt;</span>C,,,<span class="op">&lt;</span>6B,<span class="kw">;</span><span class="ex">B,</span><span class="op">&lt;</span>,<span class="op">&lt;</span>A@EEC+,:@,,94,,5549@<span class="pp">?</span>F,@@<span class="pp">?</span>D<span class="op">&lt;</span>,C,,9@,A<span class="kw">;</span><span class="ex">,C,9,A,:A=,</span><span class="op">&gt;</span>,9,9@<span class="kw">;</span><span class="ex">,,,,94,,,,9,9499=,9</span><span class="op">&gt;</span>,,,,,9+,9,,,9,,,493@,,,99+60++6==93=C+C++++6++4<span class="op">&lt;</span>=<span class="kw">;</span><span class="ex">=D+?=+42+43+33*?=</span><span class="kw">;</span><span class="ex">+**5*1*</span><span class="er">)</span><span class="ex">0*108</span><span class="er">))</span><span class="ex">18=</span><span class="er">)</span><span class="bu">:</span><span class="er">))))</span><span class="ex">0</span><span class="er">)</span><span class="ex">185</span><span class="er">)))</span><span class="ex">1</span><span class="er">))</span><span class="ex">--:</span><span class="er">)</span><span class="ex">1*/*16</span><span class="er">)</span><span class="ex">0/</span><span class="er">(</span><span class="ex">01//8***</span><span class="er">(</span><span class="kw">)</span><span class="ex">**</span><span class="er">((</span>((((<span class="kw">,</span>(((<span class="op">/</span>((<span class="kw">,</span>(<span class="kw">,</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>@<span class="va">M05795</span><span class="op">:</span><span class="dv">43</span><span class="op">:</span><span class="dv">000000000</span><span class="op">-</span><span class="va">CFLMP</span><span class="op">:</span><span class="dv">1</span><span class="op">:</span><span class="dv">1101</span><span class="op">:</span><span class="dv">20605</span><span class="op">:</span><span class="dv">1731</span> <span class="dv">1</span><span class="op">:</span><span class="va">N</span><span class="op">:</span><span class="dv">0</span><span class="op">:</span><span class="dv">47</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="va">GAAAAAGGAAGAGAATTGAACTTTTGGCAGCAAACTCAAACATTATAAGTGAAATTAAGATGCCCAAGTCTGTGCTCAATCTCATTTTTTGTTTTTGTGTTTTTCCTTCAATCTCTTCATGTATTCAGTTATTTTTAAT</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="op">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="op">-</span>@<span class="va">CCCGGGGGGGGCGFG</span>@<span class="op">&lt;</span><span class="va">EFGGGGAFFFEGGC8FEF9</span><span class="kw">,,</span>;<span class="kw">,</span><span class="va">CE</span><span class="kw">,</span><span class="va">C</span><span class="kw">,,,</span><span class="op">&lt;</span><span class="kw">,,,,</span><span class="op">&lt;</span><span class="va">C</span><span class="kw">,,,,</span><span class="op">&lt;</span><span class="kw">,,</span><span class="dv">6</span>;<span class="kw">,,,</span>;;<span class="va">C</span><span class="kw">,</span><span class="op">&lt;</span><span class="kw">,</span><span class="dv">6</span>;<span class="va">C</span><span class="kw">,,</span><span class="op">&lt;</span><span class="kw">,,</span><span class="op">:</span><span class="kw">,</span><span class="op">:</span>@<span class="kw">,</span><span class="dv">5</span><span class="kw">,</span><span class="dv">8</span><span class="op">+</span><span class="kw">,,</span><span class="dv">9</span><span class="op">:</span>@<span class="op">+:</span><span class="kw">,,</span><span class="dv">9</span><span class="kw">,</span><span class="dv">9</span><span class="kw">,</span><span class="dv">99AE?,,,959AA?,9</span><span class="kw">,,,</span><span class="dv">994</span><span class="kw">,,</span><span class="dv">9</span><span class="op">=</span><span class="kw">,</span><span class="dv">9</span><span class="op">&gt;</span><span class="va">ED</span><span class="kw">,,,</span><span class="dv">9</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>@<span class="va">M05795</span><span class="op">:</span><span class="dv">43</span><span class="op">:</span><span class="dv">000000000</span><span class="op">-</span><span class="va">CFLMP</span><span class="op">:</span><span class="dv">1</span><span class="op">:</span><span class="dv">1101</span><span class="op">:</span><span class="dv">9135</span><span class="op">:</span><span class="dv">1768</span> <span class="dv">1</span><span class="op">:</span><span class="va">N</span><span class="op">:</span><span class="dv">0</span><span class="op">:</span><span class="dv">47</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="va">CGTTAAAATCTTGCTCCTCATCACTACTAACCTTTTGTTCATTCTCATCACAAATATTATCCTTATCTTCATTATCTACTTCATCTACATTATTTTTTAT</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="fastq-file-format" class="level4" data-number="5.1.3.1">
+<h4 data-number="5.1.3.1" class="anchored" data-anchor-id="fastq-file-format"><span class="header-section-number">5.1.3.1</span> FASTQ file format</h4>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -494,7 +521,7 @@ DNA sequence file formats: FASTQ
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Aside from FASTA files, another typical DNA sequence format is FASTQ (extension <code>.fastq</code> or <code>.fq</code>), which is used to store the raw output of high-throughput sequencing in the form of short read fragments. Like FASTA, it is text-based format, but instead of just identifiers and sequences, it also contains quality scores associated with each nucleotide. Each read is described by four lines of text. A single read might look like this:</p>
+<p>Aside from FASTA files, another typical DNA sequence format is FASTQ (extension <code>.fastq</code> or <code>.fq</code>), which is used to store the raw output of high-throughput sequencing (like AmpliSeq) in the form of short read fragments. Like FASTA, it is text-based format, but instead of just identifiers and sequences, it also contains quality scores associated with each nucleotide. Each read is described by four lines of text. A single read might look like this:</p>
 <pre><code>@SEQ_ID
 ACTACTAGGATTGAGGACGTCCTCCCAACAGGGAGTTGGTTGGGCGCCCGGTGCCGTCATGTCCGATCGCTATCTACGTCTAGTACTAGAGAATTATACA
 +
@@ -549,16 +576,17 @@ Try inspecting the contents of one of the <code>.fastq.gz</code> files in the <c
 </div>
 </div>
 </section>
+</section>
 <section id="wc-counting-lines" class="level3" data-number="5.1.4">
 <h3 data-number="5.1.4" class="anchored" data-anchor-id="wc-counting-lines"><span class="header-section-number">5.1.4</span> <code>wc</code>: counting lines</h3>
 <p>Sometimes we’re not interested in the specific contents of a file, but only in how long it is in terms of text (not file size). For this we can use the <code>wc</code> command: it can count the number of lines, words and characters in a text file. By default, it prints all of this information, but by providing the <code>-l</code> flag, you can tell the command to only return the number of lines. Taking the example of our FASTQ file again, we see:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of lines, words and characters</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wc PF0512_S47_L001_R1_001.fastq</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">582940</span>   728675 69598721 PF0512_S47_L001_R1_001.fastq</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># number of lines only</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> PF0512_S47_L001_R1_001.fastq</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">582940</span> PF0512_S47_L001_R1_001.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of lines, words and characters</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wc PF0512_S47_L001_R1_001.fastq</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">582940</span>   728675 69598721 PF0512_S47_L001_R1_001.fastq</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># number of lines only</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> PF0512_S47_L001_R1_001.fastq</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ex">582940</span> PF0512_S47_L001_R1_001.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -611,30 +639,30 @@ Navigating inside <code>nano</code>
 <section id="cp-copying-files-and-directories" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="cp-copying-files-and-directories"><span class="header-section-number">5.3.1</span> <code>cp</code>: copying files and directories</h3>
 <p><code>cp</code> stands for copy and it does exactly what it says on the tin. It can copy files, as well as directories to a new location. For files, the syntax is as follows:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> path/to/source_file path/to/destination</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> path/to/source_file path/to/destination</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Where <code>source</code> is the original file that you want to copy and <code>destination</code> is the new path where you want to place the copy. If the destination is a directory, the file will be placed inside of it with the same name as the original file. If the destination does not exist yet, it will be used as the new name for the copy.</p>
 <p>When we want to move around directories instead of files, we need to add the <code>-r</code> flag (short for <code>--recursive</code>).</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> path/to/source_directory path/to/destination_file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> path/to/source_directory path/to/destination_file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can even copy multiple files at the same time!</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cp file_1 file_2 file_3 /path/to/destination</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls /path/to/destination</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">file_1</span> file_2 file_3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cp file_1 file_2 file_3 /path/to/destination</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls /path/to/destination</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">file_1</span> file_2 file_3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="sec-globbing" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="sec-globbing"><span class="header-section-number">5.3.2</span> Intermezzo: globbing and wildcards</h3>
 <p>Now seems like a good time to introduce the concept of the globbing and wildcards. Globbing allows you to perform operations on multiple files. By providing specific patterns, the shell will be able to expand them into a list of matching file names. The patterns are built using wildcards, one of the most common ones being the asterisk <code>*</code>.</p>
 <p>How does this work? Well, <code>*</code> can represent any number of other characters. For example, the string <code>*.txt</code> can match all file names ending with <code>.txt</code> in your directory. Let’s look at a concrete example, using the <code>ls</code> command we saw earlier:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</span>  PF0512_S47_L001_R1_001.fastq  files_to_copy  files_to_delete  files_to_move  long.txt  short.txt  penguins.csv</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="pp">*</span>.txt</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">long.txt</span>  short.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</span>  PF0512_S47_L001_R1_001.fastq  files_to_copy  files_to_delete  files_to_move  long.txt  short.txt  penguins.csv</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="pp">*</span>.txt</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">long.txt</span>  short.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>As you can see, we can make <code>ls</code> list only those files that match a particular pattern, instead of showing all the files in the directory. What happens behind the scenes is that <code>*.txt</code> is expanded to <code>long.txt short.txt</code>. This means that the command that the shell eventually sees is actually <code>ls long.txt short.txt</code>.</p>
 <p>Similarly, we can combine wildcards with the new <code>cp</code> command.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cp <span class="pp">*</span>.txt ..</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cp <span class="pp">*</span>.txt ..</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -659,11 +687,11 @@ What do you think this previous command will do? (Click me to expand!)
 <section id="mv-moving-or-renaming-files-and-directories" class="level3" data-number="5.3.3">
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="mv-moving-or-renaming-files-and-directories"><span class="header-section-number">5.3.3</span> <code>mv</code> Moving or renaming files and directories</h3>
 <p>The <code>mv</code> (move) command behaves very similar to the <code>cp</code> command, the main difference being that the former allows you to move rather than copy files and directories. Also note that <code>mv</code> is used to <em>rename</em> files as well.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># move around/rename a particular file</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="op">&lt;</span>source_file<span class="op">&gt;</span> <span class="op">&lt;</span>destination_file<span class="op">&gt;</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># move a directory</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="op">&lt;</span>path/to/source_directory<span class="op">&gt;</span> <span class="op">&lt;</span>path/to/destination_directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># move around/rename a particular file</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="op">&lt;</span>source_file<span class="op">&gt;</span> <span class="op">&lt;</span>destination_file<span class="op">&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># move a directory</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="op">&lt;</span>path/to/source_directory<span class="op">&gt;</span> <span class="op">&lt;</span>path/to/destination_directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="creation-and-destruction" class="level2" data-number="5.4">
@@ -672,24 +700,24 @@ What do you think this previous command will do? (Click me to expand!)
 <section id="creating-files" class="level3" data-number="5.4.1">
 <h3 data-number="5.4.1" class="anchored" data-anchor-id="creating-files"><span class="header-section-number">5.4.1</span> Creating files</h3>
 <p>There are several ways of creating new files in Unix, but one of them is the <code>nano</code> command that we already introduced earlier. If you provide a file name that does not yet exist, <code>nano</code> will create the file for you.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano new_file.txt</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inside nano, use ctrl+x to save the file and then close the editor via ctrl+x</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ex">new_file.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano new_file.txt</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inside nano, use ctrl+x to save the file and then close the editor via ctrl+x</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="ex">new_file.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Another option is to use the <code>touch /path/to/file</code> command. This will just create a new empty file at the specified location.</p>
 </section>
 <section id="mkdir-creating-directories" class="level3" data-number="5.4.2">
 <h3 data-number="5.4.2" class="anchored" data-anchor-id="mkdir-creating-directories"><span class="header-section-number">5.4.2</span> <code>mkdir</code>: creating directories</h3>
 <p><code>mkdir</code> stands for <em>make directory</em> and it does just that:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir new_dir</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">new_dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir new_dir</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">new_dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>One useful optional flag is <code>-p/--parents</code>: this allows you to create multiple nested (parent) directories in one go. For example, if we’re inside an empty directory, we could call:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> my/new/multi/level/directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> my/new/multi/level/directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And all the intermediate directories would be automatically created.</p>
 </section>
 <section id="rm-removing-things" class="level3" data-number="5.4.3">
@@ -710,14 +738,14 @@ Watch out…
 </div>
 </div>
 <p>The <code>rm</code> command (<em>remove</em>) is used to delete files and directories. Be warned though, once deleted, things are really gone. There is no recycle bin or trash folder where you can restore deleted items!</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for files:</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="op">&lt;</span>file path<span class="op">&gt;</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># for directories</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> <span class="op">&lt;</span>directory path<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for files:</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="op">&lt;</span>file path<span class="op">&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># for directories</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> <span class="op">&lt;</span>directory path<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For files, this works as expected, but for directories you need to provide the <code>-r</code> flag (or <code>--recursive</code>). This tells Unix to remove the directory recursively, i.e.&nbsp;all of its contents need to be removed as well. If you don’t use this option, you will see the following warning:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> directory</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rm:</span> cannot remove <span class="st">'test/'</span>: Is a directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> directory</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rm:</span> cannot remove <span class="st">'test/'</span>: Is a directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -731,15 +759,15 @@ Protected files
 <div id="callout-12" class="callout-12-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>Sometimes, files will be protected and you will get another warning message when you try to remove them. If you are really sure that you want to delete them, you can type <code>y</code> and press enter. Alternatively, you can cancel the operation (by entering <code>n</code> or by pressing <code>ctrl+c</code>) and try again, but this time providing the <code>-f/--force</code> option.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new empty file</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch protected-file</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># change its permissions so that it is protected against writing and deleting (see appendix for more info on file permissions)</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> chmod a-w protected-file</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># try to remove it</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm protected-file</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="ex">rm:</span> remove write-protected regular empty file <span class="st">'protected-file'</span><span class="pp">?</span> n</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># use the --force flag</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm <span class="at">-f</span> protected-file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new empty file</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch protected-file</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># change its permissions so that it is protected against writing and deleting (see appendix for more info on file permissions)</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> chmod a-w protected-file</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># try to remove it</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm protected-file</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="ex">rm:</span> remove write-protected regular empty file <span class="st">'protected-file'</span><span class="pp">?</span> n</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># use the --force flag</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm <span class="at">-f</span> protected-file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>

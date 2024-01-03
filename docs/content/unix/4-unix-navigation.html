@@ -206,6 +206,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Streams, redirection and piping</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/unix/8-unix-variables-loops-scripts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Variables, loops and scripts</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -220,13 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
   </div>
 </li>
       </ul>
@@ -262,9 +268,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#layout-of-the-unix-file-system" id="toc-layout-of-the-unix-file-system" class="nav-link active" data-scroll-target="#layout-of-the-unix-file-system"><span class="header-section-number">4.1</span> Layout of the Unix file system</a></li>
+  <li><a href="#layout-of-the-unix-file-system" id="toc-layout-of-the-unix-file-system" class="nav-link active" data-scroll-target="#layout-of-the-unix-file-system"><span class="header-section-number">4.1</span> Layout of the Unix file system</a>
+  <ul>
+  <li><a href="#home-sweet-home" id="toc-home-sweet-home" class="nav-link" data-scroll-target="#home-sweet-home"><span class="header-section-number">4.1.1</span> Home sweet home: <code>~</code></a></li>
+  <li><a href="#where-am-i-.-shortcuts" id="toc-where-am-i-.-shortcuts" class="nav-link" data-scroll-target="#where-am-i-.-shortcuts"><span class="header-section-number">4.1.2</span> Where am I? <code>.</code> shortcuts</a></li>
+  </ul></li>
   <li><a href="#moving-around-the-file-system" id="toc-moving-around-the-file-system" class="nav-link" data-scroll-target="#moving-around-the-file-system"><span class="header-section-number">4.2</span> Moving around the file system</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#pwd-avoid-getting-lost" id="toc-pwd-avoid-getting-lost" class="nav-link" data-scroll-target="#pwd-avoid-getting-lost"><span class="header-section-number">4.2.1</span> <code>pwd</code>: avoid getting lost</a></li>
   <li><a href="#cd-on-the-move" id="toc-cd-on-the-move" class="nav-link" data-scroll-target="#cd-on-the-move"><span class="header-section-number">4.2.2</span> <code>cd</code>: on the move</a></li>
   <li><a href="#ls-show-me-what-you-got" id="toc-ls-show-me-what-you-got" class="nav-link" data-scroll-target="#ls-show-me-what-you-got"><span class="header-section-number">4.2.3</span> <code>ls</code>: show me what you got</a></li>
@@ -336,6 +346,8 @@ Tip
 <figcaption class="figure-caption">Overview of the Unix file system or directory layout</figcaption>
 </figure>
 </div>
+<section id="home-sweet-home" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="home-sweet-home"><span class="header-section-number">4.1.1</span> Home sweet home: <code>~</code></h3>
 <p>Another important location is the <em>home</em> directory. In general, every user has their own home directory, found in <code>/home/username</code>. A frequently used shortcut for this is the tilde symbol (<code>~</code>). Depending on the current user, this will refer to a particular directory under <code>/home/.</code>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -353,7 +365,10 @@ How can <code>user1</code> write the file path to <code>document.txt</code> usin
 </div>
 </div>
 </div>
-<p>Lastly, the dot (<code>.</code>) also has an important function in file paths:</p>
+</section>
+<section id="where-am-i-.-shortcuts" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="where-am-i-.-shortcuts"><span class="header-section-number">4.1.2</span> Where am I? <code>.</code> shortcuts</h3>
+<p>The dot (<code>.</code>) also has an important function in file paths:</p>
 <ul>
 <li><code>.</code> represents the directory you are currently in, i.e.&nbsp;the working directory.
 <ul>
@@ -365,6 +380,7 @@ How can <code>user1</code> write the file path to <code>document.txt</code> usin
 <li>These expressions can be nested; while inside the <code>projects</code> directory, <code>../../user2</code> can be used to access the <code>user2</code> home directory.</li>
 </ul></li>
 </ul>
+</section>
 </section>
 <section id="moving-around-the-file-system" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="moving-around-the-file-system"><span class="header-section-number">4.2</span> Moving around the file system</h2>

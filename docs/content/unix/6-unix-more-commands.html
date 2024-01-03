@@ -206,6 +206,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Streams, redirection and piping</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/unix/8-unix-variables-loops-scripts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Variables, loops and scripts</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -220,13 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/r/r-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
   </div>
 </li>
       </ul>
@@ -263,9 +269,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#searching-in-files-grep" id="toc-searching-in-files-grep" class="nav-link active" data-scroll-target="#searching-in-files-grep"><span class="header-section-number">6.1</span> Searching in files: <code>grep</code></a></li>
-  <li><a href="#tabular-data-cut" id="toc-tabular-data-cut" class="nav-link" data-scroll-target="#tabular-data-cut"><span class="header-section-number">6.2</span> Tabular data: <code>cut</code></a></li>
+  <li><a href="#tabular-data-cut" id="toc-tabular-data-cut" class="nav-link" data-scroll-target="#tabular-data-cut"><span class="header-section-number">6.2</span> Tabular data: <code>cut</code></a>
+  <ul>
+  <li><a href="#sec-sam-format" id="toc-sec-sam-format" class="nav-link" data-scroll-target="#sec-sam-format"><span class="header-section-number">6.2.1</span> SAM file format</a></li>
+  </ul></li>
   <li><a href="#file-sizes-du" id="toc-file-sizes-du" class="nav-link" data-scroll-target="#file-sizes-du"><span class="header-section-number">6.3</span> File sizes: <code>du</code></a></li>
-  <li><a href="#compressed-files-gzip" id="toc-compressed-files-gzip" class="nav-link" data-scroll-target="#compressed-files-gzip"><span class="header-section-number">6.4</span> Compressed files: <code>gzip</code></a></li>
+  <li><a href="#compressed-files-gzip" id="toc-compressed-files-gzip" class="nav-link" data-scroll-target="#compressed-files-gzip"><span class="header-section-number">6.4</span> Compressed files: <code>gzip</code></a>
+  <ul>
+  <li><a href="#bam-file-format" id="toc-bam-file-format" class="nav-link" data-scroll-target="#bam-file-format"><span class="header-section-number">6.4.1</span> BAM file format</a></li>
+  </ul></li>
   <li><a href="#downloading-files-wget" id="toc-downloading-files-wget" class="nav-link" data-scroll-target="#downloading-files-wget"><span class="header-section-number">6.5</span> Downloading files: <code>wget</code></a></li>
   <li><a href="#retrieving-file-names-basename" id="toc-retrieving-file-names-basename" class="nav-link" data-scroll-target="#retrieving-file-names-basename"><span class="header-section-number">6.6</span> Retrieving file names: <code>basename</code></a></li>
   <li><a href="#sorting-and-removing-duplicates-sort-and-uniq" id="toc-sorting-and-removing-duplicates-sort-and-uniq" class="nav-link" data-scroll-target="#sorting-and-removing-duplicates-sort-and-uniq"><span class="header-section-number">6.7</span> Sorting and removing duplicates: <code>sort</code> and <code>uniq</code></a></li>
@@ -485,35 +497,149 @@ Tabular data and <code>.csv</code> files
 <td>Select columns one through three and columns six</td>
 </tr>
 <tr class="odd">
-<td>–complement -f 1</td>
+<td><code>--complement -f 1</code></td>
 <td>Select all columns <em>except</em> for the first one</td>
 </tr>
 <tr class="even">
-<td>-r</td>
+<td><code>-r</code></td>
 <td>Recursive search through all files in a folder</td>
 </tr>
 </tbody>
 </table>
+<section id="sec-sam-format" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="sec-sam-format"><span class="header-section-number">6.2.1</span> SAM file format</h3>
+<p>Aside from <code>.csv</code> and <code>.tsv</code> files, there are many bioinformatics file formats that also follow a tabular lay-out. One of these is the <a href="https://samtools.github.io/hts-specs/SAMv1.pdf">SAM file format</a>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+SAM: Sequence Alignment/Map Format
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The SAM file format is a tab-delimited text file that stores information about the alignment of sequence reads to a reference genome.</p>
+<p>When considering the steps that are taken during the variant calling analysis of sequence reads, SAM files result when the reads inside a FASTQ file are processed by an alignment tool like <code>bwa</code> and <code>minimap</code>. These tools take each individual read corresponding to a particular sample and try to map them to their most likely position in a reference genome.</p>
+<p>SAM files consists of an optional header section followed by an alignment section.</p>
+<p>The header lines always start with an <code>@</code> symbol and contain information about e.g., the reference genome that was used and the sorting of the alignments. This section is not yet tab-delimited.</p>
+<p>The alignment section contains a tab-delimited line for each sequence read that was aligned to the reference. There are 11 mandatory fields, containing information on the position of the read in the reference genome (i.e., where it was mapped), the sequence itself, its quality score ( = the quality of each base pair of the sequence during sequence calling, cf.&nbsp;FASTQ format), its mapping score ( = how well the read aligned to the reference genome), etc.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Col</th>
+<th style="text-align: center;">Field</th>
+<th style="text-align: center;">Type</th>
+<th style="text-align: center;">Brief description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">QNAME</td>
+<td style="text-align: center;">String</td>
+<td style="text-align: center;">Query template NAME</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">FLAG</td>
+<td style="text-align: center;">Int</td>
+<td style="text-align: center;">bitwise FLAG</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">RNAME</td>
+<td style="text-align: center;">String</td>
+<td style="text-align: center;">References sequence NAME</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">POS</td>
+<td style="text-align: center;">Int</td>
+<td style="text-align: center;">1- based leftmost mapping POSition</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">MAPQ</td>
+<td style="text-align: center;">Int</td>
+<td style="text-align: center;">MAPping Quality</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">CIGAR</td>
+<td style="text-align: center;">String</td>
+<td style="text-align: center;">CIGAR string</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">RNEXT</td>
+<td style="text-align: center;">String</td>
+<td style="text-align: center;">Ref. name of the mate/next read</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">PNEXT</td>
+<td style="text-align: center;">Int</td>
+<td style="text-align: center;">Position of the mate/next read</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">TLEN</td>
+<td style="text-align: center;">Int</td>
+<td style="text-align: center;">observed Template LENgth</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">SEQ</td>
+<td style="text-align: center;">String</td>
+<td style="text-align: center;">segment SEQuence</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">QUAL</td>
+<td style="text-align: center;">String</td>
+<td style="text-align: center;">ASCII of Phred-scaled base QUALity+33</td>
+</tr>
+</tbody>
+</table>
+<p>A typical SAM file looks like this:</p>
+<pre><code>@SQ     SN:ref  LN:45
+@SQ     SN:ref2 LN:40
+r001    163     ref     7       30      8M4I4M1D3M      =       37      39      TTAGATAAAGAGGATACTG     *       XX:B:S,12561,2,20,112
+r002    0       ref     9       30      1S2I6M1P1I1P1I4M2I      *       0       0       AAAAGATAAGGGATAAA       *
+r003    0       ref     9       30      5H6M    *       0       0       AGCTAA  *
+r004    0       ref     16      30      6M14N1I5M       *       0       0       ATAGCTCTCAGC    *
+r003    16      ref     29      30      6H5M    *       0       0       TAGGC   *
+r001    83      ref     37      30      9M      =       7       -39     CAGCGCCAT       *
+x1      0       ref2    1       30      20M     *       0       0       aggttttataaaacaaataa    ????????????????????
+x2      0       ref2    2       30      21M     *       0       0       ggttttataaaacaaataatt   ?????????????????????
+x3      0       ref2    6       30      9M4I13M *       0       0       ttataaaacAAATaattaagtctaca      ??????????????????????????
+x4      0       ref2    10      30      25M     *       0       0       CaaaTaattaagtctacagagcaac       ?????????????????????????
+x5      0       ref2    12      30      24M     *       0       0       aaTaattaagtctacagagcaact        ????????????????????????
+x6      0       ref2    14      30      23M     *       0       0       Taattaagtctacagagcaacta ???????????????????????</code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="file-sizes-du" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="file-sizes-du"><span class="header-section-number">6.3</span> File sizes: <code>du</code></h2>
 <p>We already saw that the <code>ls -lh</code> can be used to figure out the file size of files in a particular directory. <code>du</code> is another tool to do this, but it operates on individual files or directories directly. Like <code>ls</code>, it also provides the <code>-h</code>/<code>--human-readable</code> option to return file sizes in KB/MB/GB, so it is generally recommended to always use this option. When used on a file, it will simply return its size, but when used on a directory, it will output information for all files, as well as the total file size of the entire directory (the final line of the output).</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># targetting an individual file</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> du <span class="at">-h</span> Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">5.9M</span>    Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># targetting a directory</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> du <span class="at">-h</span> training/data/</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ex">284M</span>    training/data/fastq</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">62M</span>     training/data/reference</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="ex">346M</span>    training/data/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># targetting an individual file</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> du <span class="at">-h</span> Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">5.9M</span>    Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># targetting a directory</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> du <span class="at">-h</span> training/data/</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">284M</span>    training/data/fastq</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">62M</span>     training/data/reference</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="ex">346M</span>    training/data/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="compressed-files-gzip" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="compressed-files-gzip"><span class="header-section-number">6.4</span> Compressed files: <code>gzip</code></h2>
 <p>We already introduced the concept of file compression when talking about the FASTQ files in the <code>training/data/fastq</code> directory. As a reminder, compressed files are binary files (as opposed to human-readable plain text files) that are used to reduce the file size for more efficient storage. Many of the files that we use in bioinformatics tend to be compressed. Some of the tools we use, will not work on compressed files (e.g., try to <code>cat</code> a compressed file and see what happens), so we either need to 1) use specialized tools that expect compressed files as their input, or 2) decompress or extract the files first.</p>
 <p>For gzipped (<code>.gz</code>) files specifically, we can do this via the <code>gzip</code> and <code>gunzip</code> commands. The former allows us to create a gzip-compressed version of the file, whereas the latter will extract one back to a plain text file. The basic syntax is <code>gzip/gunzip &lt;path/to/file&gt;</code>, but a very useful option is the <code>-k</code>/<code>--keep</code> flag. Without it, compressing a file would replace the uncompressed file with the new compressed one (vice versa: extracting would replace the compressed version with the extracted one), but when using the flag both files will be retained.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -522,38 +648,59 @@ Try compressing the FASTQ file in the <code>unix-demo</code> directory. By how m
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> du <span class="at">-h</span> PF0512_S47_L001_R1_001.fastq</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">67M</span>     PF0512_S47_L001_R1_001.fastq</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gzip <span class="at">--keep</span> PF0512_S47_L001_R1_001.fastq</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> du <span class="at">-h</span> PF0512_S47_L001_R1_001.fastq.gz</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">17M</span>     PF0512_S47_L001_R1_001.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> du <span class="at">-h</span> PF0512_S47_L001_R1_001.fastq</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">67M</span>     PF0512_S47_L001_R1_001.fastq</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gzip <span class="at">--keep</span> PF0512_S47_L001_R1_001.fastq</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> du <span class="at">-h</span> PF0512_S47_L001_R1_001.fastq.gz</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">17M</span>     PF0512_S47_L001_R1_001.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>After compressing the FASTQ file with <code>gzip</code>, it shrunk to less than a third of its original size.</p>
 </div>
 </div>
 </div>
 <p>Do note that there exist other types of file compression besides gzip, like <code>.zip</code>/<code>.7zip</code>. In unix we also often make use of <code>tar</code> (which technically is not a compression tool, but a file archiver). File compression and tar can even be combined, leading to files with suffixes like <code>.tar.gz</code>. This allows us to compress entire directories, instead of only individual files.</p>
 <p>To extract these so called <em>tarballs</em>, we need to use the <code>tar</code> command:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract .tar.gz archive</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tar <span class="at">-xzvf</span> tar_archive.tar.gz</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">tar_archive/</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">tar_archive/3</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">tar_archive/2</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">tar_archive/1</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls tar_archive</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span>  2  3</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create .tar.gz archive</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tar <span class="at">-czvf</span> new_archive.tar.gz <span class="op">&lt;</span>path/to/target_directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract .tar.gz archive</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tar <span class="at">-xzvf</span> tar_archive.tar.gz</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">tar_archive/</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">tar_archive/3</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">tar_archive/2</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">tar_archive/1</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls tar_archive</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span>  2  3</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create .tar.gz archive</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tar <span class="at">-czvf</span> new_archive.tar.gz <span class="op">&lt;</span>path/to/target_directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This command is <a href="https://xkcd.com/1168/">notorious for how arcane its option flags are</a>, but you can either try to remember it using a mnemonic (<em>“e<strong>X</strong>tract/<strong>C</strong>ompress <strong>Z</strong>e <strong>V</strong>ucking <strong>F</strong>iles”</em>, pronounced like a B-movie vampire) or the meaning of the individual flags (<code>z</code> tells tar that we are using gzip compression, <code>-v</code> stands for <code>--verbose</code> to make the command show more information and output, <code>-c</code>/<code>x</code> switches between compression and extraction mode, <code>-f</code> is the last option and points to the tar file) . And of course, the correct syntax is only a google/<a href="https://tldr.inbrowser.app/pages/common/tar">tldr</a> search or <code>tar --help</code> call away.</p>
+<section id="bam-file-format" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="bam-file-format"><span class="header-section-number">6.4.1</span> BAM file format</h3>
+<p>A final example of a binary file that you might encounter in the bioinformatic analysis of AmpliSeq sequencing is the BAM file format:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+BAM: Binary Alignment Map
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A BAM file is nothing more than a compressed, binary representation of a SAM file. It is used to reduce the file size of SAM files and also improve the speed of specific operations like sorting or retrieving information from the file.</p>
+<p>Many bioinformatics tools can handle BAM file natively. However, similar to the gzipped files we saw before, since these files are binary, we can no longer preview them using tools like <code>cat</code> and <code>less</code>.</p>
+<p>One of the tools that is often used to convert between the two types of alignment file formats is <a href="https://www.htslib.org/"><code>samtools</code></a>, which is maintained by the same people .</p>
+<p>Further reading: CRAM</p>
+<p>VCF?</p>
+</div>
+</div>
+</section>
 </section>
 <section id="downloading-files-wget" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="downloading-files-wget"><span class="header-section-number">6.5</span> Downloading files: <code>wget</code></h2>
 <p><code>wget</code> is a command that allows you to download files from a particular web address or URL and place them in your working directory. While there are several optional flags, in its most basic form the syntax is simply: <code>wget URL</code>. This command is not only useful when automating certain tasks, but also crucial if you ever find yourself in a Unix environment that does not have a GUI at all (e.g., compute clusters or cloud servers).</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -562,7 +709,7 @@ Try downloading the <em>Plasmodium falciparum</em> 3D7 reference genome in FASTA
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>At the top of the page, click on <em>Data</em> -&gt; <em>Download data files</em>.</li>
@@ -581,13 +728,13 @@ Try downloading the <em>Plasmodium falciparum</em> 3D7 reference genome in FASTA
 <section id="retrieving-file-names-basename" class="level2" data-number="6.6">
 <h2 data-number="6.6" class="anchored" data-anchor-id="retrieving-file-names-basename"><span class="header-section-number">6.6</span> Retrieving file names: <code>basename</code></h2>
 <p><code>basename</code> is a rather simple command: if you give it a long file path, it will return the final section (i.e., the file name).</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># starting in the `training` directory</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/pmoris/itg/FiMAB-bioinformatics/training</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># get the file name for the reference genome we just downloaded</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> basename data/reference/PlasmoDB-65_Pfalciparum3D7_Genome.fasta</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">PlasmoDB-65_Pfalciparum3D7_Genome.fasta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># starting in the `training` directory</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/pmoris/itg/FiMAB-bioinformatics/training</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># get the file name for the reference genome we just downloaded</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> basename data/reference/PlasmoDB-65_Pfalciparum3D7_Genome.fasta</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ex">PlasmoDB-65_Pfalciparum3D7_Genome.fasta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>At this point in time, it might not seem particularly useful to be able to extract the file name of a file, but when we introduce the concept of for loops and bash scripting, it will become more clear why this can be so useful.</p>
 </section>
 <section id="sorting-and-removing-duplicates-sort-and-uniq" class="level2" data-number="6.7">
@@ -596,20 +743,20 @@ Try downloading the <em>Plasmodium falciparum</em> 3D7 reference genome in FASTA
 <pre><code>sort [OPTIONS] &lt;./path/to/file&gt;`</code></pre>
 <p>There are optional flags that allow you to choose the type of order to use (e.g., numerical <code>-n</code>/<code>--numeric-sort</code> instead of alphabetical ), reverse the order of the sort (<code>-r</code>/<code>--reverse</code>) or ignore capitals (<code>-f</code>/<code>--ignore-case</code>).</p>
 <p>The second command, <code>uniq</code>, is used to remove duplicate lines in a file. It also offers the option to count the frequency of each unique line.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># given the following file</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat file_with_duplicates.txt</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">a</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">a</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">b</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ex">b</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="ex">b</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ex">b</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="ex">c</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> uniq <span class="at">-c</span> file_with_duplicates.txt</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="ex">2</span> a</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="ex">4</span> b</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span> c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># given the following file</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat file_with_duplicates.txt</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">a</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">a</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">b</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ex">b</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="ex">b</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="ex">b</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="ex">c</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> uniq <span class="at">-c</span> file_with_duplicates.txt</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="ex">2</span> a</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="ex">4</span> b</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span> c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>These two commands are often used in conjunction, because <code>uniq</code> on its own is not capable of filtering out identical lines that are not adjacent. So to truly remove all duplicate lines in a file, we would first need to sort it. In the next section, we will introduce a method of combining these commands in a more convenient way than running them one by one and without needing to create any intermediary files.</p>
 </section>
 <section id="other-commands" class="level2" data-number="6.8">
@@ -637,7 +784,7 @@ Try downloading the <em>Plasmodium falciparum</em> 3D7 reference genome in FASTA
 <section id="summary" class="level2" data-number="6.10">
 <h2 data-number="6.10" class="anchored" data-anchor-id="summary"><span class="header-section-number">6.10</span> Summary</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -646,10 +793,11 @@ Overview of concepts and commands
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Tabular data: <code>.csv</code>, <code>.tsv</code></li>
+<li>The SAM file format stores sequence reads aligned to a reference genome.</li>
 </ul>
 <table class="table">
 <colgroup>

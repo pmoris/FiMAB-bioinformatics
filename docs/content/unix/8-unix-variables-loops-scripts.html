@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Pieter Moris">
-<meta name="dcterms.date" content="2023-08-02">
 
-<title>Introduction to Bioinformatics for Malaria Molecular Surveillance</title>
+<title>Introduction to Bioinformatics for Malaria Molecular Surveillance - 8&nbsp; Variables, loops and scripts</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,28 +20,63 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./content/intro.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../content/r/r-intro.html" rel="next">
+<link href="../../content/unix/7-unix-redirection.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -77,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">About</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/unix/1-unix-intro.html">Introduction to the Unix shell</a></li><li class="breadcrumb-item"><a href="../../content/unix/8-unix-variables-loops-scripts.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Variables, loops and scripts</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -92,7 +125,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Introduction to Bioinformatics for Malaria Molecular Surveillance</a> 
+      <a href="../../">Introduction to Bioinformatics for Malaria Molecular Surveillance</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
@@ -112,13 +145,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -133,49 +166,49 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/unix/1-unix-intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/unix/1-unix-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is a CLI?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/unix/2-unix-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/unix/2-unix-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting up your own Unix shell</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/unix/3-unix-enter-the-shell.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/unix/3-unix-enter-the-shell.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Using the shell</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/unix/4-unix-navigation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/unix/4-unix-navigation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Navigating the Unix file system</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/unix/5-unix-files-and-dirs.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/unix/5-unix-files-and-dirs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with files and directories</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/unix/6-unix-more-commands.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/unix/6-unix-more-commands.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More advanced commands</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/unix/7-unix-redirection.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/unix/7-unix-redirection.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Streams, redirection and piping</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/unix/8-unix-variables-loops-scripts.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/unix/8-unix-variables-loops-scripts.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Variables, loops and scripts</span></span></a>
   </div>
 </li>
@@ -192,13 +225,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/r/r-intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/r/r-continued.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/r/r-continued.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
   </div>
 </li>
@@ -219,7 +252,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/unix/appendix-unix.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/unix/appendix-unix.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Various Unix topics</span></span></a>
   </div>
 </li>
@@ -235,12 +268,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a>
-  <ul>
-  <li><a href="#scope-of-the-course" id="toc-scope-of-the-course" class="nav-link" data-scroll-target="#scope-of-the-course">Scope of the course</a></li>
-  </ul></li>
-  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
-  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link active" data-scroll-target="#variables"><span class="header-section-number">8.1</span> Variables</a></li>
+  <li><a href="#loops" id="toc-loops" class="nav-link" data-scroll-target="#loops"><span class="header-section-number">8.2</span> Loops</a></li>
+  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts"><span class="header-section-number">8.3</span> Scripts</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">8.4</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -249,34 +280,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction to Bioinformatics for Malaria Molecular Surveillance</h1>
-<p class="subtitle lead">Fighting Malaria Across Borders</p>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Variables, loops and scripts</span></h1>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author"><a href="https://pmoris.github.io">Pieter Moris</a> <a href="https://orcid.org/0000-0003-4242-4939" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-  </div>
-    <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Institute of Tropical Medicine Antwerp
-          </p>
-      </div>
-    </div>
 
 <div class="quarto-title-meta">
 
-      
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 2, 2023</p>
-    </div>
-  </div>
+    
   
     
   </div>
@@ -284,28 +295,115 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="about" class="level1 unnumbered">
-<h1 class="unnumbered">About</h1>
-<p>Welcome to the Bioinformatics Module of the Fighting Malaria Across Borders (FiMAB) created by the Institute of Tropical Medicine (ITM) in Antwerp (Belgium). This is an international training programme (a VLIR-UOS project) to support the implementation of targeted NGS AmpliSeq assays to strengthen malaria molecular surveillance and help guide national control programmes. In conjunction with laboratory training, this bioinformatics course is intended to allow young academics around the globe to become familiar with molecular surveillance as a key activity to monitor transmission, sources of epidemics and the emergence and spread of drug resistant mutations in the <em>Plasmodium</em> parasite.</p>
-<section id="scope-of-the-course" class="level2">
-<h2 class="anchored" data-anchor-id="scope-of-the-course">Scope of the course</h2>
-<p>This course aims to provide an overview of key bioinformatics aspects related to performing population genetics and molecular epidemiological research in <em>Plasmodium</em>. It is divided into the following sections:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember that we have provided a list of helpful tips and hints in the appendix: <a href="appendix-unix.html#sec-unix-tips"><span>Section&nbsp;A.1</span></a>.</p>
+</div>
+</div>
+<section id="variables" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="variables"><span class="header-section-number">8.1</span> Variables</h2>
+<p><em>Variables</em> are placeholder names to refer to specific values. You can use them as shortcuts to refer back to a specific value or file path. Moreover, they are easy to set and re-use in bash scripts, which we’ll introduce later. To set a variable, we assign a value to a name using the equals sign <code>=</code>. Afterwards, we can always recall the value via the variable’s name, prefixed with a dollar sign <code>$</code>. While not strictly necessary, it is good practice to also enclose the name of the variable in <code>{}</code>, because it makes creating new variable names a lot easier during scripting.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> my_value=<span class="st">"Plasmodium falciparum"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="va">${my_value}</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Plasmodium</span> falciparum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>As before, we use spaces around the value that we are assigned to the variable. This allows us to use spaces and other special characters inside our value. The variable in our example was a piece of text (a string), but we can also store things like integers (<code>x=101</code>) or booleans (<code>true</code>/<code>false</code>).</p>
+<p>The main reason we introduced the concept of variables is because they play an important role in (for) loops, so let us move on to that topic now.</p>
+</section>
+<section id="loops" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="loops"><span class="header-section-number">8.2</span> Loops</h2>
+<p>Loops provide a powerful method of repeating a set of operations multiple times. They are integral to automation and being able to process large numbers of samples in bioinformatics pipelines, but also very convenient for performing other tasks like renaming a bunch of files. The idea is a bit similar to the concept of globbing, but loops offer a lot more flexibility and control over the process.</p>
+<p>The most common type of loops are probably <em>for loops</em>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> for nucleotide in A C T G <span class="dt">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> do echo <span class="va">${nucleotide}</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> done</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">A</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">C</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">T</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">G</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>There are a number of different things going on here:</p>
+<ul>
+<li>The for loop consists out of three different sections:
 <ol type="1">
-<li>Introduction to the Unix shell (command line interface) and basic scripting</li>
-<li>Introduction to R</li>
-<li>Genomic files and tools</li>
-<li>Population genetics and molecular epidemiology for <em>Plasmodium</em></li>
-</ol>
-<p>Section 1-3 are online self-paced modules, whereas section 4 will include classroom lectures and practical sessions. Evaluation exercises will be conducted on <a href="https://campus.itg.be/course/view.php?id=217">the ITM course page</a>.</p>
+<li><code>for nucleotide in A C T G</code>: this tells bash that we want to start a for loop. It also defines the range of values that our loop will iterate over, in this case the characters <code>A</code>, <code>C</code>, <code>T</code>, and <code>G</code>. Finally, it creates a new variable called <code>nucleotide</code>. During every pass or round of the loop, its value will change to one of the values defined in the loop’s range.</li>
+<li><code>do echo $i</code>: this is the body of the loop. It always starts with <code>do</code> and is then followed by one or more commands. In the body, you can make use of the loop variable <code>$nucleotide</code>.</li>
+<li><code>done</code>: this notifies bash that the body and loop definition end here.</li>
+</ol></li>
+<li>This is the first time that we see a multi-line bash command. We could have just as well written this statement on a single line (<code>for i in a c t g; do echo $i; done</code>), using colons (<code>;</code>) to mark the end of each section of the loop.</li>
+</ul>
+<p>Instead of looping over a set of words, we can also loop over a range of values:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> for i in <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">3</span><span class="dt">}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> do <span class="bu">echo</span> <span class="va">${i}</span> <span class="op">&gt;&gt;</span> loop.txt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> done</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat for_loop.txt</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">2</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Also note that we used a different name for our loop variable this time around; you can use any name you like, but <code>i</code> is a very common placeholder. To make your scripts easier to read, it is good to stick with a reasonable short, but informative name.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+As a reminder, what would have happened if we had used <code>&gt;</code> instead of <code>&gt;&gt;</code>? (Click me to expand!)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The for loop <code>for i in {1..3}; do echo ${i} &gt; loop.txt; done</code> is basically equivalent to running the following three commands one after another:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> 1 <span class="op">&gt;</span> loop.txt</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> 2 <span class="op">&gt;</span> loop.txt</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> 3 <span class="op">&gt;</span> loop.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>As we saw in the previous sections, the redirection <code>&gt;</code> will always overwrite the contents of its destination file. So in this case, the file would only contain the final number of the loop, namely 3. Loops always run in the order defined in their range.</p>
+</div>
+</div>
+</div>
+<p>Let us consider another example of a for loop. Suppose we have a directory with a bunch of</p>
+<p>Note that the indentation that we used is not strictly necessary for loops to work, but it does help with legibility and it is common practice to do this, especially in scripts.</p>
+<hr>
+<p>Loops, combined with scripting, are incredibly useful when performing more advanced operations, like performing the bioinformatics analysis of DNA sequencing reads. For example, to process the DNA reads generated by an AmpliSeq assay and identify the genetic variants (variant calling analysis), the following steps would be performed by looping over the FASTQ file corresponding to each sample:</p>
+<pre><code>for every FASTQ file:
+    1. Perform a quality control step
+    2. Map the reads to the reference genome
+    3. Call the variants in the alignment</code></pre>
+<hr>
+<p>There actually exists another type of loop, namely the <em>while loop</em>. These behave similar, but instead of going through a list of items or a range of numbers, the loop will continue for as long as a certain condition is met. You can find more information <a href="https://pressbooks.senecacollege.ca/uli101/chapter/while-loop-in-bash/">here</a> in case you are interested.</p>
 </section>
+<section id="scripts" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="scripts"><span class="header-section-number">8.3</span> Scripts</h2>
 </section>
-<section id="acknowledgements" class="level1 unnumbered">
-<h1 class="unnumbered">Acknowledgements</h1>
-<p>Development of this course was supported by <a href="https://www.vliruos.be">VLIR-UOS</a> and the <a href="https://www.itg.be/en">Institute of Tropical Medicine</a>.</p>
-</section>
-<section id="license" class="level1 unnumbered">
-<h1 class="unnumbered">License</h1>
-<p>This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>, which means that you are free to copy, redistribute or adapt any of its contents, provided that you <strong>do</strong> reference us (see <a href="...">citation information below</a>) and the original license, <strong>do</strong> indicate if modifications were made, <strong>do</strong> distribute those contributions under the same license and <strong>do not</strong> use the material for commercial purposes.</p>
+<section id="summary" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">8.4</span> Summary</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Overview of concepts and commands
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Variables can be assigned via <code>name=value</code> and referenced via <code>${name}</code></li>
+<li>For loops are used to iterate over a list of items</li>
+</ul>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -661,10 +759,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../../content/unix/7-unix-redirection.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Streams, redirection and piping</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./content/intro.html" class="pagination-link">
-        <span class="nav-page-text">Introduction</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/r/r-intro.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R introduction</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -25,6 +25,8 @@ There are two types of file paths: _absolute_ and _relative_ paths.
 
 ![Overview of the Unix file system or directory layout](../assets/unix-file-system.png)
 
+### Home sweet home: `~`
+
 Another important location is the _home_ directory. In general, every user has their own home directory, found in `/home/username`. A frequently used shortcut for this is the tilde symbol (`~`). Depending on the current user, this will refer to a particular directory under `/home/.`.
 
 ::: {.callout-tip collapse="true"}
@@ -35,15 +37,15 @@ Another important location is the _home_ directory. In general, every user has t
 ```
 :::
 
+### Where am I? `.` shortcuts
 
-Lastly, the dot (`.`) also has an important function in file paths:
+The dot (`.`) also has an important function in file paths:
 
 - `.` represents the directory you are currently in, i.e. the working directory.
   - E.g., while inside the `projects` directory, any files inside can be accessed using either `filename` or `./filename`.
 - `..` represents the parent directory of the working directory.
   - E.g., from `/home/user1/Desktop`, the relative path to file `document.txt` can be written as `../projects/document.txt`.
   - These expressions can be nested; while inside the `projects` directory, `../../user2` can be used to access the `user2` home directory.
-
 
 ## Moving around the file system
 

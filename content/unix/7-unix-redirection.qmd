@@ -174,6 +174,38 @@ c
 `sort` will sort the file alphabetically, which results in all duplicates on consecutive lines. If we then pipe this output into `uniq`, all duplicates will be removed.
 :::
 
+Here is another example of how to use pipes, this time applied to the SAM files that we saw earlier. SAM files sometimes contain a few lines of additional information - called the header and starting with an `@` symbol - before the start of the tab-delimited alignments (1 read per line). If we were to use the `cut` command to extract a particular column from such a file, the first few lines matching the header would cause problems, because these lines do not correspond to the tabular structure of the rest of the file.
+
+
+::: {.callout-tip collapse="true"}
+## How can we use a pipe to only apply the `cut -f10` command to only the lines after the header? (Click me to expand!)
+
+```bash
+# count the number of lines in the header
+$ grep -c "@" alignment-with.header.sam
+2
+
+# use tail -n +3 to print the output of the file starting
+# the 3rd line, then pipe this output into the cut command
+$ tail -n +3 alignment-with-header.sam | cut -f10
+TTAGATAAAGAGGATACTG
+AAAAGATAAGGGATAAA
+AGCTAA
+ATAGCTCTCAGC
+TAGGC
+CAGCGCCAT
+aggttttataaaacaaataa
+ggttttataaaacaaataatt
+ttataaaacAAATaattaagtctaca
+CaaaTaattaagtctacagagcaac
+aaTaattaagtctacagagcaact
+Taattaagtctacagagcaacta
+```
+
+We use the `tail` command to first extract the parts of the file that we are interested in, and then feed this output into the `cut` command to select a particular column (in this case, the 10th column corresponds to the sequence).
+
+:::
+
 As a final tip on the usages of piping, consider that you can pipe the output of any command to `| less`. This is extremely convenient whenever the output of a particular command is too long and does not fit on your terminal screen. Of course, in some situations you are probably better of storing the output in a file using a stdout `>` redirection.
 
 ## Further reading

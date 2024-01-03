@@ -63,6 +63,8 @@ $ less Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa
 - Use the help command for more info: `less --help`
 :::
 
+#### FASTA file format
+
 ::: {.callout-tip}
 ## DNA sequence file formats: FASTA
 
@@ -70,7 +72,21 @@ The FASTA file format (usually denoted by a `.fa` or `.fasta` file extension) is
 
 FASTA files are a type of text-based or _plain text files_, meaning that we can simply read them using a tool like `cat` or `less`. This seems obvious, but we will later encounter another file type, namely _binary files_, where this is not the case.
 
- We will learn more about these DNA sequence file formats in a later chapter. For the time being, it is enough to know that both of these files are usually very large and that they are commonly used in genomics.
+FASTA files are commonly used in genomics to store the reference genome of the organism we are studying. A reference genome can be used as a template to which we map (or align) new DNA sequence reads we have generated.
+
+```
+>Pf3D7_01_v3 | organism=Plasmodium_falciparum_3D7 | version=2020-09-01 | length=640851 | SO=chromosome
+TGAACCCTAAAACCTAAACCCTAAACCCTAAACCCTGAACCCTAAACCCTGAACCCTAAA
+CCCTAAACCCTGAACCCTAAACCCTAAACCCTGAACCCTAAACCCTGAAACCTAAACCCT
+GAACCCTAAACCCTGAACCCTGAACCCTAACCCTAAACCCTAAACCTAAAACCCTGAACC
+CTAAACCCTGAACCCTGAACCCTAAACCCTGAACCCTAAACCCTAAACCCTGAACCCTAA
+ACCCTGAACCCTAAACCCTAAACCCTGAACCCTGAACCCTAAAACCTAAACCCTAAACCC
+TAAACCCTAAACCCTGAACCTAAACCTAAAACCTAAAACCTAAAACCCTGAACCCTTACT
+TTTCATTTCTTCTTCTTATCTTCTTACTTTTCATTCTTTACTCTTACTTACTTAGTCTTA
+CTTACTTACTCTTACTTACTTACTCTTATCTTCTTACTTTTCATTTCTTAGTCTTACTTA
+...
+```
+
 :::
 
 ### `head` and `tail`: viewing the start or end of files
@@ -101,10 +117,12 @@ GAAAAAGGAAGAGAATTGAACTTTTGGCAGCAAACTCAAACATTATAAGTGAAATTAAGATGCCCAAGTCTGTGCTCAAT
 CGTTAAAATCTTGCTCCTCATCACTACTAACCTTTTGTTCATTCTCATCACAAATATTATCCTTATCTTCATTATCTACTTCATCTACATTATTTTTTAT
 ```
 
+#### FASTQ file format
+
 ::: {.callout-tip}
 ## DNA sequence file formats: FASTQ
 
-Aside from FASTA files, another typical DNA sequence format is FASTQ (extension `.fastq` or `.fq`), which is used to store the raw output of high-throughput sequencing in the form of short read fragments. Like FASTA, it is text-based format, but instead of just identifiers and sequences, it also contains quality scores associated with each nucleotide. Each read is described by four lines of text. A single read might look like this:
+Aside from FASTA files, another typical DNA sequence format is FASTQ (extension `.fastq` or `.fq`), which is used to store the raw output of high-throughput sequencing (like AmpliSeq) in the form of short read fragments. Like FASTA, it is text-based format, but instead of just identifiers and sequences, it also contains quality scores associated with each nucleotide. Each read is described by four lines of text. A single read might look like this:
 
 ```
 @SEQ_ID

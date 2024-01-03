@@ -51,6 +51,7 @@ book:
       - content/unix/5-unix-files-and-dirs.qmd
       - content/unix/6-unix-more-commands.qmd
       - content/unix/7-unix-redirection.qmd
+      - content/unix/8-unix-variables-loops-scripts.qmd
     - part: "R basics"
       chapters:
         - content/r/r-intro.qmd
@@ -119,7 +120,7 @@ book:
 #   hypothesis: true
 
 toc: true
-# toc-depth: 3
+toc-depth: 4
 toc-expand: true
 # toc-location: left
 number-sections: true
