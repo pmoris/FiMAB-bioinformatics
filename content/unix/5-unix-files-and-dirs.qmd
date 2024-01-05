@@ -117,7 +117,7 @@ GAAAAAGGAAGAGAATTGAACTTTTGGCAGCAAACTCAAACATTATAAGTGAAATTAAGATGCCCAAGTCTGTGCTCAAT
 CGTTAAAATCTTGCTCCTCATCACTACTAACCTTTTGTTCATTCTCATCACAAATATTATCCTTATCTTCATTATCTACTTCATCTACATTATTTTTTAT
 ```
 
-#### FASTQ file format
+#### FASTQ file format {#sec-fastq}
 
 ::: {.callout-tip}
 ## DNA sequence file formats: FASTQ
@@ -137,6 +137,8 @@ ACTACTAGGATTGAGGACGTCCTCCCAACAGGGAGTTGGTTGGGCGCCCGGTGCCGTCATGTCCGATCGCTATCTACGTC
 |     2       |     The sequence of nucleotides making up the read    |
 |     3       |     Always begins with a ‘+’ and sometimes repeats the identifier                                                                           |
 |     4       |     Contains a string of ASCII characters that represent the quality score for each base (i.e., it has the exact same length as line 2)    |
+
+FASTQ files often come in pairs, which are usually named the same with a slightly different suffix (e.g., `sample_1_R1.fastq` and `sample_1_R2.fastq`). These pairs are reads of the same fragment in the opposite direction. In a nutshell, paired-end sequencing is used because the additional information provided by reads being paired can help with mapping repetitive regions of the genome.
 
 <!-- There will be a more in-depth dive into FASTQ files in a later chapter of the course. -->
 :::

@@ -52,11 +52,11 @@ book:
       - content/unix/6-unix-more-commands.qmd
       - content/unix/7-unix-redirection.qmd
       - content/unix/8-unix-variables-loops-scripts.qmd
-    - part: "R basics"
-      chapters:
-        - content/r/r-intro.qmd
-        - content/r/r-continued.qmd
-    - part: "Bioinformatics file formats and tools"
+    # - part: "R basics"
+    #   chapters:
+    #     - content/r/r-intro.qmd
+    #     - content/r/r-continued.qmd
+    # - part: "Bioinformatics file formats and tools"
       # chapters:
         # - content/bioinf/bioinf-file-formats.qmd
     # - content/references.qmd

@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/r/r-continued.html" rel="prev">
+<link href="../../content/unix/8-unix-variables-loops-scripts.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -216,39 +216,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">R basics</span></a>
+ <span class="menu-text">Appendices</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/r/r-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Bioinformatics file formats and tools</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/unix/appendix-unix.html" class="sidebar-item-text sidebar-link active">
@@ -269,7 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#sec-unix-tips" id="toc-sec-unix-tips" class="nav-link active" data-scroll-target="#sec-unix-tips"><span class="header-section-number">A.1</span> Tips and hints</a></li>
   <li><a href="#sec-table-special-syntax" id="toc-sec-table-special-syntax" class="nav-link" data-scroll-target="#sec-table-special-syntax"><span class="header-section-number">A.2</span> Overview of special syntax</a></li>
-  <li><a href="#unix-path" id="toc-unix-path" class="nav-link" data-scroll-target="#unix-path"><span class="header-section-number">A.3</span> What is <code>$PATH</code>?</a></li>
+  <li><a href="#sec-unix-path" id="toc-sec-unix-path" class="nav-link" data-scroll-target="#sec-unix-path"><span class="header-section-number">A.3</span> What is <code>$PATH</code>?</a></li>
   <li><a href="#sec-permissions" id="toc-sec-permissions" class="nav-link" data-scroll-target="#sec-permissions"><span class="header-section-number">A.4</span> Dealing with file permissions</a></li>
   <li><a href="#sec-ssh" id="toc-sec-ssh" class="nav-link" data-scroll-target="#sec-ssh"><span class="header-section-number">A.5</span> Working with remote machines via SSH</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">A.6</span> Further reading</a></li>
@@ -510,8 +483,8 @@ Make your scripts easier to read by using comments and breaking up long lines
 </tbody>
 </table>
 </section>
-<section id="unix-path" class="level2" data-number="A.3">
-<h2 data-number="A.3" class="anchored" data-anchor-id="unix-path"><span class="header-section-number">A.3</span> What is <code>$PATH</code>?</h2>
+<section id="sec-unix-path" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="sec-unix-path"><span class="header-section-number">A.3</span> What is <code>$PATH</code>?</h2>
 <p>The <code>$PATH</code> is a way of letting your computer know where specific tools or other special locations are stored on your file system. Unless you tell it explicitly, it won’t know where to find any new software you install. Fortunately, most methods of installing software automatically take care of this for you, but every now and then you will need to manually add things to your <code>$PATH</code>. If you don’t, you will be greeted by messages like <code>Command 'python' not found, did you mean:</code>.</p>
 <p>The <code>$PATH</code> is nothing more than a list of locations on your computer. Everything that is found in those locations, will become available to use directly on the CLI without having to type out its full location. Even the basic Unix commands, like <code>ls</code> and <code>cd</code> are only known to your shell because they are in a location that is indexed by your path.</p>
 <p>In the following example, we will demonstrate how you can add a custom directory with scripts to your <code>$PATH</code>, making them callable from anywhere.</p>
@@ -919,8 +892,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/r/r-continued.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span>
+      <a href="../../content/unix/8-unix-variables-loops-scripts.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Variables, loops and scripts</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

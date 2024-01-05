@@ -1,6 +1,6 @@
 # Setting up your own Unix shell
 
-In order to get started, you need to get access to a Unix environment of your own. You can either work [locally](#local-unix-environment) on your own computer or you can use the [online environment](#online-linux-environment) that we have created. The latter comes with a `bash` shell and will immediately give you access to a bunch of files that we will use throughout the course and exercises. 
+In order to get started, you need to get access to a Unix environment of your own. You can either work [locally](#local-unix-environment) on your own computer or you can use the [online environment](#online-linux-environment) that we have created. The latter comes with a `bash` shell and will immediately give you access to a bunch of files that we will use throughout the course and exercises.
 
 There are also online playgrounds/simulations available to try out the Unix shell, for example [https://sandbox.bio/playground](https://sandbox.bio/playground). These are great to learn and we highly recommend checking out some of the tutorials on there, but the downside of course is that they are not true true environments and you cannot interact with your own files. You can use this site to follow along while learning some of the basic unix commands, but you will need to switch to a different option for the exercises eventually.
 
@@ -9,24 +9,6 @@ There are also online playgrounds/simulations available to try out the Unix shel
 We have provided two different options for getting access to an online unix environment: through [Binder](https://mybinder.org/) (free, but less powerful) or through [GitHub Codespaces](https://github.com/features/codespaces) (free for 60 hours per month).
 
 Both options will launch an environment containing all relevant training files, based on [this GitHub repository](https://github.com/pmoris/FiMAB-bioinformatics).
-
-### Binder
-
-To access the remote `bash` shell, browse to [https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD](https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD) and wait for the launcher to start. This process can take quite a while, so be patient.
-
-![Launching the Binder environment](../assets/binder-launching.png)
-
-Eventually, you should be greeted by a screen (Jupyter Lab) with a number of launchers. Simply select the one labelled "Terminal" (a black square with a white `$`) and you should be all set.
-
-![Starting a new Bash shell](../assets/binder-terminal.png)
-
-::: {.callout-note}
-## What is Binder?
-
-Binder is a service that allows people to share a customized compute environment based on a Git repository. It is mainly aimed at sharing Jupyter Notebooks (Python), but it also supports RStudio, Shiny and fortunately for us, a plain `bash` terminal too. 
-
-You can find more info on the [Binder website](https://mybinder.readthedocs.io/en/latest/introduction.html).
-:::
 
 ### GitHub Codespaces
 
@@ -38,7 +20,7 @@ Afterwards, you can click [this link](https://github.com/codespaces/new?machine=
 
 ![Launching a new codespace](../assets/codespaces.png)
 
-Setting up the codespace can take a while, but eventually you will be greeted by a VSCode environment. The terminal is accessible at the bottom (or by pressing the hamburger icon in the top left and selecting "new terminal").
+Setting up the codespace can take a while, but eventually you will be greeted by a VSCode environment. The terminal (a `bash` shell) is accessible at the bottom (or by pressing the hamburger icon in the top left and selecting "new terminal"). This is where you will be able to run the Unix commands introduced in the next chapters.
 
 ![Terminal inside VSCode editor in GitHub Codespace](../assets/codespaces-terminal.png)
 
@@ -47,7 +29,7 @@ You will only receive 60 hours of free usage of Codespaces per month. This means
 ::: {.callout-note}
 ## What are GitHub and `git`?
 
-GitHub is a place to host code and software via a tool named `git`, which is a _version control system_. It allows you to keep track of the history of your code, easily revert changes and allows for collaborating with multiple people on the same project. We will not go into further detail on using version control, but for now just remember that it can play an important role in scientific reproducibility. 
+GitHub is a place to host code and software via a tool named `git`, which is a _version control system_. It allows you to keep track of the history of your code, easily revert changes and allows for collaborating with multiple people on the same project. We will not go into further detail on using version control, but for now just remember that it can play an important role in scientific reproducibility.
 
 If you want to learn more about `git` already, you can have a look at the following resources:
 
@@ -64,6 +46,26 @@ Similar to Binder, Codespaces are development environments that are hosted in th
 You can find more info in the [GitHub Codespaces docs](https://docs.github.com/en/codespaces/overview).
 :::
 
+### Binder
+
+As an alternative to CodeSpaces, we have also created a Binder environment. It will operate similar to CodeSpaces and provide you with an online environment containing all of the required files as well as a Unix shell (`bash`).
+
+::: {.callout-note}
+## What is Binder?
+
+Binder is a service that allows people to share a customized compute environment based on a Git repository. It is mainly aimed at sharing Jupyter Notebooks (Python), but it also supports RStudio, Shiny and fortunately for us, a plain `bash` terminal too.
+
+You can find more info on the [Binder website](https://mybinder.readthedocs.io/en/latest/introduction.html).
+:::
+
+To access the remote `bash` shell on Binder, browse to [https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD](https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD) and wait for the launcher to start. This process can take quite a while, so be patient.
+
+![Launching the Binder environment](../assets/binder-launching.png)
+
+Eventually, you should be greeted by a screen (Jupyter Lab) with a number of launchers. Simply select the one labelled "Terminal" (a black square with a white `$`) and you should be all set.
+
+![Starting a new Bash shell](../assets/binder-terminal.png)
+
 ## Local Unix environment
 
 If you are using MacOS or Linux, then you will already have access to a Unix shell (either `bash` or `zsh`, which will mostly behave identical for our purposes). To access it, simply search for a program called `Terminal` (or search for anything resembling "command", "prompt" or "shell").
@@ -75,8 +77,8 @@ In case you are using a Windows machine, things are slightly more complex and di
 Regardless of what type of local Unix environment you use, you will need to download the files that we will be using in our examples and exercises. You can do this directly on the command line or by manually downloading the files in the correct location.
 
 1. Open your terminal and `cd` to a location where you want to place the training files.
-2. Enter the command `git clone https://github.com/pmoris/FiMAB-bioinformatics.git`. 
-3. Afterwards, a new directory named `FiMAB-bioinformatics` will have been created. 
+2. Enter the command `git clone https://github.com/pmoris/FiMAB-bioinformatics.git`.
+3. Afterwards, a new directory named `FiMAB-bioinformatics` will have been created.
 
 It should look similar to this:
 
@@ -90,7 +92,7 @@ remote: Total 7 (delta 0), reused 7 (delta 0), pack-reused 0
 Receiving objects: 100% (7/7), done.
 ```
 
-Alternatively, 
+Alternatively,
 
 1. Browse to [https://codeload.github.com/pmoris/FiMAB-bioinformatics/zip/refs/heads/main](https://codeload.github.com/pmoris/FiMAB-bioinformatics/zip/refs/heads/main)
 2. Save the `.zip` file in a directory accessible by your Unix environment. For Windows/WSL, the easiest option is to choose the Linux file system (e.g., `\\wsl.localhost\Ubuntu\home\pmoris`), which is accessible by clicking the Linux/WSL entry in your explorer.
@@ -119,7 +121,7 @@ WSL 2 is the newer version of WSL 1. For most tasks, WSL 2 tends to be much fast
 
 You can switch between WSL1 and WSL2 on the fly by just calling `wsl --set-version <distro_name> 2` (or 1) in PowerShell, so feel free to experiment for yourself.
 
-For a full overview of the differences, check out: [https://docs.microsoft.com/en-us/windows/wsl/compare-versions](https://docs.microsoft.com/en-us/windows/wsl/compare-versions). 
+For a full overview of the differences, check out: [https://docs.microsoft.com/en-us/windows/wsl/compare-versions](https://docs.microsoft.com/en-us/windows/wsl/compare-versions).
 :::
 
 #### Configuring WSL
@@ -130,7 +132,7 @@ Microsoft also provides an excellent tutorial on setting up your WLS environment
 
 After installing WSL and a Linux distribution, you will have access to it via its own built-in terminal emulator. It should be located in your Windows Start Menu with a name corresponding to the distribution that you installed, e.g. `Ubuntu 20.04 LTS`, or simply `wsl`.
 
-The first time you run WSL, you will need to setup a Linux username and password. Note that while you are entering a password, nothing will appear on the screen, but this is intended (blind typing). The username will determine, among other things, the name of your home folder, whereas the password will grant you administrator rights (referred to as super users or admins in Linux land; the `sudo` command is used to invoke these rights). 
+The first time you run WSL, you will need to setup a Linux username and password. Note that while you are entering a password, nothing will appear on the screen, but this is intended (blind typing). The username will determine, among other things, the name of your home folder, whereas the password will grant you administrator rights (referred to as super users or admins in Linux land; the `sudo` command is used to invoke these rights).
 
 You will also need to upgrade the packages by running the following command: `sudo apt update && sudo apt upgrade`, followed by your password.
 
@@ -142,7 +144,7 @@ For more information, check the [docs](https://learn.microsoft.com/en-us/windows
 Some of the information below might be a bit confusing at this point, but things should become more clear after working your way through the Unix section of this course.
 :::
 
-Newer versions of WSL will automatically add a shortcut to the WSL file system in your Windows File Explorer (look for Tux, Linux' penguin mascot). The file path will look similar to `\\wsl$\Ubuntu\home\<user name>\Project`, indicating that Windows treats the WSL file system as a sort of network drive. You can also open a file location in Windows File Explorer from within a WSL terminal (e.g. after you browse to a particular directory `cd ~/my-project`) by simply using the command `explorer.exe .` (don't forget the dot!). 
+Newer versions of WSL will automatically add a shortcut to the WSL file system in your Windows File Explorer (look for Tux, Linux' penguin mascot). The file path will look similar to `\\wsl$\Ubuntu\home\<user name>\Project`, indicating that Windows treats the WSL file system as a sort of network drive. You can also open a file location in Windows File Explorer from within a WSL terminal (e.g. after you browse to a particular directory `cd ~/my-project`) by simply using the command `explorer.exe .` (don't forget the dot!).
 
 Vice versa, you can also access the Windows file system from within WSL because it is mounted under `/mnt/c`. So, you could for example do something like `cp /mnt/c/Users/<user name>/Downloads/file-downloaded-via-webbrowser ~/projects/filename`.
 

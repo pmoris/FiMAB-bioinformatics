@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/r/r-intro.html" rel="next">
+<link href="../../content/unix/appendix-unix.html" rel="next">
 <link href="../../content/unix/7-unix-redirection.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -217,39 +217,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">R basics</span></a>
+ <span class="menu-text">Appendices</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/r/r-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Bioinformatics file formats and tools</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/unix/appendix-unix.html" class="sidebar-item-text sidebar-link">
@@ -270,8 +243,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#variables" id="toc-variables" class="nav-link active" data-scroll-target="#variables"><span class="header-section-number">8.1</span> Variables</a></li>
   <li><a href="#loops" id="toc-loops" class="nav-link" data-scroll-target="#loops"><span class="header-section-number">8.2</span> Loops</a></li>
-  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts"><span class="header-section-number">8.3</span> Scripts</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">8.4</span> Summary</a></li>
+  <li><a href="#shell-scripts" id="toc-shell-scripts" class="nav-link" data-scroll-target="#shell-scripts"><span class="header-section-number">8.3</span> Shell scripts</a>
+  <ul>
+  <li><a href="#creating-a-bash-script" id="toc-creating-a-bash-script" class="nav-link" data-scroll-target="#creating-a-bash-script"><span class="header-section-number">8.3.1</span> Creating a bash script</a></li>
+  <li><a href="#running-scripts" id="toc-running-scripts" class="nav-link" data-scroll-target="#running-scripts"><span class="header-section-number">8.3.2</span> Running scripts</a></li>
+  <li><a href="#making-scripts-executable" id="toc-making-scripts-executable" class="nav-link" data-scroll-target="#making-scripts-executable"><span class="header-section-number">8.3.3</span> Making scripts executable</a></li>
+  </ul></li>
+  <li><a href="#overview-of-variant-calling-pipeline" id="toc-overview-of-variant-calling-pipeline" class="nav-link" data-scroll-target="#overview-of-variant-calling-pipeline"><span class="header-section-number">8.4</span> Overview of variant calling pipeline</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.5</span> Exercises</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">8.6</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -323,7 +303,7 @@ Tip
 <p>Loops provide a powerful method of repeating a set of operations multiple times. They are integral to automation and being able to process large numbers of samples in bioinformatics pipelines, but also very convenient for performing other tasks like renaming a bunch of files. The idea is a bit similar to the concept of globbing, but loops offer a lot more flexibility and control over the process.</p>
 <p>The most common type of loops are probably <em>for loops</em>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> for nucleotide in A C T G <span class="dt">\</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> do echo <span class="va">${nucleotide}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> do echo <span class="va">${nucleotide}</span> <span class="dt">\</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> done</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">A</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">C</span></span>
@@ -337,11 +317,11 @@ Tip
 <li><code>do echo $i</code>: this is the body of the loop. It always starts with <code>do</code> and is then followed by one or more commands. In the body, you can make use of the loop variable <code>$nucleotide</code>.</li>
 <li><code>done</code>: this notifies bash that the body and loop definition end here.</li>
 </ol></li>
-<li>This is the first time that we see a multi-line bash command. We could have just as well written this statement on a single line (<code>for i in a c t g; do echo $i; done</code>), using colons (<code>;</code>) to mark the end of each section of the loop.</li>
+<li>This is the first time that we see a multi-line bash command, where we split across new lines using a backslash symbol (<code>\</code>). We could have just as well written this statement on a single line (<code>for i in a c t g; do echo $i; done</code>), using colons (<code>;</code>) to mark the end of each section of the loop.</li>
 </ul>
 <p>Instead of looping over a set of words, we can also loop over a range of values:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> for i in <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">3</span><span class="dt">}</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> do <span class="bu">echo</span> <span class="va">${i}</span> <span class="op">&gt;&gt;</span> loop.txt</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> for i in <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">3</span><span class="dt">}</span> <span class="dt">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> do echo <span class="va">${i}</span> <span class="op">&gt;&gt;</span> loop.txt <span class="dt">\</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> done</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat for_loop.txt</span>
@@ -369,8 +349,22 @@ As a reminder, what would have happened if we had used <code>&gt;</code> instead
 </div>
 </div>
 </div>
-<p>Let us consider another example of a for loop. Suppose we have a directory with a bunch of</p>
-<p>Note that the indentation that we used is not strictly necessary for loops to work, but it does help with legibility and it is common practice to do this, especially in scripts.</p>
+<p>Another common for loop pattern is the following one, which is used to loop over a set of files. It combines the for loop syntax with glob patterns (<a href="5-unix-files-and-dirs.html#sec-globbing"><span>Section&nbsp;5.3.2</span></a>):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls ./directory</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sample_1_R1.fastq</span>   sample_1_R2.fastq   text_file.txt</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> for fq in ./directory/<span class="pp">*</span>.fastq<span class="kw">;</span> <span class="cf">do</span> <span class="fu">wc</span> <span class="at">-l</span> <span class="va">${fq}</span><span class="kw">;</span> <span class="fu">du</span> <span class="at">-h</span> <span class="va">${fq}</span><span class="kw">;</span> <span class="cf">done</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">582940</span> ./directory/sample_1_R1.fastq</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">67M</span>     ./directory/sample_1_R1.fastq</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">462334</span> ./directory/sample_1_R2.fastq</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">54M</span>     ./directory/sample_1_R2.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>There are a few important things to note here:</p>
+<ol type="1">
+<li>The glob pattern <code>./directory/*.fastq</code> will be expanded by the shell to a list of all files ending with <code>.fastq</code>. Consequently, the for loop will only iterate of the FASTQ files and the <code>.txt</code> file is ignored.</li>
+<li>Inside the execution statement of the loop, the current file is referred to via the variable <code>${fq}</code>.</li>
+<li>We used a semicolon (<code>;</code>) to write the loop statement on a single line.</li>
+<li>Unlike the previous example, the body of this for loop contains multiple commands: first the filename is printed to the screen using <code>echo</code>, then the number of lines in the file is printed to the screen.</li>
+</ol>
 <hr>
 <p>Loops, combined with scripting, are incredibly useful when performing more advanced operations, like performing the bioinformatics analysis of DNA sequencing reads. For example, to process the DNA reads generated by an AmpliSeq assay and identify the genetic variants (variant calling analysis), the following steps would be performed by looping over the FASTQ file corresponding to each sample:</p>
 <pre><code>for every FASTQ file:
@@ -380,13 +374,196 @@ As a reminder, what would have happened if we had used <code>&gt;</code> instead
 <hr>
 <p>There actually exists another type of loop, namely the <em>while loop</em>. These behave similar, but instead of going through a list of items or a range of numbers, the loop will continue for as long as a certain condition is met. You can find more information <a href="https://pressbooks.senecacollege.ca/uli101/chapter/while-loop-in-bash/">here</a> in case you are interested.</p>
 </section>
-<section id="scripts" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="scripts"><span class="header-section-number">8.3</span> Scripts</h2>
+<section id="shell-scripts" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="shell-scripts"><span class="header-section-number">8.3</span> Shell scripts</h2>
+<p>All the topics that we have covered so far, were performed interactively on the command line. However, we can also write scripts that contain multiple commands, loops and variables, which we can then execute in one go. That way, you can queue up a bunch of long-running processes and don’t need to stick around to start up each next step in the process. Moreover, it allows you to reuse the same set of operations in the future. Scripts can even be written in such a way that they can be called using different options, similar to how we can provide different optional arguments to <code>bash</code> commands.</p>
+<section id="creating-a-bash-script" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="creating-a-bash-script"><span class="header-section-number">8.3.1</span> Creating a bash script</h3>
+<p>Bash scripts are nothing more than executable text files containing <code>bash</code> commands. We can write bash scripts in any type of text editor (like notepad or VS Code), but we can also do it directly on the command line, by making use of an editor like <code>nano</code> or <code>vim</code>.</p>
+<p>The only requirements for bash scripts is that the first line contains a shebang directive, like <code>#!/usr/bin/env bash</code>. When the script is executed, this line tells your machine to run the script using the <code>bash</code> interpreter (i.e., that it is a <code>bash</code> script and needs to be treated accordingly).</p>
+<p>By convention, shell scripts are saved with the <code>.sh</code> extension.</p>
 </section>
-<section id="summary" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">8.4</span> Summary</h2>
+<section id="running-scripts" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="running-scripts"><span class="header-section-number">8.3.2</span> Running scripts</h3>
+<p>A very simple script might look a bit like this:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"My first script!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Inside a script, you can use any valid <code>bash</code> statement that would work on the command line. This includes all the commands we introduced up until now, structures like for loops, output redirection, pipes, etc.</p>
+<p>To run a bash script, you can simply execute the <code>bash</code> command and point it to a script. If we save the two lines above to <code>script.sh</code> file and then executing it by running <code>bash script.sh</code>, the single command inside of it will be executed and printed to the screen:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> bash script.sh</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">My</span> first script!</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Below is a slightly more complex example script:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This is an example script."</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The script was executed from the directory: "</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># this is a comment</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Running a for loop"</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">5</span><span class="dt">}</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">do</span> <span class="bu">echo</span> i</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This is a grep command"</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co"># long commands can be split over multiple lines</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co"># this grep command counts the number of times "tttataaaaaaac"</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co"># occurs in the current directory and all of its subdirectories</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co"># while ignoring case</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-i</span> <span class="dt">\</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">-r</span> <span class="dt">\</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"tttataaaaaaac"</span> <span class="dt">\</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that the indentation that we used is not strictly necessary for loops to work, but it does help with legibility and it is common practice to do this, especially in scripts.</p>
+<p>You can use hashes (“#”) to comment out a line. Use this to describe what your code is doing. Your future you will be grateful!</p>
+<p>You can also use backslash (“”) to split a long command over multiple lines, making it easier to read your script. E.g., for listing <code>-options</code> on consecutive lines.</p>
+</div>
+</div>
+<p>If we save and run the script above, we get the following output.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">This</span> is an example script.</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">The</span> script was executed from the directory:</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/pmoris/itg/FiMAB-bioinformatics/training/unix-demo</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">This</span> is a for loop</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">i</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">i</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="ex">i</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ex">i</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="ex">i</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ex">This</span> is a grep command</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="ex">./PF0512_S47_L001_R1_001.fastq:CTAACTACAATGAAGACAAAAATATTATGTATATGTACCCAAATGAACCAAATTATAAGGATTCCAAAAAAGTATTATCTCAAAAAAAAAAAAAAAAAATCCACCATACATCATTTTCATCGTATTAATTCCCATGGACCACCTACACATGTGCAATTTATAAAAAAACAACAATCCCACTATCTCTAATACACATCTCCGAACCCACGAGACGCCGGACAATACCGTTTGCCAGCTCCCCGTACAATAAACCAATACTAAGATCATTGCCTCACTCTGAATCGCAGAACTCTGACGTATA</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ex">./PF0512_S47_L001_R1_001.fastq:CTAACTACAATGAAGACAAAAATATTATGTATATGTACCCAAATGAACCAAATTATAAGGATTCCAAAAAAGTATTATCTCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATTAAAAAAAAAAAATAAAAAAAAAAAAAATAAAAAAAAAAAAAAAAAAAAAAAAAATAAAAAAAAAAAAATAAAAAAAAAAAAAAAAAAAAAACAAAAACACAACAAAAACAAAAAATAAAATATATATTTATAAAAAAACAAAAAAAAGAAAACAACACAGACACTCAAACAACAACACACCA</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="ex">./Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa:TGAGATTGGATTTTTAAACATTAATATGGCGTGTTACATTTATAAAAAAACCCCAAAGAT</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="ex">./my_script.sh:#</span> this grep command counts the number of times <span class="st">"tttataaaaaaac"</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="ex">./my_script.sh:</span> <span class="st">"tttataaaaaaac"</span> <span class="dt">\</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>Exiting script</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Can you spot what is wrong with this script? (Click me to expand!)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The output of the for loop section of the script is five lines of the character “i”, which is not what we wanted. The problem is that inside of the body of the for loop, we used the character “i”, instead of referencing the for loop variable using <code>${i}</code>.</p>
+</div>
+</div>
+</div>
+<p>Lastly, note that not all scripts are <code>bash</code> scripts, you can also create R, Python or other types of scripts.</p>
+</section>
+<section id="making-scripts-executable" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="making-scripts-executable"><span class="header-section-number">8.3.3</span> Making scripts executable</h3>
+<p>In the previous examples we ran scripts by invoking them using the <code>bash</code> command. However, we can also make the file <em>executable</em> by using the <code>chmod</code> command. Once a file has been marked as executable for a given user, it can be run by simply typing the file name, without any other command in front.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> my_script.sh</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span> 1 pmoris pmoris 488 Jan  4 14:35 my_script.sh</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> chmod +x my_script.sh</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> my_script.sh</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">-rwxr-xr-x</span> 1 pmoris pmoris 488 Jan  4 14:35 my_script.sh</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> my_script.sh</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>script <span class="ex">output</span><span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can read more about file permissions in <a href="appendix-unix.html#sec-permissions"><span>Section&nbsp;A.4</span></a>.</p>
+</section>
+</section>
+<section id="overview-of-variant-calling-pipeline" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="overview-of-variant-calling-pipeline"><span class="header-section-number">8.4</span> Overview of variant calling pipeline</h2>
+<p>The chart below provides a high-level overview of the steps involved in a basic variant calling pipeline. Throughout the course, we have already introduced some of the file formats that are used (green). We will explore these steps and the associated tools, in more detail during the in-person courses later on.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/pipeline.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Variant calling pipeline</figcaption>
+</figure>
+</div>
+<p>For now though, we have included a few example scripts that run through the above steps, to showcase how the building blocks that we have learned so far can be used to orchestrate a more complex analysis.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Inspect the scripts stored in <code>./training/scripts</code> and try to make sense of the general steps that they describe. You can gloss over the specifics of what the specialized commands like <code>fastqc</code> or <code>bwa mem</code> do; instead, try to focus on the general structure and syntax of the scripts, the use of patterns like for loops, directory navigation, how arguments are provided to commands, etc.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What does the following line do? <code>sample_name=$(basename ${read_1} _1.fastq.gz)</code> <br> Hint: <code>$(command)</code> provided a method to run a command inside another statement, so try figuring out what the command between the brackets does first.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This line is present in most of the example scripts inside of a for loop that iterates over a set of FASTQ files, each time processing a pair of <code>R1/R2</code> files.</p>
+<pre><code># first navigate to the directory containing fastq files
+cd ./training/data/fastq/
+
+# loop over pairs of fastq files
+for read_1 in *_R1_001.fastq.gz
+do
+    sample_name=$(basename ${read_1} _R1_001.fastq.gz)
+...</code></pre>
+<p>During each iteration of the loop <code>${read_1}</code> will correspond to the file path of a specific FASTQ file.</p>
+<p>When we call <code>basename</code> on it with the extra argument <code>_R1_001.fastq.gz</code>, we will receive back the name of the file with that suffix removed. E.g.:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> basename PF0080_S44_L001_R1_001.fastq.gz _R1_001.fastq.gz</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">PF0080_S44_L001</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The last step we do is running this command inside a command substitution: <code>$(command)</code>. When using a command substitution, the output of the command inside the brackets will just be passed along to the command line. In our case, we try to assign the value <code>$(basename ${read_1} _1.fastq.gz)</code> to a new variable named <code>sample_name</code>. The value will then contain the output of its command substitution, namely <code>PF0080_S44_L001</code>.</p>
+<p>After running the above statement, we now are able to more easily construct the name of the first and second read pair:</p>
+<pre><code>$ echo ${read_1} ${sample_name}_R2_001.fastq.gz
+PF0080_S44_L001_R1_001.fastq.gz PF0080_S44_L001_R2_001.fastq.gz
+</code></pre>
+<p>The first read we already had, but to create the second one we concatenate the sample name with the new suffix <code>_R2_001.fastq.gz</code>.</p>
+<p>Paired sequence data is usually named in such a way that it allows to access pairs of files in this way.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.5</span> Exercises</h2>
+<ol type="1">
+<li>Create a for loop over the files in <code>./training/unix-demo/files_to_loop_through</code> that prints the first line of each file to the screen.</li>
+<li>Create a bash script that does the same thing.</li>
+<li>On a single-line, run the script, but sort its output in reverse order (check <code>sort --help</code> to check how) and store the new output in a file called <code>loop_sort.txt</code>.</li>
+<li>Create a bash script with a for loop that prints the name of each read file in the <code>./training/data/fastq</code> directory.</li>
+<li>Modify the previous bash script so that it also creates a single new directory named <code>fastq_meta</code> and create a new file in that directory, one for each FASTQ file, which contains two lines: the first with the number of lines in the FASTQ file and the second with its file size.</li>
+<li>Create a bash script with a for loop that prints the sample name for each pair of reads in the <code>./training/data/fastq</code> directory (i.e., half as many names as in the previous exercise). Create a bash script that:
+<ul>
+<li>Counts the number of header lines in <code>./training/unix-demo/ampliseq-variants.vcf</code> and store this number as a variable.</li>
+<li>Extract the contents of the VCF file after the header lines (i.e., the tabular section) and store it in a separate file.</li>
+<li>Create a for loop to extract the first eight columns and store them each in a separate file named <code>vcf_column_#.txt</code> (where <code>#</code> is the column number).</li>
+</ul></li>
+</ol>
+</section>
+<section id="summary" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">8.6</span> Summary</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -395,11 +572,13 @@ Overview of concepts and commands
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Variables can be assigned via <code>name=value</code> and referenced via <code>${name}</code></li>
-<li>For loops are used to iterate over a list of items</li>
+<li>For loops are used to iterate over a list of items or files</li>
+<li>Scripts can be used to combine multiple commands into a single set of instructions that can be re-used.</li>
+<li>Command substitution (<code>$(command)</code>), <code>basename</code> and for loops can be used to iterate over pairs of FASTQ files.</li>
 </ul>
 </div>
 </div>
@@ -764,8 +943,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/r/r-intro.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/unix/appendix-unix.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Various Unix topics</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

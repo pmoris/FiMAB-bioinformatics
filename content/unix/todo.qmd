@@ -1,3 +1,47 @@
+\n vs windows \r\n line endings
+-   Quote differences
+
+
+
+
+fastq files paired
+joining columns
+
+htop
+git
+
+  - comments and broken lines (https://rnnh.github.io/bioinfo-notebook/docs/cl_intro.html)
+
+-   Quote differences
+
+-   variables
+-   Positional vs named Arguments
+-   `$0 $1 + ${var}`
+-   Sudo
+-   Creating keys
+-   Environment variables and PATH
+-   Installing via apt
+-   Also installing R and packages (+ python)?
+-   Line endings
+-   Editing large files, avoiding excel, etc.
+-   File extensions
+
+TODO in 3-enter-the-shell
+
+- good to knows:
+  x- basic syntax: command -options target
+  - tab-completion
+  - names for symbols ~ | / \
+  - file/folder name conventions
+  - ctrl+c <- don't panic
+
+
+
+
+
+
+
+
 
 TODO: licensing
 
@@ -6,7 +50,7 @@ TODO: licensing
 where to introduce wild cards?
 
 
-sort 
+sort
 cut
 uniq -c
 
@@ -20,7 +64,7 @@ grep/regex: https://open.oregonstate.education/computationalbiology/chapter/patt
 
 
 
-TODO in 3-enter-the-shell 
+TODO in 3-enter-the-shell
 
 - good to knows:
   x- basic syntax: command -options target

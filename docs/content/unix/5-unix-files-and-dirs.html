@@ -233,39 +233,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">R basics</span></a>
+ <span class="menu-text">Appendices</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/r/r-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Bioinformatics file formats and tools</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/unix/appendix-unix.html" class="sidebar-item-text sidebar-link">
@@ -293,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#head-and-tail-viewing-the-start-or-end-of-files" id="toc-head-and-tail-viewing-the-start-or-end-of-files" class="nav-link" data-scroll-target="#head-and-tail-viewing-the-start-or-end-of-files"><span class="header-section-number">5.1.3</span> <code>head</code> and <code>tail</code>: viewing the start or end of files</a>
   <ul class="collapse">
-  <li><a href="#fastq-file-format" id="toc-fastq-file-format" class="nav-link" data-scroll-target="#fastq-file-format"><span class="header-section-number">5.1.3.1</span> FASTQ file format</a></li>
+  <li><a href="#sec-fastq" id="toc-sec-fastq" class="nav-link" data-scroll-target="#sec-fastq"><span class="header-section-number">5.1.3.1</span> FASTQ file format</a></li>
   </ul></li>
   <li><a href="#wc-counting-lines" id="toc-wc-counting-lines" class="nav-link" data-scroll-target="#wc-counting-lines"><span class="header-section-number">5.1.4</span> <code>wc</code>: counting lines</a></li>
   </ul></li>
@@ -509,8 +482,8 @@ CTTACTTACTCTTACTTACTTACTCTTATCTTCTTACTTTTCATTTCTTAGTCTTACTTA
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="op">-</span>@<span class="va">CCCGGGGGGGGCGFG</span>@<span class="op">&lt;</span><span class="va">EFGGGGAFFFEGGC8FEF9</span><span class="kw">,,</span>;<span class="kw">,</span><span class="va">CE</span><span class="kw">,</span><span class="va">C</span><span class="kw">,,,</span><span class="op">&lt;</span><span class="kw">,,,,</span><span class="op">&lt;</span><span class="va">C</span><span class="kw">,,,,</span><span class="op">&lt;</span><span class="kw">,,</span><span class="dv">6</span>;<span class="kw">,,,</span>;;<span class="va">C</span><span class="kw">,</span><span class="op">&lt;</span><span class="kw">,</span><span class="dv">6</span>;<span class="va">C</span><span class="kw">,,</span><span class="op">&lt;</span><span class="kw">,,</span><span class="op">:</span><span class="kw">,</span><span class="op">:</span>@<span class="kw">,</span><span class="dv">5</span><span class="kw">,</span><span class="dv">8</span><span class="op">+</span><span class="kw">,,</span><span class="dv">9</span><span class="op">:</span>@<span class="op">+:</span><span class="kw">,,</span><span class="dv">9</span><span class="kw">,</span><span class="dv">9</span><span class="kw">,</span><span class="dv">99AE?,,,959AA?,9</span><span class="kw">,,,</span><span class="dv">994</span><span class="kw">,,</span><span class="dv">9</span><span class="op">=</span><span class="kw">,</span><span class="dv">9</span><span class="op">&gt;</span><span class="va">ED</span><span class="kw">,,,</span><span class="dv">9</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>@<span class="va">M05795</span><span class="op">:</span><span class="dv">43</span><span class="op">:</span><span class="dv">000000000</span><span class="op">-</span><span class="va">CFLMP</span><span class="op">:</span><span class="dv">1</span><span class="op">:</span><span class="dv">1101</span><span class="op">:</span><span class="dv">9135</span><span class="op">:</span><span class="dv">1768</span> <span class="dv">1</span><span class="op">:</span><span class="va">N</span><span class="op">:</span><span class="dv">0</span><span class="op">:</span><span class="dv">47</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="va">CGTTAAAATCTTGCTCCTCATCACTACTAACCTTTTGTTCATTCTCATCACAAATATTATCCTTATCTTCATTATCTACTTCATCTACATTATTTTTTAT</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="fastq-file-format" class="level4" data-number="5.1.3.1">
-<h4 data-number="5.1.3.1" class="anchored" data-anchor-id="fastq-file-format"><span class="header-section-number">5.1.3.1</span> FASTQ file format</h4>
+<section id="sec-fastq" class="level4" data-number="5.1.3.1">
+<h4 data-number="5.1.3.1" class="anchored" data-anchor-id="sec-fastq"><span class="header-section-number">5.1.3.1</span> FASTQ file format</h4>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -556,6 +529,7 @@ ACTACTAGGATTGAGGACGTCCTCCCAACAGGGAGTTGGTTGGGCGCCCGGTGCCGTCATGTCCGATCGCTATCTACGTC
 </tr>
 </tbody>
 </table>
+<p>FASTQ files often come in pairs, which are usually named the same with a slightly different suffix (e.g., <code>sample_1_R1.fastq</code> and <code>sample_1_R2.fastq</code>). These pairs are reads of the same fragment in the opposite direction. In a nutshell, paired-end sequencing is used because the additional information provided by reads being paired can help with mapping repetitive regions of the genome.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -599,7 +573,7 @@ How many reads are there in this FASTQ file? (Click me to expand!)
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Each read in a FASTQ file consists of four lines (see <span class="quarto-unresolved-ref">?sec-fastq</span>). Therefore, we can simply divide the output of <code>wc -l</code> by four to figure out the number of reads. In this case: <span class="math display"> {582,940 \over 4} = 145,735</span> reads.</p>
+<p>Each read in a FASTQ file consists of four lines (see <a href="#sec-fastq"><span>Section&nbsp;5.1.3.1</span></a>). Therefore, we can simply divide the output of <code>wc -l</code> by four to figure out the number of reads. In this case: <span class="math display"> {582,940 \over 4} = 145,735</span> reads.</p>
 </div>
 </div>
 </div>

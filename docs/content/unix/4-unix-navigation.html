@@ -217,39 +217,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">R basics</span></a>
+ <span class="menu-text">Appendices</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/r/r-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Bioinformatics file formats and tools</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/unix/appendix-unix.html" class="sidebar-item-text sidebar-link">
@@ -483,7 +456,7 @@ What are hidden files?
 </div>
 <div class="callout-body-container callout-body">
 <p>Earlier, we mentioned that <code>.</code> is used to refer to the current working directory, but it actually has a second function as well. Any file or directory name that starts with a dot (like <code>/home/user1/.ssh</code>) will be hidden and not displayed by default when using <code>ls</code>, hence the need for the <code>-a</code> flag.</p>
-<p>Linux often hides system or configuration files to avoid cluttering up your (home) directory. We will not deal with hidden files directly in this course, but one of the situations where you might encounter them are when modifying your <code>.bashrc</code> file (e.g., when creating custom functions, aliases or tweaking your <code>PATH</code> <span class="quarto-unresolved-ref">?sec-unix-path</span>) or when managing SSH keys for remote server access <a href="appendix-unix.html#sec-ssh"><span>Section&nbsp;A.5</span></a>).</p>
+<p>Linux often hides system or configuration files to avoid cluttering up your (home) directory. We will not deal with hidden files directly in this course, but one of the situations where you might encounter them are when modifying your <code>.bashrc</code> file (e.g., when creating custom functions, aliases or tweaking your <code>PATH</code> <a href="appendix-unix.html#sec-unix-path"><span>Section&nbsp;A.3</span></a>) or when managing SSH keys for remote server access <a href="appendix-unix.html#sec-ssh"><span>Section&nbsp;A.5</span></a>).</p>
 </div>
 </div>
 <p>The <code>ls -l</code> command is particularly useful, because it shows all types of additional information.</p>
@@ -519,8 +492,19 @@ What do the different columns in the output of <code>ls -l</code> represent?
 <ol type="1">
 <li>Navigate to your home directory and list all the files and folders there. Try typing the path with and without using the <code>~</code>. Rely on tab-completion to assist you and avoid typos (<a href="appendix-unix.html#sec-unix-tips"><span>Section&nbsp;A.1</span></a>).</li>
 <li>Print the name of the current working directory to your screen.</li>
-<li>List the contents of the <code>training/data/fastq/</code> directory of the course files, without first moving there. Experiment with absolute and relative paths.</li>
+<li>List the contents of the <code>./training/data/fastq/</code> directory of the course files, without first moving there. Experiment with absolute and relative paths.</li>
+<li>What is the most recent modification date of the file <code>Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</code> found in the <code>./training/unix-demo/</code> directory?</li>
+<li>Try to search for the file <code>penguins.csv</code>: what is the absolute path to it on your machine?</li>
+<li>Navigate to <code>./training/data/fastq/</code> to make it your working directory (double check using <code>pwd</code>!). What is the relative path to the <code>penguins.csv</code> file from here?</li>
+<li>Suppose your working directory is still <code>./training/data/fastq/</code>. What will the result of <code>pwd</code> be after running each of the following commands in succession?</li>
 </ol>
+<ul>
+<li><code>cd ../</code></li>
+<li><code>cd ../unix-demo/</code></li>
+<li><code>cd files_to_loop_through/../../data/..</code></li>
+<li><code>cd /</code></li>
+<li><code>cd ~</code></li>
+</ul>
 <hr>
 </section>
 <section id="summary" class="level2" data-number="4.4">

@@ -100,7 +100,15 @@ grep "needle" path/to/directory_with_txt_files/*.txt
 ```
 :::
 
-We already mentioned _regular expressions_ in the previous section: they allow you to search for particular patterns that can match more than one exact string of text. This is [tremendously useful](https://xkcd.com/208/), but we will not dive into how they work during this course. If you are interested, you can check out an [excellent tutorial here](https://open.oregonstate.education/computationalbiology/chapter/patterns-regular-expressions/).
+We already mentioned _regular expressions_ in the previous section: they allow you to search for particular patterns that can match more than one exact string of text. This is [tremendously useful](https://xkcd.com/208/), but we will not dive deeply into how they work during this course. If you are interested, you can check out an [excellent tutorial here](https://open.oregonstate.education/computationalbiology/chapter/patterns-regular-expressions/).
+
+One special pattern that we will introduce is the start or end of line anchor. You can search for patterns that start at the beginning of a line by prefixing the pattern with a `^` symbol. Similarly, you can search for patterns that occur at the end of a line by using a `$` symbol. For example, if we search for `grep ">@" read.fastq` in a FASTQ file, we will only retrieve lines that start with the `@` symbol, ignoring any `@` symbols that are used elsewhere on a line.
+
+::: {.callout-warning collapse="true"}
+## The above command could still return matches that are not read headers. Why? (Click me to expand!)
+
+As we saw in @sec-fastq, every read in a FASTQ file is represented by four lines, the first of which is the header and which always starts with an `@` symbol. So far so good, but the fourth line, which contains the quality score of each base in the sequence, can also start with an `@` symbol, because `@` is just another score value that could happen to be occur for the first base in the sequence.
+:::
 
 We will see more elaborate use cases for `grep` when we introduce the Unix concepts of piping and redirection.
 
@@ -158,8 +166,9 @@ The alignment section contains a tab-delimited line for each sequence read that 
 | 10   | SEQ    | String  | segment SEQuence                       |
 | 11   | QUAL   | String  | ASCII of Phred-scaled base QUALity+33  |
 
+We will not dive into the details of each of these fields for now, but if you are interested you can check out the [official documentation](https://samtools.github.io/hts-specs/SAMv1.pdf) or this [useful write-up](https://learn.gencore.bio.nyu.edu/ngs-file-formats/sambam-format/).
 
-A typical SAM file looks like this:
+A typical SAM file will look something like this:
 
 ```
 @SQ     SN:ref  LN:45
@@ -178,6 +187,9 @@ x5      0       ref2    12      30      24M     *       0       0       aaTaatta
 x6      0       ref2    14      30      23M     *       0       0       Taattaagtctacagagcaacta ???????????????????????
 ```
 
+This example has two header lines denoting the reference genome contigs and their lengths, followed by 12 aligned reads.
+
+Now inspect the SAM file in `./training/unix-demo/PF0302_S20.sort.sam` and try to identify the different sections that make up the file.
 :::
 
 ## File sizes: `du`
@@ -247,24 +259,19 @@ A final example of a binary file that you might encounter in the bioinformatic a
 
 A BAM file is nothing more than a compressed, binary representation of a SAM file. It is used to reduce the file size of SAM files and also improve the speed of specific operations like sorting or retrieving information from the file.
 
-Many bioinformatics tools can handle BAM file natively. However, similar to the gzipped files we saw before, since these files are binary, we can no longer preview them using tools like `cat` and `less`.
+Many bioinformatics tools can handle BAM file natively. However, similar to gzipped files, BAM files are binary and we can no longer preview them using tools like `cat` and `less`.
 
-One of the tools that is often used to convert between the two types of alignment file formats is [`samtools`](https://www.htslib.org/), which is maintained by the same people .
-
-
-Further reading: CRAM
-
-VCF?
+One of the tools that is often used to convert between the two types of alignment file formats is [`samtools`](https://www.htslib.org/), which is maintained by the same group of people who manage the format specification for SAM/BAM files.
 
 :::
 
-
-
+Aside from BAM, you might also encounter the [CRAM file format](https://samtools.github.io/hts-specs/CRAMv3.pdf). This is a more recent and even more highly optimized compressed alternative for sequence alignments, but it is not as commonly used (yet).
 
 <!-- A task that is often performed in a variant calling pipeline, is the conversion of SAM files to BAM files and vice versa.
 
 Suppose we have mapped a set of reads in the FASTQ file `sample_1.fastq` to a reference genome using a read alignment tool like `bwa`, and ended up with the alignment file `sample_1.sam`. To convert it into a BAM file, we would use a tool named `samtools`. -->
 
+`samtools` is a commonly used program to manage SAM/BAM files, which we will introduce later when discussing the structure of variant calling pipelines.
 
 ## Downloading files: `wget`
 
@@ -297,6 +304,13 @@ $ pwd
 # get the file name for the reference genome we just downloaded
 $ basename data/reference/PlasmoDB-65_Pfalciparum3D7_Genome.fasta
 PlasmoDB-65_Pfalciparum3D7_Genome.fasta
+```
+
+We can also use this command to remove a particular suffix from a filename:
+
+```bash
+$ basename PF0512_S47_L001_R1_001.fastq .fastq
+PF0512_S47_L001_R1_001
 ```
 
 At this point in time, it might not seem particularly useful to be able to extract the file name of a file, but when we introduce the concept of for loops and bash scripting, it will become more clear why this can be so useful.
@@ -338,17 +352,18 @@ Of course, there exist many more Unix commands than the ones we introduced here.
 
 ## Exercises
 
-1. Visit PlasmoDB again and download the _Plasmodium vivax_ P01 reference genome sequence in FASTA format and store it in `./training/data/reference`.
+1. Visit PlasmoDB again and find the download URL for the _Plasmodium vivax_ P01 reference genome sequence in FASTA format. Download it via the command line and store it in `./training/data/reference`.
 2. Report the file size of this reference genome in MBs.
 3. Find out how many lines of text the file contains.
-4. Search through the file for the `>` character, which is used to denote every chromosome/contig.
-5. Use a single command to count the number of chromosomes.
-6. Compress the FASTQ file `PF0512_S47_L001_R1_001.fastq` in the `unix-demo` directory using `gzip`.
-7. Navigate to the directory `./training/data/fastq` and in a single command, extract the forward (`PF0097_S43_L001_R1_001.fastq.gz`) and reverse (`PF0097_S43_L001_R2_001.fastq.gz`) of the `PF0097_S43` sample, without removing the compressed files. Hint: use globbing!
-8. Search both FASTQ files for the read fragment with identifier `@M05795:43:000000000-CFLMP:1:1101:21518:5740 2:N:0:43` using a single command.
-9. Compare the file sizes of the two compressed and uncompressed FASTQ files.
-10. Extract the columns containing the _island_ and _flipper length_ of each penguin from the `./training/unix-demo/penguins.csv` file.
-11. Count how often the sequence `CATCATCATCATCAT` occurs in the FASTA file `./training/unix-demo/Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa`.
+4. Search through the file for the `>` character, which is used to denote every chromosome/contig. Use a single command to count them.
+5. Compress the FASTQ file `PF0512_S47_L001_R1_001.fastq` in the `unix-demo` directory using `gzip`.
+6. Navigate to the directory `./training/data/fastq` and in a single command, extract the forward (`PF0097_S43_L001_R1_001.fastq.gz`) and reverse (`PF0097_S43_L001_R2_001.fastq.gz`) of the `PF0097_S43` sample, without removing the compressed files. Hint: use globbing!
+7. Search both FASTQ files for the read fragment with identifier `@M05795:43:000000000-CFLMP:1:1101:21518:5740 2:N:0:43` using a single command.
+8. Compare the file sizes of the two compressed and uncompressed FASTQ files.
+9. Extract the columns containing the _island_ and _flipper length_ of each penguin from the `./training/unix-demo/penguins.csv` file.
+10. Count how often the sequence `CATCATCATCATCAT` occurs in the FASTA file `./training/unix-demo/Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa`.
+11. Which command can be used to extract the name of the SAM file `./training/unix-demo/PF0302_S20.sort.sam` without the `.sam` suffix?
+12. Which reference genome was used to create the SAM file?
 
 ---
 
@@ -358,7 +373,7 @@ Of course, there exist many more Unix commands than the ones we introduced here.
 ## Overview of concepts and commands
 
 - Tabular data: `.csv`, `.tsv`
-- The SAM file format stores sequence reads aligned to a reference genome.
+- The SAM/BAM file formats store sequence reads aligned to a reference genome.
 
 | Command                               | Result |
 |---------------------------------------|---------------------------------------------------------|
@@ -368,5 +383,6 @@ Of course, there exist many more Unix commands than the ones we introduced here.
 | `gzip / gunzip (-keep) <path/to/file>` | Compress or extract a gzip compressed file (`.gz`)       |
 | `wget <url>`            | Downloads a file from the URL to the current directory  |
 | `basename <path/to/file>` |  Returns the name of the file without the path prefix |
+| `basename <path/to/file>` <suffix-to-remove> |  Returns the name of the file and remove the provided suffix |
 
 :::

@@ -183,39 +183,12 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">R basics</span></a>
+ <span class="menu-text">Appendices</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/r/r-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R chapter 1…</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Bioinformatics file formats and tools</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/unix/appendix-unix.html" class="sidebar-item-text sidebar-link">
@@ -236,8 +209,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#online-unix-environment" id="toc-online-unix-environment" class="nav-link active" data-scroll-target="#online-unix-environment"><span class="header-section-number">2.1</span> Online Unix environment</a>
   <ul>
-  <li><a href="#binder" id="toc-binder" class="nav-link" data-scroll-target="#binder"><span class="header-section-number">2.1.1</span> Binder</a></li>
-  <li><a href="#github-codespaces" id="toc-github-codespaces" class="nav-link" data-scroll-target="#github-codespaces"><span class="header-section-number">2.1.2</span> GitHub Codespaces</a></li>
+  <li><a href="#github-codespaces" id="toc-github-codespaces" class="nav-link" data-scroll-target="#github-codespaces"><span class="header-section-number">2.1.1</span> GitHub Codespaces</a></li>
+  <li><a href="#binder" id="toc-binder" class="nav-link" data-scroll-target="#binder"><span class="header-section-number">2.1.2</span> Binder</a></li>
   </ul></li>
   <li><a href="#local-unix-environment" id="toc-local-unix-environment" class="nav-link" data-scroll-target="#local-unix-environment"><span class="header-section-number">2.2</span> Local Unix environment</a>
   <ul>
@@ -278,39 +251,8 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="2.1" class="anchored" data-anchor-id="online-unix-environment"><span class="header-section-number">2.1</span> Online Unix environment</h2>
 <p>We have provided two different options for getting access to an online unix environment: through <a href="https://mybinder.org/">Binder</a> (free, but less powerful) or through <a href="https://github.com/features/codespaces">GitHub Codespaces</a> (free for 60 hours per month).</p>
 <p>Both options will launch an environment containing all relevant training files, based on <a href="https://github.com/pmoris/FiMAB-bioinformatics">this GitHub repository</a>.</p>
-<section id="binder" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="binder"><span class="header-section-number">2.1.1</span> Binder</h3>
-<p>To access the remote <code>bash</code> shell, browse to <a href="https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD">https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD</a> and wait for the launcher to start. This process can take quite a while, so be patient.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/binder-launching.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Launching the Binder environment</figcaption>
-</figure>
-</div>
-<p>Eventually, you should be greeted by a screen (Jupyter Lab) with a number of launchers. Simply select the one labelled “Terminal” (a black square with a white <code>$</code>) and you should be all set.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/binder-terminal.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Starting a new Bash shell</figcaption>
-</figure>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-What is Binder?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Binder is a service that allows people to share a customized compute environment based on a Git repository. It is mainly aimed at sharing Jupyter Notebooks (Python), but it also supports RStudio, Shiny and fortunately for us, a plain <code>bash</code> terminal too.</p>
-<p>You can find more info on the <a href="https://mybinder.readthedocs.io/en/latest/introduction.html">Binder website</a>.</p>
-</div>
-</div>
-</section>
-<section id="github-codespaces" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="github-codespaces"><span class="header-section-number">2.1.2</span> GitHub Codespaces</h3>
+<section id="github-codespaces" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="github-codespaces"><span class="header-section-number">2.1.1</span> GitHub Codespaces</h3>
 <p>To access Codespaces, you will first need to create a GitHub account via <a href="https://github.com/signup">https://github.com/signup</a>. Just follow the instructions and be sure to enable one of the <a href="https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication">two-factor authentication options</a> (via a TOTP app like Authy, Google Authenticator or Microsoft Authenticator, or via text messages), otherwise you might not receive access to Codespaces.</p>
 <p>Afterwards, you can click <a href="https://github.com/codespaces/new?machine=basicLinux32gb&amp;repo=727651304&amp;ref=main&amp;devcontainer_path=.devcontainer%2Fdevcontainer.json&amp;geo=EuropeWest">this link</a>, optionally change the region to the one closest to you under <em>change options</em> (but leave the machine type on 2-core to remain eligble for 60 free hours!), and then press the <em>Create codespace</em> button.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -325,7 +267,7 @@ What is Binder?
 <figcaption class="figure-caption">Launching a new codespace</figcaption>
 </figure>
 </div>
-<p>Setting up the codespace can take a while, but eventually you will be greeted by a VSCode environment. The terminal is accessible at the bottom (or by pressing the hamburger icon in the top left and selecting “new terminal”).</p>
+<p>Setting up the codespace can take a while, but eventually you will be greeted by a VSCode environment. The terminal (a <code>bash</code> shell) is accessible at the bottom (or by pressing the hamburger icon in the top left and selecting “new terminal”). This is where you will be able to run the Unix commands introduced in the next chapters.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../assets/codespaces-terminal.png" class="img-fluid figure-img"></p>
@@ -365,6 +307,38 @@ What is GitHub CodeSpaces
 <p>Similar to Binder, Codespaces are development environments that are hosted in the cloud. This is a paid service provided by GitHub/Microsoft, which offers 60 hours of free usage per individual per month. Instead of Jupyter notebooks, Codespaces use code editors, like VSCode and Jetbrains IDEs, which come bundled with a <code>bash</code> terminal too.</p>
 <p>You can find more info in the <a href="https://docs.github.com/en/codespaces/overview">GitHub Codespaces docs</a>.</p>
 </div>
+</div>
+</section>
+<section id="binder" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="binder"><span class="header-section-number">2.1.2</span> Binder</h3>
+<p>As an alternative to CodeSpaces, we have also created a Binder environment. It will operate similar to CodeSpaces and provide you with an online environment containing all of the required files as well as a Unix shell (<code>bash</code>).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is Binder?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Binder is a service that allows people to share a customized compute environment based on a Git repository. It is mainly aimed at sharing Jupyter Notebooks (Python), but it also supports RStudio, Shiny and fortunately for us, a plain <code>bash</code> terminal too.</p>
+<p>You can find more info on the <a href="https://mybinder.readthedocs.io/en/latest/introduction.html">Binder website</a>.</p>
+</div>
+</div>
+<p>To access the remote <code>bash</code> shell on Binder, browse to <a href="https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD">https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD</a> and wait for the launcher to start. This process can take quite a while, so be patient.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/binder-launching.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Launching the Binder environment</figcaption>
+</figure>
+</div>
+<p>Eventually, you should be greeted by a screen (Jupyter Lab) with a number of launchers. Simply select the one labelled “Terminal” (a black square with a white <code>$</code>) and you should be all set.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/binder-terminal.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Starting a new Bash shell</figcaption>
+</figure>
 </div>
 </section>
 </section>

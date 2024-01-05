@@ -120,7 +120,7 @@ The table below gives you an overview of some of the special characters that we 
 | `.` | Dot | In the context of a path, it represents the current working directory |
 | `..` | Double dot | In the context of a path, it represents the parent directory of the working directory |
 
-## What is `$PATH`? {#unix-path}
+## What is `$PATH`? {#sec-unix-path}
 
 The `$PATH` is a way of letting your computer know where specific tools or other special locations are stored on your file system. Unless you tell it explicitly, it won't know where to find any new software you install. Fortunately, most methods of installing software automatically take care of this for you, but every now and then you will need to manually add things to your `$PATH`. If you don't, you will be greeted by messages like `Command 'python' not found, did you mean:`.
 
