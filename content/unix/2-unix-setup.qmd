@@ -4,6 +4,14 @@ In order to get started, you need to get access to a Unix environment of your ow
 
 There are also online playgrounds/simulations available to try out the Unix shell, for example [https://sandbox.bio/playground](https://sandbox.bio/playground). These are great to learn and we highly recommend checking out some of the tutorials on there, but the downside of course is that they are not true true environments and you cannot interact with your own files. You can use this site to follow along while learning some of the basic unix commands, but you will need to switch to a different option for the exercises eventually.
 
+::: {.callout-note}
+## Shortcut to online environments
+
+- [Codespace](https://github.com/codespaces/new?machine=basicLinux32gb&repo=727651304&ref=main&devcontainer_path=.devcontainer%2Fdevcontainer.json&geo=EuropeWest)
+- [Binder](https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD)
+
+:::
+
 ## Online Unix environment
 
 We have provided two different options for getting access to an online unix environment: through [Binder](https://mybinder.org/) (free, but less powerful) or through [GitHub Codespaces](https://github.com/features/codespaces) (free for 60 hours per month).
@@ -132,7 +140,7 @@ Microsoft also provides an excellent tutorial on setting up your WLS environment
 
 After installing WSL and a Linux distribution, you will have access to it via its own built-in terminal emulator. It should be located in your Windows Start Menu with a name corresponding to the distribution that you installed, e.g. `Ubuntu 20.04 LTS`, or simply `wsl`.
 
-The first time you run WSL, you will need to setup a Linux username and password. Note that while you are entering a password, nothing will appear on the screen, but this is intended (blind typing). The username will determine, among other things, the name of your home folder, whereas the password will grant you administrator rights (referred to as super users or admins in Linux land; the `sudo` command is used to invoke these rights).
+The first time you run WSL, you will need to setup a Linux username and password. Note that while you are entering a password, nothing will appear on the screen, but this is intended (blind typing). The username will determine, among other things, the name of your home folder, whereas the password will grant you administrator rights (referred to as super users or admins in Linux land; the `sudo` command is used to invoke these rights, see @sec-unix-sudo).
 
 You will also need to upgrade the packages by running the following command: `sudo apt update && sudo apt upgrade`, followed by your password.
 

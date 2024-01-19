@@ -242,10 +242,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#sec-unix-tips" id="toc-sec-unix-tips" class="nav-link active" data-scroll-target="#sec-unix-tips"><span class="header-section-number">A.1</span> Tips and hints</a></li>
   <li><a href="#sec-table-special-syntax" id="toc-sec-table-special-syntax" class="nav-link" data-scroll-target="#sec-table-special-syntax"><span class="header-section-number">A.2</span> Overview of special syntax</a></li>
-  <li><a href="#sec-unix-path" id="toc-sec-unix-path" class="nav-link" data-scroll-target="#sec-unix-path"><span class="header-section-number">A.3</span> What is <code>$PATH</code>?</a></li>
-  <li><a href="#sec-permissions" id="toc-sec-permissions" class="nav-link" data-scroll-target="#sec-permissions"><span class="header-section-number">A.4</span> Dealing with file permissions</a></li>
-  <li><a href="#sec-ssh" id="toc-sec-ssh" class="nav-link" data-scroll-target="#sec-ssh"><span class="header-section-number">A.5</span> Working with remote machines via SSH</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">A.6</span> Further reading</a></li>
+  <li><a href="#sec-unix-sudo" id="toc-sec-unix-sudo" class="nav-link" data-scroll-target="#sec-unix-sudo"><span class="header-section-number">A.3</span> Understanding superusers, root and <code>sudo</code></a></li>
+  <li><a href="#sec-unix-path" id="toc-sec-unix-path" class="nav-link" data-scroll-target="#sec-unix-path"><span class="header-section-number">A.4</span> What is <code>$PATH</code>?</a></li>
+  <li><a href="#sec-permissions" id="toc-sec-permissions" class="nav-link" data-scroll-target="#sec-permissions"><span class="header-section-number">A.5</span> Dealing with file permissions</a></li>
+  <li><a href="#sec-ssh" id="toc-sec-ssh" class="nav-link" data-scroll-target="#sec-ssh"><span class="header-section-number">A.6</span> Working with remote machines via SSH</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">A.7</span> Further reading</a></li>
   </ul>
 </nav>
     </div>
@@ -326,7 +327,7 @@ Don’t panic when you lose control of your shell!
 <div class="callout-body-container callout-body">
 <p>If a command seems to hang or get stuck, your terminal becomes unresponsive, or if you tried to print a very large text file to your screen, you can use <code>CTRL+C</code> to interrupt almost any operation and regain control.</p>
 <p>Similarly, CTRL+D is an often used shortcut for exiting/logging out (e.g., when dealing with remote servers of nested shells).</p>
-<p>In some cases, like when using an interactive terminal program such as the text editors <code>nano</code> and <code>vim</code> or a text viewer like <code>less</code>, you will only be able to exit them using that particular program’s shortcut keys (<code>CTRL+X</code>, <code>:</code> followed by <code>q</code> and <code>enter</code>, and <code>Q</code>, for these applications respectively).</p>
+<p>In some cases, like when using an interactive terminal program such as the text editors <code>nano</code> and <code>vim</code> or a text viewer like <code>less</code>, you will only be able to exit them using that particular program’s shortcut keys (<code>CTRL+X</code>, <code>:</code> followed by <code>q</code> and <code>enter</code>, and <code>Q</code>, for these applications respectively). For more info on terminal programs, check out <a href="https://www.warp.dev/blog/fantastic-terminal-programs-and-how-to-quit-them-2">Fantastic terminal programs and how to quit them</a>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -483,8 +484,14 @@ Make your scripts easier to read by using comments and breaking up long lines
 </tbody>
 </table>
 </section>
-<section id="sec-unix-path" class="level2" data-number="A.3">
-<h2 data-number="A.3" class="anchored" data-anchor-id="sec-unix-path"><span class="header-section-number">A.3</span> What is <code>$PATH</code>?</h2>
+<section id="sec-unix-sudo" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="sec-unix-sudo"><span class="header-section-number">A.3</span> Understanding superusers, root and <code>sudo</code></h2>
+<p>Superusers are special users on Unix systems with additional privileges (cf.&nbsp;Windows administrator). By convention, the default name for a superuser on Linux is <code>root</code> (don’t confuse this with the root of the filesystem <code>/</code>). Superusers have access to all files and directories on the file system, including any critical components that make the system work and any files owned by other users. Moreover, several tasks like software installation and modifying system configuration require administrative privileges. It would be a security risk to run as a superuser constantly, but how can regular users install software then? Or what about modifying the permissions of a file that you (accidentally) removed your own access to? This is where the <code>sudo</code> command comes into play.</p>
+<p><code>sudo</code> stands for “superuser do” and it allows regular users, who have been added to the <code>sudo</code> user group, to run individual commands as if they were the root user. A common use-case is using sudo to install new software via <code>apt</code> (on Debian-like systems) or <code>dnf</code> (on Fedora/CentOS): <code>sudo apt install ncbi-blast+</code>.</p>
+<p>With great power comes great responsibility, so exercise caution and think twice before running a command with <code>sudo</code>. Only do so when you are sure you know what the end result will be.</p>
+</section>
+<section id="sec-unix-path" class="level2" data-number="A.4">
+<h2 data-number="A.4" class="anchored" data-anchor-id="sec-unix-path"><span class="header-section-number">A.4</span> What is <code>$PATH</code>?</h2>
 <p>The <code>$PATH</code> is a way of letting your computer know where specific tools or other special locations are stored on your file system. Unless you tell it explicitly, it won’t know where to find any new software you install. Fortunately, most methods of installing software automatically take care of this for you, but every now and then you will need to manually add things to your <code>$PATH</code>. If you don’t, you will be greeted by messages like <code>Command 'python' not found, did you mean:</code>.</p>
 <p>The <code>$PATH</code> is nothing more than a list of locations on your computer. Everything that is found in those locations, will become available to use directly on the CLI without having to type out its full location. Even the basic Unix commands, like <code>ls</code> and <code>cd</code> are only known to your shell because they are in a location that is indexed by your path.</p>
 <p>In the following example, we will demonstrate how you can add a custom directory with scripts to your <code>$PATH</code>, making them callable from anywhere.</p>
@@ -503,12 +510,12 @@ Make your scripts easier to read by using comments and breaking up long lines
 <p>You can find more information on modifying the PATH <a href="https://astrobiomike.github.io/unix/modifying_your_path">here</a>.</p>
 <p>Lastly, be careful when modifying your PATH. If you mess it up, it can cause all kinds of havoc.</p>
 </section>
-<section id="sec-permissions" class="level2" data-number="A.4">
-<h2 data-number="A.4" class="anchored" data-anchor-id="sec-permissions"><span class="header-section-number">A.4</span> Dealing with file permissions</h2>
+<section id="sec-permissions" class="level2" data-number="A.5">
+<h2 data-number="A.5" class="anchored" data-anchor-id="sec-permissions"><span class="header-section-number">A.5</span> Dealing with file permissions</h2>
 <p>You can find an excellent explanation on file permissions <a href="https://datacarpentry.org/shell-genomics/aio.html#file-permissions">here</a>.</p>
 </section>
-<section id="sec-ssh" class="level2" data-number="A.5">
-<h2 data-number="A.5" class="anchored" data-anchor-id="sec-ssh"><span class="header-section-number">A.5</span> Working with remote machines via SSH</h2>
+<section id="sec-ssh" class="level2" data-number="A.6">
+<h2 data-number="A.6" class="anchored" data-anchor-id="sec-ssh"><span class="header-section-number">A.6</span> Working with remote machines via SSH</h2>
 <p>In some cases, you will need to work on a Linux machine that is physically located somewhere else, i.e.&nbsp;a remote server. Access to these is usually managed via a command-line tool called SSH (or a stand-alone GUI tool like Putty in Windows). The syntax of the <code>ssh</code> command is as follows:</p>
 <pre><code>ssh username@domain</code></pre>
 <p>Where username is a name given to you by the admin of the system and domain is the address of the server (can be a URL or an IP address).</p>
@@ -519,9 +526,11 @@ Make your scripts easier to read by using comments and breaking up long lines
 </ol>
 <p>Instructions to generate new SSH keys can be found <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent</a>.</p>
 <p>A common problem when connecting is that the file permissions of your keys or credential files are messed up. This can happen if you generate them in Windows and later move them to a Linux file system. To fix this, check <a href="https://superuser.com/a/215506">https://superuser.com/a/215506</a>.</p>
+<p>More info on remote servers can be found <a href="https://eriqande.github.io/eca-bioinf-handbook/working-on-remote-servers.html">here</a>.</p>
+<p>Lastly, keep in mind that when working on remote servers, it is essential to use <code>screen</code> or <code>tmux</code> for long-running jobs. Otherwise, they will be interrupted when you disconnect or even when the network briefly fails.</p>
 </section>
-<section id="further-reading" class="level2" data-number="A.6">
-<h2 data-number="A.6" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">A.6</span> Further reading</h2>
+<section id="further-reading" class="level2" data-number="A.7">
+<h2 data-number="A.7" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">A.7</span> Further reading</h2>
 <p>There are still many facets of Unix that we have not covered here yet, but we hope that you can pick these up on your own if were to ever need them. For now though, the basics that we covered here, will hopefully already go a long way in helping you use Unix and read scripts written by others.</p>
 <p>A selection of more advanced topics to explore at a later time could be:</p>
 <ul>

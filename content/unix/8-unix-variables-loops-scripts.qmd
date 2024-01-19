@@ -109,15 +109,13 @@ There actually exists another type of loop, namely the _while loop_. These behav
 
 ## Shell scripts
 
-All the topics that we have covered so far, were performed interactively on the command line. However, we can also write scripts that contain multiple commands, loops and variables, which we can then execute in one go. That way, you can queue up a bunch of long-running processes and don’t need to stick around to start up each next step in the process. Moreover, it allows you to reuse the same set of operations in the future. Scripts can even be written in such a way that they can be called using different options, similar to how we can provide different optional arguments to `bash` commands.
+All the topics that we have covered so far, were performed interactively on the command line. However, we can also write scripts that contain a series of commands, loops and variables, which can be executed in one go. That way, you can queue up a bunch of long-running processes and don’t need to stick around to start up each next step in the process. Moreover, it allows you to reuse the same set of operations in the future. Scripts can even be written in such a way that they can be called using different options, similar to how we can provide different optional arguments to `bash` commands.
 
 ### Creating a bash script
 
-Bash scripts are nothing more than executable text files containing `bash` commands. We can write bash scripts in any type of text editor (like notepad or VS Code), but we can also do it directly on the command line, by making use of an editor like `nano` or `vim`.
+Shell scripts are nothing more than [executable](#sec-executable-script) text files written in a specific scripting language, in our case `bash`. We can write bash scripts in any type of text editor (like Notepad or VS Code), but we can also do it directly on the command line, by making use of an editor like `nano` or `vim`.
 
-The only requirements for bash scripts is that the first line contains a shebang directive, like `#!/usr/bin/env bash`. When the script is executed, this line tells your machine to run the script using the `bash` interpreter (i.e., that it is a `bash` script and needs to be treated accordingly).
-
-By convention, shell scripts are saved with the `.sh` extension.
+The only requirements for bash scripts is that the first line contains a shebang directive, like `#!/usr/bin/env bash`. When the script is executed, this line tells your machine to run the script using the `bash` interpreter (i.e., that it is a `bash` script and needs to be treated accordingly). By convention, shell scripts are saved with the `.sh` extension.
 
 ### Running scripts
 
@@ -138,7 +136,7 @@ $ bash script.sh
 My first script!
 ```
 
-Below is a slightly more complex example script:
+Below is a slightly more complex example:
 
 ```bash
 #!/usr/bin/env bash
@@ -205,7 +203,7 @@ The output of the for loop section of the script is five lines of the character 
 
 Lastly,  note that not all scripts are `bash` scripts, you can also create R, Python or other types of scripts.
 
-### Making scripts executable
+### Making scripts executable {#sec-executable-script}
 
 In the previous examples we ran scripts by invoking them using the `bash` command. However, we can also make the file _executable_ by using the `chmod` command. Once a file has been marked as executable for a given user, it can be run by simply typing the file name, without any other command in front.
 
@@ -223,6 +221,18 @@ $ my_script.sh
 ```
 
 You can read more about file permissions in @sec-permissions.
+
+
+::: {.callout-note}
+## Different methods of running script
+
+There are actually a few different ways to execute a shell script:
+
+1. Prefixing the interpreter: `bash path/to/script.sh`. For this method, we explicitly execute the `bash` command and point it to the location of a script.
+2. Directly running a script in the current working directory: `./script.sh`. This option has two requirements: first, the file needs to be made executable (as we saw above). Furthermore, as a safety precaution, we need to prefix the name of the file with `./`, to let the system know that we are trying to run a script that resides in the current working directory, as opposed to one that is globally accessible.
+3. Directly running a globally accessible script: `script.sh`. This option also requires the file to be executable, but on top of that it will only work for files that are found in the list of directories making up your `PATH` (see @sec-unix-path). These are pre-defined (or custom) directories like `/usr/bin` that usually store all the common commands that we have used until now, as well as any other software that you might install yourself.
+
+:::
 
 ## Overview of variant calling pipeline
 

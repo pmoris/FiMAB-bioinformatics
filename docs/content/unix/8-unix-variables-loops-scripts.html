@@ -247,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#creating-a-bash-script" id="toc-creating-a-bash-script" class="nav-link" data-scroll-target="#creating-a-bash-script"><span class="header-section-number">8.3.1</span> Creating a bash script</a></li>
   <li><a href="#running-scripts" id="toc-running-scripts" class="nav-link" data-scroll-target="#running-scripts"><span class="header-section-number">8.3.2</span> Running scripts</a></li>
-  <li><a href="#making-scripts-executable" id="toc-making-scripts-executable" class="nav-link" data-scroll-target="#making-scripts-executable"><span class="header-section-number">8.3.3</span> Making scripts executable</a></li>
+  <li><a href="#sec-executable-script" id="toc-sec-executable-script" class="nav-link" data-scroll-target="#sec-executable-script"><span class="header-section-number">8.3.3</span> Making scripts executable</a></li>
   </ul></li>
   <li><a href="#overview-of-variant-calling-pipeline" id="toc-overview-of-variant-calling-pipeline" class="nav-link" data-scroll-target="#overview-of-variant-calling-pipeline"><span class="header-section-number">8.4</span> Overview of variant calling pipeline</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.5</span> Exercises</a></li>
@@ -376,12 +376,11 @@ As a reminder, what would have happened if we had used <code>&gt;</code> instead
 </section>
 <section id="shell-scripts" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="shell-scripts"><span class="header-section-number">8.3</span> Shell scripts</h2>
-<p>All the topics that we have covered so far, were performed interactively on the command line. However, we can also write scripts that contain multiple commands, loops and variables, which we can then execute in one go. That way, you can queue up a bunch of long-running processes and don’t need to stick around to start up each next step in the process. Moreover, it allows you to reuse the same set of operations in the future. Scripts can even be written in such a way that they can be called using different options, similar to how we can provide different optional arguments to <code>bash</code> commands.</p>
+<p>All the topics that we have covered so far, were performed interactively on the command line. However, we can also write scripts that contain a series of commands, loops and variables, which can be executed in one go. That way, you can queue up a bunch of long-running processes and don’t need to stick around to start up each next step in the process. Moreover, it allows you to reuse the same set of operations in the future. Scripts can even be written in such a way that they can be called using different options, similar to how we can provide different optional arguments to <code>bash</code> commands.</p>
 <section id="creating-a-bash-script" class="level3" data-number="8.3.1">
 <h3 data-number="8.3.1" class="anchored" data-anchor-id="creating-a-bash-script"><span class="header-section-number">8.3.1</span> Creating a bash script</h3>
-<p>Bash scripts are nothing more than executable text files containing <code>bash</code> commands. We can write bash scripts in any type of text editor (like notepad or VS Code), but we can also do it directly on the command line, by making use of an editor like <code>nano</code> or <code>vim</code>.</p>
-<p>The only requirements for bash scripts is that the first line contains a shebang directive, like <code>#!/usr/bin/env bash</code>. When the script is executed, this line tells your machine to run the script using the <code>bash</code> interpreter (i.e., that it is a <code>bash</code> script and needs to be treated accordingly).</p>
-<p>By convention, shell scripts are saved with the <code>.sh</code> extension.</p>
+<p>Shell scripts are nothing more than <a href="#sec-executable-script">executable</a> text files written in a specific scripting language, in our case <code>bash</code>. We can write bash scripts in any type of text editor (like Notepad or VS Code), but we can also do it directly on the command line, by making use of an editor like <code>nano</code> or <code>vim</code>.</p>
+<p>The only requirements for bash scripts is that the first line contains a shebang directive, like <code>#!/usr/bin/env bash</code>. When the script is executed, this line tells your machine to run the script using the <code>bash</code> interpreter (i.e., that it is a <code>bash</code> script and needs to be treated accordingly). By convention, shell scripts are saved with the <code>.sh</code> extension.</p>
 </section>
 <section id="running-scripts" class="level3" data-number="8.3.2">
 <h3 data-number="8.3.2" class="anchored" data-anchor-id="running-scripts"><span class="header-section-number">8.3.2</span> Running scripts</h3>
@@ -393,7 +392,7 @@ As a reminder, what would have happened if we had used <code>&gt;</code> instead
 <p>To run a bash script, you can simply execute the <code>bash</code> command and point it to a script. If we save the two lines above to <code>script.sh</code> file and then executing it by running <code>bash script.sh</code>, the single command inside of it will be executed and printed to the screen:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> bash script.sh</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">My</span> first script!</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Below is a slightly more complex example script:</p>
+<p>Below is a slightly more complex example:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This is an example script."</span></span>
@@ -469,8 +468,8 @@ Can you spot what is wrong with this script? (Click me to expand!)
 </div>
 <p>Lastly, note that not all scripts are <code>bash</code> scripts, you can also create R, Python or other types of scripts.</p>
 </section>
-<section id="making-scripts-executable" class="level3" data-number="8.3.3">
-<h3 data-number="8.3.3" class="anchored" data-anchor-id="making-scripts-executable"><span class="header-section-number">8.3.3</span> Making scripts executable</h3>
+<section id="sec-executable-script" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="sec-executable-script"><span class="header-section-number">8.3.3</span> Making scripts executable</h3>
 <p>In the previous examples we ran scripts by invoking them using the <code>bash</code> command. However, we can also make the file <em>executable</em> by using the <code>chmod</code> command. Once a file has been marked as executable for a given user, it can be run by simply typing the file name, without any other command in front.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> my_script.sh</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span> 1 pmoris pmoris 488 Jan  4 14:35 my_script.sh</span>
@@ -482,7 +481,25 @@ Can you spot what is wrong with this script? (Click me to expand!)
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> my_script.sh</span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>script <span class="ex">output</span><span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can read more about file permissions in <a href="appendix-unix.html#sec-permissions"><span>Section&nbsp;A.4</span></a>.</p>
+<p>You can read more about file permissions in <a href="appendix-unix.html#sec-permissions"><span>Section&nbsp;A.5</span></a>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Different methods of running script
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There are actually a few different ways to execute a shell script:</p>
+<ol type="1">
+<li>Prefixing the interpreter: <code>bash path/to/script.sh</code>. For this method, we explicitly execute the <code>bash</code> command and point it to the location of a script.</li>
+<li>Directly running a script in the current working directory: <code>./script.sh</code>. This option has two requirements: first, the file needs to be made executable (as we saw above). Furthermore, as a safety precaution, we need to prefix the name of the file with <code>./</code>, to let the system know that we are trying to run a script that resides in the current working directory, as opposed to one that is globally accessible.</li>
+<li>Directly running a globally accessible script: <code>script.sh</code>. This option also requires the file to be executable, but on top of that it will only work for files that are found in the list of directories making up your <code>PATH</code> (see <a href="appendix-unix.html#sec-unix-path"><span>Section&nbsp;A.4</span></a>). These are pre-defined (or custom) directories like <code>/usr/bin</code> that usually store all the common commands that we have used until now, as well as any other software that you might install yourself.</li>
+</ol>
+</div>
+</div>
 </section>
 </section>
 <section id="overview-of-variant-calling-pipeline" class="level2" data-number="8.4">
@@ -509,7 +526,7 @@ Note
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -518,7 +535,7 @@ What does the following line do? <code>sample_name=$(basename ${read_1} _1.fastq
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This line is present in most of the example scripts inside of a for loop that iterates over a set of FASTQ files, each time processing a pair of <code>R1/R2</code> files.</p>
 <pre><code># first navigate to the directory containing fastq files
@@ -563,7 +580,7 @@ PF0080_S44_L001_R1_001.fastq.gz PF0080_S44_L001_R2_001.fastq.gz
 <section id="summary" class="level2" data-number="8.6">
 <h2 data-number="8.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">8.6</span> Summary</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -572,7 +589,7 @@ Overview of concepts and commands
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Variables can be assigned via <code>name=value</code> and referenced via <code>${name}</code></li>

@@ -247,6 +247,22 @@ ul.task-list li input[type="checkbox"] {
 
 <p>In order to get started, you need to get access to a Unix environment of your own. You can either work <a href="#local-unix-environment">locally</a> on your own computer or you can use the <a href="#online-linux-environment">online environment</a> that we have created. The latter comes with a <code>bash</code> shell and will immediately give you access to a bunch of files that we will use throughout the course and exercises.</p>
 <p>There are also online playgrounds/simulations available to try out the Unix shell, for example <a href="https://sandbox.bio/playground">https://sandbox.bio/playground</a>. These are great to learn and we highly recommend checking out some of the tutorials on there, but the downside of course is that they are not true true environments and you cannot interact with your own files. You can use this site to follow along while learning some of the basic unix commands, but you will need to switch to a different option for the exercises eventually.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Shortcut to online environments
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://github.com/codespaces/new?machine=basicLinux32gb&amp;repo=727651304&amp;ref=main&amp;devcontainer_path=.devcontainer%2Fdevcontainer.json&amp;geo=EuropeWest">Codespace</a></li>
+<li><a href="https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD">Binder</a></li>
+</ul>
+</div>
+</div>
 <section id="online-unix-environment" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="online-unix-environment"><span class="header-section-number">2.1</span> Online Unix environment</h2>
 <p>We have provided two different options for getting access to an online unix environment: through <a href="https://mybinder.org/">Binder</a> (free, but less powerful) or through <a href="https://github.com/features/codespaces">GitHub Codespaces</a> (free for 60 hours per month).</p>
@@ -407,7 +423,7 @@ WSL1 vs WSL2
 <p>Microsoft also provides an excellent tutorial on setting up your WLS environment, which you can find <a href="https://learn.microsoft.com/en-us/windows/wsl/setup/environment">here</a>.</p>
 <hr>
 <p>After installing WSL and a Linux distribution, you will have access to it via its own built-in terminal emulator. It should be located in your Windows Start Menu with a name corresponding to the distribution that you installed, e.g.&nbsp;<code>Ubuntu 20.04 LTS</code>, or simply <code>wsl</code>.</p>
-<p>The first time you run WSL, you will need to setup a Linux username and password. Note that while you are entering a password, nothing will appear on the screen, but this is intended (blind typing). The username will determine, among other things, the name of your home folder, whereas the password will grant you administrator rights (referred to as super users or admins in Linux land; the <code>sudo</code> command is used to invoke these rights).</p>
+<p>The first time you run WSL, you will need to setup a Linux username and password. Note that while you are entering a password, nothing will appear on the screen, but this is intended (blind typing). The username will determine, among other things, the name of your home folder, whereas the password will grant you administrator rights (referred to as super users or admins in Linux land; the <code>sudo</code> command is used to invoke these rights, see <a href="appendix-unix.html#sec-unix-sudo"><span>Section&nbsp;A.3</span></a>).</p>
 <p>You will also need to upgrade the packages by running the following command: <code>sudo apt update &amp;&amp; sudo apt upgrade</code>, followed by your password.</p>
 <p>For more information, check the <a href="https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-your-linux-username-and-password">docs</a>.</p>
 </section>
