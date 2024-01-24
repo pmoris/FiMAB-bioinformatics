@@ -8,7 +8,8 @@ $font-family-monospace: "Qwigley";
 $bs-body-font-family: "Qwigley";
 */
 
-$web-font-path: "No"; /* Disable web import in flatly theme, see https://github.com/thomaspark/bootswatch/blob/v5/dist/flatly/_bootswatch.scss */
+$web-font-path: "No";
+/* Disable web import in flatly theme, see https://github.com/thomaspark/bootswatch/blob/v5/dist/flatly/_bootswatch.scss */
 
 /*-- scss:rules --*/
 
@@ -17,24 +18,24 @@ $web-font-path: "No"; /* Disable web import in flatly theme, see https://github.
 /* ********** */
 
 // CSS was included in github release
-@font-face{
-    font-family: 'Source Sans Variable';
-    font-weight: 200 900;
-    font-style: normal;
-    font-stretch: normal;
-    src: url('./styles/fonts/source-sans-pro-3.006R/WOFF2/VAR/SourceSansVariable-Roman.ttf.woff2') format('woff2'),
-         url('./styles/fonts/source-sans-pro-3.006R/WOFF/VAR/SourceSansVariable-Roman.ttf.woff') format('woff'),
-         url('./styles/fonts/source-sans-pro-3.006R/VAR/SourceSansVariable-Roman.ttf') format('truetype');
+@font-face {
+     font-family: 'Source Sans Variable';
+     font-weight: 200 900;
+     font-style: normal;
+     font-stretch: normal;
+     src: url('./styles/fonts/source-sans-pro-3.006R/WOFF2/VAR/SourceSansVariable-Roman.ttf.woff2') format('woff2'),
+          url('./styles/fonts/source-sans-pro-3.006R/WOFF/VAR/SourceSansVariable-Roman.ttf.woff') format('woff'),
+          url('./styles/fonts/source-sans-pro-3.006R/VAR/SourceSansVariable-Roman.ttf') format('truetype');
 }
 
-@font-face{
-    font-family: 'Source Sans Variable';
-    font-weight: 200 900;
-    font-style: italic;
-    font-stretch: normal;
-    src: url('./styles/fonts/source-sans-pro-3.006R/WOFF2/VAR/SourceSansVariable-Italic.ttf.woff2') format('woff2'),
-         url('./styles/fonts/source-sans-pro-3.006R/WOFF/VAR/SourceSansVariable-Italic.ttf.woff') format('woff'),
-         url('./styles/fonts/source-sans-pro-3.006R/VAR/SourceSansVariable-Italic.ttf') format('truetype');
+@font-face {
+     font-family: 'Source Sans Variable';
+     font-weight: 200 900;
+     font-style: italic;
+     font-stretch: normal;
+     src: url('./styles/fonts/source-sans-pro-3.006R/WOFF2/VAR/SourceSansVariable-Italic.ttf.woff2') format('woff2'),
+          url('./styles/fonts/source-sans-pro-3.006R/WOFF/VAR/SourceSansVariable-Italic.ttf.woff') format('woff'),
+          url('./styles/fonts/source-sans-pro-3.006R/VAR/SourceSansVariable-Italic.ttf') format('truetype');
 }
 
 /* ********* */
@@ -45,20 +46,26 @@ $web-font-path: "No"; /* Disable web import in flatly theme, see https://github.
 
 /* fira-code-regular - latin */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Fira Code';
-  font-style: normal;
-  font-weight: 400;
-  src: url('./styles/fonts/fira-code-v21/fira-code-v21-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-       url('./styles/fonts/fira-code-v21/fira-code-v21-latin-regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+     font-display: swap;
+     /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+     font-family: 'Fira Code';
+     font-style: normal;
+     font-weight: 400;
+     src: url('./styles/fonts/fira-code-v21/fira-code-v21-latin-regular.woff2') format('woff2'),
+          /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+          url('./styles/fonts/fira-code-v21/fira-code-v21-latin-regular.ttf') format('truetype');
+     /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
 
 /* fira-code-700 - latin */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Fira Code';
-  font-style: normal;
-  font-weight: 700;
-  src: url('./styles/fonts/fira-code-v21/fira-code-v21-latin-700.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-       url('./styles/fonts/fira-code-v21/fira-code-v21-latin-700.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+     font-display: swap;
+     /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+     font-family: 'Fira Code';
+     font-style: normal;
+     font-weight: 700;
+     src: url('./styles/fonts/fira-code-v21/fira-code-v21-latin-700.woff2') format('woff2'),
+          /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+          url('./styles/fonts/fira-code-v21/fira-code-v21-latin-700.ttf') format('truetype');
+     /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
