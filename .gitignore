@@ -27,3 +27,6 @@ _site/
 .Renviron
 
 /.quarto/
+
+# temporary files
+temp/
