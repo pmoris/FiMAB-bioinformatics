@@ -7,7 +7,7 @@ There are also online playgrounds/simulations available to try out the Unix shel
 ::: {.callout-note}
 ## Shortcut to online environments
 
-- [Codespace](https://github.com/codespaces/new?machine=basicLinux32gb&repo=727651304&ref=main&devcontainer_path=.devcontainer%2Fdevcontainer.json&geo=EuropeWest)
+- [Codespace](https://codespaces.new/pmoris/FiMAB-bioinformatics?template=false&devcontainer_path=.devcontainer%2Fdevcontainer.json)
 - [Binder](https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD)
 
 :::
