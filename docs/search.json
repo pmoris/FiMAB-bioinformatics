@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "Introduction to Bioinformatics for Malaria Molecular Surveillance",
     "section": "",
-    "text": "About\nWelcome to the Bioinformatics Module of the Fighting Malaria Across Borders (FiMAB) created by the Institute of Tropical Medicine (ITM) in Antwerp (Belgium). This is an international training programme (a VLIR-UOS project) to support the implementation of targeted NGS AmpliSeq assays to strengthen malaria molecular surveillance and help guide national control programmes. In conjunction with laboratory training, this bioinformatics course is intended to allow young academics around the globe to become familiar with molecular surveillance as a key activity to monitor transmission, sources of epidemics and the emergence and spread of drug resistant mutations in the Plasmodium parasite.\nDevelopment of this course was supported by VLIR-UOS and the Institute of Tropical Medicine.\nThis work is licensed under CC BY-NC-SA 4.0, which means that you are free to copy, redistribute or adapt any of its contents, provided that you do reference us (see citation information below) and the original license, do indicate if modifications were made, do distribute those contributions under the same license and do not use the material for commercial purposes."
+    "text": "About\nWelcome to the Bioinformatics Module of the Fighting Malaria Across Borders (FiMAB) international training programme, created by the Institute of Tropical Medicine (ITM) in Antwerp (Belgium) and supported by VLIR-UOS. Its primary goal is to support the implementation of targeted sequencing assays (in particular, AmpliSeq) to strengthen malaria molecular surveillance and help guide national control programmes. In conjunction with laboratory training, this bioinformatics course is intended to allow young academics around the globe to become familiar with molecular surveillance as a key activity to monitor transmission, sources of epidemics and the emergence and spread of drug resistance mutations in the Plasmodium parasite.\nDevelopment of this course was supported by VLIR-UOS and the Institute of Tropical Medicine.\nThis work is licensed under CC BY-NC-SA 4.0, which means that you are free to copy, redistribute or adapt any of its contents, provided that you do reference us (see citation information below) and the original license, do indicate if modifications were made, do distribute those contributions under the same license and do not use the material for commercial purposes."
   },
   {
     "objectID": "index.html#scope-of-the-course",
     "href": "index.html#scope-of-the-course",
     "title": "Introduction to Bioinformatics for Malaria Molecular Surveillance",
     "section": "Scope of the course",
-    "text": "Scope of the course\nThis course aims to provide an overview of key bioinformatics aspects related to performing molecular surveillance research in Plasmodium. It is divided into the following sections:\n\nIntroduction to the Unix shell (command line interface)\nIntroduction to R\nPopulation genetics and molecular epidemiology for Plasmodium\n\nSection 1-2 are online self-paced modules, whereas section 3 will include classroom lectures and practical sessions. Evaluation exercises will be conducted on the ITM course page."
+    "text": "Scope of the course\nThis course aims to provide an overview of key bioinformatics aspects related to performing molecular surveillance research in Plasmodium. It is divided into the following sections:\n\nIntroduction to the Unix shell (command line interface)\nIntroduction to R\nPopulation genetics and molecular epidemiology for Plasmodium [to follow later]\n\nSection 1-2 are online self-paced modules, whereas section 3 will include classroom lectures and practical sessions. Evaluation exercises will be conducted on the ITM course page."
   },
   {
     "objectID": "content/intro.html#what-is-bioinformatics-anyway",
@@ -320,6 +320,20 @@
     "title": "8  Variables, loops and scripts",
     "section": "8.6 Summary",
     "text": "8.6 Summary\n\n\n\n\n\n\nOverview of concepts and commands\n\n\n\n\n\n\nVariables can be assigned via name=value and referenced via ${name}\nFor loops are used to iterate over a list of items or files\nScripts can be used to combine multiple commands into a single set of instructions that can be re-used.\nCommand substitution ($(command)), basename and for loops can be used to iterate over pairs of FASTQ files."
+  },
+  {
+    "objectID": "content/r/r-intro.html",
+    "href": "content/r/r-intro.html",
+    "title": "R introduction",
+    "section": "",
+    "text": "As your first introduction to R, we will make use of Data Carpentry’s Intro to R and RStudio for Genomics course. This self-paced workshop walks through the basics of R - and its most popular IDE, RStudio - in the context of genomics. The focus lies on the basic syntax of R, wrangling tabular data using the tidyverse - where we will encounter the VCF file format once again (Section 7.1.1.1) - and visualization using ggplot2.\nThe Data Carpentry workshop will sometimes refer to running RStudio in a cloud environment with pre-installed packages and files, but when going through these materials on your own, we recommend installing R and RStudio on your own machine. You can do so by following the instructions listed here:https://rstudio-education.github.io/hopr/starting.html. You will also need to download the following two files, which are used throughout the workshop: combined_tidy_vcf.csv and Ecoli_metadata.xlsx.\nIf you do run into trouble installing R and RStudio on your own computer, you could instead make use of the free version of Posit Cloud (formerly known as RStudio Server): https://posit.cloud/plans/free. However, note that you only receive a limited number of hours of use as a free user. Alternatively, you can again make use of GitHub codespace, but you will need to select a different …\nAs a final option, you could make use of a binder RStudio instance, such as:"
+  },
+  {
+    "objectID": "content/r/r-resources.html#cheatsheets",
+    "href": "content/r/r-resources.html#cheatsheets",
+    "title": "9  Other R resources",
+    "section": "9.1 Cheatsheets",
+    "text": "9.1 Cheatsheets\nEveryone loves cheatsheets!\n\nggplot2\ndplyr data transformations\ndata tidying using tidyr and tibble"
   },
   {
     "objectID": "content/unix/appendix-unix.html#sec-unix-tips",

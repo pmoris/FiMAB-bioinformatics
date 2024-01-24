@@ -70,7 +70,7 @@ $ cat vcf-contigs.txt
 
 In the example above, we searched for lines containing the word `contig` in a `.vcf` file and stored the output in a file called `vcf-contigs.txt`, instead of just printing the output to the screen. But what is a VCF file anyway?
 
-#### VCF files
+#### VCF files {#sec-vcf}
 
 ::: {.callout-tip}
 ## Variant Call Format (VCF)

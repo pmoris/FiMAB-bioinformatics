@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Bioinformatics for Malaria Molecular Surveillance - 3&nbsp; Using the shell</title>
+<title>Introduction to Bioinformatics for Malaria Molecular Surveillance - 9&nbsp; Other R resources</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/unix/4-unix-navigation.html" rel="next">
-<link href="../../content/unix/2-unix-setup.html" rel="prev">
+<link href="../../content/unix/appendix-unix.html" rel="next">
+<link href="../../content/r/r-intro.html" rel="prev">
 <link href="../../content/assets/ITM-symbol_col_rgb.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -111,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/unix/1-unix-intro.html">Introduction to the Unix shell</a></li><li class="breadcrumb-item"><a href="../../content/unix/3-unix-enter-the-shell.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Using the shell</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/r/r-intro.html">R introduction</a></li><li class="breadcrumb-item"><a href="../../content/r/r-resources.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Other R resources</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -183,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/unix/3-unix-enter-the-shell.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../content/unix/3-unix-enter-the-shell.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Using the shell</span></span></a>
   </div>
 </li>
@@ -230,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/r/r-resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/r/r-resources.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Other R resources</span></span></a>
   </div>
 </li>
@@ -263,9 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#interacting-with-the-shell" id="toc-interacting-with-the-shell" class="nav-link active" data-scroll-target="#interacting-with-the-shell"><span class="header-section-number">3.1</span> Interacting with the shell</a></li>
-  <li><a href="#command-syntax" id="toc-command-syntax" class="nav-link" data-scroll-target="#command-syntax"><span class="header-section-number">3.2</span> Command syntax</a></li>
-  <li><a href="#tips-and-hints" id="toc-tips-and-hints" class="nav-link" data-scroll-target="#tips-and-hints"><span class="header-section-number">3.3</span> Tips and hints</a></li>
+  <li><a href="#cheatsheets" id="toc-cheatsheets" class="nav-link active" data-scroll-target="#cheatsheets"><span class="header-section-number">9.1</span> Cheatsheets</a></li>
   </ul>
 </nav>
     </div>
@@ -274,7 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Using the shell</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Other R resources</span></h1>
 </div>
 
 
@@ -289,66 +253,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Prior experience
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can skip this section and proceed directly to the exercises if you are already familiar with the basic syntax of Unix commands. We still recommend checking out the tips and hints in <a href="appendix-unix.html#sec-unix-tips"><span>Section&nbsp;A.1</span></a> and the special syntax overview in <a href="appendix-unix.html#sec-table-special-syntax"><span>Section&nbsp;A.2</span></a> though.</p>
-</div>
-</div>
-<section id="interacting-with-the-shell" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="interacting-with-the-shell"><span class="header-section-number">3.1</span> Interacting with the shell</h2>
-<p>When you launch your (Bash) shell, you will be greeted by what is called a shell prompt: a short snippet of text followed by a cursor, which indicates that the shell is waiting for input. The prompt can look different on different systems, but it often consists of your linux username followed by the name of your machine (like in the picture below) or sometimes just a single <code>$</code> symbol. When you see the prompt, you can enter commands interactively and execute them by pressing enter.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/prompt.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">A bash shell prompt waiting for user input</figcaption>
-</figure>
-</div>
-<p>Already note that you cannot use your mouse cursor to move around your terminal. You will need to use your arrow keys (or <a href="https://kapeli.com/cheat_sheets/Bash_Shortcuts.docset/Contents/Resources/Documents/index">shortcuts</a>) to move around while typing commands.</p>
-</section>
-<section id="command-syntax" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="command-syntax"><span class="header-section-number">3.2</span> Command syntax</h2>
-<p>Unix commands generally follow the format:</p>
-<pre><code>command [OPTIONS] argument</code></pre>
-<p>where,</p>
+<p>Here is a collection of other useful resources for learning R.</p>
 <ul>
-<li><code>command</code> is the name of the (usually built-in) command that you want to execute.</li>
-<li><code>[OPTIONS]</code> is a list of optional flags to modify the behaviour of the command. They are often preceded by a single (<code>-</code>) or double (<code>--</code>) dash.</li>
-<li><code>argument</code> is a thing that your command can use. E.g., it can be a file name, a short piece of text (or <em>string</em>)</li>
+<li><a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/">Introduction to Data Science by Rafael A Irizarry</a>: a clear overview of the most important aspects of data analysis in R, covering basic syntax, data manipulation using the tidyverse, visualizations and a few productivity tools.</li>
+<li><a href="https://epirhandbook.com/en/index.html">The Epidemiologist R Handbook</a>: an extensive R reference manual for various epidemiological analyses.
+<ul>
+<li><a href="https://www.appliedepi.org/tutorial/">Applied Epi Tutorials</a>: they also offer free self-paced R tutorials accessible online (requires registration). If you prefer learning in an interactive manner, then these are highly recommended. Also see <a href="https://swirlstats.com/students.html">swirl - interactive tutorials in R</a>.</li>
+</ul></li>
+<li><a href="https://swcarpentry.github.io/r-novice-gapminder/">Software Carpentry’s R for Reproducible Scientific Analysis workshop</a>: this workshop goes over some of the other aspects of R that were not touched upon in the genomics workshop, e.g., data structures, loops, functions, etc.</li>
+<li><a href="https://stat545.com/">Jenny Bryan’s Stat 545</a>: an accessible guide to data wrangling, exploration and analysis in R. It also covers a few important aspects for newcomers related to <a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/">managing projects and treating your code as absolute rather than R’s history</a>, as well as several other adjacent topics</li>
+<li><a href="https://r4ds.hadley.nz/">R for Data Science by Hadley Wickham</a>: this book is a bit more advanced, but it is an excellent resource nonetheless. Hadley Wickham is one of the driving behind tidyverse and the author of the amazing <a href="https://vita.had.co.nz/papers/tidy-data.pdf"><em>Tidy Data</em> paper</a>.</li>
+<li><a href="https://bookdown.org/ndphillips/YaRrr/">The Pirate’s Guide to R</a>: slightly whimsical and quite thorough.</li>
+<li><a href="https://r-graphics.org/">R Graphics Cookbook</a>: tons of examples for almost any kind of graphical representation you can imagine.</li>
+<li><a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis</a>: a complete guide to the grammar of ggplot2.</li>
+<li><a href="https://pmacdasci.github.io/r-intro-tidyverse/">PeterMac Data Science: Intro to R Tidyverse Course</a>: another introduction to the tidyverse, this time using the analysis of RNA-seq data as an example.</li>
 </ul>
-<p>Try it yourself with the following command:</p>
-<pre><code>echo “Hello world!”</code></pre>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-What did that do? (Click me to expand!)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><code>echo</code> is a command that simply prints a message to your screen (technically, to the <em>standard output stream</em> (stdout) of the terminal). <code>echo</code> is the command, teling the shell what we want to do. <code>"Hello world!"</code> is the target, in this case the message we want to print.</p>
-<p>We place the message between quotes (<code>"</code>) because it contains spaces, and as you will see, spaces (and certain other special characters) can cause confusions. For now, just note that the message that gets printed, is whatever was written between the quotes, but not the quotes themselves.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Hello world!"</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello</span> world!</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="tips-and-hints" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="tips-and-hints"><span class="header-section-number">3.3</span> Tips and hints</h2>
-<p>We have compiled a number of helpful tips in the appendix of this course (<a href="appendix-unix.html#sec-unix-tips"><span>Section&nbsp;A.1</span></a>), some of which will hopefully be helpful on your journey towards mastering the unix shell. For now, we recommend at the very least checking out the section on tab-completion and your command history. In fact, you can give it a try already. Just press the up arrow and see if you can recall your previous command! Next, try to type out <code>ec</code>, and press <code>&lt;tab&gt;</code>, to see auto-complete in action.</p>
+<section id="cheatsheets" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="cheatsheets"><span class="header-section-number">9.1</span> Cheatsheets</h2>
+<p>Everyone loves cheatsheets!</p>
+<ul>
+<li><a href="https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf">ggplot2</a></li>
+<li><a href="https://rstudio.github.io/cheatsheets/html/data-transformation.html">dplyr data transformations</a></li>
+<li><a href="https://rstudio.github.io/cheatsheets/html/tidyr.html">data tidying using tidyr and tibble</a></li>
+</ul>
 
 
 </section>
@@ -704,13 +631,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/unix/2-unix-setup.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting up your own Unix shell</span></span>
+      <a href="../../content/r/r-intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">R introduction</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/unix/4-unix-navigation.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Navigating the Unix file system</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/unix/appendix-unix.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Various Unix topics</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

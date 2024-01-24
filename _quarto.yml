@@ -52,10 +52,9 @@ book:
       - content/unix/6-unix-more-commands.qmd
       - content/unix/7-unix-redirection.qmd
       - content/unix/8-unix-variables-loops-scripts.qmd
-    # - part: "R basics"
-    #   chapters:
-    #     - content/r/r-intro.qmd
-    #     - content/r/r-continued.qmd
+    - part: content/r/r-intro.qmd
+      chapters:
+        - content/r/r-resources.qmd
     # - part: "Bioinformatics file formats and tools"
       # chapters:
         # - content/bioinf/bioinf-file-formats.qmd
@@ -95,6 +94,7 @@ book:
     # style: "floating"
     search: true
     # background: dark
+    logo: content/assets/ITM-logo_col_rgb.png
 
   # navbar:
   #   search: false
@@ -109,10 +109,10 @@ book:
   #       - text: "Trademark"
   #         href: trademark.qmd
 
-  # favicon: logo.png
+  favicon: content/assets/ITM-symbol_col_rgb.png
   # twitter-card: true
   # site-url: https://example.com
-  # repo-url: https://github.com/pmoris/FiMAB-bioinformatics
+  repo-url: https://github.com/pmoris/FiMAB-bioinformatics
   # repo-actions: [source]
   # sharing: [twitter, facebook]
 
@@ -152,8 +152,37 @@ format:
     linestretch: 1.5
     code-fold: true
     html-math-method: katex
-  pdf:
+  PrettyPDF-pdf:
     documentclass: scrreprt
+    keep-tex: true
+    include-in-header:
+      text: |
+        \usepackage{fvextra}
+        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+    include-before-body:
+      text: |
+        \RecustomVerbatimEnvironment{verbatim}{Verbatim}{
+          showspaces = false,
+          showtabs = false,
+          breaksymbolleft={},
+          breaklines
+        }
+  # pdf:
+  #   # documentclass: scrreprt
+  #   documentclass: scrbook
+  #   keep-tex: true
+    # include-in-header:
+    #   text: |
+    #     \usepackage{fvextra}
+    #     \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+    # include-before-body:
+    #   text: |
+    #     \RecustomVerbatimEnvironment{verbatim}{Verbatim}{
+    #       showspaces = false,
+    #       showtabs = false,
+    #       breaksymbolleft={},
+    #       breaklines
+    #     }
   # epub:
   #   toc: true
 

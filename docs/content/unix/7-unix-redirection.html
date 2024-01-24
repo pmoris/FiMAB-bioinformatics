@@ -66,6 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../">
 <link href="../../content/unix/8-unix-variables-loops-scripts.html" rel="next">
 <link href="../../content/unix/6-unix-more-commands.html" rel="prev">
+<link href="../../content/assets/ITM-symbol_col_rgb.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -123,10 +124,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../content/assets/ITM-logo_col_rgb.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Introduction to Bioinformatics for Malaria Molecular Surveillance</a> 
-        <div class="sidebar-tools-main">
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/pmoris/FiMAB-bioinformatics" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -216,13 +221,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+            <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R introduction</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/r/r-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Other R resources</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/unix/appendix-unix.html" class="sidebar-item-text sidebar-link">
@@ -245,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#redirecting-output" id="toc-redirecting-output" class="nav-link" data-scroll-target="#redirecting-output"><span class="header-section-number">7.1.1</span> Redirecting output</a>
   <ul class="collapse">
-  <li><a href="#vcf-files" id="toc-vcf-files" class="nav-link" data-scroll-target="#vcf-files"><span class="header-section-number">7.1.1.1</span> VCF files</a></li>
+  <li><a href="#sec-vcf" id="toc-sec-vcf" class="nav-link" data-scroll-target="#sec-vcf"><span class="header-section-number">7.1.1.1</span> VCF files</a></li>
   </ul></li>
   <li><a href="#redirecting-errors" id="toc-redirecting-errors" class="nav-link" data-scroll-target="#redirecting-errors"><span class="header-section-number">7.1.2</span> Redirecting errors</a></li>
   <li><a href="#input-redirection" id="toc-input-redirection" class="nav-link" data-scroll-target="#input-redirection"><span class="header-section-number">7.1.3</span> Input redirection</a></li>
@@ -342,8 +364,8 @@ Tip
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">##contig=&lt;ID=Pf3D7_API_v3,length=34250,assembly=PlasmoDB-44_Pfalciparum3D7_Genome.fasta&gt;</span></span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">##contig=&lt;ID=Pf_M76611,length=5967,assembly=PlasmoDB-44_Pfalciparum3D7_Genome.fasta&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In the example above, we searched for lines containing the word <code>contig</code> in a <code>.vcf</code> file and stored the output in a file called <code>vcf-contigs.txt</code>, instead of just printing the output to the screen. But what is a VCF file anyway?</p>
-<section id="vcf-files" class="level4 page-columns page-full" data-number="7.1.1.1">
-<h4 data-number="7.1.1.1" class="anchored" data-anchor-id="vcf-files"><span class="header-section-number">7.1.1.1</span> VCF files</h4>
+<section id="sec-vcf" class="level4 page-columns page-full" data-number="7.1.1.1">
+<h4 data-number="7.1.1.1" class="anchored" data-anchor-id="sec-vcf"><span class="header-section-number">7.1.1.1</span> VCF files</h4>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
