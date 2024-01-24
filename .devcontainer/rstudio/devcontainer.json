@@ -1,0 +1,36 @@
+{
+	"name": "RStudio Server",
+	"image": "ghcr.io/rocker-org/devcontainer/tidyverse:4",
+	"features": {
+		"ghcr.io/rocker-org/devcontainer-features/rstudio-server:latest": {},
+		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+			"packages": "tidyverse,rmarkdown,BiocManager",
+			"installSystemRequirements": true
+		}
+	},
+	"postAttachCommand": {
+		"rstudio-start": "rserver"
+	},
+	"forwardPorts": [
+		8787
+	],
+	"portsAttributes": {
+		"8787": {
+			"label": "RStudio IDE"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mechatroner.rainbow-csv",
+				"mads-hartmann.bash-ide-vscode",
+				"reageyao.biosyntax"
+			]
+		},
+		"codespaces": {
+			"openFiles": [
+				"README.md"
+			]
+		}
+	}
+}
