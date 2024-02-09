@@ -250,7 +250,7 @@ Inspect the scripts stored in `./training/scripts` and try to make sense of the 
 
 
 ::: {.callout-tip collapse="true"}
-## What does the following line do? `sample_name=$(basename ${read_1} _1.fastq.gz)` <br> Hint: `$(command)` provided a method to run a command inside another statement, so try figuring out what the command between the brackets does first.
+## What does the following line do? `sample_name=$(basename ${read_1} _R1_001.fastq.gz)` <br> Hint: `$(command)` provided a method to run a command inside another statement, so try figuring out what the command between the brackets does first.
 
 This line is present in most of the example scripts inside of a for loop that iterates over a set of FASTQ files, each time processing a pair of `R1/R2` files.
 
@@ -295,12 +295,12 @@ Paired sequence data is usually named in such a way that it allows to access pai
 2. Create a bash script that does the same thing.
 3. On a single-line, run the script, but sort its output in reverse order (check `sort --help` to check how) and store the new output in a file called `loop_sort.txt`.
 4. Create a bash script with a for loop that prints the name of each read file in the `./training/data/fastq` directory.
-5. Modify the previous bash script so that it also creates a single new directory named `fastq_meta` and create a new file in that directory, one for each FASTQ file, which contains two lines: the first with the number of lines in the FASTQ file and the second with its file size.
+5. Modify the previous bash script so that it also 1) creates a single new directory named `fastq_meta` and 2) creates a new file in that directory, one for each FASTQ file, which contains two lines: the first with the number of lines in the FASTQ file and the second with its file size.
 6. Create a bash script with a for loop that prints the sample name for each pair of reads in the `./training/data/fastq` directory (i.e., half as many names as in the previous exercise).
-Create a bash script that:
+7. Create a bash script that:
     - Counts the number of header lines in `./training/unix-demo/ampliseq-variants.vcf` and store this number as a variable.
-    - Extract the contents of the VCF file after the header lines (i.e., the tabular section) and store it in a separate file.
-    - Create a for loop to extract the first eight columns and store them each in a separate file named `vcf_column_#.txt` (where `#` is the column number).
+    - Extracts the contents of the VCF file after the header lines (i.e., the tabular section) and store it in a separate file.
+    - Creates a for loop to extract the first eight columns and store them each in a separate file named `vcf_column_#.txt` (where `#` is the column number).
 
 ## Summary
 

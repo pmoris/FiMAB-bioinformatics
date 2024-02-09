@@ -553,7 +553,7 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-What does the following line do? <code>sample_name=$(basename ${read_1} _1.fastq.gz)</code> <br> Hint: <code>$(command)</code> provided a method to run a command inside another statement, so try figuring out what the command between the brackets does first.
+What does the following line do? <code>sample_name=$(basename ${read_1} _R1_001.fastq.gz)</code> <br> Hint: <code>$(command)</code> provided a method to run a command inside another statement, so try figuring out what the command between the brackets does first.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -590,12 +590,13 @@ PF0080_S44_L001_R1_001.fastq.gz PF0080_S44_L001_R2_001.fastq.gz
 <li>Create a bash script that does the same thing.</li>
 <li>On a single-line, run the script, but sort its output in reverse order (check <code>sort --help</code> to check how) and store the new output in a file called <code>loop_sort.txt</code>.</li>
 <li>Create a bash script with a for loop that prints the name of each read file in the <code>./training/data/fastq</code> directory.</li>
-<li>Modify the previous bash script so that it also creates a single new directory named <code>fastq_meta</code> and create a new file in that directory, one for each FASTQ file, which contains two lines: the first with the number of lines in the FASTQ file and the second with its file size.</li>
-<li>Create a bash script with a for loop that prints the sample name for each pair of reads in the <code>./training/data/fastq</code> directory (i.e., half as many names as in the previous exercise). Create a bash script that:
+<li>Modify the previous bash script so that it also 1) creates a single new directory named <code>fastq_meta</code> and 2) creates a new file in that directory, one for each FASTQ file, which contains two lines: the first with the number of lines in the FASTQ file and the second with its file size.</li>
+<li>Create a bash script with a for loop that prints the sample name for each pair of reads in the <code>./training/data/fastq</code> directory (i.e., half as many names as in the previous exercise).</li>
+<li>Create a bash script that:
 <ul>
 <li>Counts the number of header lines in <code>./training/unix-demo/ampliseq-variants.vcf</code> and store this number as a variable.</li>
-<li>Extract the contents of the VCF file after the header lines (i.e., the tabular section) and store it in a separate file.</li>
-<li>Create a for loop to extract the first eight columns and store them each in a separate file named <code>vcf_column_#.txt</code> (where <code>#</code> is the column number).</li>
+<li>Extracts the contents of the VCF file after the header lines (i.e., the tabular section) and store it in a separate file.</li>
+<li>Creates a for loop to extract the first eight columns and store them each in a separate file named <code>vcf_column_#.txt</code> (where <code>#</code> is the column number).</li>
 </ul></li>
 </ol>
 </section>
