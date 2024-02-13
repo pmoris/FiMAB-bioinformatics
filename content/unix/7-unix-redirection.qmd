@@ -270,7 +270,7 @@ As a final tip on the usages of piping, consider that you can pipe the output of
 
 ## Further reading
 
-Redirection operations and pipes can be combined in many more complex ways than what we saw here. For example, in case we want to redirect output to both a file and the terminal, we can make use of the `tee` command, [as described here](https://stackoverflow.com/a/418899). It is even possible to create more complex nested processes, where you feed the output of multiple different commands into a single command: `diff <(ls old) <(ls new)`; this is called _process substitution_.
+Redirection operations and pipes can be combined in many more complex ways than what we saw here. For example, in case we want to redirect output to both a file and the terminal, we can make use of the `tee` command, [as described here](https://stackoverflow.com/a/418899). It is even possible to create more complex nested processes, where you feed the output of multiple different commands into a single command: `diff <(ls old) <(ls new)`; this is called [_process substitution_](https://mywiki.wooledge.org/ProcessSubstitution).
 
 You do not need to concern yourself with learning these more advanced concepts for the time being, but just keep in mind that whatever you want to do, the Unix shell likely offers a way of doing it.
 

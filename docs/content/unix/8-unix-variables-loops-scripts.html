@@ -272,8 +272,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sec-executable-script" id="toc-sec-executable-script" class="nav-link" data-scroll-target="#sec-executable-script"><span class="header-section-number">8.3.3</span> Making scripts executable</a></li>
   </ul></li>
   <li><a href="#overview-of-variant-calling-pipeline" id="toc-overview-of-variant-calling-pipeline" class="nav-link" data-scroll-target="#overview-of-variant-calling-pipeline"><span class="header-section-number">8.4</span> Overview of variant calling pipeline</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.5</span> Exercises</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">8.6</span> Summary</a></li>
+  <li><a href="#a-few-final-useful-scripting-concepts" id="toc-a-few-final-useful-scripting-concepts" class="nav-link" data-scroll-target="#a-few-final-useful-scripting-concepts"><span class="header-section-number">8.5</span> A few final useful scripting concepts</a>
+  <ul>
+  <li><a href="#command-substitution" id="toc-command-substitution" class="nav-link" data-scroll-target="#command-substitution"><span class="header-section-number">8.5.1</span> Command substitution</a></li>
+  <li><a href="#parameter-expansion---manipulating-strings" id="toc-parameter-expansion---manipulating-strings" class="nav-link" data-scroll-target="#parameter-expansion---manipulating-strings"><span class="header-section-number">8.5.2</span> Parameter expansion - manipulating strings</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.6</span> Exercises</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">8.7</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -583,8 +588,29 @@ PF0080_S44_L001_R1_001.fastq.gz PF0080_S44_L001_R2_001.fastq.gz
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.5</span> Exercises</h2>
+<section id="a-few-final-useful-scripting-concepts" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="a-few-final-useful-scripting-concepts"><span class="header-section-number">8.5</span> A few final useful scripting concepts</h2>
+<section id="command-substitution" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="command-substitution"><span class="header-section-number">8.5.1</span> Command substitution</h3>
+<p>In the callout box above we already introduced the concept of using <em>command substitutions</em> and the <code>basename</code> command to manipulate filenames and paths during a for loop, in order to be able to iterate over pairs of FASTQ files with similar, but predictable file names (e.g., <code>read_R1_001.fastq</code> and <code>read_R2_001.fastq</code>). To reiterate, the general concept is that we only loop over R1 of each pair, use <code>basename</code> to extract the filename without the <code>R1_001.fastq.gz</code> suffix <em>and</em> without the preceding file path prefix, and then use this to construct the known file path to R2.</p>
+<pre><code>for read_1 in *_R1_001.fastq.gz
+do
+    sample_name=$(basename ${read_1} _R1_001.fastq.gz)
+
+    command ${read_1} "/file/path/to/${sample_name}_R2_001.fast.qz"
+...</code></pre>
+<p>A simpler example would be letting echo output the result of another command, like <code>date</code>:</p>
+<pre><code>echo "Today is $(date)."</code></pre>
+<p>You can also use it to store the output of a command in a variable, like we did for <code>basename</code>:</p>
+<pre><code>count=$(grep -c "#" variants.vcf)</code></pre>
+</section>
+<section id="parameter-expansion---manipulating-strings" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="parameter-expansion---manipulating-strings"><span class="header-section-number">8.5.2</span> Parameter expansion - manipulating strings</h3>
+<p>Bash contains all sorts of tricks to manipulate strings of text. These can be used in a similar way to <code>basename</code>, in order to strip of file extensions, parts of names or file paths and many other more complex tasks. For more details, we refer to <a href="https://mywiki.wooledge.org/BashFAQ/073">https://mywiki.wooledge.org/BashFAQ/073</a>.</p>
+</section>
+</section>
+<section id="exercises" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.6</span> Exercises</h2>
 <ol type="1">
 <li>Create a for loop over the files in <code>./training/unix-demo/files_to_loop_through</code> that prints the first line of each file to the screen.</li>
 <li>Create a bash script that does the same thing.</li>
@@ -600,8 +626,8 @@ PF0080_S44_L001_R1_001.fastq.gz PF0080_S44_L001_R2_001.fastq.gz
 </ul></li>
 </ol>
 </section>
-<section id="summary" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">8.6</span> Summary</h2>
+<section id="summary" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="summary"><span class="header-section-number">8.7</span> Summary</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -618,7 +644,8 @@ Overview of concepts and commands
 <li>Variables can be assigned via <code>name=value</code> and referenced via <code>${name}</code></li>
 <li>For loops are used to iterate over a list of items or files</li>
 <li>Scripts can be used to combine multiple commands into a single set of instructions that can be re-used.</li>
-<li>Command substitution (<code>$(command)</code>), <code>basename</code> and for loops can be used to iterate over pairs of FASTQ files.</li>
+<li>Manipulating file names during a loop can be done using <code>basename</code> or parameter expansion.</li>
+<li>Command substitutions (<code>$(command)</code>) can be used to insert the output of a particular command (e.g., <code>basename</code>) into the middle of other commands or during the construction of new strings of text.</li>
 </ul>
 </div>
 </div>

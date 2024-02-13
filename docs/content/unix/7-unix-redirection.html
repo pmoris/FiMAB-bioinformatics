@@ -641,7 +641,7 @@ How can we use a pipe to only apply the <code>cut -f10</code> command to only th
 </section>
 <section id="further-reading" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">7.3</span> Further reading</h2>
-<p>Redirection operations and pipes can be combined in many more complex ways than what we saw here. For example, in case we want to redirect output to both a file and the terminal, we can make use of the <code>tee</code> command, <a href="https://stackoverflow.com/a/418899">as described here</a>. It is even possible to create more complex nested processes, where you feed the output of multiple different commands into a single command: <code>diff &lt;(ls old) &lt;(ls new)</code>; this is called <em>process substitution</em>.</p>
+<p>Redirection operations and pipes can be combined in many more complex ways than what we saw here. For example, in case we want to redirect output to both a file and the terminal, we can make use of the <code>tee</code> command, <a href="https://stackoverflow.com/a/418899">as described here</a>. It is even possible to create more complex nested processes, where you feed the output of multiple different commands into a single command: <code>diff &lt;(ls old) &lt;(ls new)</code>; this is called <a href="https://mywiki.wooledge.org/ProcessSubstitution"><em>process substitution</em></a>.</p>
 <p>You do not need to concern yourself with learning these more advanced concepts for the time being, but just keep in mind that whatever you want to do, the Unix shell likely offers a way of doing it.</p>
 <hr>
 </section>

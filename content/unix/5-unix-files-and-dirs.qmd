@@ -360,7 +360,7 @@ $ rm -f protected-file
 
 1. Create a new directory named "my_dir" inside the `./training/unix-demo` directory. Next, without using `cd` first, create another directory named `my_sub_dir` inside of it. Finally, again without using `cd`, create a final directory named `my_sub_sub_dir` inside of that one.
 2. Read the last 20 lines of the FASTA file in the `./training/unix-demo` directory.
-3. Create a new text file named `lines` inside `my_subdir` using `nano`. Store the number of lines of the file `long.txt` inside. Then read it using `cat` and `less`.
+3. Create a new text file named `lines` inside `my_sub_dir` using `nano`. Store the number of lines of the file `long.txt` inside. Then read it using `cat` and `less`.
 4. Navigate to the `files_to_copy` directory and copy its contents to the `my_sub_dir` directory. What is the relative path of the destination to use?
 5. Move the file under `files_to_move` to its parent directory.
 6. Remove all the files under `files_to_delete` using a glob pattern.

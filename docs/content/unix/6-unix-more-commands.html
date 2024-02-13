@@ -775,7 +775,8 @@ Try downloading the <em>Plasmodium falciparum</em> 3D7 reference genome in FASTA
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="ex">2</span> a</span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="ex">4</span> b</span>
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span> c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>These two commands are often used in conjunction, because <code>uniq</code> on its own is not capable of filtering out identical lines that are not adjacent. So to truly remove all duplicate lines in a file, we would first need to sort it. In the next section, we will introduce a method of combining these commands in a more convenient way than running them one by one and without needing to create any intermediary files.</p>
+<p>These two commands are often used in conjunction, because <code>uniq</code> on its own is not capable of filtering out identical lines that are not adjacent. So to truly remove all duplicate lines in a file, we would first need to sort it: <code>sort unsorted_file.txt | uniq</code>. Also note that the <code>sort</code> command also offers a flag <code>-u</code>, which will make it return only unique lines after sorting.</p>
+<p>In the next section, we will introduce a method of combining these commands in a more convenient way than running them one by one and without needing to create any intermediary files.</p>
 </section>
 <section id="other-commands" class="level2" data-number="6.8">
 <h2 data-number="6.8" class="anchored" data-anchor-id="other-commands"><span class="header-section-number">6.8</span> Other commands</h2>

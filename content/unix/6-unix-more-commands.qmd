@@ -342,7 +342,9 @@ $ uniq -c file_with_duplicates.txt
 1 c
 ```
 
-These two commands are often used in conjunction, because `uniq` on its own is not capable of filtering out identical lines that are not adjacent. So to truly remove all duplicate lines in a file, we would first need to sort it. In the next section, we will introduce a method of combining these commands in a more convenient way than running them one by one and without needing to create any intermediary files.
+These two commands are often used in conjunction, because `uniq` on its own is not capable of filtering out identical lines that are not adjacent. So to truly remove all duplicate lines in a file, we would first need to sort it: `sort unsorted_file.txt | uniq`. Also note that the `sort` command also offers a flag `-u`, which will make it return only unique lines after sorting.
+
+In the next section, we will introduce a method of combining these commands in a more convenient way than running them one by one and without needing to create any intermediary files.
 
 ## Other commands
 
