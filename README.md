@@ -1,3 +1,5 @@
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 # Bioinformatics training - Fighting Malaria Across Borders (FiMAB)
 
 This repository houses the course notes for the Bioinformatics Module of the Fighting Malaria Across Borders (FiMAB) international training programme, created by the Institute of Tropical Medicine (ITM) in Antwerp (Belgium) and supported by VLIR-UOS. Its primary goal is to support the implementation of targeted sequencing assays (in particular, AmpliSeq) to strengthen malaria molecular surveillance and help guide national control programmes. In conjunction with laboratory training, this bioinformatics course is intended to allow young academics around the globe to become familiar with molecular surveillance as a key activity to monitor transmission, sources of epidemics and the emergence and spread of drug resistance mutations in the _Plasmodium_ parasite.
