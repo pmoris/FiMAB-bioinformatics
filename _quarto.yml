@@ -160,21 +160,22 @@ format:
     linestretch: 1.5
     code-fold: true
     html-math-method: katex
-  PrettyPDF-pdf:
-    documentclass: scrreprt
-    keep-tex: true
-    include-in-header:
-      text: |
-        \usepackage{fvextra}
-        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
-    include-before-body:
-      text: |
-        \RecustomVerbatimEnvironment{verbatim}{Verbatim}{
-          showspaces = false,
-          showtabs = false,
-          breaksymbolleft={},
-          breaklines
-        }
+    lightbox: true
+  # PrettyPDF-pdf:
+  #   documentclass: scrreprt
+  #   keep-tex: true
+  #   include-in-header:
+  #     text: |
+  #       \usepackage{fvextra}
+  #       \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+  #   include-before-body:
+  #     text: |
+  #       \RecustomVerbatimEnvironment{verbatim}{Verbatim}{
+  #         showspaces = false,
+  #         showtabs = false,
+  #         breaksymbolleft={},
+  #         breaklines
+  #       }
   # pdf:
   #   # documentclass: scrreprt
   #   documentclass: scrbook
