@@ -135,9 +135,9 @@ number-sections: true
 # number-depth: 2
 
 reference-location: margin
-citation-location: margin
+# citation-location: margin
 
-# bibliography: content/references.bib
+bibliography: content/references.bib
 
 appendix-style: default
 
