@@ -48,9 +48,27 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"mechatroner.rainbow-csv",
+				// bash extensions
 				"mads-hartmann.bash-ide-vscode",
-				"reageyao.biosyntax"
+				"foxundermoon.shell-format",
+				"timonwong.shellcheck",
+
+				// QoL
+				"streetsidesoftware.code-spell-checker",
+				"oderwat.indent-rainbow",
+				"mechatroner.rainbow-csv",
+				"ionutvmi.path-autocomplete",
+				"fabiospampinato.vscode-diff",
+
+				// R
+				"REditorSupport.r",
+
+				// general formatting
+				"esbenp.prettier-vscode",
+
+				// theming
+				"sainnhe.sonokai",
+				// "reageyao.biosyntax"
 			]
 		},
 		"codespaces": {
