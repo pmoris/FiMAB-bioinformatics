@@ -8,7 +8,7 @@
 		"ghcr.io/rocker-org/devcontainer-features/rstudio-server:latest": {},
 		// https://github.com/rocker-org/devcontainer-features/blob/main/src/r-packages/README.md
 		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-			"packages": "tidyverse,rmarkdown,BiocManager",
+			"packages": "tidyverse,rmarkdown,BiocManager,shiny,shinythemes,markdown",
 			"installSystemRequirements": true
 		},
 		// https://github.com/rocker-org/devcontainer-features/blob/main/src/miniforge/README.md
