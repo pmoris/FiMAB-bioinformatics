@@ -147,11 +147,12 @@ format:
   html:
     theme:
       light: [flatly, ./styles/custom.scss]
-      dark: [darkly, ./styles/custom.scss]
+      # dark: [darkly, ./styles/custom.scss]
       # https://quarto.org/docs/websites/website-tools.html#dark-mode
       # If a navbar has been specified, the toggle will appear in the top right corner of the nav bar.
       # If there is no navbar present, but a sidebar has been specified, the toggle will appear in the same location that the sidebar tools appears (adjacent to the title or logo in the sidebar).
       # If there is no navbar or sidebar present, the toggle will appear in the top right corner of the page.
+    highlight-style: arrow # monokai nord dracula arrow
     mainfont: 'Source Sans Variable'
     # mainfont: \"Source Sans 3 VF\"
     # mainfont: 'Mulish'

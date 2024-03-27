@@ -69,3 +69,24 @@ $web-font-path: "No";
           url('./styles/fonts/fira-code-v21/fira-code-v21-latin-700.ttf') format('truetype');
      /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
+
+
+/*-- scss:defaults --*/
+$code-block-border-left: true !default;
+$code-block-border-left-style: solid !default;
+$code-block-border-left-size: 3px !default;
+$code-block-border-left: #3badbe;
+// $code-color: ;
+// $link-color: #005b67;
+$link-color: #26737e;
+
+
+
+
+// Base document colors
+// $body-bg: #181818;
+// $body-color: rgb(161, 21, 21);
+// $link-color: #0a4379;
+
+// Code blocks
+$code-block-bg-alpha: -.5;
