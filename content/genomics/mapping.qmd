@@ -1,0 +1,194 @@
+# Alignment to reference genome
+
+The next step of our pipeline tries to align the filtered and trimmed reads to the reference genome of the organism we're studying. It starts from the processed `FASTQ` files and produces `SAM` and `BAM` files, which contain the mapped reads. We encountered these file formats before in @sec-sam-format, but we will go a bit more in-depth now. Two other important aspects in this part of the pipeline are indexing the reference genome and filtering out PCR duplicates from our alignment.
+
+![](../assets/pipeline-mapping.svg){.no-lightbox}
+
+::: {.callout-warning}
+The pipeline that we're introducing here deviates from the GATK4 best practices in this section, because we do not introduce the concept of [base score recalibration](https://gatk.broadinstitute.org/hc/en-us/articles/360035890531-Base-Quality-Score-Recalibration-BQSR). The basic idea is that we want to detect and correct systematic errors made by the sequencer, by using our knowledge of known variants to model them.
+:::
+
+
+## Where to find your reference genomes
+
+We already downloaded a reference genome from [PlasmoDB](https://plasmodb.org/plasmo/app/downloads) in @sec-plasmodb (where we introduced the `wget` command). These reference genomes allow us to compare the samples we have collected with a representative reference type_of the organism that we're studying[^reference-genome]. For some organisms, multiple reference genomes exist (e.g., because the organism exhibits a lot of genetic variability between different geographic locations), and these references also receive updates from time to time, as the assemblies of complex regions improves (e.g., gaps spanned, repetitive regions mapped, or in the case of _Plasmodium_, the polymorphic subtelomeric regions).
+
+[^reference-genome]: In practice, reference genomes rarely contain the genetic material of a single individual. Instead, they tend to be a mosaic of DNA sequences from different sources. See [https://en.wikipedia.org/wiki/Reference_genome](https://en.wikipedia.org/wiki/Reference_genome).
+
+::: {.callout-caution}
+## Exercise
+
+- Download the most recent releases of the  _P. falciparum_ 3D7 and the _P. vivax_ P01 reference genomes.
+
+:::
+
+## Indexing a reference genome
+
+Before we can map our reads to a reference genome, we need to create an index to allow our mapper to more efficiently search through the (usually rather large) FASTA file[^fasta-refresher]. You can think of it like the index or table of contents of a book (if that particular book contained about _23 million characters_ in the case of _Plasmodium falciparum_, or _3.1 billion characters_ for the human reference genome).
+
+[^fasta-refresher]: For a refresher on the FASTA file format, check out @sec-fasta.
+
+The indexing step itself is usually performed by the same tool as the one that does the actual alignment. The index **only needs to be created once**, and then it can be re-used when mapping each of our FASTQ files. In this course, we will be using `bwa` - the [Burrows-Wheeler Aligner](https://github.com/lh3/bwa).
+
+
+
+<!-- TODO citation for BWA and other tools -->
+
+::: {.callout-caution}
+## Exercise
+
+- Use the `bwa index` command to create an index for both reference genomes.
+- Which files are created?
+
+:::
+
+## Alignment to the reference genome
+
+During mapping, the aligner tries to find a potential alignment site for each individual read (or query) in the reference genome. After aligning all the reads, we can start looking for variation in our samples compared to the reference genome and each other.
+
+There exist many different tools and algorithms for sequence alignment, each with their own strengths and weaknesses. A few examples of popular ones for DNA sequencing are [BWA](https://bio-bwa.sourceforge.net/), [bowtie2](https://bowtie-bio.sourceforge.net/bowtie2/index.shtml) and [minimap2](https://github.com/lh3/minimap2). The differences between these tools mostly lies in speed vs sensitivity, but also preferred application; i.e. long versus short reads^[You can read the author of BWA and minimap2 thoughts: [https://lh3.github.io/2018/04/02/minimap2-and-the-future-of-bwa](https://lh3.github.io/2018/04/02/minimap2-and-the-future-of-bwa)].
+
+We will use BWA, [as is customary](https://www.malariagen.net/wp-content/uploads/2023/11/Pf7-Details-of-bioinformatics-methods.pdf) in the field of malaria genomics [@malariagen_pf7_2023]. BWA actually comes with three different flavours of aligners, but the most recent and popular one is `bwa mem`[^bwa-mem2]. Note that there is also an entirely different class of aligners that were developed for RNA-sequencing; these need to be _"splice-aware"_ to handle RNA reads without introns (e.g., STAR), and some of them also make use of some clever tricks for faster quantifications - so-called _pseudo-aligners_ (e.g, Kallisto and Salmon).
+
+[^bwa-mem2]: A [second version of `bwa mem`](https://github.com/bwa-mem2/bwa-mem2) has also been released, but while it is faster, it is more suited for running on high-performance compute clusters or in the cloud, due to the higher memory requirements.
+
+---
+
+@fig-mapping illustrates the mapping process [@Hiltemann_2023; @sequence-analysis-mapping]. Each individual read is matched against the reference. You can see that read 1 has a few mismatches in its alignment, which eventually might turn out to be single nucleotide polymorphisms (_SNP_). Similarly, for read 2 only the middle part aligns well; `bwa mem` performs a local alignment and can clip the ends of the read. The third read shows an example of an insertion and a deletion (_indel_); the read is longer in one area (`GCCA`), but shorter in another (`AC(A)TA`).
+
+![Mapping reads to a reference. [Source:@Hiltemann_2023; @sequence-analysis-mapping]](../assets/mapping.png){#fig-mapping}
+
+As we discussed in @tip-paired-end, when we are working with paired-end data the aligner, there is additional information available (i.e., the expected distance between forward and reverse reads) that can help aligners span repetitive regions. Paired reads are always mapped together, so they need to be provided to the mapper together; that is why we tend to give them similar file names and the paired reads inside appear in the same order. The final alignment report usually provides dedicated output on paired reads where one of them fails to map, because this is not something that you'd expect in normal circumstances, since they _should_ be derived from the same fragment of DNA.
+
+::: {.callout-caution}
+## Exercise
+
+<!-- TODO mapping exercises -->
+
+:::
+
+::: {.callout-tip}
+## Speeding up code through multi-threading or parallelization
+
+<!-- TODO: explain parallelization
+Multi-threading: increase the number of CPUs used by parallelizing tasks.
+
+Not all analyses can be parallelized, but some like mapping scales quite nicely (up to a limit), because all steps are independent of each other.
+
+For trimmomatic, you can use the option --threads.
+
+cf. built-into tools, job submission on supercomputer, workflow languages, gnu parallel, etc. e.g. parallel downloads
+
+example of gnu parallel: https://speciationgenomics.github.io/mapping_reference/
+
+
+embarrassingly parallel -->
+:::
+
+
+::: {.callout-tip}
+## Orientation of forward and reverse reads during mapping
+
+_The following is based on the excellent write-up on [https://www.cureffi.org/2012/12/19/forward-and-reverse-reads-in-paired-end-sequencing/](https://www.cureffi.org/2012/12/19/forward-and-reverse-reads-in-paired-end-sequencing/)_ and _[https://seekdeep.brown.edu/illumina_paired_info.html](https://seekdeep.brown.edu/illumina_paired_info.html)_.
+
+<!-- TODO https://seekdeep.brown.edu/illumina_paired_info.html -->
+
+Recall that during sequencing-by-synthesis, the new strand is always synthesized in the 5'-3' direction (since [DNA polymerase](http://en.wikipedia.org/wiki/DNA_polymerase) walks along the template strand in the 3'-5' direction). The newly synthesized strand is what is being read out during the sequencing process, so this is what eventually ends up in our FASTQ files.
+
+For paired-end sequencing, this means eventually results in the reverse read (read 2) being in the opposite orientation of the first read (read 1); it is read from the complementary strand compared to read 1 and also in the opposite direction. Consequently, the mapping software will need to take the _reverse complement_ of read 2, to put it in the same orientation as read 1, before aligning it to the reference genome (or equivalently, try to map it to the other strand of the reference genome).
+
+<!-- TODO: check -->
+
+For Illumina paired-end sequencing, the double-stranded library fragments (= insert + adapter sequences (= anchor + read primer + index + index primer), see @fig-library-fragment-illumina) are first attached to the flow cell, but then the complementary strands (5'-3' oriented towards the flow cell) are removed. The template strand (3'-5' oriented towards the flow cell) is then used to synthesize and sequence the forward read in the 5'-3' direction, starting from read primer 1 (adjacent to the insert). Next, index 1 (I7) is sequenced in a separate reaction (using the i7 index primer). For the reverse reads, the template strand is first used to regenerate its complementary strand (which gets attached to the flow cell), and is then removed. Lastly, the read 2 primer is used to sequence the reverse read, again in the 5'-3' direction.
+
+> If you need a refresher, you can always jump back to one of the resources on the Illumina sequencing chemistry in @sec-qc like @ClevaLab_2022_blog.
+
+<!-- Read orientation:
+
+In between i7 index is read?
+
+For paired-end sequencing,
+
+-->
+
+<!-- https://www.biostars.org/p/103773/ -->
+
+:::
+
+
+
+
+## SAM and BAM files
+
+The output of the alignment step (using `bwa mem`) is a SAM file (see @sec-sam-format). This stands for _Sequence Alignment Map_. These are plain text files delimited with tabs, so you can view them using a text editor or a command like `less`.
+
+To save space and make the alignment quicker to index, SAM files are often converted to BAM files, which are compressed binary versions of the alignment. These can be used by downstream tools directly, so we tend to only store the alignment in this format, even though you can no longer inspect the alignment yourself.
+
+samtools is used to convert between sam and bam files, but it can perform many other tasks too (like sorting)
+
+All details can be found in the format specification: [https://samtools.github.io/hts-specs/SAMv1.pdf](https://samtools.github.io/hts-specs/SAMv1.pdf).
+
+::: {.callout-note}
+## SAM file format
+
+<!-- TODO picture explanation of sam/bam -->
+:::
+
+### Sorting bam by coordinate
+
+The reads in a SAM/BAM file can be sorted in different ways. For our needs (variant calling using GATK), we will need to sort them according to their location on the reference genome.
+
+## PCR duplicate removal - `picard MarkDuplicates`
+
+::: {.callout-important}
+## PCR duplicate removal should **NOT** be performed for AmpliSeq data
+
+The library construction process for AmpliSeq results in identical fragments or duplicates for each of the targeted amplicons, hence we should not attempt to remove them.^[As a side note, in RNA-seq this duplicate removal step is also not recommended (unless unique molecular identifiers (UMIs) are used), although the number of duplicates can be used for quality control.]
+
+:::
+
+A final step in the mapping pipeline is the removal of PCR duplicates. These are identical sequences that can arise because of PCR steps during library preparation or because a cluster on the flow cell was erroneously detected as two separate ones^[You can read more about how PCR duplicates arise in this excellent [blog post](https://www.cureffi.org/2012/12/11/how-pcr-duplicates-arise-in-next-generation-sequencing/) by Eric Minikel.]. The overall goal of PCR duplicate removal is to reduce bias during downstream analyses (like variant detection) due to their presence.
+
+PCR duplicates are polyclonal molecules that do not represent any true biological variation, nor are they independent observations of the DNA that was present in a sample. Thus, the observed abundance of these identical reads does not accurately reflect the true abundance of the different molecules in the sample[@rochette_causes_2023]. If a particular PCR duplicate happens to be over-represented compared to other reads covering the same region of the genome, this could cause a bias in our analyses. [Just imagine what would happen](https://bioinformatics.stackexchange.com/a/2868) if during PCR amplification an error was introduced into one of the fragments. If we ended up with many PCR duplicates of this fragment, we might erroneously conclude that there is a SNP at this position because we see it occur in multiple reads. However, if we remove PCR duplicates, we will only observe the SNP in a single read, and variant detection will not mark this as a SNP due to lack of confidence (~agreement between different reads covering the same position, more on that in @sec-variant-calling).
+
+<!-- We want to remove these polyclonal molecules because they do not represent any true biological variation nor are they independent observations of the DNA in the sample.
+In other words, we try to reduce any biases during variant detection (or other downstream analyses) due to the presence of duplicate reads
+, because their observed abundance does not reflect the
+ because the presence of these polyclonal molecules can cause a bias if they happen to be over-represented.
+  because they do not provide any useful information about biological variants in our dataset.
+
+The overall goal is to reduce bias during variant detection.  -->
+
+One of the tools that we use for PCR duplicate removal is [Picard](https://broadinstitute.github.io/picard/). Picard actually provides many different functionalities, but the one that we're interested for now is `MarkDuplicates`. An in-depth explanation of how it works can be found [here](https://gatk.broadinstitute.org/hc/en-us/articles/360057439771-MarkDuplicates-Picard).
+
+::: {.callout-caution}
+## Exercises
+
+Try to remove PCR duplicates using the following command:
+
+```bash
+picard MarkDuplicates
+    -REMOVE_DUPLICATES true
+    -I alignment.bam
+    -O alignment.removeddups.bam
+    -M alignment.markeddups_metrics.txt
+```
+
+Examine and run the remove_dups.sh script to process all files.
+
+:::
+
+## Bonus exercise
+
+Try to combine all the steps of the pipeline we have seen so far into a single script.
+
+<!-- TODO Genome visualisation -->
+
+## Genome visualisation
+
+After creating and filtering our alignment files, we can visualise them in a tool like [IGV (Integrative Genomics Viewer)](https://igv.org/). We refer to [this section](https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html#visualization-using-a-genome-browser-igv) of the Galaxy training materials [@Hiltemann_2023; @sequence-analysis-mapping].
+
+## References
+
+::: {#refs}
+:::

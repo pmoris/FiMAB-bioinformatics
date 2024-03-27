@@ -1,0 +1,114 @@
+# Productivity and computational literacy
+
+**AKA: things I wish I had known earlier**
+
+reproducible research is the ultimate goal
+ease collaboration, with others and your future self
+
+https://rdatatoolbox.github.io/
+
+
+FAIR data sharing and open science: https://www.ebi.ac.uk/training/online/courses/bioinformatics-terrified/tips-on-managing-and-sharing-data/
+https://www.ebi.ac.uk/training/online/courses/bringing-data-to-life-data-management
+	DOI: 10.6019/TOL.BioinfTer-c_2016.00001.1
+    DOI: 10.6019/TOL.Data_Management-w.2018.00001.1
+
+
+
+## Project organization
+
+https://datacarpentry.org/organization-genomics/
+
+
+
+tidy data
+
+naming conventions: https://rafalab.dfci.harvard.edu/dsbook-part-1/productivity/unix.html#naming-convention & https://style.tidyverse.org/
+
+https://rafalab.dfci.harvard.edu/dsbook-part-1/productivity/reproducible-projects.html
+
+
+Tidy data
+https://r4ds.hadley.nz/data-tidy
+https://github.com/jennybc/lotr-tidy/tree/master
+
+## Literate programming / notebooks
+
+https://sachsmc.github.io/knit-git-markr-guide/index.html
+https://bookdown.org/yihui/rmarkdown/notebook.html
+
+https://ucsbcarpentry.github.io/Reproducible-Publications-with-RStudio-Quarto/index.html
+
+## Backups
+
+## Versioning
+
+https://happygitwithr.com/
+
+## Online databases
+
+- SRA / ENI
+- file validation / checksums: https://genomicsaotearoa.github.io/shell-for-bioinformatics/2_download_data/
+
+https://jasonjwilliamsny.github.io/importingdata-genomics/
+
+
+## Beware of Excel
+
+- dates
+- csv -> xlsx
+- file encodings: unicode vs locals
+
+## OS wars
+
+Window vs Unix line endings
+
+## Remote / cloud computing
+
+https://datacarpentry.org/cloud-genomics/
+
+running things in the background: https://cloud-gc.readthedocs.io/en/latest/chapter06_appendix/keep-running.html
+
+rsync
+
+https://eriqande.github.io/eca-bioinf-handbook/working-on-remote-servers.html
+
+SSH keys (also see git): https://frbcesab.github.io/rsetup/chapters/github-ssh.html & https://happygitwithr.com/ssh-keys.html
+https://open.oregonstate.education/computationalbiology/chapter/logging-in/
+
+## Workflow managers
+
+![](https://imgs.xkcd.com/comics/data_pipeline.png)
+
+https://carpentries-incubator.github.io/workflows-nextflow/
+
+
+
+## Bash traps
+
+https://flokoe.github.io/bash-hackers-wiki/scripting/newbie_traps/
+
+## installing software
+
+bioconda
+
+containerization: cf workflow managers
+
+virtual environments: https://rdatatoolbox.github.io/chapters/course-renv.html
+
+
+---
+
+https://www.biostars.org/p/462174/
+https://astrobiomike.github.io/about/
+https://www.biostars.org/p/75925/
+https://www.biostars.org/p/184551/
+
+
+- https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008645
+- https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005871
+- https://journals.plos.org/ploscompbiol/article/comments?id=10.1371/journal.pcbi.1009592
+
+
+
+https://ngs-course.readthedocs.io/en/praha-november-2023/more-tips.html

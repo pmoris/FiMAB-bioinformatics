@@ -63,7 +63,7 @@ $ less Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa
 - Use the help command for more info: `less --help`
 :::
 
-#### FASTA file format
+#### FASTA file format {#sec-fasta}
 
 ::: {.callout-tip}
 ## DNA sequence file formats: FASTA
@@ -131,12 +131,12 @@ ACTACTAGGATTGAGGACGTCCTCCCAACAGGGAGTTGGTTGGGCGCCCGGTGCCGTCATGTCCGATCGCTATCTACGTC
 "H85<EI4A533D;E1A56C@@GHI=BFGIIH6;F=3::HGF8C;9/>;EI?E4I(F?FID<CBAFFD69E:BB>+#<58H:/<>IE;881&'D':F<<H("
 ```
 
-|     Line    |     Description                                                                                                                               |
-|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-|     1       |     identifier: always starts with ‘@’ and contains information about the read (e.g., instrument, lane, multiplex tag, coordinates, etc.                                                              |
-|     2       |     The sequence of nucleotides making up the read    |
-|     3       |     Always begins with a ‘+’ and sometimes repeats the identifier                                                                           |
-|     4       |     Contains a string of ASCII characters that represent the quality score for each base (i.e., it has the exact same length as line 2)    |
+| Line | Description                                                                                                                           |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | identifier: always starts with ‘@’ and contains information about the read (e.g., instrument, lane, multiplex tag, coordinates, etc.) |
+| 2    | The sequence of nucleotides making up the read                                                                                        |
+| 3    | Always begins with a ‘+’ and sometimes repeats the identifier                                                                         |
+| 4    | Contains a string of ASCII characters that represent the quality score for each base (i.e., it has the exact same length as line 2)   |
 
 FASTQ files often come in pairs, which are usually named the same with a slightly different suffix (e.g., `sample_1_R1.fastq` and `sample_1_R2.fastq`). These pairs are reads of the same fragment in the opposite direction. In a nutshell, paired-end sequencing is used because the additional information provided by reads being paired can help with mapping repetitive regions of the genome.
 
