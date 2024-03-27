@@ -1,0 +1,46 @@
+{
+	"name": "Unix tools, bioconda and RStudio",
+	// "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "../.."
+	},
+	"features": {
+		"ghcr.io/rocker-org/devcontainer-features/r-rig:1": {
+			"vscodeRSupport": "minimal",
+			"installDevTools": "true",
+			"installRMarkdown": "true"
+			// "installJupyterlab": "true",
+		},
+		"ghcr.io/rocker-org/devcontainer-features/rstudio-server": {},
+		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+			"packages": "tidyverse,rmarkdown,BiocManager,shiny,shinythemes,markdown",
+			"installSystemRequirements": true
+		}
+	},
+	"postAttachCommand": {
+		"rstudio-start": "rserver"
+	},
+	"forwardPorts": [
+		8787
+	],
+	"portsAttributes": {
+		"8787": {
+			"label": "RStudio IDE"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mechatroner.rainbow-csv",
+				"mads-hartmann.bash-ide-vscode",
+				"reageyao.biosyntax"
+			]
+		},
+		"codespaces": {
+			"openFiles": [
+				"README.md"
+			]
+		}
+	}
+}
