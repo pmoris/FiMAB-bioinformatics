@@ -19,6 +19,9 @@
 		// https://github.com/mamba-org/devcontainer-features/tree/main/src/micromamba
 		// "ghcr.io/mamba-org/devcontainer-features/micromamba:1": {}
 	},
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postStartCommand": "if [ -f environment.yml ]; then umask 0002 && /opt/conda/bin/mamba env update -n base -f environment.yml; fi",
+	// "postCreateCommand": "/opt/conda/bin/mamba env update -n base -f environment.yml",
 	"postAttachCommand": {
 		"rstudio-start": "rserver"
 	},
