@@ -1,0 +1,103 @@
+# Variant calling {#sec-variant-calling}
+
+<!-- TODO subset of pipeline diagram -->
+
+## Types of variants
+
+- SNVs = SNPs and indels
+- Tandem repeats and SVs
+
+::: {.callout-note}
+## Paired-end sequencing
+
+Paired-end sequencing can help to detect larger structural variants.
+
+:::
+
+![Detecting structural variants. Source: Baker (2012). Structural Variation: The Genome’s Hidden Architecture. [https://doi.org/10.1038/nmeth.1858](https://doi.org/10.1038/nmeth.1858)](../assets/structural-variant-detection.webp)
+
+
+
+<!-- https://www.nature.com/articles/nmeth.1858
+https://www.nature.com/articles/nmeth.1858/figures/3 -->
+
+Detecting Single Nucleotide Variants (SNVs)
+<!-- TODO figure ppt -->
+
+::: {.callout-tip}
+Similar to the mapping step, there exist many different algorithmic implementations of variant calling:
+
+- `GATK4`
+- `bcftools` (made by the same developers as `samtools`)
+- `FreeBayes` ()
+
+<!-- TODO other variant callers: links + explanation -->
+
+:::
+
+## GATK
+
+
+### More indices
+
+GATK requires us to index the reference genome again, but this time using samtools faidx ref.fasta
+Like before, this creates a new file in the reference genome directory, with the extension .fai
+Additionally, we need a .dict dictionary file, which can be created using gatk CreateSequenceDictionary –R ref.fasta
+
+### Haplotype calling
+
+https://gatk.broadinstitute.org/hc/en-us/articles/360035531412-HaplotypeCaller-in-a-nutshell
+<!-- TODO fig ppt -->
+
+
+## VCF files revisited
+
+The output of variant calling is a file in the Variant Call Format (`.vcf`), which we already encountered in @sec-vcf.
+
+Source: https://davetang.github.io/learning_vcf_file/ & https://vcftools.sourceforge.net/VCF-poster.pdf
+<!-- TODO fig ppt -->
+
+::: {.callout-caution}
+## Exercises
+
+Run gatk HaplotypeCaller for a single bam file and inspect the resulting .vcf file
+
+```
+gatk HaplotypeCaller
+    -R genome.fasta
+	-I alignment.bam
+	-O variants.g.vcf
+	--native-pair-hmm-threads 4
+    ERC GVCF
+```
+
+<!-- TODO do bash scripts need backslashes for line breaks? -->
+
+Examine and run the call_variants.sh script to process all files.
+Merge the different .g.vfc files  (gatk CombineGVCFs)
+Perform combined genotyping on the merged file (gatk GenotypeGVCFs)
+
+
+:::
+
+## Filtering
+
+::: {.callout-caution}
+Optional: Perform hard filtering on the .vcf file. Use the GATK help file for hard filtering as guideline:
+Filtering parameters described in: https://gatk.broadinstitute.org/hc/en-us/articles/360035890471-Hard-filtering-germline-short-variants
+Guideline with suggested filtering cutoffs: https://gatk.broadinstitute.org/hc/en-us/articles/360035531112--How-to-Filter-variants-either-with-VQSR-or-by-hard-filtering#2
+Step 1: Separate SNPs and indels
+Step 2: add and perform filtering on SNPs
+Step 3: add and perform filtering on Indels
+!! you always first add a filter (using gatk VariantFiltration) and next do the effective filtering (gatk SelectVariants with the option --exclude-filtered true.
+:::
+
+<!-- TODO: section on GATK best practices + ML prediction of errors -->
+
+
+<!-- TODO: extra reading
+https://www.nature.com/articles/s41576-023-00590-0#Sec2
+Fig. 1: Challenges of mapping and variant calling in simple repetitive regions.
+https://www.nature.com/articles/s41576-023-00590-0/figures/1
+
+ -->

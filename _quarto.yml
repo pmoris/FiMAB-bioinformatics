@@ -29,7 +29,8 @@ book:
     #   email: pmonsieurs@itg.be
     #   affiliations:
     #     - Institute of Tropical Medicine Antwerp
-  date: "2023-08-02"
+  # date: "2023-08-02"
+  date: "2024-03-28"
   date-format: long
 
   # description: ...
@@ -59,12 +60,42 @@ book:
       - content/unix/6-unix-more-commands.qmd
       - content/unix/7-unix-redirection.qmd
       - content/unix/8-unix-variables-loops-scripts.qmd
-    - part: content/r/r-intro.qmd
+    - part: "Introduction to R"
       chapters:
+        - content/r/r-intro.qmd
         - content/r/r-resources.qmd
-    # - part: "Bioinformatics file formats and tools"
-      # chapters:
-        # - content/bioinf/bioinf-file-formats.qmd
+    - part: "Processing genomic data"
+      chapters:
+        - content/genomics/pipeline-overview.qmd
+        - content/genomics/tools-and-formats.qmd
+        - content/genomics/qc.qmd
+        - content/genomics/mapping.qmd
+        - content/genomics/variant-calling.qmd
+    # # - part: "Bioinformatics file formats and tools"
+    #   # chapters:
+    #     # - content/bioinf/bioinf-file-formats.qmd
+    # - part: "Malaria Molecular Surveillance"
+    #   chapters:
+    #       - content/mms/mms_usecases
+    #       - content/mms/molecular_markers
+    #       - content/mms/practical_variants_of_interest
+    #       - content/mms/genetic_diversity
+    - content/population-genetics.qmd
+    # - part: "Population genetics"
+    #   chapters:
+    #       - content/popgen/population_genetics
+    #       - content/popgen/micro_evolution
+    #       - content/popgen/practical_LD
+    #       - content/popgen/visualisation
+    #       - content/popgen/practical_PCA
+    #       - content/popgen/relatedness
+    #       - content/popgen/multilocus
+    #       - content/popgen/ibd
+    #       - content/popgen/population_structure
+    #       - content/popgen/practical_ibd
+    # - part: "Phylogenetics"
+    # - part: "Case studies"
+    # - part: "Computational literacy" # aka things that ~can~ will go wrong aka what I wish I had known
     # - content/references.qmd
 
     # https://quarto.org/docs/books/book-structure.html#parts-appendices

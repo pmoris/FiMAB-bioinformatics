@@ -1,0 +1,42 @@
+# Bioinformatics tools and file formats
+
+Below we have created a list of the various tools that are used for the steps in this pipeline. As a disclaimer: a common occurrence in bioinformatics is that several different approaches have been developed for a particular task or analysis, leading to a large (and sometimes confusing) ecosystem of different software tools, each with their own advantages, disadvantages and learning curve. In the course we will try to focus on one representative tool for each task, but be aware that these are not the only ones and there might exist more suitable options depending on your data and use cases.
+
+## File formats
+
+![](https://imgs.xkcd.com/comics/standards.png)
+
+::: {.callout}
+
+We have compiled a few other resources that describe the various bioinformatics file formats below:
+
+- [https://eriqande.github.io/eca-bioinf-handbook/bioinformatic-file-formats.html](https://eriqande.github.io/eca-bioinf-handbook/bioinformatic-file-formats.html)
+- [https://rnnh.github.io/bioinfo-notebook/docs/file_formats.html](https://rnnh.github.io/bioinfo-notebook/docs/file_formats.html)
+
+:::
+
+### FASTA
+
+- @sec-fasta
+- File extension: generally `.fasta`, `.fas` or `.fa`, but `.fna` (**F**ASTA **n**ucleic **a**cids), `.faa` (**F**ASTA **a**mino **a**cids) and `.frn` ((**F**ASTA non-coding **RN**A)) are also used.
+
+### FASTQ
+
+- @sec-fastq-in-depth
+- File extension: `.fq` or `.fastq`.
+
+### SAM
+
+- @sec-sam-format
+
+### BAM
+
+### VCF
+
+### gVCF
+
+### BED / GFF
+
+## Tools
+
+- ...

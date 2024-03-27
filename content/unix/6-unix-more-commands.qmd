@@ -273,7 +273,7 @@ Suppose we have mapped a set of reads in the FASTQ file `sample_1.fastq` to a re
 
 `samtools` is a commonly used program to manage SAM/BAM files, which we will introduce later when discussing the structure of variant calling pipelines.
 
-## Downloading files: `wget`
+## Downloading files: `wget` {#sec-plasmodb}
 
 `wget` is a command that allows you to download files from a particular web address or URL and place them in your working directory. While there are several optional flags, in its most basic form the syntax is simply: `wget URL`. This command is not only useful when automating certain tasks, but also crucial if you ever find yourself in a Unix environment that does not have a GUI at all (e.g., compute clusters or cloud servers).
 

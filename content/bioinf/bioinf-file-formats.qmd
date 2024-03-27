@@ -1,4 +1,0 @@
-# Bioinformatics file formats
-
-- https://rnnh.github.io/bioinfo-notebook/docs/file_formats.html
-- https://www.hadriengourle.com/tutorials/file_formats/
