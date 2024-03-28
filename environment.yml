@@ -14,6 +14,8 @@ dependencies:
   - bcftools
   - gatk4
   - seqkit
+  - mafft
+  - raxml-ng
   # - sra-tools
   # - ffq
   # - nextflow
