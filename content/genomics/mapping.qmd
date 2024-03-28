@@ -8,6 +8,16 @@ The next step of our pipeline tries to align the filtered and trimmed reads to t
 The pipeline that we're introducing here deviates from the GATK4 best practices in this section, because we do not introduce the concept of [base score recalibration](https://gatk.broadinstitute.org/hc/en-us/articles/360035890531-Base-Quality-Score-Recalibration-BQSR). The basic idea is that we want to detect and correct systematic errors made by the sequencer, by using our knowledge of known variants to model them.
 :::
 
+::: {#tip-reproducibility .callout-tip}
+## Reproducibility and organized projects
+
+To make your analyses more reproducible, and to be able to figure out what you did in the (distant) future, it is important to use meaningful file names and to organise all of your data, scripts and accompanying files (like metadata and readme files, see @tip-reproducibility-2). During these hands-on sessions, try to already think about naming conventions and a clear hierarchy of your files and directories.
+
+We will write separate scripts for each of the different parts of the pipeline, but at the very end, we can try to merge them into just a handful scripts for each of the major conceptual steps, optionally accompanied by a master script to govern them all.
+
+As a last tip, try to make use of absolute paths to all important files and folders at the top of your scripts. This makes it easy to change them at a later time, although it is not ideal for making your scripts portable.^[An alternative is to make use of relative paths, but in that case the script still needs to be called from a fixed location in your project folders (or you need to make use of [this strategy](https://stackoverflow.com/a/246128)). For more complex scripts, you might want to look into providing paths as an argument, or to make use of configuration or samplesheets (as is done by more complex workflow manager tools).]
+
+:::
 
 ## Where to find your reference genomes
 
@@ -35,12 +45,12 @@ The indexing step itself is usually performed by the same tool as the one that d
 ::: {.callout-caution}
 ## Exercise
 
-- Use the `bwa index` command to create an index for both reference genomes.
-- Which files are created?
+- Use the `bwa index <reference.fasta>` command to create an index for both reference genomes.
+- Which files were created by the indexing step?
 
 :::
 
-::: {.callout-tip}
+::: {#tip-reproducibility-2 .callout-tip}
 ## Collaboration and reproducibility
 
 We'd like to mention two important related aspects of (computational) scientific workflows here: collaboration and reproducibility.
@@ -73,14 +83,49 @@ We will use BWA, [as is customary](https://www.malariagen.net/wp-content/uploads
 
 As we discussed in @tip-paired-end, when we are working with paired-end data the aligner, there is additional information available (i.e., the expected distance between forward and reverse reads) that can help aligners span repetitive regions. Paired reads are always mapped together, so they need to be provided to the mapper together; that is why we tend to give them similar file names and the paired reads inside appear in the same order. The final alignment report usually provides dedicated output on paired reads where one of them fails to map, because this is not something that you'd expect in normal circumstances, since they _should_ be derived from the same fragment of DNA.
 
+When we call `bwa mem` without any additional arguments, we get an overview of how to use it:
+
+```bash
+Usage: bwa mem [options] <reference-genome> <R1.fastq> [R2.fastq]
+```
+
+As you can see, the second read pair file is `[optional]`, but when dealing with paired-end read data the two files need to be supplied at the same time. To do this programmatically, it is again important to use concepts like _looping over pairs of FASTQ files_ to do this efficiently (see @tip-paired-fastq-loop).
+
+By default, `bwa` will output its results straight into the terminal's standard out (see @sec-unix-streams). This is very useful once we start chaining different tools together, but for your first attempts you should provide the `-o <output_file>` flag to write everything to a file instead.
+
+A few other important options are:
+
+- `-t <int>`: the number of threads to use. See @tip-parallel.
+- `-k <int>`: minimum seed length (used for initial exact matching before extending the alignment) <!-- TODO bwa options-->
+- `-R "@RG\tID:L001\tPL:ILLUMINA\tSM:${sample}"`: defines _read groups_, which are tags to identify which reads belong together across flowcells/lanes/library preparations[^read-groups]
+
+[^read-groups]: Reads groups are a [confusing subject](https://www.biostars.org/p/43897/), and [a very deep](https://gatk.broadinstitute.org/hc/en-us/articles/360035532352-Errors-about-read-group-RG-information) one as well. In a nutshell, read groups are used to inform downstream tools about which reads were sequenced together in the same flowcell/lane (to account for technical variability) and which reads need to be grouped because they are derived from the same sample (but stored in separate files). Fortunately, they are only required by a few downstream GATK tools, but leaving them out [can result in errors](https://gatk.broadinstitute.org/hc/en-us/articles/360035532352-Errors-about-read-group-RG-information).
+
+Of course, there exist various other options that can be used to do things like tweak the parameters, scores and thresholds used for local alignment.
+
 ::: {.callout-caution}
-## Exercise
+## Exercise: mapping with `bwa mem`
+
+1. Map a single pair of reads to the reference genome (use the Peruvian _P. falciparum_ AmpliSeq data).
+bwa mem read_1.fastq read_2.fastq reference.fasta –o alignment.sam
+Open the resulting sam file using less.
+Align the same file, but immediately pipe the bwa output to samtools for sorting and converting to a .bam file (bwa mem | samtools sort -).
+Compare the size of the .sam and .bam files (du -sh).
+
+Inspect and run the map.sh script to map all the reads.
+Check the bwa help file to interpret the different options.
+-R "@RG\tID:001\tSM:001\tPL:ILLUMINA“ => needed for downstream GATK analysis
+What does the samtools flagstat command do?
+
+"@RG\tID:001\tSM:001\tPL:ILLUMINA"
+""
+
 
 <!-- TODO mapping exercises -->
 
 :::
 
-::: {.callout-tip}
+::: {#tip-parallel .callout-tip}
 ## Speeding up code through multi-threading or parallelization
 
 <!-- TODO: explain parallelization
@@ -128,7 +173,16 @@ For paired-end sequencing,
 
 :::
 
+::: {.callout-warning}
+## Host DNA contamination removal
 
+When analysing WGS data (but not AmpliSeq) it is important to remove human reads from your FASTQ files prior to mapping them to the _Plasmodium_ reference genome. There are a number of different approaches and dedicated tools to this - assigning reads to different organisms is a crucial step in bacterial metagenomics for example - but one of the most common approaches for malaria genomics is to simply do a two-step mapping process with your alignment software of choice: in the first round all reads are mapped against the human reference genome. Anything that _"sticks"_ is discarded. In the second round, the remaining unmapped reads are mapped to _Plasmodium_.
+
+When depositing genetic data into public sequencing data repository like [NCBI's SRA](http://www.ncbi.nlm.nih.gov/sra) or [EMBL-EBI's ENA](http://www.ebi.ac.uk/ena/), only filtered FASTQ files should be used, to avoid any potential issues with regards to human privacy and data protection.
+
+You could try this for yourself as a bonus exercise.
+
+:::
 
 
 ## SAM and BAM files
@@ -141,6 +195,11 @@ samtools is used to convert between sam and bam files, but it can perform many o
 
 All details can be found in the format specification: [https://samtools.github.io/hts-specs/SAMv1.pdf](https://samtools.github.io/hts-specs/SAMv1.pdf).
 
+
+<!-- 3.  You must sort the BAM files from the original ordering produced by `bwa mem` into a *coordinate-ordered* format, in which the reads are sorted by where they appear within the reference genome. -->
+
+
+
 ::: {.callout-note}
 ## SAM file format
 
@@ -150,6 +209,25 @@ All details can be found in the format specification: [https://samtools.github.i
 ### Sorting bam by coordinate
 
 The reads in a SAM/BAM file can be sorted in different ways. For our needs (variant calling using GATK), we will need to sort them according to their location on the reference genome.
+
+::: {.callout-tip}
+## Chaining commands via pipes
+
+Recall what you learned in @sec-sec-unix-streams about piping the output of one command into the input of another using the `|` operator. We can make use of this to feed the output of `bwa mem` directly into `samtools`. This allows us to forego the need to write the output to any intermediate files.^[This works out of the box, but you might encounter the syntax `command_1 | command_2 -`, where the hyphen `-` is a way of explicitly telling the second command to look at `stdin` for its input. For many tools, including `samtools`, [this is not necessary however](https://bioinformatics.stackexchange.com/questions/20773/problem-with-samtools-command-with-a-final-hyphen).]
+
+
+```bash
+bwa mem <arguments> | samtools sort <arguments>
+```
+
+:::
+
+::: {.callout-caution}
+## Exercise
+
+Modify your mapping script to immediately perform compression and sorting using the `samtools sort` command, without producing any intermediate files.
+
+:::
 
 ## PCR duplicate removal - `picard MarkDuplicates`
 
@@ -195,8 +273,11 @@ Examine and run the remove_dups.sh script to process all files.
 
 Try to combine all the steps of the pipeline we have seen so far into a single script.
 
-<!-- TODO Genome visualisation -->
+<!-- TODO expand Genome visualisation -->
 
 ## Genome visualisation
 
 After creating and filtering our alignment files, we can visualise them in a tool like [IGV (Integrative Genomics Viewer)](https://igv.org/). We refer to [this section](https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html#visualization-using-a-genome-browser-igv) of the Galaxy training materials [@Hiltemann_2023; @sequence-analysis-mapping].
+
+
+<!-- TODO: add info on coverage and read depth -->

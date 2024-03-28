@@ -509,8 +509,10 @@ Lastly, this [Galaxy Training](https://training.galaxyproject.org/training-mater
 ## Exercises
 
 - Read the `fastqc` help message by calling `fastqc --help` and figure out the basic syntax to use the tool.
-- Run the tool on a `.fastqc` file. Does it matter if its `.gz` compressed or not?
+- Run the tool on one of the `.fastq` files in the _P. falciparum_ AmpliSeq dataset. Does it matter if its `.gz` compressed or not?
 - Inspect the output and assess the quality of the reads. Look back at the different sources of base calling errors that we discussed earlier.
+
+<!-- TODO: add shiny practical -->
 
 Bonus question:
 
@@ -660,19 +662,48 @@ For the AmpliSeq pipelines, we generally stick to the following options:
 
 For more detailed info on all these commands, check out the [trimmomatic manuaul](http://www.usadellab.org/cms/?page=trimmomatic).
 
+
 ::: {.callout-tip}
 The `threads` option allows you to process multiple samples simultaneously to speed up the analysis. We will see more on parallelization and multi-threading later. In your CodeSpace environment, you can choose 2 or 4 threads, depending on the number of cores you selected.
 :::
 
 ::: {.callout-caution}
 ## Exercises
-
-- Try trimming a single pair of reads.
-- Run FastQC again on the trimmed reads to see what changed.
-- Write a (pseudo-code) script to trim multiple reads in one go. Afterwards, compare your approach to the `trim.sh` script in the `./training/scripts` directory.
+1
+- Try trimming a single pair(!) of reads.
+- Run FastQC again on the trimmed reads and compare the results with the original FastQC report.
+- Write a script to trim multiple reads in one go and use it to analyse all the paired read in the Peruvian _P. falciparum_ AmpliSeq dataset. Remember that you can use pseudo-code to start out with.
+    - Afterwards, compare your approach to the `trim.sh` script in the `./training/scripts` directory.
 - Can you guess what the following line does? `base=$(basename ${read_1} _1.fastq.gz)`
     - Hint: $(command) is a way to run a command inside another command or statement, so try figuring out what the command between the brackets does first.
 
+**Bonus exercise:** trim all the read files for the Vietnam _P. vivax_ WGS data too and compare the FastQC differences.
+
+:::
+
+::: {#tip-paired-fastq-loop .callout-tip }
+## Looping over paired FASTQ files in `bash`
+
+When writing scripts that iterate over paired FASTQ files, you can use the concepts that we introduced in @tip-basename.
+
+A minimal example is provided below:
+
+```bash
+#!/usr/bin/env bash
+
+# loop through the first read of each pair
+for read_1 in ../data/fastq/*_R1_001.fastq.gz
+
+do
+
+	# extract the sample name and print it
+	sample_name=$(basename "${read_1}" _R1_001.fastq.gz)
+
+	echo "Read 1 = ${sample_name}_R1_001.fastq.gz"
+    echo "Read 2 = ${sample_name}_R2_001.fastq.gz"
+
+done
+```
 :::
 
 ::: {.callout-tip}

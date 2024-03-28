@@ -249,7 +249,7 @@ Inspect the scripts stored in `./training/scripts` and try to make sense of the 
 :::
 
 
-::: {.callout-tip collapse="true"}
+::: {#tip-basename .callout-tip collapse="true"}
 ## What does the following line do? `sample_name=$(basename ${read_1} _R1_001.fastq.gz)` <br> Hint: `$(command)` provided a method to run a command inside another statement, so try figuring out what the command between the brackets does first.
 
 This line is present in most of the example scripts inside of a for loop that iterates over a set of FASTQ files, each time processing a pair of `R1/R2` files.
