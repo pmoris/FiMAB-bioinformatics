@@ -6,7 +6,7 @@ Remember that we have provided a list of helpful tips and hints in the appendix:
 
 Up until now, most of the commands that we have used, printed their output directly to the terminal screen. But what if we want to save that output to a file? Or similarly, if we want to run program X on the output of program Y? This is where redirection and piping come into play. But first, we will have to briefly introduce the concept of streams.
 
-## Streams
+## Streams {#sec-unix-streams}
 
 The general flow of Unix commands is that we supply a specific input on the terminal, which is supplied to a command, and any output is printed back to the terminal screen. In other words, processes have three different _data streams_ connected to them.
 
