@@ -96,7 +96,7 @@ book:
     # - part: "Phylogenetics"
     # - part: "Case studies"
     # - part: "Computational literacy" # aka things that ~can~ will go wrong aka what I wish I had known
-    # - content/references.qmd
+    - content/references.qmd
 
     # https://quarto.org/docs/books/book-structure.html#parts-appendices
     # parts can either be a stand-alone file with intro
@@ -165,14 +165,11 @@ toc-expand: true
 number-sections: true
 # number-depth: 2
 
-reference-location: margin
 # citation-location: margin
-
+reference-location: margin
 bibliography: content/references.bib
 
 appendix-style: default
-
-# highlight-style: nord
 
 format:
   html:
