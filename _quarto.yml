@@ -66,6 +66,7 @@ book:
         - content/r/r-resources.qmd
     - part: "Processing genomic data"
       chapters:
+        - content/genomics/setup.qmd
         - content/genomics/pipeline-overview.qmd
         - content/genomics/tools-and-formats.qmd
         - content/genomics/qc.qmd
@@ -93,7 +94,7 @@ book:
     #       - content/popgen/ibd
     #       - content/popgen/population_structure
     #       - content/popgen/practical_ibd
-    # - part: "Phylogenetics"
+    - content/phylogenetics.qmd
     # - part: "Case studies"
     # - part: "Computational literacy" # aka things that ~can~ will go wrong aka what I wish I had known
     - content/references.qmd

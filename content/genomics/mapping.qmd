@@ -30,8 +30,6 @@ Before we can map our reads to a reference genome, we need to create an index to
 
 The indexing step itself is usually performed by the same tool as the one that does the actual alignment. The index **only needs to be created once**, and then it can be re-used when mapping each of our FASTQ files. In this course, we will be using `bwa` - the [Burrows-Wheeler Aligner](https://github.com/lh3/bwa).
 
-
-
 <!-- TODO citation for BWA and other tools -->
 
 ::: {.callout-caution}
@@ -39,6 +37,21 @@ The indexing step itself is usually performed by the same tool as the one that d
 
 - Use the `bwa index` command to create an index for both reference genomes.
 - Which files are created?
+
+:::
+
+::: {.callout-tip}
+## Collaboration and reproducibility
+
+We'd like to mention two important related aspects of (computational) scientific workflows here: collaboration and reproducibility.
+
+1. Reference genomes and their indices take up a lot of space. In the case of larger genomes, like the human one, it also takes considerable time to produce the index. Fortunately, these files can be re-used for any future analysis - not just by you, but by others as well. That is why we recommend to store these references and their indices in a shared location on your lab's workstation, so that they become accessible to others who might benefit from them.
+
+2. To ease collaboration with others, but also with your future self, it is a good idea to keep track of the various steps you've performed in your analysis, just like you would do in a lab notebook. Of course the code and scripts that you write should be clearly named (and ideally, elaborated with clear comments), but it also fruitful to note down more nitty-gritty details on how you managed to fix a particular issue or why a specific option was chosen. In the case of reference genomes, we recommend to create a `README.md` file[^markdown] to store alongside your reference genomes, which clearly describes where you obtained them, the version/build/release, and perhaps even a code snippet to re-download and [checksum](https://genomicsaotearoa.github.io/shell-for-bioinformatics/2_download_data/) them.
+
+As a **bonus exercise**, try to create such a readme file.
+
+[^markdown]: `.md` stands for markdown, which is a popular [plain-text markup language](https://www.markdownguide.org/getting-started/) used for these kinds of tasks. You will often see people used markdown or `.txt` files to add metadata to collections of files in databases and analysis scripts or workflows on places like [GitHub](https://www.github.com).
 
 :::
 

@@ -1,0 +1,7 @@
+# Introduction to phylogenetics
+
+This introduction to the field of phylogenetics will be taught by [Prof. Conor Meehan](https://www.ntu.ac.uk/staff-profiles/science-technology/conor-meehan).
+
+You can find the teaching materials on [his website](https://conmeehan.github.io/PathogenDataCourse/IntroToPhylogenetics) and in the [shared folder]().
+
+<!-- TODO: add link to shared folder with powerpoints -->
