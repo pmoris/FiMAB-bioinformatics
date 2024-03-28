@@ -23,6 +23,15 @@ Quality control: {
 # Quality control -> Read mapping.Align reads to reference: fastq
 Quality control -> Align reads to reference: fastq
 
+# Quality control -> Human read removal: fastq
+# Human read removal -> Align reads to reference: fastq
+
+# Human read removal: {
+#   style: {
+#     opacity: 0.5
+#   }
+# }
+
 # Read mapping: {
 Reference genome indexing: {
   bwa index: {
@@ -33,6 +42,11 @@ Reference genome indexing: {
 Align reads to reference: {
   bwa mem: {
     shape: hexagon
+  }
+  Human read removal (WGS-only): {
+    style: {
+      opacity: 0.5
+    }
   }
 }
 Compress and sort alignment: {
