@@ -1,4 +1,4 @@
-# Setting up your own Unix shell
+# Setting up your own Unix shell {#sec-unix-setup}
 
 In order to get started, you need to get access to a Unix environment of your own. You can either work [locally](#local-unix-environment) on your own computer or you can use the [online environment](#online-linux-environment) that we have created. The latter comes with a `bash` shell and will immediately give you access to a bunch of files that we will use throughout the course and exercises.
 

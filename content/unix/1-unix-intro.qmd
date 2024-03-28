@@ -16,13 +16,18 @@ This section of the course will introduce you to the general concept of the Unix
 
 This section of the course draws inspiration from the following resources:
 
--   [Conor Meehan's UNIX shell tutorial](https://conmeehan.github.io/UNIXtutorial.html) (CC BY-NC-SA 4.0)
--   [Mike Lee's Unix Crash Course](https://astrobiomike.github.io/unix/) (<https://doi.org/10.21105/jose.00053>)
--   [Data Carpentry's Introduction to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/) (<https://doi.org/10.5281/zenodo.3260560> CC-BY 4.0)
--   [Ronan Harrington's Bioinformatics Notebook](https://rnnh.github.io/bioinfo-notebook/docs/cl_intro.html) (MIT)
--   [A Primer for Computational Biology by Shawn T. O’Neil](https://open.oregonstate.education/computationalbiology/) (CC BY-NC-SA)
--   [Eric C. Anderson's Bioinformatics Handbook (Chapter 4)](https://eriqande.github.io/eca-bioinf-handbook/essential-unixlinux-terminal-knowledge.html) (MIT)
--   [Course on UNIX and Genomic Data](https://ngs-course.readthedocs.io/en/praha-november-2023/)
+- [Conor Meehan's UNIX shell tutorial](https://conmeehan.github.io/UNIXtutorial.html) (CC BY-NC-SA 4.0)
+- [Mike Lee's Unix Crash Course](https://astrobiomike.github.io/unix/) (<https://doi.org/10.21105/jose.00053>)
+- [Data Carpentry's Introduction to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/) (<https://doi.org/10.5281/zenodo.3260560> CC-BY 4.0)
+- [Ronan Harrington's Bioinformatics Notebook](https://rnnh.github.io/bioinfo-notebook/docs/cl_intro.html) (MIT)
+- [A Primer for Computational Biology by Shawn T. O’Neil](https://open.oregonstate.education/computationalbiology/) (CC BY-NC-SA)
+- [Eric C. Anderson's Bioinformatics Handbook (Chapter 4)](https://eriqande.github.io/eca-bioinf-handbook/essential-unixlinux-terminal-knowledge.html) (MIT)
+- [Course on UNIX and Genomic Data](https://ngs-course.readthedocs.io/en/praha-november-2023/)
+- [ECA's Bioinformatics Handbook](https://eriqande.github.io/eca-bioinf-handbook/essential-unixlinux-terminal-knowledge.html)
+- [Ronor Harrington's Bioinformatics Notebook](https://rnnh.github.io/bioinfo-notebook/docs/cl_intro.html)
+
+
+<!-- TODO: add citations for resources -->
 
 ---
 
