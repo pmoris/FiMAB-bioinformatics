@@ -18,25 +18,28 @@ $web-font-path: "No";
 /* ********** */
 
 // CSS was included in github release
-@font-face {
-     font-family: 'Source Sans Variable';
-     font-weight: 200 900;
-     font-style: normal;
-     font-stretch: normal;
-     src: url('./styles/fonts/source-sans-pro-3.006R/WOFF2/VAR/SourceSansVariable-Roman.ttf.woff2') format('woff2'),
-          url('./styles/fonts/source-sans-pro-3.006R/WOFF/VAR/SourceSansVariable-Roman.ttf.woff') format('woff'),
-          url('./styles/fonts/source-sans-pro-3.006R/VAR/SourceSansVariable-Roman.ttf') format('truetype');
-}
+// @font-face {
+//      font-family: 'Source Sans Variable';
+//      font-weight: 200 900;
+//      font-style: normal;
+//      font-stretch: normal;
+//      src: url('./styles/fonts/source-sans-pro-3.006R/WOFF2/VAR/SourceSansVariable-Roman.ttf.woff2') format('woff2'),
+//           url('./styles/fonts/source-sans-pro-3.006R/WOFF/VAR/SourceSansVariable-Roman.ttf.woff') format('woff'),
+//           url('./styles/fonts/source-sans-pro-3.006R/VAR/SourceSansVariable-Roman.ttf') format('truetype');
+// }
 
-@font-face {
-     font-family: 'Source Sans Variable';
-     font-weight: 200 900;
-     font-style: italic;
-     font-stretch: normal;
-     src: url('./styles/fonts/source-sans-pro-3.006R/WOFF2/VAR/SourceSansVariable-Italic.ttf.woff2') format('woff2'),
-          url('./styles/fonts/source-sans-pro-3.006R/WOFF/VAR/SourceSansVariable-Italic.ttf.woff') format('woff'),
-          url('./styles/fonts/source-sans-pro-3.006R/VAR/SourceSansVariable-Italic.ttf') format('truetype');
-}
+// @font-face {
+//      font-family: 'Source Sans Variable';
+//      font-weight: 200 900;
+//      font-style: italic;
+//      font-stretch: normal;
+//      src: url('./styles/fonts/source-sans-pro-3.006R/WOFF2/VAR/SourceSansVariable-Italic.ttf.woff2') format('woff2'),
+//           url('./styles/fonts/source-sans-pro-3.006R/WOFF/VAR/SourceSansVariable-Italic.ttf.woff') format('woff'),
+//           url('./styles/fonts/source-sans-pro-3.006R/VAR/SourceSansVariable-Italic.ttf') format('truetype');
+// }
+
+// alternative option: web font import
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
 /* ********* */
 /* Monospace */
