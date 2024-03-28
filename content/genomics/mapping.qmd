@@ -187,8 +187,3 @@ Try to combine all the steps of the pipeline we have seen so far into a single s
 ## Genome visualisation
 
 After creating and filtering our alignment files, we can visualise them in a tool like [IGV (Integrative Genomics Viewer)](https://igv.org/). We refer to [this section](https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html#visualization-using-a-genome-browser-igv) of the Galaxy training materials [@Hiltemann_2023; @sequence-analysis-mapping].
-
-## References
-
-::: {#refs}
-:::
