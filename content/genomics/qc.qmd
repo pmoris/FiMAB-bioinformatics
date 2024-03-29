@@ -568,27 +568,24 @@ https://genomics.sschmeier.com/ngs-qc/#phix-genome
 
 ::: -->
 
-Trimmomatic is a tool that can:
+[Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) is a tool that can:
 
 - Trim low quality bases at the start and end of sequences
 - Filter low quality reads (e.g., too short after trimming)
 - Remove adapter sequences
 
-<!-- TODO: finish section on trimmomatic + exercises -->
-
-::: {.callout-tip}
-
-<!-- TODO URL -->
-
-:::
-
+<!-- TODO: trimmomatic trim barcodes -->
 
 ::: {.callout-note}
 ## Why do adapter sequences show up in reads?
 
-Recall the structure of the library fragments shown in @fig-library-fragment-illumina. The sequencing primer where sequencing commences is located downstream from the adapters and indices on the 5' end. However, if the sequencing extends beyond the length of the DNA insert, it can enter into the adapter sequence on the opposite end of the fragment (on the 3' end). These (reverse complemented) adapters need to be trimmed[^trim-adapters].
+Recall the structure of the library fragments shown in @fig-library-fragment-illumina, in particular the location of the adapters. The sequencing primer where sequencing commences is located downstream from the adapters and indices on the 5' end. However, if the sequencing extends beyond the length of the DNA insert (i.e. the insert is shorter than the sequencing length), it enters into the adapter sequence on the opposite end of the fragment (on the 3' end). These adapters need to be trimmed, but things are tricky because often times these are only incomplete partial adapter sequences.
 
-[^trim-adapters]: technically things are a bit more complex. For the forward R1 read, this explanation is correct. But for the reverse R2 read,
+More information can be found on [page 5 of the Trimmomatic manual](http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/TrimmomaticManual_V0.32.pdf).
+
+<!-- [^trim-adapters]. -->
+
+<!-- [^trim-adapters]: technically things are a bit more complex. For the forward R1 read, this explanation is correct. But for the reverse R2 read, -->
 
 <!-- TODO trimming adapters explanation -->
 
@@ -614,19 +611,17 @@ https://www.biostars.org/p/325174/
 Trimmomatic's default behaviour is to drop the reverse reads when it trims adapters, so you get forward reads only surviving as a result.
 The reasoning behind this is that when you read into the adapter sequences it means that the insert is shorter than one of the reads, so the reverse read doesn't add any extra information, it is just the reverse complement of the forward read.
 
-
- -->
+-->
 
 <!-- https://thesequencingcenter.com/knowledge-base/trimming-illumina-adapter-sequences/ -->
 
-First of all, what are adapter sequences?
+<!-- First of all, what are adapter sequences?
 
-There are two main reasons why we might see adapter sequences
-
+There are two main reasons why we might see adapter sequences -->
 
 :::
 
- <!-- TODO used during the library prep and sequencing steps (e.g. Nextera, TrueSeq) -->
+<!-- TODO used during the library prep and sequencing steps (e.g. Nextera, TrueSeq) -->
 
 You can check the usage of `trimmomatic` by simply invoking the command without any arguments: `trimmomatic`
 
@@ -641,35 +636,53 @@ We can immediately see that there are two different versions, one for _paired-en
 
 Some of the other important options are `trimmomatic`:
 
-| Option           | Meaning                                                                                                            |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `inputFile1/2`   | The input fastq reads (.gz compression is allowed).                                                                |
-| `outputFile1/2P` | Name of output file containing the paired reads from fastq pair 1/2.                                               |
-| `outputFile1/2U` | Name of output file containing the unpaired reads from read pair 1/2 (e.g., when its matching read was discarded). |
-| `ILLUMINACLIP`   | Perform adapter removal.                                                                                           |
-| `SLIDINGWINDOW`  | Perform sliding window trimming, cutting once the average quality within the window falls below a threshold.       |
-| `LEADING`        | Cut bases off at the start of a read, if the quality is below the threshold.                                       |
-| `TRAILING`       | Cut bases off at the end of a read, if the quality is below the threshold.                                         |
-| MINLEN           | remove reads that are too short                                                                                    |
+| Option                             | Meaning                                                                                                                                                    |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `inputFile1/2`                     | The input fastq reads (.gz compression is allowed).                                                                                                        |
+| `outputFile1/2P`                   | Name of output file containing the paired reads from fastq pair 1/2.                                                                                       |
+| `outputFile1/2U`                   | Name of output file containing the unpaired reads from read pair 1/2 (e.g., when its matching read was discarded).                                         |
+| `ILLUMINACLIP:adapters.fa:2:30:10` | Perform adapter removal. Requires a file containing known Illumina adapter sequences (like Nextera/TruSeq or specific to your protocol like for AmpliSeq). |
+| `SLIDINGWINDOW`                    | Perform sliding window trimming, cutting once the average quality within the window falls below a threshold.                                               |
+| `LEADING`                          | Cut bases off at the start of a read, if the quality is below the threshold.                                                                               |
+| `TRAILING`                         | Cut bases off at the end of a read, if the quality is below the threshold.                                                                                 |
+| MINLEN                             | remove reads that are too short                                                                                                                            |
 
 For the AmpliSeq pipelines, we generally stick to the following options:
 
-- `ILLUMINACLIP:adapters.fa:2:30:10`: cut off Illumina specific adapters from the read (stored in `adapters.fa`).
+- `ILLUMINACLIP:adapters.fa:2:30:10`: cut off Illumina specific adapters from the read (stored in `adapters.fa`).^[For AmpliSeq, an example can be found [here](https://github.com/Ekattenberg/Plasmodium-AmpliSeq-Pipeline/blob/main/Pf_AmpliSeq_Peru/adapters.fa). For generic WGS data, Trimmomatic comes with a [few example files](https://github.com/timflutre/trimmomatic/tree/master/adapters). On our workstations, they can be found in `${CONDA_PREFIX}/share/trimmomatic/adapters/NexteraPE-PE.fa`]
 - `LEADING:3`: trim bases from the start of the read if they drop below a Q score of 3 (or `N`).
 - `TRAILING:3`: trim bases from the end of the read if they drop below a Q score of 3 (or `N`).
 - `SLIDINGWINDOW:4:15`: scan the read with a 4-base wide sliding window, cutting when the average quality per base drops below 15.
 - `MINLEN:36`: remove reads that are shorter than 36 bases.
 
-For more detailed info on all these commands, check out the [trimmomatic manuaul](http://www.usadellab.org/cms/?page=trimmomatic).
+```bash
+trimmomatic PE \
+    -phred33 \
+    -trimlog trimreport.txt \
+    sample_R1_001.fastq.gz \
+    sample_R2_001.fastq.gz \
+    sample_R1_001.trim.fastq.gz \
+    sample_R1_001.trim.unpaired.fastq.gz \
+    sample_R2_001.trim.fastq.gz \
+    sample_R2_001.trim.unpaired.fastq.gz \
+    ILLUMINACLIP:adapters.fa:2:30:10 \
+    LEADING:3 \
+    TRAILING:3 \
+    SLIDINGWINDOW:4:15 \
+    MINLEN:36
+```
 
+For more detailed info on all these commands, check out the [trimmomatic manuaul](http://www.usadellab.org/cms/?page=trimmomatic).
 
 ::: {.callout-tip}
 The `threads` option allows you to process multiple samples simultaneously to speed up the analysis. We will see more on parallelization and multi-threading later. In your CodeSpace environment, you can choose 2 or 4 threads, depending on the number of cores you selected.
 :::
 
+
+
 ::: {.callout-caution}
 ## Exercises
-1
+
 - Try trimming a single pair(!) of reads.
 - Run FastQC again on the trimmed reads and compare the results with the original FastQC report.
 - Write a script to trim multiple reads in one go and use it to analyse all the paired read in the Peruvian _P. falciparum_ AmpliSeq dataset. Remember that you can use pseudo-code to start out with.
@@ -716,6 +729,8 @@ You can install it on your own environment using the following command: `conda i
 :::
 
 <!-- TODO: expand multiQC example (exercise) -->
+
+---
 
 ::: {.callout-note}
 ## Additional resources

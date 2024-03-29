@@ -12,7 +12,7 @@ We have provided a list of helpful tips and hints in the appendix: @sec-unix-tip
 Additionally, there is an overview of some of the most common symbols that are used by the Unix shell here: @sec-table-special-syntax.
 :::
 
-## Layout of the Unix file system
+## Layout of the Unix file system {#sec-linux-paths}
 
 All files and directories (or folders) in Unix are stored in a hierarchical tree-like structure, similar to what you might be used to on Windows or Mac (cf. File Explorer). The base or foundation of the directory layout in Unix is the _root_ (`/`) (like the root of a tree). All other files and directories are built on top of this root location. When navigating the file system, it is also important to be aware of your current location. This is called the _working directory_.
 

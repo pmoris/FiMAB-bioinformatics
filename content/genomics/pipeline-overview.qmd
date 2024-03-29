@@ -18,7 +18,7 @@ In the diagram below the various tools (e.g., `bwa`, `samtools`, `gatk`) and dat
 
 We will mostly focus on the AmpliSeq pipeline [available here](https://github.com/Ekattenberg/Plasmodium-AmpliSeq-Pipeline/tree/main) as it was introduced by @kattenberg_novel_2022 and @kattenberg_malaria_2023.
 
-For the whole-genome sequencing parts, while largely similar, we try to adhere to standard conventions established by examples like [the GATK best practices](https://gatk.broadinstitute.org/hc/en-us) and @malariagen_pf7_2023.
+For the whole-genome sequencing parts, while largely similar, we try to adhere to standard conventions established by examples like [the GATK best practices](https://gatk.broadinstitute.org/hc/en-us) and [MalariaGEN's genomic databases](https://www.malariagen.net/wp-content/uploads/2023/11/Pf7-Details-of-bioinformatics-methods.pdf) [-@malariagen_pf7_2023].
 
 :::
 

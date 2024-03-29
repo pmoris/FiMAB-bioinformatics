@@ -200,3 +200,5 @@ A selection of more advanced topics to explore at a later time could be:
 - Learn about the difference in line endings on Unix (`\n`) and Windows (`\r\n`), how to switch between them (`dos2unix`) and how to set a preference in your editors like RStudio.
 - Learn about `sudo`, allowing you to perform actions as an administrator.
 - Regular expressions, to power up your `grep` searches and `sed`/`awk` commands.
+
+![](https://imgs.xkcd.com/comics/regular_expressions.png)

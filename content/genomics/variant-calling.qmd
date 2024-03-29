@@ -1,6 +1,42 @@
 # Variant calling {#sec-variant-calling}
 
+The previous steps of our pipeline were concerned with 1) the quality control of our sequence reads and 2) where all these reads fit on our reference genome. In this final step we will assess the genetic differences between each of our samples and the reference genome. This process is called _variant calling_ or _variant detection_. While conceptually simple, the main challenge is that it can be difficult to discern sequencing errors from real variants.
+
 <!-- TODO subset of pipeline diagram -->
+
+![Source: [http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/variant_calling_galaxy_1/variant_calling_galaxy_1/](http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/variant_calling_galaxy_1/variant_calling_galaxy_1/)](http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/variant_calling_galaxy_1/media/igv_mb.jpg)
+
+![Source: [https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/variant_calling_gatk1/#section-3-variant-calling](https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/variant_calling_gatk1/#section-3-variant-calling)](https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/media/fig2.png)
+
+steps:
+
+https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/variant_calling_gatk1/#section-3-variant-calling
+
+Section 3: Variant calling
+
+    1. Apply HaplotypeCaller
+    2. Apply CombineGVCFs
+    3. Apply GenotypeGVCFs
+
+Section 4: Filter and prepare analysis ready variants
+
+    1. Variant Quality Score Recalibration
+    2. Additional filtering
+    3. Final analysis ready VCF file
+
+
+file:///C:/Users/pmoris/Downloads/spectrum.00960-22-s0002-2.pdf
+Variants in amplicons including overlapping regions were called
+using HaplotypeCaller (GATK, v4.1.2) (6) and individual sample and control gVCF files were combined
+to jointly call genotypes using GenotypeGVCFs. Variants were hard filtered (QUAL>30, overall DP>100,
+MQ>50, QD>1.0, ReadPosRankSum >-10, SOR<4, GT depth >5) and annotated with SnpEff (v4.3T) (7),
+resulting in 2,146 high quality genotypes. Per locus filtered depth of coverage (format field DP) was
+used to calculate median depth of all loci per sample or per amplicon. Aligned coverage was calculated
+as the number of bases passed filter divided by the number of bases (57445bp) targeted in the Pf
+AmpliSeq assay. FastQ Screen was used to determine sources of contamination in uninfected controls
+(8).
+
+
 
 ## Types of variants
 
@@ -12,10 +48,10 @@
 
 Paired-end sequencing can help to detect larger structural variants.
 
-:::
 
 ![Detecting structural variants. Source: Baker (2012). Structural Variation: The Genome’s Hidden Architecture. [https://doi.org/10.1038/nmeth.1858](https://doi.org/10.1038/nmeth.1858)](../assets/structural-variant-detection.webp)
 
+:::
 
 
 <!-- https://www.nature.com/articles/nmeth.1858
@@ -24,43 +60,25 @@ https://www.nature.com/articles/nmeth.1858/figures/3 -->
 Detecting Single Nucleotide Variants (SNVs)
 <!-- TODO figure ppt -->
 
+## Variant calling using GATK HaplotypeCaller
+
 ::: {.callout-tip}
 Similar to the mapping step, there exist many different algorithmic implementations of variant calling:
 
-- `GATK4`
-- `bcftools` (made by the same developers as `samtools`)
-- `FreeBayes` ()
+- [GATK4](https://gatk.broadinstitute.org/hc/en-us)
+- [bcftools](http://samtools.github.io/bcftools/) (made by the same developers as `samtools`)
+- [FreeBayes](https://github.com/freebayes/freebayes)
 
 <!-- TODO other variant callers: links + explanation -->
 
 :::
 
+You can find out more about GATK HaplotypeCaller on the [GATK website](https://gatk.broadinstitute.org/hc/en-us/articles/360035531412-HaplotypeCaller-in-a-nutshell) or
+<!-- TODO fig ppt -->
+
+performs variant calling per sample to produce unfiltered genotype likelihoods.
+
 ## GATK
-
-
-### More indices
-
-GATK requires us to index the reference genome again, but this time using samtools faidx ref.fasta
-Like before, this creates a new file in the reference genome directory, with the extension .fai
-Additionally, we need a .dict dictionary file, which can be created using gatk CreateSequenceDictionary –R ref.fasta
-
-### Haplotype calling
-
-https://gatk.broadinstitute.org/hc/en-us/articles/360035531412-HaplotypeCaller-in-a-nutshell
-<!-- TODO fig ppt -->
-
-
-## VCF files revisited
-
-The output of variant calling is a file in the Variant Call Format (`.vcf`), which we already encountered in @sec-vcf.
-
-Source: https://davetang.github.io/learning_vcf_file/ & https://vcftools.sourceforge.net/VCF-poster.pdf
-<!-- TODO fig ppt -->
-
-::: {.callout-caution}
-## Exercises
-
-Run gatk HaplotypeCaller for a single bam file and inspect the resulting .vcf file
 
 ```
 gatk HaplotypeCaller
@@ -71,16 +89,37 @@ gatk HaplotypeCaller
     ERC GVCF
 ```
 
-<!-- TODO do bash scripts need backslashes for line breaks? -->
+### Even more indices
 
-Examine and run the call_variants.sh script to process all files.
+GATK requires us to index the reference genome again(!), but this time using `samtools faidx ref.fasta`. Like before, this creates a new file in the reference genome directory, with the extension `.fai`. Additionally, we also need a `.dict` dictionary file, which can be created using `gatk CreateSequenceDictionary –R ref.fasta`.
+
+::: {.callout-caution}
+## Exercises
+
+1. Create the required reference index files for both of your _Plasmodium_ reference genomes.
+2. Run `gatk HaplotypeCaller` for a single BAM file and inspect the resulting VCF file.
+3. Examine and run the [`call_variants.sh` script](../../training/scripts/call_variants.sh) (or create your own!) to process the BAM files for all of your samples.
+
+:::
+
+## VCF files revisited
+
+The output of variant calling is a file in the Variant Call Format (`.vcf`), which we already encountered in @sec-vcf.
+
+More info: https://davetang.github.io/learning_vcf_file/
+
+![Overview of Variant Call Format (VCF). Source: [https://vcftools.sourceforge.net/VCF-poster.pdf](https://vcftools.sourceforge.net/VCF-poster.pdf)](../assets/vcf-format.png)
+
+## Merging
 Merge the different .g.vfc files  (gatk CombineGVCFs)
 Perform combined genotyping on the merged file (gatk GenotypeGVCFs)
 
 
-:::
-
 ## Filtering
+
+
+
+
 
 ::: {.callout-caution}
 Optional: Perform hard filtering on the .vcf file. Use the GATK help file for hard filtering as guideline:
