@@ -73,25 +73,31 @@ Similar to the mapping step, there exist many different algorithmic implementati
 
 :::
 
-You can find out more about GATK HaplotypeCaller on the [GATK website](https://gatk.broadinstitute.org/hc/en-us/articles/360035531412-HaplotypeCaller-in-a-nutshell) or
+We will make use of [GATK4 (Genomic Analysis ToolKit)](https://gatk.broadinstitute.org/hc/en-us) for the variant detection components of our pipeline. This is a very extensive toolkit which offers many different utilities. The first one we will explore is the GATK HaplotypeCaller, which does the heavy lifting. You can find out more about GATK HaplotypeCaller in this [GATK article](https://gatk.broadinstitute.org/hc/en-us/articles/360035531412-HaplotypeCaller-in-a-nutshell) or the [full documentation](https://gatk.broadinstitute.org/hc/en-us/articles/21905025322523-HaplotypeCaller).^[GATK is actually a java program, which means that we can pass it additional arguments like memory requirements. See the [GATK documentation](https://gatk.broadinstitute.org/hc/en-us/articles/360035531892-GATK4-command-line-syntax) for more information on this.]
 <!-- TODO fig ppt -->
+
+Java syntax
 
 performs variant calling per sample to produce unfiltered genotype likelihoods.
 
+<!-- Briefly, the HaplotypeCaller works by: 1. Identify active regions or regions with evidence of variations. 2. Re-asssemble the active regions. 3. Re-align active region reads to the assembled regions to identify allele. More details about the HaplotypeCaller can be found here. -->
+
 ## GATK
 
-```
+```bash
 gatk HaplotypeCaller
     -R genome.fasta
 	-I alignment.bam
 	-O variants.g.vcf
-	--native-pair-hmm-threads 4
+	--native-pair-hmm-threads 2
     ERC GVCF
 ```
 
 ### Even more indices
 
 GATK requires us to index the reference genome again(!), but this time using `samtools faidx ref.fasta`. Like before, this creates a new file in the reference genome directory, with the extension `.fai`. Additionally, we also need a `.dict` dictionary file, which can be created using `gatk CreateSequenceDictionary –R ref.fasta`.
+
+<!-- TODO bam index also required samtools index alignment.sort.bam -->
 
 ::: {.callout-caution}
 ## Exercises
@@ -109,6 +115,11 @@ The output of variant calling is a file in the Variant Call Format (`.vcf`), whi
 More info: https://davetang.github.io/learning_vcf_file/
 
 ![Overview of Variant Call Format (VCF). Source: [https://vcftools.sourceforge.net/VCF-poster.pdf](https://vcftools.sourceforge.net/VCF-poster.pdf)](../assets/vcf-format.png)
+
+## Visualisation using IGV
+
+Similar to our BAM files, we can visualise VCF files in tools like [IGV (Integrative Genomics Viewer)](https://igv.org/). For a tutorial on this, we refer to this [Data Carpentry workshop](https://datacarpentry.org/wrangling-genomics/04-variant_calling.html#viewing-with-igv).
+
 
 ## Merging
 Merge the different .g.vfc files  (gatk CombineGVCFs)
@@ -140,3 +151,6 @@ Fig. 1: Challenges of mapping and variant calling in simple repetitive regions.
 https://www.nature.com/articles/s41576-023-00590-0/figures/1
 
  -->
+
+<!-- TODO left-aligning indels https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/non-dip/tutorial.html#left-aligning-indels -->
+<!-- TODO filtering reads: https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/non-dip/tutorial.html#filtering-reads -->

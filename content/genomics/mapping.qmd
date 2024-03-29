@@ -260,7 +260,7 @@ Recall what you learned in @sec-unix-streams about piping the output of one comm
 The only difference compared to before is that we now remove the `-o output.sam` option from the `bwa mem` command and that we do not provide an explicit input file to `samtools` (it is read from `stdout` directly instead).^[One final thing we could do is use `>` to write the output of `samtools` to a file directly, instead of using the `-o` flag.]
 
 ```bash
-bwa mem <arguments> | samtools sort -o alignment.sorted.bam
+bwa mem <arguments> | samtools sort -o alignment.sort.bam
 ```
 
 For clarity we use the `sorted.bam` file suffix for any sorted BAM files.
@@ -304,12 +304,15 @@ samtools flagstat training/results/bwa/PF0097_S43_L001.bam
 3834 + 0 with mate mapped to a different chr (mapQ>=5)
 ```
 
-Another useful tool for inspecting your alignment is [Picard's `CollectAlignmentSummaryMetrics`](https://gatk.broadinstitute.org/hc/en-us/articles/21904987074587-CollectAlignmentSummaryMetrics-Picard) (we will see Picard again in the next section on PCR duplicate removal):
+A more in-depth method of inspecting your alignment is [Picard's `CollectAlignmentSummaryMetrics`](https://gatk.broadinstitute.org/hc/en-us/articles/21904987074587-CollectAlignmentSummaryMetrics-Picard), or [the more extensive `CollectMultipleMetrics`](https://gatk.broadinstitute.org/hc/en-us/articles/360037594031-CollectMultipleMetrics-Picard) (we will see Picard again in the next section on PCR duplicate removal):
 
 ```bash
-picard CollectAlignmentSummaryMetrics R=<reference.fasta> I=<input.sorted.bam> O=<output.bam>
+picard CollectAlignmentSummaryMetrics R=<reference.fasta> I=<input.sort.bam> O=<output.bam>
 ```
 
+The output of these tools can again be aggregated using a tool like MulitQC. See [here](https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/files/multiqc_report.html) for an example.
+
+<!-- TODO: example multiQC output -->
 
 <!-- TODO: more info on mapping statistics -->
 
@@ -338,7 +341,7 @@ https://genomics.sschmeier.com/ngs-mapping/#stats-with-samtools
 Like our reference FASTA files, BAM files can also be indexed to improve the performance of downstream tools that need to search for particular reads in this large file.
 
 ```bash
-samtools index alignment.sorted.bam
+samtools index alignment.sort.bam
 ```
 
 ::: {.callout-caution}
@@ -347,16 +350,16 @@ samtools index alignment.sorted.bam
 Try to create an index for one of your BAM files. Which new files are created?
 :::
 
-## PCR duplicate removal - `picard MarkDuplicates`
+## Mark PCR duplicates - `picard MarkDuplicates`
 
 ::: {.callout-important}
-## PCR duplicate removal should **NOT** be performed for AmpliSeq data
+## PCR duplicates tagging/removal should **NOT** be performed for AmpliSeq data
 
 The library construction process for AmpliSeq results in identical fragments or duplicates for each of the targeted amplicons, hence we should not attempt to remove them.^[As a side note, in RNA-seq this duplicate removal step is also not recommended (unless unique molecular identifiers (UMIs) are used), although the number of duplicates can be used for quality control.]
 
 :::
 
-A final step in the mapping pipeline is the removal of PCR duplicates. These are identical sequences that can arise because of PCR steps during library preparation or because a cluster on the flow cell was erroneously detected as two separate ones^[You can read more about how PCR duplicates arise in this excellent [blog post](https://www.cureffi.org/2012/12/11/how-pcr-duplicates-arise-in-next-generation-sequencing/) by Eric Minikel.]. The overall goal of PCR duplicate removal is to reduce bias during downstream analyses (like variant detection) due to their presence.
+A final step in the mapping pipeline is the tagging (or removal) of PCR duplicates. These are identical sequences that can arise because of PCR steps during library preparation or because a cluster on the flow cell was erroneously detected as two separate ones^[You can read more about how PCR duplicates arise in this excellent [blog post](https://www.cureffi.org/2012/12/11/how-pcr-duplicates-arise-in-next-generation-sequencing/) by Eric Minikel.]. The overall goal of PCR duplicate removal is to reduce bias during downstream analyses (like variant detection) due to their presence.
 
 PCR duplicates are polyclonal molecules that do not represent any true biological variation, nor are they independent observations of the DNA that was present in a sample. Thus, the observed abundance of these identical reads does not accurately reflect the true abundance of the different molecules in the sample[@rochette_causes_2023]. If a particular PCR duplicate happens to be over-represented compared to other reads covering the same region of the genome, this could cause a bias in our analyses. [Just imagine what would happen](https://bioinformatics.stackexchange.com/a/2868) if during PCR amplification an error was introduced into one of the fragments. If we ended up with many PCR duplicates of this fragment, we might erroneously conclude that there is a SNP at this position because we see it occur in multiple reads. However, if we remove PCR duplicates, we will only observe the SNP in a single read, and variant detection will not mark this as a SNP due to lack of confidence (~agreement between different reads covering the same position, more on that in @sec-variant-calling).
 
@@ -368,24 +371,31 @@ In other words, we try to reduce any biases during variant detection (or other d
 
 The overall goal is to reduce bias during variant detection.  -->
 
-One of the tools that we use for PCR duplicate removal is [Picard](https://broadinstitute.github.io/picard/). Picard actually provides many different functionalities, but the one that we're interested for now is `MarkDuplicates`. An in-depth explanation of how it works can be found [here](https://gatk.broadinstitute.org/hc/en-us/articles/360057439771-MarkDuplicates-Picard).
+One of the tools that we use for marking PCR duplicates is [Picard](https://broadinstitute.github.io/picard/). Picard actually provides many different functionalities, but the one that we're interested for now is `MarkDuplicates`. An in-depth explanation of how it works can be found [here](https://gatk.broadinstitute.org/hc/en-us/articles/360057439771-MarkDuplicates-Picard). After running the tool, we end up with a BAM file again, but this time with all suspected PCR duplicates marked as such. Our downstream analysis tools will take this information into account whenever relevant (e.g., when detecting variants).[^Note that removal generally is not necessary, but it can be done by passing the `-REMOVE_DUPLICATES true` flag.]
 
 ::: {.callout-caution}
 ## Exercises
 
-Try to remove PCR duplicates for a single BAM file using the following command:
+1. Try to mark all PCR duplicates for a single BAM file using the following command:
 
 ```bash
 picard MarkDuplicates
-    -REMOVE_DUPLICATES true
-    -I alignment.bam
-    -O alignment.removeddups.bam
+    -I alignment.sort.bam
+    -O alignment.sort.dups.bam
     -M alignment.markeddups_metrics.txt
 ```
 
-Examine and run the [`remove_dups.sh`](../../training/scripts/remove_dups.sh) script to process all files.
+2. Run `samtools flagstat`
+
+3. Examine and run the [`remove_dups.sh`](../../training/scripts/remove_dups.sh) script to process all files.
 
 **Bonus exercise:** Try to combine all the steps of the pipeline we have seen so far (including trimming) into a single script.
+:::
+
+::: {.callout-tip}
+## Remember to use meaningful file names
+
+You might have noticed in the example above that we continued to extend the suffix of the BAM file to indicate what has happened to it: sorting and PCR duplicate marking. This information is also kept track of in the BAM header, but it is a good habit to still look for appropriate file names whenever possible.
 :::
 
 ---
