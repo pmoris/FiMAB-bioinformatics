@@ -22,7 +22,7 @@ n_threads=2
 # define in and outputs and create directories when necessary
 # by defining everything here, there is no need to `cd` to directories first
 ref="${SCRIPT_DIR}/../data/reference/PlasmoDB-67_Pfalciparum3D7_Genome.fasta"
-fastq_dir="${SCRIPT_DIR}/../data/fastq/"
+fastq_dir="${SCRIPT_DIR}/../results/trimmomatic"
 output_dir="${SCRIPT_DIR}/../results/bwa/"
 mkdir -p "${output_dir}"
 
@@ -73,12 +73,12 @@ for read_1 in "${fastq_dir}"/*_R1_001.fastq.gz; do
         # sort and compress to bam
         samtools sort \
             -@ "${n_threads}" \
-            -o "${output_dir}/${sample_name}.bam"
+            -o "${output_dir}/${sample_name}.sort.bam"
 
     # generate samtools report
     samtools flagstat \
         -@ 4 \
-        "${output_dir}/${sample_name}.bam" \
+        "${output_dir}/${sample_name}.sort.bam" \
         >"${output_dir}/${sample_name}.flagstat"
 
 done

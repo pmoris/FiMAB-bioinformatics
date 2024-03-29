@@ -24,10 +24,10 @@ for read_1 in *_R1_001.fastq.gz; do
         -trimlog ${trim_output_dir}/${sample_name}_trimreport.txt \
         ${read_1} \
         ${sample_name}_R2_001.fastq.gz \
-        ${trim_output_dir}/${sample_name}_R1_001.trim.fastq.gz \
-        ${trim_output_dir}/${sample_name}_R1_001.trim.unpaired.fastq.gz \
-        ${trim_output_dir}/${sample_name}_R2_001.trim.fastq.gz \
-        ${trim_output_dir}/${sample_name}_R2_001.trim.unpaired.fastq.gz \
+        ${trim_output_dir}/${sample_name}_R1_001.fastq.gz \
+        ${trim_output_dir}/${sample_name}_R1_001.unpaired.fastq.gz \
+        ${trim_output_dir}/${sample_name}_R2_001.fastq.gz \
+        ${trim_output_dir}/${sample_name}_R2_001.unpaired.fastq.gz \
         ILLUMINACLIP:${CONDA_PREFIX}/share/trimmomatic/adapters/NexteraPE-PE.fa:2:30:10 \
         LEADING:3 TRAILING:3 \
         SLIDINGWINDOW:4:15 \
