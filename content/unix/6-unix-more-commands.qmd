@@ -208,7 +208,7 @@ $ du -h training/data/
 346M    training/data/
 ```
 
-## Compressed files: `gzip`
+## Compressed files: `gzip` {#sec-compression}
 
 We already introduced the concept of file compression when talking about the FASTQ files in the `training/data/fastq` directory. As a reminder, compressed files are binary files (as opposed to human-readable plain text files) that are used to reduce the file size for more efficient storage. Many of the files that we use in bioinformatics tend to be compressed. Some of the tools we use, will not work on compressed files (e.g., try to `cat` a compressed file and see what happens), so we either need to 1) use specialized tools that expect compressed files as their input, or 2) decompress or extract the files first.
 
@@ -250,7 +250,7 @@ $ tar -czvf new_archive.tar.gz <path/to/target_directory>
 This command is [notorious for how arcane its option flags are](https://xkcd.com/1168/), but you can either try to remember it using a mnemonic (_"e**X**tract/**C**ompress **Z**e **V**ucking **F**iles"_, pronounced like a B-movie vampire) or the meaning of the individual flags (`z` tells tar that we are using gzip compression, `-v` stands for `--verbose` to make the command show more information and output, `-c`/`x` switches between compression and extraction mode,  `-f` is the last option and points to the tar file) . And of course, the correct syntax is only a google/[tldr](https://tldr.inbrowser.app/pages/common/tar) search or `tar --help` call away.
 
 
-### BAM file format
+### BAM file format {#sec-bam-format}
 
 A final example of a binary file that you might encounter in the bioinformatic analysis of AmpliSeq sequencing is the BAM file format:
 

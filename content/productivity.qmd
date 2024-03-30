@@ -95,6 +95,9 @@ bioconda
 containerization: cf workflow managers
 
 virtual environments: https://rdatatoolbox.github.io/chapters/course-renv.html
+https://genomics.sschmeier.com/ngs-tools/
+https://ngs-course.readthedocs.io/en/praha-november-2023/01-starter.html#installing-software
+https://mmbdtp.github.io/modules/unix/Installing_programs_and_handling_Conda_environments/
 
 
 ---

@@ -116,11 +116,11 @@ GATK requires us to index the reference genome again(!), but this time using `sa
 
 The output of variant calling is a file in the Variant Call Format (`.vcf`), which we already encountered in @sec-vcf.
 
-More info: https://davetang.github.io/learning_vcf_file/
+More info on [Dave Tang's Learning the VCF page](https://davetang.github.io/learning_vcf_file/)
 
 ![Overview of Variant Call Format (VCF). Source: [https://vcftools.sourceforge.net/VCF-poster.pdf](https://vcftools.sourceforge.net/VCF-poster.pdf)](../assets/vcf-format.png)
 
-## Visualisation using IGV
+## Visualisation using IGV {#sec-vcf-visualisation}
 
 Similar to our BAM files, we can visualise VCF files in tools like [IGV (Integrative Genomics Viewer)](https://igv.org/). For a tutorial on this, we refer to this [Data Carpentry workshop](https://datacarpentry.org/wrangling-genomics/04-variant_calling.html#viewing-with-igv).
 

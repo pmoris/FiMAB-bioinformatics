@@ -119,6 +119,15 @@ Also, note that there is no standard file extension for FASTQ files, both `.fq` 
 
 FASTQ files can typically contain up to millions of reads (depending on the depth of sequencing), resulting in file sizes in the range of hundreds of MBs to multiple GBs. However, the files are usually compressed using `gzip` (receiving the `.fastq.gz` extension) to reduce their file size.
 
+::: {.callout-tip}
+## Compress your files!
+
+Throughout this pipeline (and in many other bioinformatics analyses) you should avoid using and storing uncompressed files, because they waste disk space. Moreover, many of the formats we will talk about are also faster to analyse in binary compressed form compared to the plain-text versions (e.g., BAM vs SAM, see @sec-sam-format and @sec-bam-format).
+
+Refer to @sec-compression or [this overview](https://mmbdtp.github.io/modules/sequencing/file-compression/) for a refresher on file compression.
+
+:::
+
 The raw FASTQ files forms the basis on which your analysis builds. No matter what analysis you might perform, you should be able to reproduce it if you can start from the same raw reads. It is therefor of utmost importance to properly manage these files and store them in a secure location, preferably backed up.
 
 ---
@@ -451,7 +460,7 @@ training/data/fastq/PF0097_S43_L001_R1_001.fastq.gz     mean (binned)
 
 :::
 
-## Assessing quality scores programmatically - `fastqc`
+## Assessing quality scores programmatically - `fastqc` {#sec-fastqc}
 
 Of course, to get some actual work done, we will use a tool like `fastqc` to assess the quality of our sequence reads, rather than inspecting millions of reads by hand ;)
 
@@ -519,7 +528,7 @@ Bonus question:
 - How would you run the tool on a directory with many `.fastqc` files? Write a small script that does this.
 :::
 
-## FastQ Screen
+## FastQ Screen {#sec-fastqscreen}
 
 FastQ Screen is an utility that allows you to screen your `FASTQ` reads against a panel of genomes or known contaminants (like [PhiX](https://knowledge.illumina.com/instrumentation/general/instrumentation-general-reference_material-list/000001527)), to determine the origin of your sequences. In the case of malaria surveillance via AmpliSeq (or WGS), this allows us to screen for:
 
@@ -553,7 +562,7 @@ https://www.biostars.org/p/192788/ -->
 
 :::
 
-## Trimmining - `trimmomatic`
+## Trimmining - `trimmomatic` {#sec-trimming}
 
 ::: {.callout-note}
 There exist many alternative tools for trimming and filtering FASTQ files, such as [fastp](https://github.com/OpenGene/fastp), [Cutadapt](https://cutadapt.readthedocs.io/en/stable/) and [Trim Galore](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/) (which is a wrapper around Cutadapt and FastQC).
@@ -719,7 +728,7 @@ done
 ```
 :::
 
-::: {.callout-tip}
+::: {#tip-multiqc .callout-tip}
 ## Evaluating many reports at once: MultiQC
 
 As a bonus exercise, have a look at [MultiQC](https://multiqc.info/ ). This is a tool that allows you to aggregate the output results from many different samples into a single report. It supports many different bioinformatics tools, including FastQC.

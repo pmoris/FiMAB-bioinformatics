@@ -1,17 +1,10 @@
 # Alignment to reference genome
 
-The next step of our pipeline tries to align the filtered and trimmed reads to the reference genome of the organism we're studying. It starts from the processed `FASTQ` files and produces `SAM` and `BAM` files, which contain the mapped reads. We encountered these file formats before in @sec-sam-format, but we will go a bit more in-depth now. Two other important aspects in this part of the pipeline are indexing the reference genome and filtering out PCR duplicates from our alignment.
+The next step of our pipeline tries to align the filtered and trimmed reads to the reference genome of the organism we're studying. It starts from the processed `FASTQ` files and produces `SAM` and `BAM` files, which contain the mapped reads. We encountered these file formats before in @sec-sam-format and @sec-bam-format, but we will go a bit more in-depth now. Two other important aspects in this part of the pipeline are indexing the reference genome and filtering out PCR duplicates from our alignment.
 
 ![](../assets/pipeline-mapping.svg){.no-lightbox}
 
 <!-- ![](../assets/pipeline-mapping.ext.svg){.no-lightbox} -->
-
-::: {#warning-bqsr .callout-warning}
-The pipeline that we're introducing here deviates from the GATK4 best practices in this section, because we do not introduce the concept of [base quality score recalibration (BQSR)](https://gatk.broadinstitute.org/hc/en-us/articles/360035890531-Base-Quality-Score-Recalibration-BQSR). The basic idea here is that we want to detect and correct systematic errors made by the sequencer, by using our knowledge of known variants to model them.
-
-The above link by GATK gives an in-depth explanation on the topic, but you can also find some interesting discussions [here](https://bioinformatics.stackexchange.com/questions/321/is-there-a-point-in-recalibration-of-scores-for-variant-calling), [here](https://www.biostars.org/p/280274/) and [here](https://www.biostars.org/p/399004/) as well as some [hands-on walkthroughs here (section 6)](https://learn.gencore.bio.nyu.edu/variant-calling/pre-processing/) and [here](https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/variant_calling_gatk1/#3-base-quality-recalibration).
-
-:::
 
 ::: {#tip-reproducibility .callout-tip}
 ## Reproducibility and organized projects
@@ -76,7 +69,7 @@ As a **bonus exercise**, try to create such a readme file.
 
 :::
 
-## Alignment to the reference genome
+## Alignment to the reference genome {#sec-alignment}
 
 During mapping, the aligner tries to find a potential alignment site for each individual read (or query) in the reference genome. After aligning all the reads, we can start looking for variation in our samples compared to the reference genome and each other.
 
@@ -192,11 +185,11 @@ You could try this for yourself as a bonus exercise. See [this guide](https://li
 
 :::
 
-## SAM and BAM files
+## SAM and BAM files {#sec-samtools}
 
 The output of the alignment step (using `bwa mem`) is a SAM file (see @sec-sam-format). This stands for _Sequence Alignment Map_. These are plain text files delimited with tabs, so you can view them using a text editor or a command like `less`.
 
-To save space and make the alignment quicker to index, SAM files are often converted to BAM files, which are compressed binary versions of the alignment. These can be used by downstream tools directly, so we tend to only store the alignment in this format, even though you can no longer inspect the alignment yourself.
+To save space and make the alignment quicker to index, SAM files are often converted to BAM files (@sec-bam-format), which are compressed binary versions of the alignment. These can be used by downstream tools directly, so we tend to only store the alignment in this format, even though you can no longer inspect the alignment yourself.
 
 ```default
 0080_S44_L001.bam | head -n30
@@ -242,7 +235,7 @@ All details on the SAM format can be found in the format specification: [https:/
 Lastly, we want to share this [convenient tool](https://broadinstitute.github.io/picard/explain-flags.html) to explain the different SAM flags. It is invaluable whenever you need to perform (or interpret) a `samtools` filtering operation.
 :::
 
-To convert a SAM to a BAM file, you can use the [samtools software](http://www.htslib.org/doc/samtools.html). `samtools` is used to convert between SAM and BAM files, but it can perform many other tasks too[^: An amazing guide to several `samtools` tasks can be found on the [Leaning the BAM format page by Dave Tang](https://davetang.github.io/learning_bam_file/).], like coordinate sorting, which we will talk about first.
+To convert a SAM to a BAM file, you can use the [samtools software](http://www.htslib.org/doc/samtools.html). `samtools` is used to convert between SAM and BAM files, but it can perform many other tasks too[^: An amazing guide to several `samtools` tasks can be found on the [Learning the BAM format page by Dave Tang](https://davetang.github.io/learning_bam_file/).], like coordinate sorting, which we will talk about first.
 
 ## Coordinate sorting alignment files
 
@@ -282,7 +275,7 @@ For clarity we use the `sorted.bam` file suffix for any sorted BAM files.
 
 :::
 
-## Inspecting BAM files
+## Inspecting BAM files {#sec-samtools-flagstat}
 
 You can read BAM files by using the `samtools view` command. By default it only outputs the tab-delimited parts of the file, but you can provide the flags `-H or `-h` to optionally show only the header or everything.
 
@@ -330,7 +323,7 @@ https://genomics.sschmeier.com/ngs-mapping/#stats-with-samtools
 
 :::
 
-### More indices
+### More indices {#sec-samtools-index}
 
 Like our reference FASTA files, BAM files can also be indexed to improve the performance of downstream tools that need to search for particular reads in this large file. For example, it is required for visualisation with IGV (@sec-alignment-visualisation) and variant calling with GATK (@sec-variant-calling).
 
@@ -344,7 +337,7 @@ samtools index alignment.sort.bam
 Try to create an index for one of your BAM files. Which new files are created?
 :::
 
-## Mark PCR duplicates - `picard MarkDuplicates`
+## Mark PCR duplicates - `picard MarkDuplicates` {#sec-picard-duplicates}
 
 ::: {.callout-important}
 ## PCR duplicates tagging/removal should **NOT** be performed for AmpliSeq data
@@ -394,9 +387,14 @@ You might have noticed in the example above that we continued to extend the suff
 
 ---
 
-Note that at this step in the pipeline we could also perform base quality score recalibration (see the warning at the top of this chapter).
+::: {#warning-bqsr .callout-warning}
+The pipeline that we're introducing here deviates from the GATK4 best practices in this section, because we do not introduce the concept of [base quality score recalibration (BQSR)](https://gatk.broadinstitute.org/hc/en-us/articles/360035890531-Base-Quality-Score-Recalibration-BQSR). The basic idea here is that we want to detect and correct systematic errors made by the sequencer, by using our knowledge of known variants to model them.
 
-### Inspecting the output
+The above link by GATK gives an in-depth explanation on the topic, but you can also find some interesting discussions [here](https://bioinformatics.stackexchange.com/questions/321/is-there-a-point-in-recalibration-of-scores-for-variant-calling), [here](https://www.biostars.org/p/280274/) and [here](https://www.biostars.org/p/399004/) as well as some [hands-on walkthroughs here (section 6)](https://learn.gencore.bio.nyu.edu/variant-calling/pre-processing/) and [here](https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/variant_calling_gatk1/#3-base-quality-recalibration).
+
+:::
+
+## Alignment statistics {#sec-picard-metrics}
 
 We already introduced the `samtools flagstat` command to report on basic alignment statistics, but a more in-depth method of inspecting your alignment is provided by [Picard's `CollectAlignmentSummaryMetrics`](https://gatk.broadinstitute.org/hc/en-us/articles/21904987074587-CollectAlignmentSummaryMetrics-Picard), or [the more extensive `CollectMultipleMetrics`](https://gatk.broadinstitute.org/hc/en-us/articles/360037594031-CollectMultipleMetrics-Picard) (we will see Picard again in the next section on PCR duplicate removal):
 
