@@ -4,6 +4,8 @@ The next step of our pipeline tries to align the filtered and trimmed reads to t
 
 ![](../assets/pipeline-mapping.svg){.no-lightbox}
 
+<!-- ![](../assets/pipeline-mapping.ext.svg){.no-lightbox} -->
+
 ::: {#warning-bqsr .callout-warning}
 The pipeline that we're introducing here deviates from the GATK4 best practices in this section, because we do not introduce the concept of [base quality score recalibration (BQSR)](https://gatk.broadinstitute.org/hc/en-us/articles/360035890531-Base-Quality-Score-Recalibration-BQSR). The basic idea here is that we want to detect and correct systematic errors made by the sequencer, by using our knowledge of known variants to model them.
 
@@ -23,6 +25,8 @@ As a last tip, try to be aware of the types of paths that you use when writing y
 Relative paths are more portable than absolute ones (which will not work on a different workstation with different file paths), but they can be more prone to errors. Indeed, the relative path is defined based on where call the script from, rather than the location of the script itself, so be mindful of this.^[An alternative is to make use of relative paths, but in that case the script still needs to be called from a fixed location in your project folders (or you need to make use of [this strategy](https://stackoverflow.com/a/246128)). For even more complex scripts, you might want to look into providing paths as an argument, or to make use of configuration or samplesheets (as is done by more complex workflow manager tools).]
 
 Whichever type you use, we recommend to define all important files and folders at the top of your scripts as variables. This makes it easier to change them at a later time.
+
+You can already compare the basic and extended versions of some of the example scripts stored in the `./training/scripts` directory to see how you can extend a simple script to make it more robust and reusable (and hopefully clear).
 
 :::
 
@@ -238,7 +242,7 @@ All details on the SAM format can be found in the format specification: [https:/
 Lastly, we want to share this [convenient tool](https://broadinstitute.github.io/picard/explain-flags.html) to explain the different SAM flags. It is invaluable whenever you need to perform (or interpret) a `samtools` filtering operation.
 :::
 
-To convert a SAM to a BAM file, you can use the [samtools software](http://www.htslib.org/doc/samtools.html). `samtools` is used to convert between SAM and BAM files, but it can perform many other tasks too, like coordinate sorting, which we will talk about first.
+To convert a SAM to a BAM file, you can use the [samtools software](http://www.htslib.org/doc/samtools.html). `samtools` is used to convert between SAM and BAM files, but it can perform many other tasks too[^: An amazing guide to several `samtools` tasks can be found on the [Leaning the BAM format page by Dave Tang](https://davetang.github.io/learning_bam_file/).], like coordinate sorting, which we will talk about first.
 
 ## Coordinate sorting alignment files
 
@@ -304,16 +308,6 @@ samtools flagstat training/results/bwa/PF0097_S43_L001.bam
 3834 + 0 with mate mapped to a different chr (mapQ>=5)
 ```
 
-A more in-depth method of inspecting your alignment is [Picard's `CollectAlignmentSummaryMetrics`](https://gatk.broadinstitute.org/hc/en-us/articles/21904987074587-CollectAlignmentSummaryMetrics-Picard), or [the more extensive `CollectMultipleMetrics`](https://gatk.broadinstitute.org/hc/en-us/articles/360037594031-CollectMultipleMetrics-Picard) (we will see Picard again in the next section on PCR duplicate removal):
-
-```bash
-picard CollectAlignmentSummaryMetrics R=<reference.fasta> I=<input.sort.bam> O=<output.bam>
-```
-
-The output of these tools can again be aggregated using a tool like MulitQC. See [here](https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/files/multiqc_report.html) for an example.
-
-<!-- TODO: example multiQC output -->
-
 <!-- TODO: more info on mapping statistics -->
 
 <!-- TODO: coverage and depth
@@ -330,7 +324,7 @@ https://genomics.sschmeier.com/ngs-mapping/#stats-with-samtools
 
 2. How can you store the mapping statistics in a file? What do you need to take into consideration when doing this in a for loop for multiple bam files?
 
-3. Try to write a script for processing all FASTQ files belonging to the Peruvian _P. falciparum_ AmpliSeq data in one go. You can inspect the provided scripts [`map.sh`](../../training/scripts/map.sh) and [`map-simple.sh`](../../training/scripts/map-simple.sh) for inspiration, especially with regards to file paths and structuring your code.
+3. Try to write a script for processing all FASTQ files belonging to the Peruvian _P. falciparum_ AmpliSeq data in one go. You can inspect the provided scripts [`map.sh`](../../training/scripts/map.sh) and [`map-extended.sh`](../../training/scripts/map-extended.sh) for inspiration, especially with regards to file paths and structuring your code.
 
 **Bonus exercise:** do the same for the Vietnam _P. vivax_ WGS data.
 
@@ -338,7 +332,7 @@ https://genomics.sschmeier.com/ngs-mapping/#stats-with-samtools
 
 ### More indices
 
-Like our reference FASTA files, BAM files can also be indexed to improve the performance of downstream tools that need to search for particular reads in this large file.
+Like our reference FASTA files, BAM files can also be indexed to improve the performance of downstream tools that need to search for particular reads in this large file. For example, it is required for visualisation with IGV (@sec-alignment-visualisation) and variant calling with GATK (@sec-variant-calling).
 
 ```bash
 samtools index alignment.sort.bam
@@ -385,7 +379,7 @@ picard MarkDuplicates
     -M alignment.markeddups_metrics.txt
 ```
 
-2. Run `samtools flagstat`
+2. Run `samtools flagstat` again. What changed compared to the previous report?
 
 3. Examine and run the [`remove_dups.sh`](../../training/scripts/remove_dups.sh) script to process all files.
 
@@ -402,9 +396,21 @@ You might have noticed in the example above that we continued to extend the suff
 
 Note that at this step in the pipeline we could also perform base quality score recalibration (see the warning at the top of this chapter).
 
+### Inspecting the output
+
+We already introduced the `samtools flagstat` command to report on basic alignment statistics, but a more in-depth method of inspecting your alignment is provided by [Picard's `CollectAlignmentSummaryMetrics`](https://gatk.broadinstitute.org/hc/en-us/articles/21904987074587-CollectAlignmentSummaryMetrics-Picard), or [the more extensive `CollectMultipleMetrics`](https://gatk.broadinstitute.org/hc/en-us/articles/360037594031-CollectMultipleMetrics-Picard) (we will see Picard again in the next section on PCR duplicate removal):
+
+```bash
+picard CollectAlignmentSummaryMetrics R=<reference.fasta> I=<input.sort.bam> O=<output.bam>
+```
+
+The output of these tools can again be aggregated using a tool like MulitQC. See [here](https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/files/multiqc_report.html) for an example.
+
+<!-- TODO: example multiQC output -->
+
 <!-- TODO expand Genome visualisation -->
 
-## Genome visualisation
+## Alignment visualisation {#sec-alignment-visualisation}
 
 After creating and filtering our alignment files, we can visualise them in a tool like [IGV (Integrative Genomics Viewer)](https://igv.org/). We refer to [this section](https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html#visualization-using-a-genome-browser-igv) of the Galaxy training materials [@Hiltemann_2023; @sequence-analysis-mapping].
 

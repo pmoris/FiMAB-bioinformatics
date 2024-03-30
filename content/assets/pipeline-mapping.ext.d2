@@ -49,8 +49,11 @@ Align reads to reference: {
     }
   }
 }
-Compress and sort alignment: {
+Compress, sort and index alignment: {
   samtools sort: {
+    shape: hexagon
+  }
+  samtools index: {
     shape: hexagon
   }
 }
@@ -77,23 +80,34 @@ Alignment visualisation: {
     shape: hexagon
   }
 }
-
+Mapping statistics: {
+  samtools flagstat: {
+    shape: hexagon
+  }
+  picard CollectAlignmentSummaryMetrics: {
+    shape: hexagon
+  }
+}
 Reference genome indexing -> Align reads to reference: fasta*
 
-Align reads to reference -> Compress and sort alignment: sam
-Compress and sort alignment -> Mark PCR duplicates: bam
+#Align reads to reference -> Compress and sort alignment: sam
+#Compress and sort alignment -> Mark PCR duplicates: bam
 #Compress and sort alignment -> Mapping statistics: bam
+Align reads to reference -> Compress, sort and index alignment: sam
+Compress, sort and index alignment -> Mark PCR duplicates: bam,bai
+Compress, sort and index alignment -> Mapping statistics: bam,bai
+
 
 # Mark PCR duplicates -> Base quality recalibration
 # Base quality recalibration -> Alignment visualisation: bam
-Mark PCR duplicates -> Alignment visualisation: bam
+Mark PCR duplicates -> Alignment visualisation: bam,bai
 # }
 
 # Read mapping -> Variant calling: bam
 # Mark PCR duplicates -> Variant calling
 # Read mapping.Base quality recalibration -> Variant calling
 # Base quality recalibration -> Variant calling
-Mark PCR duplicates -> Variant calling: bam
+Mark PCR duplicates -> Variant calling: bam,bai
 
 Variant calling: {
   style: {

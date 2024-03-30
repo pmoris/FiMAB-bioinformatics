@@ -38,6 +38,10 @@ AmpliSeq assay. FastQ Screen was used to determine sources of contamination in u
 
 
 
+https://gatk.broadinstitute.org/hc/en-us/articles/360036883491-GenomicsDBImport
+GenomicsDBImport offers the same functionality as CombineGVCFs
+
+
 ## Types of variants
 
 - SNVs = SNPs and indels
