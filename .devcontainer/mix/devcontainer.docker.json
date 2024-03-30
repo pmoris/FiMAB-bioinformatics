@@ -1,27 +1,23 @@
 {
-	"name": "Unix tools, bioconda and RStudio",
-	// https://rocker-project.org/images/devcontainer/images.html
-	"image": "ghcr.io/rocker-org/devcontainer/tidyverse:4",
+	"name": "Unix tools, bioconda and RStudio (docker-based)",
+	// "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "../.."
+	},
 	"features": {
-		// https://github.com/rocker-org/devcontainer-features/blob/main/src/rstudio-server/README.md
-		// already pre-installed in tidyverse container - https://rocker-project.org/images/devcontainer/images.html#rstudio-server
-		"ghcr.io/rocker-org/devcontainer-features/rstudio-server:latest": {},
-		// https://github.com/rocker-org/devcontainer-features/blob/main/src/r-packages/README.md
+		"ghcr.io/rocker-org/devcontainer-features/r-rig:1": {
+			"vscodeRSupport": "minimal",
+			"installDevTools": "true",
+			"installRMarkdown": "true"
+			// "installJupyterlab": "true",
+		},
+		"ghcr.io/rocker-org/devcontainer-features/rstudio-server": {},
 		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
 			"packages": "tidyverse,rmarkdown,BiocManager,shiny,shinythemes,markdown",
 			"installSystemRequirements": true
-		},
-		// https://github.com/rocker-org/devcontainer-features/blob/main/src/miniforge/README.md
-		"ghcr.io/rocker-org/devcontainer-features/miniforge:1": {
-			"version": "latest",
-			"variant": "Mambaforge"
 		}
-		// https://github.com/mamba-org/devcontainer-features/tree/main/src/micromamba
-		// "ghcr.io/mamba-org/devcontainer-features/micromamba:1": {}
 	},
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postStartCommand": "if [ -f environment.yml ]; then umask 0002 && /opt/conda/bin/mamba env update -n base -f environment.yml; fi",
-	"postCreateCommand": "/opt/conda/bin/mamba env update -n base -f environment.yml",
 	"postAttachCommand": {
 		"rstudio-start": "rserver"
 	},
