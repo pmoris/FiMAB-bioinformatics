@@ -49,7 +49,7 @@ book:
 
   chapters:
     - index.qmd
-    - content/intro.qmd
+    # - content/intro.qmd
     - part: "Introduction to the Unix shell"
       chapters:
       - content/unix/1-unix-intro.qmd
@@ -117,7 +117,7 @@ book:
     left: |
       Unless otherwise noted, all content on this site is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
       <br>
-      &copy; Pieter Moris - [ITM Malariology](https://research.itg.be/en/organisations/malariology), 2024.
+      &copy; [Pieter Moris](https://pmoris.github.io) - [ITM Malariology](https://research.itg.be/en/organisations/malariology), 2024.
     right: Built with [Quarto](https://quarto.org/).
     # background: "#f8f9fa"
 
@@ -135,6 +135,8 @@ book:
     search: true
     # background: dark
     logo: content/assets/ITM-logo_col_rgb.png
+    logo-alt: Logo of Institute of Tropical Medicine Antwerp
+    logo-href: https://research.itg.be/en/organisations/malariology
 
   # navbar:
   #   search: false
