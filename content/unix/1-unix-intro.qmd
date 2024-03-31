@@ -25,6 +25,7 @@ This section of the course draws inspiration from the following resources:
 - [Course on UNIX and Genomic Data](https://ngs-course.readthedocs.io/en/praha-november-2023/)
 - [ECA's Bioinformatics Handbook](https://eriqande.github.io/eca-bioinf-handbook/essential-unixlinux-terminal-knowledge.html)
 - [Ronor Harrington's Bioinformatics Notebook](https://rnnh.github.io/bioinfo-notebook/docs/cl_intro.html)
+- [Duke HTS Summ Course 2018](https://people.duke.edu/~ccc14/duke-hts-2018/janice/2_Intro_to_Unix_and_bash.html)
 
 
 <!-- TODO: add citations for resources -->

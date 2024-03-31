@@ -1,5 +1,28 @@
 # Productivity and computational literacy
 
+Ten simple rules for biologists learning to program
+https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005871
+
+
+Ten simple rules for getting started with command-line bioinformatics
+https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008645
+
+
+
+## pipelines / workflows
+
+https://ricomnl.com/blog/bottom-up-bioinformatics-pipeline/
+http://byronjsmith.com/make-bml/
+https://carpentries-incubator.github.io/workflows-nextflow/index.html
+
+https://www.biostars.org/p/9542080/#9542245
+https://www.biostars.org/p/9542739/#9542811
+
+https://www.biostars.org/p/9542739/#9542811
+
+https://www.sciencedirect.com/science/article/pii/S2001037023001010
+
+
 **AKA: things I wish I had known earlier**
 
 reproducible research is the ultimate goal

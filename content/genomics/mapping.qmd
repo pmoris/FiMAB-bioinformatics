@@ -33,6 +33,7 @@ We already downloaded a reference genome from [PlasmoDB](https://plasmodb.org/pl
 ## Exercise
 
 - Download the most recent releases of the  _P. falciparum_ 3D7 and the _P. vivax_ P01 reference genomes and store them in `./data/references` in clearly labelled subdirectories.
+- Try to inspect the file using `head` and `less`.
 
 :::
 
@@ -320,6 +321,15 @@ https://genomics.sschmeier.com/ngs-mapping/#stats-with-samtools
 3. Try to write a script for processing all FASTQ files belonging to the Peruvian _P. falciparum_ AmpliSeq data in one go. You can inspect the provided scripts [`map.sh`](../../training/scripts/map.sh) and [`map-extended.sh`](../../training/scripts/map-extended.sh) for inspiration, especially with regards to file paths and structuring your code.
 
 **Bonus exercise:** do the same for the Vietnam _P. vivax_ WGS data.
+
+:::
+
+::: {.callout-tip}
+## Upping your scripting game
+
+When you're just starting out, it is fine to use simple scripts using just the concepts that you know. As you become more experienced though, and as your scripts might need to be used by others and re-use it for a longer time, you should try to focus on making them more _readable_, _robust_ and _efficient_. For the former, focus on doing things in a clear and structured way; use code comments, clear file names, split your scripts into logical chunks when necessary, provide READMEs, etc. Writing robust and efficient scripts is more like a never-ending journey, where you can pick up new techniques and ideas even after a lot of experience, and it might extend beyond the use of just bash, but into other languages or even workflow managers. You can compare the normal and the extended versions of the scripts in `./training/scripts` for some ideas.
+
+For now, knowing enough to get by, and **being careful** when trying things out, is most important. Howvever, if you decide in the future that really want to master bash, there are also several [resources](https://bertvv.github.io/cheat-sheets/Bash.html) availabe that [explain](https://mywiki.wooledge.org/BashPitfalls) some of the more common [beginner mistakes](https://flokoe.github.io/bash-hackers-wiki/scripting/newbie_traps/). Alternatively, you can look into [workflow tools](https://ricomnl.com/blog/bottom-up-bioinformatics-pipeline/) like [Nextflow](https://www.nextflow.io/) (and the [nf-core community pipelines](https://nf-co.re/)), [Snakemake](https://snakemake.github.io/) or [Makefiles](http://byronjsmith.com/make-bml/).
 
 :::
 
