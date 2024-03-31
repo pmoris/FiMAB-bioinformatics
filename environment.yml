@@ -4,13 +4,19 @@ channels:
   - conda-forge
 dependencies:
   - fastqc
+  - fastqe
+  - fastq-screen
   - picard
   - trimmomatic
   - bwa
   - samtools
   - vcftools
+  - bcftools
   - gatk4
-  - sra-tools
-  - ffq
-  - nextflow
-  - nf-core
+  - seqkit
+  - mafft
+  - raxml-ng
+  # - sra-tools
+  # - ffq
+  # - nextflow
+  # - nf-core
