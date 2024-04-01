@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Bioinformatics for Malaria Molecular Surveillance - 3&nbsp; Using the shell</title>
+<title>Introduction to Bioinformatics for Malaria Molecular Surveillance - References</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,65 +20,47 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../content/unix/4-unix-navigation.html" rel="next">
-<link href="../../content/unix/2-unix-setup.html" rel="prev">
-<link href="../../content/assets/ITM-symbol_col_rgb.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../content/unix/appendix-unix.html" rel="next">
+<link href="../content/genomics/variant-calling.html" rel="prev">
+<link href="../content/assets/ITM-symbol_col_rgb.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -118,7 +100,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/unix/1-unix-intro.html">Introduction to the Unix shell</a></li><li class="breadcrumb-item"><a href="../../content/unix/3-unix-enter-the-shell.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Using the shell</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/references.html">References</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -132,11 +114,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../content/assets/ITM-logo_col_rgb.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../content/assets/ITM-logo_col_rgb.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="../../">Introduction to Bioinformatics for Malaria Molecular Surveillance</a> 
+      <a href="../">Introduction to Bioinformatics for Malaria Molecular Surveillance</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/pmoris/FiMAB-bioinformatics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
@@ -156,7 +138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
@@ -171,49 +153,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/unix/1-unix-intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/unix/1-unix-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is a CLI?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/unix/2-unix-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/unix/2-unix-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting up your own Unix shell</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/unix/3-unix-enter-the-shell.html" class="sidebar-item-text sidebar-link active">
+  <a href="../content/unix/3-unix-enter-the-shell.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Using the shell</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/unix/4-unix-navigation.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/unix/4-unix-navigation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Navigating the Unix file system</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/unix/5-unix-files-and-dirs.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/unix/5-unix-files-and-dirs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with files and directories</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/unix/6-unix-more-commands.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/unix/6-unix-more-commands.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More advanced commands</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/unix/7-unix-redirection.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/unix/7-unix-redirection.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Streams, redirection and piping</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/unix/8-unix-variables-loops-scripts.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/unix/8-unix-variables-loops-scripts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Variables, loops and scripts</span></span></a>
   </div>
 </li>
@@ -230,13 +212,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/r/r-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/r/r-resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/r/r-resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Other R resources</span></span></a>
   </div>
 </li>
@@ -253,37 +235,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/genomics/setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/genomics/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup and preparations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/genomics/pipeline-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/genomics/pipeline-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Pipeline overview</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/genomics/tools-and-formats.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/genomics/tools-and-formats.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Bioinformatics tools and file formats</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/genomics/qc.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/genomics/qc.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Quality control and trimming</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/genomics/mapping.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/genomics/mapping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Alignment to reference genome</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/genomics/variant-calling.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/genomics/variant-calling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Variant calling</span></span></a>
   </div>
 </li>
@@ -291,7 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/references.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/references.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -306,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/unix/appendix-unix.html" class="sidebar-item-text sidebar-link">
+  <a href="../content/unix/appendix-unix.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Various Unix topics</span></span></a>
   </div>
 </li>
@@ -318,22 +300,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#interacting-with-the-shell" id="toc-interacting-with-the-shell" class="nav-link active" data-scroll-target="#interacting-with-the-shell"><span class="header-section-number">3.1</span> Interacting with the shell</a></li>
-  <li><a href="#command-syntax" id="toc-command-syntax" class="nav-link" data-scroll-target="#command-syntax"><span class="header-section-number">3.2</span> Command syntax</a></li>
-  <li><a href="#tips-and-hints" id="toc-tips-and-hints" class="nav-link" data-scroll-target="#tips-and-hints"><span class="header-section-number">3.3</span> Tips and hints</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/unix/1-unix-intro.html">Introduction to the Unix shell</a></li><li class="breadcrumb-item"><a href="../../content/unix/3-unix-enter-the-shell.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Using the shell</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Using the shell</span></h1>
+<h1 class="title">References</h1>
 </div>
 
 
@@ -350,72 +324,127 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-sequence-analysis-quality-control" class="csl-entry" role="listitem">
+Batut, Bérénice, Maria Doyle, Alexandre Cormier, Anthony Bretaudeau,
+Laura Leroi, Erwan Corre, Stéphanie Robin, gallantries, and Cameron
+Hyde. <span>“Quality Control (Galaxy Training Materials).”</span> <a href="https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html">https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html</a>.
 </div>
-<div class="callout-title-container flex-fill">
-Prior experience
+<div id="ref-ClevaLab_2022_blog" class="csl-entry" role="listitem">
+ClevaLab. 2022a. <span>“A Step-by-Step Guide to NGS.”</span> <a href="https://www.clevalab.com/post/a-step-by-step-guide-to-ngs">https://www.clevalab.com/post/a-step-by-step-guide-to-ngs</a>.
+</div>
+<div id="ref-ClevaLab_2022_yt" class="csl-entry" role="listitem">
+———. 2022b. <span>“Next Generation Sequencing - a Step-by-Step Guide to
+DNA Sequencing.”</span> <em>YouTube</em>. <a href="https://www.youtube.com/watch?v=WKAUtJQ69n8">https://www.youtube.com/watch?v=WKAUtJQ69n8</a>.
+</div>
+<div id="ref-Hiltemann_2023" class="csl-entry" role="listitem">
+Hiltemann, Saskia, Helena Rasche, Simon Gladman, Hans-Rudolf Hotz,
+Delphine Larivière, Daniel Blankenberg, Pratik D. Jagtap, et al. 2023.
+<span>“Galaxy Training: A Powerful Framework for Teaching!”</span>
+Edited by Francis Ouellette. <em><span>PLoS Comput Biol</span>
+Computational Biology</em> 19 (1): e1010752. <a href="https://doi.org/10.1371/journal.pcbi.1010752">https://doi.org/10.1371/journal.pcbi.1010752</a>.
+</div>
+<div id="ref-Illumina_multiplex" class="csl-entry" role="listitem">
+Illumina. 2008. <span>“Multiplexed Sequencing with the Illumina Genome
+Analyzer System.”</span> <a href="https://www.illumina.com/documents/products/datasheets/datasheet_sequencing_multiplex.pdf">https://www.illumina.com/documents/products/datasheets/datasheet_sequencing_multiplex.pdf</a>.
+</div>
+<div id="ref-Illumina_overview_video" class="csl-entry" role="listitem">
+———. 2016. <span>“Overview of Illumina Sequencing by Synthesis
+Workflow.”</span> <em>YouTube</em>. <a href="https://www.youtube.com/watch?v=fCd6B5HRaZ8">https://www.youtube.com/watch?v=fCd6B5HRaZ8</a>.
+</div>
+<div id="ref-Illumina_2017" class="csl-entry" role="listitem">
+———. 2017. <span>“An Introduction to Next-Generation Sequencing
+Technology.”</span> <a href="https://www.illumina.com/content/dam/illumina-marketing/documents/products/illumina_sequencing_introduction.pdf">https://www.illumina.com/content/dam/illumina-marketing/documents/products/illumina_sequencing_introduction.pdf</a>.
+</div>
+<div id="ref-Illumina_insert_2020" class="csl-entry" role="listitem">
+———. 2020. <span>“How Short Inserts Affect Sequencing
+Performance.”</span> <a href="https://support.illumina.com/ko-kr/bulletins/2020/12/how-short-inserts-affect-sequencing-performance.html">https://support.illumina.com/ko-kr/bulletins/2020/12/how-short-inserts-affect-sequencing-performance.html</a>.
+</div>
+<div id="ref-Illumina_ngs_video" class="csl-entry" role="listitem">
+———. 2021a. <span>“Learn about Illumina’s Next-Generation Sequencing
+Workflow.”</span> <em>YouTube</em>. <a href="https://www.youtube.com/watch?v=oIJaA6h2bFM">https://www.youtube.com/watch?v=oIJaA6h2bFM</a>.
+</div>
+<div id="ref-Illumina_index_2017" class="csl-entry" role="listitem">
+———. 2021b. <span>“Indexed Sequencing on Illumina Systems.”</span> <a href="https://support-docs.illumina.com/SHARE/IndexedSeq/indexed-sequencing.pdf">https://support-docs.illumina.com/SHARE/IndexedSeq/indexed-sequencing.pdf</a>.
+</div>
+<div id="ref-NGS_terminology" class="csl-entry" role="listitem">
+———. n.d. <span>“Next-Generation Sequencing Glossary.”</span> <em>NGS
+Terminology</em>. <a href="https://www.illumina.com/science/technology/next-generation-sequencing/beginners/glossary.html">https://www.illumina.com/science/technology/next-generation-sequencing/beginners/glossary.html</a>.
+</div>
+<div id="ref-kattenberg_malaria_2023" class="csl-entry" role="listitem">
+Kattenberg, Johanna Helena, Carlos Fernandez-Miñope, Norbert J. Van
+Dijk, Lidia Llacsahuanga Allcca, Pieter Guetens, Hugo O. Valdivia,
+Jean-Pierre Van Geertruyden, et al. 2023. <span>“Malaria Molecular
+Surveillance in the Peruvian Amazon with a Novel Highly Multiplexed
+Plasmodium Falciparum <span>AmpliSeq</span> Assay.”</span> Edited by
+Gemma Moncunill. <em>Microbiology Spectrum</em> 11 (2): e00960–22. <a href="https://doi.org/10.1128/spectrum.00960-22">https://doi.org/10.1128/spectrum.00960-22</a>.
+</div>
+<div id="ref-kattenberg_novel_2022" class="csl-entry" role="listitem">
+Kattenberg, Johanna Helena, Hong Van Nguyen, Hieu Luong Nguyen, Erin
+Sauve, Ngoc Thi Hong Nguyen, Ana Chopo-Pizarro, Hidayat Trimarsanto, et
+al. 2022. <span>“Novel Highly-Multiplexed <span>AmpliSeq</span> Targeted
+Assay for Plasmodium Vivax Genetic Surveillance Use Cases at Multiple
+Geographical Scales.”</span> <em>Frontiers in Cellular and Infection
+Microbiology</em> 12 (August): 953187. <a href="https://doi.org/10.3389/fcimb.2022.953187">https://doi.org/10.3389/fcimb.2022.953187</a>.
+</div>
+<div id="ref-launen_2017" class="csl-entry" role="listitem">
+Launen, Loren. 2017. <span>“Illumina Sequencing (for Dummies).”</span>
+<a href="https://kscbioinformatics.wordpress.com/2017/02/13/illumina-sequencing-for-dummies-samples-are-sequenced/">https://kscbioinformatics.wordpress.com/2017/02/13/illumina-sequencing-for-dummies-samples-are-sequenced/</a>.
+</div>
+<div id="ref-ledergerber_base-calling_2011" class="csl-entry" role="listitem">
+Ledergerber, C., and C. Dessimoz. 2011. <span>“Base-Calling for
+Next-Generation Sequencing Platforms.”</span> <em>Briefings in
+Bioinformatics</em> 12 (5): 489–97. <a href="https://doi.org/10.1093/bib/bbq077">https://doi.org/10.1093/bib/bbq077</a>.
+</div>
+<div id="ref-malariagen_pf7_2023" class="csl-entry" role="listitem">
+MalariaGEN, Muzamil Mahdi Abdel Hamid, Mohamed Hassan Abdelraheem,
+Desmond Omane Acheampong, Ambroise Ahouidi, Mozam Ali, Jacob
+Almagro-Garcia, et al. 2023. <span>“Pf7: An Open Dataset of Plasmodium
+Falciparum Genome Variation in 20,000 Worldwide Samples.”</span>
+<em>Wellcome Open Research</em> 8 (January): 22. <a href="https://doi.org/10.12688/wellcomeopenres.18681.1">https://doi.org/10.12688/wellcomeopenres.18681.1</a>.
+</div>
+<div id="ref-piper_hbctrainingintro_2022" class="csl-entry" role="listitem">
+Piper, Mary E., Meeta Mistry, Jihe Liu, William J. Gammerdinger, and
+Radhika S. Khetani. 2022.
+<span>“Hbctraining/Intro-to-Rnaseq-Hpc-Salmon-Flipped: Introduction to
+<span>RNA</span>-Seq Using Salmon Lessons from <span>HCBC</span> (First
+Release),”</span> January. <a href="https://doi.org/10.5281/ZENODO.5833880">https://doi.org/10.5281/ZENODO.5833880</a>.
+</div>
+<div id="ref-rausch_EMBL-EBI_2022" class="csl-entry" role="listitem">
+Rausch, Tobias. 2022. <span>“Methods in Genomic Variant Calling.”</span>
+EMBL-EBI. <a href="https://doi.org/10.6019/TOL.GenomicVariantCalling-w.2022.00001.1 ">https://doi.org/10.6019/TOL.GenomicVariantCalling-w.2022.00001.1
+</a>.
+</div>
+<div id="ref-rochette_causes_2023" class="csl-entry" role="listitem">
+Rochette, Nicolas C., Angel G. Rivera‐Colón, Jessica Walsh, Thomas J.
+Sanger, Shane C. Campbell‐Staton, and Julian M. Catchen. 2023. <span>“On
+the Causes, Consequences, and Avoidance of <span>&lt;</span>Span
+Style="font-Variant:small-Caps;"<span>&gt;</span><span>PCR</span><span>&lt;</span>/Span<span>&gt;</span>
+Duplicates: Towards a Theory of Library Complexity.”</span>
+<em>Molecular Ecology Resources</em> 23 (6): 1299–1318. <a href="https://doi.org/10.1111/1755-0998.13800">https://doi.org/10.1111/1755-0998.13800</a>.
+</div>
+<div id="ref-rodriguez_chemistry_2023" class="csl-entry" role="listitem">
+Rodriguez, Raphaël, and Yamuna Krishnan. 2023. <span>“The Chemistry of
+Next-Generation Sequencing.”</span> <em>Nature Biotechnology</em> 41
+(12): 1709–15. <a href="https://doi.org/10.1038/s41587-023-01986-3">https://doi.org/10.1038/s41587-023-01986-3</a>.
+</div>
+<div id="ref-shendure_dna_2017" class="csl-entry" role="listitem">
+Shendure, Jay, Shankar Balasubramanian, George M. Church, Walter
+Gilbert, Jane Rogers, Jeffery A. Schloss, and Robert H. Waterston. 2017.
+<span>“<span>DNA</span> Sequencing at 40: Past, Present and
+Future.”</span> <em>Nature</em> 550 (7676): 345–53. <a href="https://doi.org/10.1038/nature24286">https://doi.org/10.1038/nature24286</a>.
+</div>
+<div id="ref-biomedicalhub_genomics" class="csl-entry" role="listitem">
+University of Exeter DNA sequencing service. <span>“Introduction to
+Genomics.”</span> <a href="https://biomedicalhub.github.io/genomics/01-part1-introduction.html">https://biomedicalhub.github.io/genomics/01-part1-introduction.html</a>.
+</div>
+<div id="ref-sequence-analysis-mapping" class="csl-entry" role="listitem">
+Wolff, Joachim, Bérénice Batut, and Helena Rasche. <span>“Mapping
+(Galaxy Training Materials).”</span> <a href="https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html">https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html</a>.
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>You can skip this section and proceed directly to the exercises if you are already familiar with the basic syntax of Unix commands. We still recommend checking out the tips and hints in <a href="appendix-unix.html#sec-unix-tips" class="quarto-xref"><span>Section A.1</span></a> and the special syntax overview in <a href="appendix-unix.html#sec-table-special-syntax" class="quarto-xref"><span>Section A.2</span></a> though.</p>
-</div>
-</div>
-<section id="interacting-with-the-shell" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="interacting-with-the-shell"><span class="header-section-number">3.1</span> Interacting with the shell</h2>
-<p>When you launch your (Bash) shell, you will be greeted by what is called a shell prompt: a short snippet of text followed by a cursor, which indicates that the shell is waiting for input. The prompt can look different on different systems, but it often consists of your linux username followed by the name of your machine (like in the picture below) or sometimes just a single <code>$</code> symbol. When you see the prompt, you can enter commands interactively and execute them by pressing enter.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../assets/prompt.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="A bash shell prompt waiting for user input"><img src="../assets/prompt.png" class="img-fluid figure-img" alt="A bash shell prompt waiting for user input"></a></p>
-<figcaption>A bash shell prompt waiting for user input</figcaption>
-</figure>
-</div>
-<p>Already note that you cannot use your mouse cursor to move around your terminal. You will need to use your arrow keys (or <a href="https://kapeli.com/cheat_sheets/Bash_Shortcuts.docset/Contents/Resources/Documents/index">shortcuts</a>) to move around while typing commands.</p>
-</section>
-<section id="command-syntax" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="command-syntax"><span class="header-section-number">3.2</span> Command syntax</h2>
-<p>Unix commands generally follow the format:</p>
-<pre><code>command [OPTIONS] argument</code></pre>
-<p>where,</p>
-<ul>
-<li><code>command</code> is the name of the (usually built-in) command that you want to execute.</li>
-<li><code>[OPTIONS]</code> is a list of optional flags to modify the behaviour of the command. They are often preceded by a single (<code>-</code>) or double (<code>--</code>) dash.</li>
-<li><code>argument</code> is a thing that your command can use. E.g., it can be a file name, a short piece of text (or <em>string</em>)</li>
-</ul>
-<p>Try it yourself with the following command:</p>
-<pre><code>echo “Hello world!”</code></pre>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-What did that do? (Click me to expand!)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><code>echo</code> is a command that simply prints a message to your screen (technically, to the <em>standard output stream</em> (stdout) of the terminal). <code>echo</code> is the command, teling the shell what we want to do. <code>"Hello world!"</code> is the target, in this case the message we want to print.</p>
-<p>We place the message between quotes (<code>"</code>) because it contains spaces, and as you will see, spaces (and certain other special characters) can cause confusions. For now, just note that the message that gets printed, is whatever was written between the quotes, but not the quotes themselves.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Hello world!"</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello</span> world!</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="tips-and-hints" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="tips-and-hints"><span class="header-section-number">3.3</span> Tips and hints</h2>
-<p>We have compiled a number of helpful tips in the appendix of this course (<a href="appendix-unix.html#sec-unix-tips" class="quarto-xref"><span>Section A.1</span></a>), some of which will hopefully be helpful on your journey towards mastering the unix shell. For now, we recommend at the very least checking out the section on tab-completion and your command history. In fact, you can give it a try already. Just press the up arrow and see if you can recall your previous command! Next, try to type out <code>ec</code>, and press <code>&lt;tab&gt;</code>, to see auto-complete in action.</p>
 
 
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">A bash shell prompt waiting for user input</span>
-</div>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -829,13 +858,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/unix/2-unix-setup.html" class="pagination-link" aria-label="Setting up your own Unix shell">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting up your own Unix shell</span></span>
+      <a href="../content/genomics/variant-calling.html" class="pagination-link" aria-label="Variant calling">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Variant calling</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/unix/4-unix-navigation.html" class="pagination-link" aria-label="Navigating the Unix file system">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Navigating the Unix file system</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../content/unix/appendix-unix.html" class="pagination-link" aria-label="Various Unix topics">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Various Unix topics</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -853,31 +882,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
-    }
-  });
-
-};
-          </script>
 
 
 
