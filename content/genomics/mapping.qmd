@@ -55,6 +55,8 @@ The indexing step itself is usually performed by the same tool as the one that d
 
 :::
 
+<!-- TODO: add additional exercises similar to https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html#inspection-of-a-bam-file -->
+
 ::: {#tip-reproducibility-2 .callout-tip}
 ## Collaboration and reproducibility
 
@@ -103,21 +105,12 @@ For paired-end sequencing, this means eventually results in the reverse read (re
 
 ![](../assets/paired-end.svg)
 
-<!-- TODO: check -->
+<!-- TODO: check read-through adapter orientation for dual index sequencing -->
+<!-- https://www.biostars.org/p/103773/ -->
 
 > For Illumina paired-end sequencing, the double-stranded library fragments (= insert + adapter sequences (= anchor + read primer + index + index primer), see @fig-library-fragment-illumina) are first attached to the flow cell, but then the complementary strands (5'-3' oriented towards the flow cell) are removed. The template strand (3'-5' oriented towards the flow cell) is then used to synthesize and sequence the forward read in the 5'-3' direction, starting from read primer 1 (adjacent to the insert). Next, index 1 (I7) is sequenced in a separate reaction (using the i7 index primer). For the reverse reads, the template strand is first used to regenerate its complementary strand (which gets attached to the flow cell), and is then removed. Lastly, the read 2 primer is used to sequence the reverse read, again in the 5'-3' direction.
 >
 > If you need a refresher, you can always jump back to one of the resources on the Illumina sequencing chemistry in @sec-qc like @ClevaLab_2022_blog.
-
-<!-- Read orientation:
-
-In between i7 index is read?
-
-For paired-end sequencing,
-
--->
-
-<!-- https://www.biostars.org/p/103773/ -->
 
 :::
 
@@ -139,7 +132,7 @@ By default, `bwa` will output its results straight into the terminal's standard 
 - `K 100000000`: makes results more [deterministic](https://github.com/CCDG/Pipeline-Standardization/issues/2).
 <!-- - `-k <int>`: minimum seed length (used for initial exact matching before extending the alignment). -->
 
-[^read-groups]: Reads groups are a [confusing subject](https://www.biostars.org/p/43897/), and [a very deep](https://gatk.broadinstitute.org/hc/en-us/articles/360035890671-Read-groups) one as well. In a nutshell, read groups are used to inform downstream tools about which reads were sequenced together in the same flowcell/lane (to account for technical variability) and which reads need to be grouped because they are derived from the same sample (but stored in separate files). Fortunately, they are only required by a few downstream GATK tools, but leaving them out [can result in errors](https://gatk.broadinstitute.org/hc/en-us/articles/360035532352-Errors-about-read-group-RG-information). For a nice overview of how to define them, [see this example](https://eriqande.github.io/eca-bioinf-handbook/alignment-of-sequence-data-to-a-reference-genome-and-associated-steps.html#read-groups).
+[^read-groups]: Reads groups are a [confusing subject](https://www.biostars.org/p/43897/), and [a very deep](https://gatk.broadinstitute.org/hc/en-us/articles/360035890671-Read-groups) one as well. In a nutshell, read groups are used to inform downstream tools about which reads were sequenced together in the same flowcell/lane (to differentiate between and account for technical variability between runs, and not just samples) and which reads need to be grouped because they are derived from the same sample (but stored in separate files). Fortunately, they are only required by a few downstream GATK tools, but leaving them out [can result in errors](https://gatk.broadinstitute.org/hc/en-us/articles/360035532352-Errors-about-read-group-RG-information). For a nice overview of how to define them, [see this example](https://eriqande.github.io/eca-bioinf-handbook/alignment-of-sequence-data-to-a-reference-genome-and-associated-steps.html#read-groups).
 
 Taken together, an example  would be:
 
@@ -226,17 +219,49 @@ M05795:43:000000000-CFLMP:1:1111:24375:10578    99      Pf3D7_01_v3     139572  
 M05795:43:000000000-CFLMP:1:1111:24375:10578    147     Pf3D7_01_v3     139572  0       80S32M188S      =       139572  -32AACCCAGGAGGTAGGGGTTGCAGTGAGCCGAGATCGCACCCCTGCAGTCCAGCCGGGGGGACAGAGTGAGACTCTGTCTCAAAATAAATAAATAAATAAATAAACAAATAAAAGATAACTGTTTAATTAACAACAACGTAATAGATAGTGTGTGGCACTGATACCACCTGTAAAAATAAAATGAACAACGGTGTAAAGACCAAGAGGAGAGAAATGGAAGTGTCCTATTGTAAGCTTCTCTTACTCTAAGAAAAATGGTATATTACTTAAGAATAAACTATGATAATTAAGGCTGCATTT     4,(563?;3@2;:6(:4)E7.);)5(96-0(FD>2==@:252>7)85DA8=1):):DBEED>8:*>;;::D:53:5:)@7FEDEDDEFCDE9>EEEC;7ED:099;9;+>D=C?C?96B?D7D9EBGGGD8GGFFGGCGGGGGEF8@@,GGGGGGGGGDGFFC6GGGGGGGGFGGGEGGGGGGGGCEGGGGGGCGGGGGGGGGF:GGGGGGFCGGGDGFFDGFGFGGGGGGGGGFGGGFGGGFGGGGGGEGFE9GFGGGGGGGGFFFFGGGGGGGGGFFGGFE<GFAGGGGGGGGCCCCC    NM:i:0  MD:Z:32     MC:Z:84S32M185S AS:i:32 XS:i:32 RG:Z:001        XA:Z:Pf3D7_06_v3,-225165,80S32M188S,0;
 ```
 
-Aside from the header info, every other line in the SAM file corresponds to a particular read and provides information on where in the reference genome it was mapped and the quality of this mapping[^mapping-quality], alongside various other metadata (including the original Phred quality scores).
+Aside from the header info, every other line in the SAM file corresponds to a particular read and provides information on where in the reference genome it was mapped and the quality of this mapping[^mapping-quality], alongside various other metadata (including the original Phred quality scores). This information is stored in tab-delimited fields (11 mandatory ones, followed by optional ones).
 
 [^mapping-quality]: Mapping quality is similar to the per-base quality scores we introduced in the previous chapter, but here they represent the probability of a wrong alignment of the entire read. More info [here](http://www.acgt.me/blog/2014/12/16/understanding-mapq-scores-in-sam-files-does-37-42) and [here](https://davetang.org/muse/2011/09/14/mapping-qualities/).
+
+| Col  | Field  |  Type   |           Brief description            |
+|:----:|:------:|:-------:|:--------------------------------------:|
+| 1    | QNAME  | String  | Query template NAME                    |
+| 2    | FLAG   | Int     | bitwise FLAG                           |
+| 3    | RNAME  | String  | References sequence NAME               |
+| 4    | POS    | Int     | 1- based leftmost mapping POSition     |
+| 5    | MAPQ   | Int     | MAPping Quality                        |
+| 6    | CIGAR  | String  | CIGAR string                           |
+| 7    | RNEXT  | String  | Ref. name of the mate/next read        |
+| 8    | PNEXT  | Int     | Position of the mate/next read         |
+| 9    | TLEN   | Int     | observed Template LENgth               |
+| 10   | SEQ    | String  | segment SEQuence                       |
+| 11   | QUAL   | String  | ASCII of Phred-scaled base QUALity+33  |
+
 
 ::: {.callout-note}
 All details on the SAM format can be found in the format specification: [https://samtools.github.io/hts-specs/SAMv1.pdf](https://samtools.github.io/hts-specs/SAMv1.pdf).^[A more in-depth exploration of the different type of alignments that can occur (e.g., supplementary, secondary, etc.) is given in [this blogpost](https://cmdcolin.github.io/posts/2022-02-06-sv-sam).]
 
-Lastly, we want to share this [convenient tool](https://broadinstitute.github.io/picard/explain-flags.html) to explain the different SAM flags. It is invaluable whenever you need to perform (or interpret) a `samtools` filtering operation.
+One important column is the bitwise FLAG: it is a lookup code that can tell you (or more commonly, a software tool) whether a read was aligned, how it is oriented, if its pair was aligned, etc.
+
+|      | Bit   | Description                                                        |
+| ---- | ----- | ------------------------------------------------------------------: |
+| 1    | 0x1   | template having multiple segments in sequencing                    |
+| 2    | 0x2   | each segment properly aligned according to the aligner             |
+| 4    | 0x4   | segment unmapped                                                   |
+| 8    | 0x8   | next segment in the template unmapped                              |
+| 16   | 0x10  | SEQ being reverse complemented                                     |
+| 32   | 0x20  | SEQ of the next segment in the template being reverse complemented |
+| 64   | 0x40  | the first segment in the template                                  |
+| 128  | 0x80  | the last segment in the template                                   |
+| 256  | 0x100 | secondary alignment                                                |
+| 512  | 0x200 | not passing filters, such as platform/vendor quality controls      |
+| 1024 | 0x400 | PCR or optical duplicate                                           |
+| 2048 | 0x800 | supplementary alignment                                            |
+
+Lastly, we want to share this [convenient tool](https://broadinstitute.github.io/picard/explain-flags.html) to explain the different bitwise FLAGs. It is invaluable whenever you need to perform (or interpret) a `samtools` filtering operation.
 :::
 
-To convert a SAM to a BAM file, you can use the [samtools software](http://www.htslib.org/doc/samtools.html). `samtools` is used to convert between SAM and BAM files, but it can perform many other tasks too[^: An amazing guide to several `samtools` tasks can be found on the [Learning the BAM format page by Dave Tang](https://davetang.github.io/learning_bam_file/).], like coordinate sorting, which we will talk about first.
+To convert a SAM to a BAM file, you can use the [samtools software](http://www.htslib.org/doc/samtools.html). `samtools` is used to convert between SAM and BAM files, but it can perform many other tasks too, like coordinate sorting, which we will talk about first.^[An amazing guide to several `samtools` tasks can be found on the [Learning the BAM format page by Dave Tang](https://davetang.github.io/learning_bam_file/).]
 
 ## Coordinate sorting alignment files
 
@@ -368,7 +393,7 @@ In other words, we try to reduce any biases during variant detection (or other d
 
 The overall goal is to reduce bias during variant detection.  -->
 
-One of the tools that we use for marking PCR duplicates is [Picard](https://broadinstitute.github.io/picard/). Picard actually provides many different functionalities, but the one that we're interested for now is `MarkDuplicates`. An in-depth explanation of how it works can be found [here](https://gatk.broadinstitute.org/hc/en-us/articles/360057439771-MarkDuplicates-Picard). After running the tool, we end up with a BAM file again, but this time with all suspected PCR duplicates marked as such. Our downstream analysis tools will take this information into account whenever relevant (e.g., when detecting variants).[^Note that removal generally is not necessary, but it can be done by passing the `-REMOVE_DUPLICATES true` flag.]
+One of the tools that we use for marking PCR duplicates is [Picard](https://broadinstitute.github.io/picard/). Picard actually provides many different functionalities, but the one that we're interested for now is `MarkDuplicates`. An in-depth explanation of how it works can be found [here](https://gatk.broadinstitute.org/hc/en-us/articles/360057439771-MarkDuplicates-Picard). After running the tool, we end up with a BAM file again, but this time with all suspected PCR duplicates marked as such. Our downstream analysis tools will take this information into account whenever relevant (e.g., when detecting variants).^[Note that removal generally is not necessary, but it can be done by passing the `-REMOVE_DUPLICATES true` flag.]
 
 ::: {.callout-caution}
 ## Exercises

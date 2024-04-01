@@ -8,6 +8,14 @@ Ten simple rules for getting started with command-line bioinformatics
 https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008645
 
 
+## Advanced bas
+
+https://genomicsaotearoa.github.io/shell-for-bioinformatics/
+
+https://data-skills.github.io/unix-and-bash/03-bash-scripts/index.html
+
+[resources](https://bertvv.github.io/cheat-sheets/Bash.html) availabe that [explain](https://mywiki.wooledge.org/BashPitfalls) some of the more common [beginner mistakes](https://flokoe.github.io/bash-hackers-wiki/scripting/newbie_traps/)
+
 
 ## pipelines / workflows
 
@@ -138,3 +146,13 @@ https://www.biostars.org/p/184551/
 
 
 https://ngs-course.readthedocs.io/en/praha-november-2023/more-tips.html
+
+## bash escape characters
+
+https://genomicsaotearoa.github.io/shell-for-bioinformatics/supplementary%20/supplementary_3/
+
+## regex
+
+## find
+
+https://people.duke.edu/~ccc14/duke-hts-2018/cliburn/The_Unix_Shell_03___Finding_Stuff.html#Using-find

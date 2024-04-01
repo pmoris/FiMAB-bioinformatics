@@ -33,7 +33,7 @@ if ! [ -f "${reference_genome%.fasta}.dict" ]; then
 	gatk CreateSequenceDictionary -R "${reference_genome}"
 fi
 
-# loop through bam files and call variants using gatk
+# loop through bam files and call variants using HaplotypeCaller
 for bam in "${alignment_dir}"/*.bam; do
 	sample_name=$(basename ${bam} .bam)
 

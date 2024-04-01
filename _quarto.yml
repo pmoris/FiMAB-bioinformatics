@@ -81,7 +81,6 @@ book:
     #       - content/mms/molecular_markers
     #       - content/mms/practical_variants_of_interest
     #       - content/mms/genetic_diversity
-    - content/population-genetics.qmd
     # - part: "Population genetics"
     #   chapters:
     #       - content/popgen/population_genetics
@@ -94,8 +93,9 @@ book:
     #       - content/popgen/ibd
     #       - content/popgen/population_structure
     #       - content/popgen/practical_ibd
-    - content/phylogenetics.qmd
     # - part: "Case studies"
+    # - content/population-genetics.qmd
+    # - content/phylogenetics.qmd
     # - part: "Computational literacy" # aka things that ~can~ will go wrong aka what I wish I had known
     - content/references.qmd
 

@@ -113,7 +113,8 @@ Similar caveats apply to the header lines inside FASTQ files.
 :::
 
 Also, note that there is no standard file extension for FASTQ files, both `.fq` and `.fastq` are common. Keep in mind that file extensions in general are arbitrary; it is the file content that determines the file format, not the extension (although both Windows and Mac might try to convince you otherwise). However, using standard and descriptive file extensions makes everyone's life much easier.
-<!-- TODO: section on file extensions -->
+
+<!-- TODO: section on file extensions in computational literacy section-->
 
 ---
 
@@ -144,11 +145,10 @@ The forward and the reverse reads do not necessarily overlap; this depends on th
 What is the point of paired-end sequencing? Well, because we know what the average distance between the forward and reverse read is [^fragment-length], alignment algorithms can make use this information to more accurately map the reads across repetitive regions in the genome (see @fig-paired-end-sequencing-illumina), which would otherwise be even more problematic.
 
 [^fragment-length]: During library construction, we target a specific size distribution or range of DNA inserts, either through the fragmentation process, or in the case of AmpliSeq, by directly generating amplicons of known specific sizes.
-<!-- TODO: link to resource -->
+
+<!-- TODO: link to resource on size distribution of inserts and mention amplicon lengths -->
 
 ![Paired-end sequencing and alignment. [Source: @Illumina_2017]](../assets/paired-end-sequencing-illumina.png){#fig-paired-end-sequencing-illumina}
-
-<!-- TODO: amplicon lengths, isnert size, DNA targets,  -->
 
 These paired reads are usually results in two separate files; read 1 and read 2 `R1`/`R2` (not to be confused with [mate-pairs](https://www.biostars.org/p/467845/)).
 
@@ -299,11 +299,7 @@ These different types of data can all be used during the QC of the reads.
 
 In Illumina sequencing, sequences reads are constructed by detecting the nucleotides present in each particular cluster ( = group of _identical_ elongated fragments) on a flow cell through a fluorescent signal. The intensity and purity of this signal is used to measure the quality of a particular base call, or in other words, how confident we can be that the base call at a particular position in the read is accurate.
 
-<!-- TODO: image of flow cell fluorescence -->
-
 Accurately inferring which type of nucleotide got incorporated by each fragment making up a single cluster, for all the millions of clusters on a tiny flow cell simultaneously, for hundreds of cycles in a row, is no easy feat. And as with all (sequencing) technologies, there are a few technical limitations. It is these issues inherent to the sequencing-by-synthesis process that can result in quality degradation, but poor quality scores could also be indicative of more serious problems during the sequencing process or sample preparation.
-
-<!-- TODO: problems causing low base calling scores -->
 
 Some examples of problems that can occur are [@biomedicalhub_genomics; @piper_hbctrainingintro_2022; @ledergerber_base-calling_2011]:
 
@@ -319,7 +315,7 @@ Some examples of problems that can occur are [@biomedicalhub_genomics; @piper_hb
  https://biomedicalhub.github.io/genomics/01-part1-introduction.html
   -->
 
-<!-- TODO: homopolymeric -->
+<!-- TODO: homopolymeric regions and sequencing quality? -->
 
 [^cause-of-phasing]: Phasing can be caused by the 3' terminators not being removed from some fragments in a cluster, in between sequencing cycles. Pre-phasing can happen when two nucleotides get incorporated in one cycle, instead of a single one (e.g., because the 3' terminators were not effective).
 
@@ -422,8 +418,6 @@ More information on Q scores can be found here:
 
 :::
 
-<!-- TODO emoji fastq -->
-
 ::: {.callout-tip}
 ## FASTQ + Emoji = FASTQE 🤔
 
@@ -464,7 +458,7 @@ training/data/fastq/PF0097_S43_L001_R1_001.fastq.gz     mean (binned)
 
 Of course, to get some actual work done, we will use a tool like `fastqc` to assess the quality of our sequence reads, rather than inspecting millions of reads by hand ;)
 
-FastQC is one of several QC tools for sequence reads[^other-qc-tools]. It can process each one of your `FASTQ` files and generate a report with several metrics and plots on the overall quality of the reads. One of the most useful plots it creates is the _per base sequence quality_ shown below: it shows the distribution of the quality scores per position, averaged over all the reads in a sample. Quality tapers off towards the end, which is a known issue for Illumina reads that we can address via trimming.
+FastQC is one of several QC tools for sequence reads[^other-qc-tools]. It can process each one of your `FASTQ` files and generate a report with several metrics and plots on the overall quality of the reads. One of the most useful plots it creates is the _per base sequence quality_ shown below: it shows box-plot distributions of the quality scores per position, averaged over all the reads in a sample. Quality tapers off towards the end, which is a known issue for Illumina reads that we can address via trimming.
 
 [^other-qc-tools]: A notable alternative QC program is [fastp](https://github.com/OpenGene/fastp), which can do not just QC, but also trimming and filtering (more on that later).
 
@@ -472,17 +466,13 @@ FastQC is one of several QC tools for sequence reads[^other-qc-tools]. It can pr
 
 ![Example output of FastQC. Note the decreasing scores towards the end of the read.](../assets/fastqc-output.png)
 
-Another useful metric is the _per sequence quality scores_, where we can assess the variation in overall quality between the different reads in a sample. Ideally there is a narrow peak around the higher scores.
-
-Lastly, the _per base sequencing content_ is something we expect to show a similar distribution for each of the four bases unaffected by the position in the read. However, for _Plasmodium falciparum_ we know that there is an extremely strong AT-bias, in which case this plot needs to be interpreted with caution. The same applies for the _per sequence GC content_ metrics.
+Another useful metric is the _per sequence quality scores_, where we can assess the variation in overall quality between the different reads in a sample. Ideally there is a narrow peak around the higher scores. The _Read length_ histogram should ideally show a nice narrow distribution around your expected fragment sizes. Lastly, the _per base sequencing content_ is something we expect to show a similar distribution for each of the four bases unaffected by the position in the read. However, for _Plasmodium falciparum_ we know that there is an extremely strong AT-bias, in which case this plot needs to be interpreted with caution. The same applies for the _per sequence GC content_ metrics.
 
 <!-- TODO: fastqc example plot for per sequencing quality score and per base sequencing content -->
 
 <!-- TODO: fastqc example plots for good sample -->
 
 <!-- TODO: fastqc per sequence GC content? -->
-
-<!-- sequence duplication: cf pcr duplicates -->
 
 <!-- Overrepresented Sequences
 Over-represented sequences
@@ -517,15 +507,22 @@ Lastly, this [Galaxy Training](https://training.galaxyproject.org/training-mater
 ::: {.callout-caution collapse="true"}
 ## Exercises
 
+**Try it yourself:**
+
 - Read the `fastqc` help message by calling `fastqc --help` and figure out the basic syntax to use the tool.
 - Run the tool on one of the `.fastq` files in the _P. falciparum_ AmpliSeq dataset. Does it matter if its `.gz` compressed or not?
 - Inspect the output and assess the quality of the reads. Look back at the different sources of base calling errors that we discussed earlier.
 
-<!-- TODO: add shiny practical -->
+**Interpreting the output:**
 
-Bonus question:
+- Download the Shiny app from Moodle, inspect the FastQC outputs and answer the questions.
+
+<!-- TODO: add shiny practical to repository or link out?-->
+
+**Bonus question:**
 
 - How would you run the tool on a directory with many `.fastqc` files? Write a small script that does this.
+
 :::
 
 ## FastQ Screen {#sec-fastqscreen}
@@ -557,8 +554,12 @@ https://www.biostars.org/p/192788/ -->
 ::: {.callout-caution}
 ## Exercises
 
-<!-- TODO link to shiny app in drive or copy contents -->
-<!-- - Try calling `fastq_screen` using the provided configuration file with linked databases -->
+<!-- TODO: - Try calling `fastq_screen` using the provided configuration file with linked databases. -->
+
+- Download the Shiny app from Moodle, inspect the FastQC outputs and answer the questions.
+
+<!-- TODO: add shiny practical to repository or link out?-->
+
 
 :::
 
@@ -566,6 +567,8 @@ https://www.biostars.org/p/192788/ -->
 
 ::: {.callout-note}
 There exist many alternative tools for trimming and filtering FASTQ files, such as [fastp](https://github.com/OpenGene/fastp), [Cutadapt](https://cutadapt.readthedocs.io/en/stable/) and [Trim Galore](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/) (which is a wrapper around Cutadapt and FastQC).
+
+This tutorial focuses on `fastqc` + `trimmomatic` for historical reasons (being used in the ), but `fastp` is becoming more popular nowadays.
 :::
 
 
@@ -583,7 +586,7 @@ https://genomics.sschmeier.com/ngs-qc/#phix-genome
 - Filter low quality reads (e.g., too short after trimming)
 - Remove adapter sequences
 
-<!-- TODO: trimmomatic trim barcodes -->
+<!-- TODO: trimmomatic: why don't we trim index/barcodes? => already done by bcl2fastq during demultiplexing -->
 
 ::: {.callout-note}
 ## Why do adapter sequences show up in reads?
@@ -592,11 +595,9 @@ Recall the structure of the library fragments shown in @fig-library-fragment-ill
 
 More information can be found on [page 5 of the Trimmomatic manual](http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/TrimmomaticManual_V0.32.pdf).
 
-<!-- [^trim-adapters]. -->
-
 <!-- [^trim-adapters]: technically things are a bit more complex. For the forward R1 read, this explanation is correct. But for the reverse R2 read, -->
 
-<!-- TODO trimming adapters explanation -->
+<!-- TODO trimming adapters explanation on orientation + other reasons for seeing them beyond read-through-->
 
 <!--
 https://seekdeep.brown.edu/illumina_paired_info.html
@@ -629,8 +630,6 @@ The reasoning behind this is that when you read into the adapter sequences it me
 There are two main reasons why we might see adapter sequences -->
 
 :::
-
-<!-- TODO used during the library prep and sequencing steps (e.g. Nextera, TrueSeq) -->
 
 You can check the usage of `trimmomatic` by simply invoking the command without any arguments: `trimmomatic`
 
@@ -686,8 +685,6 @@ For more detailed info on all these commands, check out the [trimmomatic manuaul
 ::: {.callout-tip}
 The `threads` option allows you to process multiple samples simultaneously to speed up the analysis. We will see more on parallelization and multi-threading later. In your CodeSpace environment, you can choose 2 or 4 threads, depending on the number of cores you selected.
 :::
-
-
 
 ::: {.callout-caution}
 ## Exercises
@@ -783,7 +780,7 @@ https://www.seqanswers.com/forum/sequencing-technologies-companies/illumina-sole
     - Orientation of (index) reads: [https://seekdeep.brown.edu/illumina_paired_info.html](https://seekdeep.brown.edu/illumina_paired_info.html)
 
 
-<!-- TODO: questions and resources
+<!-- TODO: various questions and resources related to QC, fragment size, indexing, multiplexing, orientation, paired-end reads
 
 
 What read lengths are produced by Illumina sequencers?
@@ -818,5 +815,6 @@ https://www.illumina.com/content/dam/illumina-marketing/documents/products/illum
 - clusters: A clonal grouping of template DNA bound to the surface of a flow cell.
 - indexes/barcodes/tags: A unique DNA sequence ligated to fragments within a sequencing library for downstream in silico sorting and identification. Indexes are typically a component of adapters or PCR primers and are ligated to the library fragments during the sequencing library preparation stage. Illumina indexes are typically between 8–12 bp. Libraries with unique indexes can be pooled together, loaded into one lane of a sequencing flow cell, and sequenced in the same run. Reads are later identified and sorted via bioinformatic software. All together, this process is known as “multiplexing.”
 - insert: During the library preparation stage, the sample DNA is fragmented, and the fragments of a specific size (typically 200–500 bp, but can be larger) are ligated or “inserted” in between two oligo adapters. The original sample DNA fragments are also referred to as “inserts.”
- -->
+-->
+
 :::

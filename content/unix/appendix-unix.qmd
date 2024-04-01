@@ -185,10 +185,11 @@ Lastly, keep in mind that when working on remote servers, it is essential to use
 
 ## Further reading
 
-There are still many facets of Unix that we have not covered here yet, but we hope that you can pick these up on your own if were to ever need them. For now though, the basics that we covered here, will hopefully already go a long way in helping you use Unix and read scripts written by others.
+There are still many facets of Unix that we have not covered here yet, but we hope that you can pick these up on your own if were to ever need them. For now though, the basics that we covered here, will hopefully already go a long way in helping you use Unix, read scripts written by others and teaching yourself new concepts.
 
 A selection of more advanced topics to explore at a later time could be:
 
+- An superb workshop on various intermediate concepts: [https://genomicsaotearoa.github.io/shell-for-bioinformatics/](https://genomicsaotearoa.github.io/shell-for-bioinformatics/)
 - Installing software on Linux machines, [from source or via `apt` (Ubuntu)](https://sgbc.github.io/course/software/), `dnf` (Fedora) or `pacman` (Arch), or through tools like [conda/Miniforge](https://kirenz.github.io/codelabs/codelabs/miniforge-setup/#0) and [bioconda](https://bioconda.github.io/).
 - [The `find` command](https://www.redhat.com/sysadmin/linux-find-command): useful for finding files in your file system.
 - [If/else conditions](https://pressbooks.senecacollege.ca/uli101/chapter/shell-scripting-conditions-and-if-command/): allow you to execute parts of scripts if certain conditions are fulfilled.
