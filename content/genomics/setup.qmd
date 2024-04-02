@@ -11,10 +11,10 @@ If you want to follow along on your own machine instead, make sure to install al
 ```bash
 # download and install miniforge
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
-bash https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+bash Miniforge3-Linux-x86_64.sh
 
 # install relevant packages into a new environment
-mamba env create -n fimab -f /tmp/conda-tmp/environment.yml
+mamba env create -n fimab -f ./FiMAB-bioinformatics/environment.yml
 
 # activate environment
 mamba activate fimab
@@ -27,7 +27,7 @@ mamba activate fimab
 
     ```cmd
     # install relevant packages into a new environment
-    mamba env create -n fimab -f /tmp/conda-tmp/environment.yml
+    mamba env create -n fimab -f ./FiMAB-bioinformatics/environment.yml
 
     # activate environment
     mamba activate fimab
