@@ -1,14 +1,17 @@
 {
-	"name": "Unix tools, bioconda and RStudio",
+	"name": "Unix tools, bioconda (miniforge) and R(Studio)",
 	// https://rocker-project.org/images/devcontainer/images.html
 	"image": "ghcr.io/rocker-org/devcontainer/tidyverse:4",
+	"remoteUser": "rstudio",
 	"features": {
-		// https://github.com/rocker-org/devcontainer-features/blob/main/src/rstudio-server/README.md
-		// already pre-installed in tidyverse container - https://rocker-project.org/images/devcontainer/images.html#rstudio-server
-		"ghcr.io/rocker-org/devcontainer-features/rstudio-server:latest": {},
+		// RStudio is already pre-installed in tidyverse container - https://rocker-project.org/images/devcontainer/images.html#rstudio-server
+		// https://github.com/rocker-org/devcontainer-features/tree/main/src/apt-packages
+		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+			"packages": "libglpk-dev,nano,vim,less,git,screen,tmux,wget,curl,colordiff,htop,tree,graphviz" // "libglpk-dev" is required for igraph
+		},
 		// https://github.com/rocker-org/devcontainer-features/blob/main/src/r-packages/README.md
 		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-			"packages": "tidyverse,rmarkdown,BiocManager,shiny,shinythemes,markdown",
+			"packages": "devtools,languageserver,tidyverse,rmarkdown,markdown,shiny,shinythemes,BiocManager,github::bahlolab/isoRelate,sjmisc,networkD3,igraph,RColorBrewer,viridis,vcfR,poppr,ggfortify",
 			"installSystemRequirements": true
 		},
 		// https://github.com/rocker-org/devcontainer-features/blob/main/src/miniforge/README.md
@@ -58,20 +61,16 @@
 				"mads-hartmann.bash-ide-vscode",
 				"foxundermoon.shell-format",
 				"timonwong.shellcheck",
-
 				// QoL
 				"streetsidesoftware.code-spell-checker",
 				"oderwat.indent-rainbow",
 				"mechatroner.rainbow-csv",
 				"ionutvmi.path-autocomplete",
 				"fabiospampinato.vscode-diff",
-
 				// R
 				"REditorSupport.r",
-
 				// general formatting
 				"esbenp.prettier-vscode",
-
 				// theming
 				"sainnhe.sonokai",
 				// "reageyao.biosyntax"
