@@ -1,50 +1,12 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/miniconda
 {
-	"name": "Bioinformatics training environment",
+	"name": "Unix tools and bioconda (miniforge)",
 	"build": {
 		"context": "..",
 		"dockerfile": "Dockerfile"
 	},
-	// {
-	// 	"runArgs": [
-	// 		"--log-driver=none"
-	// 	]
-	// },
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-	// "features": {
-	// 	"ghcr.io/rocker-org/devcontainer-features/rstudio-server:latest": {
-	// 		"version": "stable",
-	// 		"singleUser": true
-	// 	},
-	// 	"ghcr.io/rocker-org/devcontainer-features/r-apt:latest": {
-	// 		"vscodeRSupport": "full",
-	// 		"installDevTools": true,
-	// 		"installRadian": true,
-	// 		"installRMarkdown": true,
-	// 		"installVscDebugger": true
-	// 	}
-	// },
-	// "postAttachCommand": {
-	// 	"rstudio-start": "rserver"
-	// },
-	// "forwardPorts": [
-	// 	8787
-	// ],
-	// "portsAttributes": {
-	// 	"8787": {
-	// 		"label": "RStudio IDE"
-	// 	}
-	// }
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "python --version",
-	// Configure tool-specific properties.
-	// "customizations": {},
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+	"containerUser": "vscode",
 	"customizations": {
 		"vscode": {
 			"settings": {
@@ -70,20 +32,16 @@
 				"mads-hartmann.bash-ide-vscode",
 				"foxundermoon.shell-format",
 				"timonwong.shellcheck",
-
 				// QoL
 				"streetsidesoftware.code-spell-checker",
 				"oderwat.indent-rainbow",
 				"mechatroner.rainbow-csv",
 				"ionutvmi.path-autocomplete",
 				"fabiospampinato.vscode-diff",
-
 				// R
 				"REditorSupport.r",
-
 				// general formatting
 				"esbenp.prettier-vscode",
-
 				// theming
 				"sainnhe.sonokai",
 				// "reageyao.biosyntax"
