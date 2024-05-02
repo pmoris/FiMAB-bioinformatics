@@ -394,17 +394,25 @@ To summarize, Q scores can be converted into the probability of base calling err
 
 Given the following read from a sequencer using the current Illumina 1.8 Sanger+33 format.
 
-
 ```
-@M00984:14:000000000-AA0HF:1:1101:23031:1298 1:N:0:1
-CGTGCCAACGGCACTCGTACACGAGTTGTACAGAAACTGAT
+@M05795:43:000000000-CFLMP:1:1101:6285:5345 2:N:0:68
+GGAGAAACAGGTAGTGGAAAATCAACTTTTATGAATCTCTTATTAAGATGTTAGTCAAGAACCCATGGTAT
 +
-CCCCCGGGGGGGGGGGGGGGGGGFDGGGGGGGFFGGGGG9F
+CCCCC8FF8C@FFG;EFFGFCHC,EF9CCFFEFGEFC<,FGGGF6CFC98;*;;3;*;CB@>%5>45)972
 ```
 
-- What is the Phred Quality Score of the first thymine in the following read?
-- What is the probability that the final adenine is called correctly?
-- Which ASCII characters correspond to the lowest and highest quality score?
+1. What is the Phred Quality Score of the first cytosine in the following read?
+2. What is the probability that the last guanine is called correctly?
+3. Which ASCII characters correspond to the lowest and highest quality score in this read?
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+1. The first `C` (8th position in the read) was assigned the encoded quality score `F`. In the ASCII table, we see that the numerical value of `F` is `70`. Our read is in the Phred +33 format where a Q score of 0 is represented by the ASCII value `33` (`!`). Thus, we need to subtract 33 from our ASCII value to obtain the Q score : $Q=70-33=37$.
+2. The last `G` in our read (68th position) was assigned the encoded quality score `)`. The numerical ASCII value of this character is `41`. When we subtract 33, we obtain the Q score $41-33=8$. To obtain the error probability, we can use the formula $P = 10^{\frac{Q}{-10}} = 10^{\frac{8}{-10}} = 0.15$, or a 15% chance of an incorrect base call.
+3. The lowest score in this read is 5 (`%`), while the highest one is 39 (`H`).
+
+:::
 
 :::
 

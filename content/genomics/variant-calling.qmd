@@ -96,7 +96,7 @@ GenomicsDBImport offers the same functionality as CombineGVCFs -->
 
 <!-- https://qcb.ucla.edu/wp-content/uploads/sites/14/2016/03/GATKwr12-5-Variant_calling_joint_genotyping.pdf -->
 
-::: {.callout-warning}
+::: {.callout-caution}
 ## Exercises
 
 1. Run `gatk HaplotypeCaller` for a single BAM file and inspect the resulting VCF file.
@@ -247,7 +247,7 @@ Merging GVCF files can be quite slow. GATK has written [an article](https://gatk
 
 :::
 
-::: {.callout-warning}
+::: {.callout-caution}
 ## Exercises
 
 Merge the GVCFs for all Peruvian _Plasmodium falciparum_ AmpliSeq samples.
@@ -271,7 +271,7 @@ gatk GenotypeGVCFs \
 # set maximum and initial memory usage: --java-options "-Xmx4g -Xms4g"
 ```
 
-::: {.callout-warning}
+::: {.callout-caution}
 ## Exercises
 
 - Perform joint-genotyping for the multi-sample VCF file with the Peruvian _Plasmodium falciparum_ AmpliSeq samples.
@@ -344,7 +344,7 @@ See [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035531112--How-t
 
 :::
 
-::: {.callout-warning}
+::: {.callout-caution}
 ## Exercise
 
 - For hard-filtering AmpliSeq data, you can explore the [_P. falciparum_ AmpliSeq Peru pipeline](https://github.com/Ekattenberg/Plasmodium-AmpliSeq-Pipeline/blob/main/Pf_AmpliSeq_Peru/5.PERU_Ampliseq_filter_annotation_PF_281122.bash).

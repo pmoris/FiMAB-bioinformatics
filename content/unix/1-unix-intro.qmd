@@ -26,7 +26,7 @@ This section of the course draws inspiration from the following resources:
 - [ECA's Bioinformatics Handbook](https://eriqande.github.io/eca-bioinf-handbook/essential-unixlinux-terminal-knowledge.html)
 - [Ronor Harrington's Bioinformatics Notebook](https://rnnh.github.io/bioinfo-notebook/docs/cl_intro.html)
 - [Duke HTS Summ Course 2018](https://people.duke.edu/~ccc14/duke-hts-2018/janice/2_Intro_to_Unix_and_bash.html)
-
+<!-- https://www.melbournebioinformatics.org.au/tutorials/tutorials/unix/unix/ -->
 
 <!-- TODO: add citations for resources -->
 
