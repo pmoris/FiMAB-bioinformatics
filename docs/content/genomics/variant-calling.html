@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.552">
+<meta name="generator" content="quarto-1.5.54">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Bioinformatics for Malaria Molecular Surveillance - 15&nbsp; Variant calling</title>
+<title>15&nbsp; Variant calling – Introduction to Bioinformatics for Malaria Molecular Surveillance</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -115,13 +115,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/variant-calling.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Variant calling</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -132,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../index.html" class="sidebar-logo-link">
+      <a href="https://research.itg.be/en/organisations/malariology" class="sidebar-logo-link">
       <img src="../../content/assets/ITM-logo_col_rgb.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
@@ -162,9 +162,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Introduction to the Unix shell</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -221,9 +221,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Introduction to R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -244,9 +244,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Processing genomic data</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -297,9 +297,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -364,13 +364,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Variants can be identified by looking at all the reads at a given position in the genome and looking at the variation present in the different reads covering the position. The more reads that we see that <em>agree</em> on a specific variant compared to the reference genome, the more confident we can be that we are dealing with a real variant, in that particular sample. Of course, there are many considerations to make at this point; we need to take into account the possibility of sequencing errors, mapping errors, the ploidy of our organism, the possibility of complex infections (i.e., multiple genetically distinct parasites in a single sample, instead of a single clone), etc. Moreover, we can compare variants across different samples and perform various filtering steps to reduce the chance of false positives.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/variant_calling_galaxy_1/media/igv_mb.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="Source: http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/variant_calling_galaxy_1/variant_calling_galaxy_1/"><img src="http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/variant_calling_galaxy_1/media/igv_mb.jpg" class="img-fluid figure-img" alt="Source: http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/variant_calling_galaxy_1/variant_calling_galaxy_1/"></a></p>
+<p><a href="http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/variant_calling_galaxy_1/media/igv_mb.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Source: http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/variant_calling_galaxy_1/variant_calling_galaxy_1/"><img src="http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/variant_calling_galaxy_1/media/igv_mb.jpg" class="img-fluid figure-img" alt="Source: http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/variant_calling_galaxy_1/variant_calling_galaxy_1/"></a></p>
 <figcaption>Source: <a href="http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/variant_calling_galaxy_1/variant_calling_galaxy_1/">http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/variant_calling_galaxy_1/variant_calling_galaxy_1/</a></figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/media/fig2.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="Source: https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/variant_calling_gatk1/#section-3-variant-calling"><img src="https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/media/fig2.png" class="img-fluid figure-img" alt="Source: https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/variant_calling_gatk1/#section-3-variant-calling"></a></p>
+<p><a href="https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/media/fig2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Source: https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/variant_calling_gatk1/#section-3-variant-calling"><img src="https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/media/fig2.png" class="img-fluid figure-img" alt="Source: https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/variant_calling_gatk1/#section-3-variant-calling"></a></p>
 <figcaption>Source: <a href="https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/variant_calling_gatk1/#section-3-variant-calling">https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/variant_calling_gatk1/#section-3-variant-calling</a></figcaption>
 </figure>
 </div>
@@ -405,7 +405,7 @@ Structural variant discovery
 <p>Larger structural variant discovery tends to be more challenging than short variant detection. Long-reads help quite a bit, as does paired-end sequencing. Similar considerations apply for calling haplotypes (~ combination of nearby variants, or more strictly: a physical grouping of genetic variants that is inherited together).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../assets/structural-variant-detection.webp" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4" title="Detecting structural variants. Source: Baker (2012). Structural Variation: The Genome’s Hidden Architecture. https://doi.org/10.1038/nmeth.1858"><img src="../assets/structural-variant-detection.webp" class="img-fluid figure-img" alt="Detecting structural variants. Source: Baker (2012). Structural Variation: The Genome’s Hidden Architecture. https://doi.org/10.1038/nmeth.1858"></a></p>
+<p><a href="../assets/structural-variant-detection.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Detecting structural variants. Source: Baker (2012). Structural Variation: The Genome’s Hidden Architecture. https://doi.org/10.1038/nmeth.1858"><img src="../assets/structural-variant-detection.webp" class="img-fluid figure-img" alt="Detecting structural variants. Source: Baker (2012). Structural Variation: The Genome’s Hidden Architecture. https://doi.org/10.1038/nmeth.1858"></a></p>
 <figcaption>Detecting structural variants. Source: Baker (2012). Structural Variation: The Genome’s Hidden Architecture. <a href="https://doi.org/10.1038/nmeth.1858">https://doi.org/10.1038/nmeth.1858</a></figcaption>
 </figure>
 </div>
@@ -469,7 +469,7 @@ Note
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st"># set number of threads: --native-pair-hmm-threads 2</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st"># set maximum and initial memory usage: --java-options "</span>-Xmx4g <span class="at">-Xms4g</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The output of this process is a GVCF file. It is very similar to the VCF file format, except that it tracks each genomic coordinate instead of only those positions where variations were detected. Also note that the output is compressed with gzip by default.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -491,7 +491,7 @@ Exercises
 <p>The output of variant calling is a file in the Variant Call Format (<code>.vcf</code>), which we already encountered in <a href="../unix/7-unix-redirection.html#sec-vcf" class="quarto-xref"><span>Section 7.1.1.1</span></a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../assets/vcf-format.png" class="lightbox" data-glightbox="description: .lightbox-desc-5" data-gallery="quarto-lightbox-gallery-5" title="Overview of Variant Call Format (VCF). Source: https://vcftools.sourceforge.net/VCF-poster.pdf"><img src="../assets/vcf-format.png" class="img-fluid figure-img" alt="Overview of Variant Call Format (VCF). Source: https://vcftools.sourceforge.net/VCF-poster.pdf"></a></p>
+<p><a href="../assets/vcf-format.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Overview of Variant Call Format (VCF). Source: https://vcftools.sourceforge.net/VCF-poster.pdf"><img src="../assets/vcf-format.png" class="img-fluid figure-img" alt="Overview of Variant Call Format (VCF). Source: https://vcftools.sourceforge.net/VCF-poster.pdf"></a></p>
 <figcaption>Overview of Variant Call Format (VCF). Source: <a href="https://vcftools.sourceforge.net/VCF-poster.pdf">https://vcftools.sourceforge.net/VCF-poster.pdf</a></figcaption>
 </figure>
 </div>
@@ -619,7 +619,7 @@ Improving performance
 <p>Merging GVCF files can be quite slow. GATK has written <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360056138571-GenomicsDBImport-usage-and-performance-guidelines">an article</a> on how to address performance issues.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -644,7 +644,7 @@ Exercises
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># optional arguments:</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># set maximum and initial memory usage: --java-options "-Xmx4g -Xms4g"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -721,7 +721,7 @@ Hard-filtering should be done separately for SNPs and indels
 <p>See <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035531112--How-to-Filter-variants-either-with-VQSR-or-by-hard-filtering">here</a> (section 2) for more info on the <code>--select-type</code> flag.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -764,12 +764,6 @@ Note
 <p>The final step in our pipeline is to annotate variants. For this, a tool like <a href="http://pcingola.github.io/SnpEff/">snpEff</a> can be used. You can see it being used in the AmpliSeq pipeline <a href="https://github.com/Ekattenberg/Plasmodium-AmpliSeq-Pipeline/blob/2d7779e8463bbe97523f96c9dccd70ebf91161c9/Pf_AmpliSeq_Peru/5.PERU_Ampliseq_filter_annotation_PF_281122.bash#L160">here</a>.</p>
 
 
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-2">Source: <a href="http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/variant_calling_galaxy_1/variant_calling_galaxy_1/">http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/variant_calling_galaxy_1/variant_calling_galaxy_1/</a></span>
-<span class="glightbox-desc lightbox-desc-3">Source: <a href="https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/variant_calling_gatk1/#section-3-variant-calling">https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/variant_calling_gatk1/#section-3-variant-calling</a></span>
-<span class="glightbox-desc lightbox-desc-4">Detecting structural variants. Source: Baker (2012). Structural Variation: The Genome’s Hidden Architecture. <a href="https://doi.org/10.1038/nmeth.1858">https://doi.org/10.1038/nmeth.1858</a></span>
-<span class="glightbox-desc lightbox-desc-5">Overview of Variant Call Format (VCF). Source: <a href="https://vcftools.sourceforge.net/VCF-poster.pdf">https://vcftools.sourceforge.net/VCF-poster.pdf</a></span>
-</div>
 </section>
 
 
@@ -809,18 +803,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -852,7 +835,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -860,7 +865,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1199,7 +1204,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Unless otherwise noted, all content on this site is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>. <br> © <a href="https://pmoris.github.io">Pieter Moris</a> - <a href="https://research.itg.be/en/organisations/malariology">ITM Malariology</a>, 2024.</p>
+<p>Unless otherwise noted, all content on this site is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. <a href="https://creativecommons.org/licenses/by/4.0/"><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="CC" height="30"></a> <a href="https://creativecommons.org/licenses/by/4.0/"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="BY" height="30"></a> <br> © <a href="https://pmoris.github.io">Pieter Moris</a> - <a href="https://research.itg.be/en/organisations/malariology">ITM Malariology</a>, 2024.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
@@ -1209,30 +1214,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","openEffect":"zoom","loop":false,"closeEffect":"zoom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
     }
-  });
-
-};
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
           </script>
 
 

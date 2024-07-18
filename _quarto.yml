@@ -43,8 +43,7 @@ book:
   # downloads: [pdf,epub]
 
   # copyright: "Copyright Pieter Moris, 2023. All Rights Reserved"
-  # license: "CC BY-NC-SA 4.0" # https://creativecommons.org/licenses/by-nc-sa/4.0/
-  license: "CC BY-NC 4.0" # https://creativecommons.org/licenses/by-nc/4.0/
+  license: "CC BY 4.0"
 
 
   chapters:
@@ -112,10 +111,9 @@ book:
   page-navigation: true
 
   page-footer:
-    # left: |
-    #   Unless otherwise noted, all content on this site is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). [![](./content/assets/cc-by-nc-sa.svg){fig-alt="CC BY-NC-SA 4.0" height=30px}](https://creativecommons.org/licenses/by-nc-sa/4.0/)
     left: |
-      Unless otherwise noted, all content on this site is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
+      Unless otherwise noted, all content on this site is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+      [![](https://mirrors.creativecommons.org/presskit/icons/cc.svg){fig-alt="CC" height=30px}](https://creativecommons.org/licenses/by/4.0/) [![](https://mirrors.creativecommons.org/presskit/icons/by.svg){fig-alt="BY" height=30px}](https://creativecommons.org/licenses/by/4.0/)
       <br>
       &copy; [Pieter Moris](https://pmoris.github.io) - [ITM Malariology](https://research.itg.be/en/organisations/malariology), 2024.
     right: Built with [Quarto](https://quarto.org/).
