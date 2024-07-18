@@ -86,7 +86,7 @@ The header line always starts with an `@` and usually carries information on the
 >  - `0`: control number
 >  - `44`: index/barcode sequence (see below for more info on barcoding and multiplexing)
 
-The second line contains the sequence as a string of characters. The third line is basically [a historical artifact](https://academic.oup.com/nar/article/38/6/1767/3112533#82650918) that we're now stuck with. The fourth line, containing the quality scores, will be explore in more detail in the next section (@sec-fastq-quality-score).
+The second line contains the sequence as a string of characters. The third line is basically [a historical artifact](https://academic.oup.com/nar/article/38/6/1767/3112533#82650918) that we're now stuck with. The fourth line, containing the quality scores, will be explored in more detail in the next section (@sec-fastq-quality-score).
 
 ---
 

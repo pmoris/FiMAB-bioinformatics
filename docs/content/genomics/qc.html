@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.552">
+<meta name="generator" content="quarto-1.5.54">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Bioinformatics for Malaria Molecular Surveillance - 13&nbsp; Quality control and trimming</title>
+<title>13&nbsp; Quality control and trimming – Introduction to Bioinformatics for Malaria Molecular Surveillance</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -126,7 +126,7 @@ div.csl-indent {
   }
 }</script>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -141,7 +141,7 @@ div.csl-indent {
    });
 }}});
   </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -178,13 +178,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/qc.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Quality control and trimming</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -195,7 +195,7 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../index.html" class="sidebar-logo-link">
+      <a href="https://research.itg.be/en/organisations/malariology" class="sidebar-logo-link">
       <img src="../../content/assets/ITM-logo_col_rgb.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
@@ -225,9 +225,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Introduction to the Unix shell</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -284,9 +284,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Introduction to R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -307,9 +307,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Processing genomic data</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -360,9 +360,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -456,18 +456,18 @@ FASTQ files and Illumina sequencing
 <li><a href="https://support.illumina.com/content/dam/illumina-support/courses/MiSeq_Imaging_and_Base_Calling/story_html5.html">Short course on MiSeq system by Illumina</a> (focus on imaging and base calling)</li>
 </ul>
 <hr>
-<div id="fig-illumina-sequencing" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-illumina-sequencing" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-illumina-sequencing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../assets/rodriguez-ngs-pt1.webp" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="Library preparation and bridge amplification on flow cell."><img src="../assets/rodriguez-ngs-pt1.webp" class="img-fluid figure-img"></a></p>
+<p><a href="../assets/rodriguez-ngs-pt1.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Library preparation and bridge amplification on flow cell."><img src="../assets/rodriguez-ngs-pt1.webp" class="img-fluid figure-img"></a></p>
 <figcaption>Library preparation and bridge amplification on flow cell.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../assets/rodriguez-ngs-pt2.webp" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="Sequencing-by-synthesis and fluorophore imaging or base calling."><img src="../assets/rodriguez-ngs-pt2.webp" class="img-fluid figure-img"></a></p>
+<p><a href="../assets/rodriguez-ngs-pt2.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Sequencing-by-synthesis and fluorophore imaging or base calling."><img src="../assets/rodriguez-ngs-pt2.webp" class="img-fluid figure-img"></a></p>
 <figcaption>Sequencing-by-synthesis and fluorophore imaging or base calling.</figcaption>
 </figure>
 </div>
@@ -480,7 +480,7 @@ Figure&nbsp;13.1: Overview of Illumina sequencing chemistry <span class="citatio
 </div>
 </div>
 <p>FASTQ files are plain-text files consisting of the following four lines for each sequence read:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 2%">
 <col style="width: 97%">
@@ -533,7 +533,7 @@ CCTCACCATGCAACCGATGCTCATCATGCAGCCGATGCTCATCATTCTCATCATGCACCCGCTGTCTCTTTTACACTTCT
 <li><code>44</code>: index/barcode sequence (see below for more info on barcoding and multiplexing)</li>
 </ul>
 </blockquote>
-<p>The second line contains the sequence as a string of characters. The third line is basically <a href="https://academic.oup.com/nar/article/38/6/1767/3112533#82650918">a historical artifact</a> that we’re now stuck with. The fourth line, containing the quality scores, will be explore in more detail in the next section (<a href="#sec-fastq-quality-score" class="quarto-xref"><span>Section 13.2</span></a>).</p>
+<p>The second line contains the sequence as a string of characters. The third line is basically <a href="https://academic.oup.com/nar/article/38/6/1767/3112533#82650918">a historical artifact</a> that we’re now stuck with. The fourth line, containing the quality scores, will be explored in more detail in the next section (<a href="#sec-fastq-quality-score" class="quarto-xref"><span>Section 13.2</span></a>).</p>
 <hr>
 <p>FASTQ files are typically named using the following convention:</p>
 <blockquote class="blockquote">
@@ -596,10 +596,10 @@ Tip&nbsp;13.1: Paired-end sequencing
 <p>In a nutshell: <strong>in paired-end sequencing, both ends of the DNA fragments in the library are sequenced inwards</strong> (<code>5'-F===&gt;_______&lt;===R-3'</code>) one after the other (the <strong>F</strong>orward and <strong>R</strong>everse read).</p>
 <p>The forward and the reverse reads do not necessarily overlap; this depends on the length of the insert and the number of sequencing cycles used for each round of sequencing. Indeed, in many cases the forward and reverse reads are a couple of hundred bases apart, pointing towards each other, because the DNA insert is longer (e.g., ~300 bp) than the forward or reverse read (e.g., 150 bp each, including read primers). So to emphasize, <em>we do not expect the forward and reverse reads to cover identical sections of the fragment</em>.</p>
 <p>What is the point of paired-end sequencing? Well, because we know what the average distance between the forward and reverse read is <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, alignment algorithms can make use this information to more accurately map the reads across repetitive regions in the genome (see <a href="#fig-paired-end-sequencing-illumina" class="quarto-xref">Figure&nbsp;<span>13.2</span></a>), which would otherwise be even more problematic.</p>
-<div id="fig-paired-end-sequencing-illumina" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-paired-end-sequencing-illumina" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-paired-end-sequencing-illumina-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="../assets/paired-end-sequencing-illumina.png" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4"><img src="../assets/paired-end-sequencing-illumina.png" class="img-fluid figure-img"></a>
+<a href="../assets/paired-end-sequencing-illumina.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;13.2: Paired-end sequencing and alignment. [Source: @Illumina_2017]"><img src="../assets/paired-end-sequencing-illumina.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-paired-end-sequencing-illumina-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13.2: Paired-end sequencing and alignment. <span class="citation" data-cites="Illumina_2017">(Source: <a href="../references.html#ref-Illumina_2017" role="doc-biblioref">Illumina 2017</a>)</span>
@@ -685,10 +685,10 @@ Solutions
 <div class="page-columns page-full"><blockquote class="blockquote">
 <p>The index is a unique oligonucleotide sequence that is read separately from the target DNA of interest (called the <em>insert</em>). Depending on the technology, there might even be dual indices <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> (on both the 5’ and 3’ ends), placed between the insert (and its sequencing primers) and the adapters (P5/P7, used to anneal the entire DNA fragment to the flow cell) (<a href="#fig-library-fragment-illumina" class="quarto-xref">Figure&nbsp;<span>13.3</span></a>).</p>
 </blockquote><div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;sometimes dual indices (UDIs) are used on either end of the library fragment, instead of a single index. See <a href="https://knowledge.illumina.com/library-preparation/general/library-preparation-general-reference_material-list/000002344">https://knowledge.illumina.com/library-preparation/general/library-preparation-general-reference_material-list/000002344</a>]).</p></div></div></div>
-<div id="fig-library-fragment-illumina" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-library-fragment-illumina" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-library-fragment-illumina-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="../assets/library-fragment-illumina.png" class="lightbox" data-glightbox="description: .lightbox-desc-5" data-gallery="quarto-lightbox-gallery-5"><img src="../assets/library-fragment-illumina.png" class="img-fluid figure-img"></a>
+<a href="../assets/library-fragment-illumina.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;13.3: Construction of a sequencing library fragment through adapter ligation: P5 (red) / P7 (green) = sequences for anchoring to flow cell; (Rd1 SP (orange) / Rd2 SP (blue) = read 1/2 sequencing primer; index/barcode 1/2 = sample identifiers for multiplexing [Source: @Illumina_insert_2020]."><img src="../assets/library-fragment-illumina.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-library-fragment-illumina-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13.3: Construction of a sequencing library fragment through adapter ligation: P5 (red) / P7 (green) = sequences for anchoring to flow cell; (Rd1 SP (orange) / Rd2 SP (blue) = read 1/2 sequencing primer; index/barcode 1/2 = sample identifiers for multiplexing <span class="citation" data-cites="Illumina_insert_2020">(Source: <a href="../references.html#ref-Illumina_insert_2020" role="doc-biblioref">Illumina 2020</a>)</span>.
@@ -729,7 +729,7 @@ Figure&nbsp;13.3: Construction of a sequencing library fragment through adapter 
 <p>For <a href="https://knowledge.illumina.com/instrumentation/general/instrumentation-general-reference_material-list/000001511">non-patterned flow cells</a><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>, there can be close to a million clusters per square millimeter! No wonder the machine can have trouble distinguishing the signal from each of those.</p>
 <div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;Newer Illumina instruments use <a href="https://www.illumina.com/science/technology/next-generation-sequencing/sequencing-technology/patterned-flow-cells.html">patterned flow cells</a>, where clusters are created inside nanowells at fixed locations on the slide.</p></div></div><div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../assets/illumina-flowcell-animation.webp" class="lightbox" data-glightbox="description: .lightbox-desc-6" data-gallery="quarto-lightbox-gallery-6" title="Fluorescent signals from clusters on flow cell [Source: @Illumina_overview_video]."><img src="../assets/illumina-flowcell-animation.webp" class="img-fluid figure-img" alt="Fluorescent signals from clusters on flow cell (Source: Illumina 2016)."></a></p>
+<p><a href="../assets/illumina-flowcell-animation.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Fluorescent signals from clusters on flow cell [Source: @Illumina_overview_video]."><img src="../assets/illumina-flowcell-animation.webp" class="img-fluid figure-img" alt="Fluorescent signals from clusters on flow cell (Source: Illumina 2016)."></a></p>
 <figcaption>Fluorescent signals from clusters on flow cell <span class="citation" data-cites="Illumina_overview_video">(Source: <a href="../references.html#ref-Illumina_overview_video" role="doc-biblioref">Illumina 2016</a>)</span>.</figcaption>
 </figure>
 </div>
@@ -739,7 +739,7 @@ Figure&nbsp;13.3: Construction of a sequencing library fragment through adapter 
 <p>The fourth line of each sequence in a <code>FASTQ</code> file contains the so called Phred Quality Scores <span class="math inline">Q</span>. This line consists of a string of characters, one for each base in the sequence, that encodes the score for that base. The higher the score, the higher the probability that the base was called correctly (or the lower the probability of a misidentification). Specifically, the score is defined as follows:</p>
 <p><span class="math display"> Q_{PHRED} = -10 \times \log_{10}(P_e) </span></p>
 <p>Where <span class="math inline">P_e</span> is the probability of an incorrect base call. The following table gives an indication of how to interpret various ranges of quality scores:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 26%">
 <col style="width: 47%">
@@ -788,10 +788,10 @@ Figure&nbsp;13.3: Construction of a sequencing library fragment through adapter 
 <p>In general, Q30 is considered a good benchmark for reliable base calls.</p>
 <p>However, when you look at what is actually in the fourth line of a read in a FASTQ file you will see a rather strange collection of characters, including letters, numbers and other symbols, instead of, well, human-readable scores. What does a score of <code>@</code> even mean? Well, these are <a href="https://en.wikipedia.org/wiki/ASCII">ASCII characters</a> and they are used to compress the Q scores (which are often 2 digit numbers) down into a single character. This not only saves space, but allows the score to be aligned with its corresponding base in the sequence.</p>
 <p>The characters in the ASCII set are tied to a particular Q score, but rather than starting from 0 (the first character in the ASCII set), each sequencing platform uses a particular off-set, i.e.&nbsp;they start at a unique base value and count up from there. For example, the current standard for Illumina platforms (1.8) is the Phred+33 encoding, in which a score of 0 corresponds to the character <code>!</code> and higher scores step through the range of characters from there. The Phred+33 encoding is visualised in green in <a href="#fig-quality-score-ascii-range" class="quarto-xref">Figure&nbsp;<span>13.4</span></a>.</p>
-<div id="fig-quality-score-ascii-range" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-quality-score-ascii-range" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-quality-score-ascii-range-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="../assets/fastq-quality-encoding.png" class="lightbox" data-glightbox="description: .lightbox-desc-7" data-gallery="quarto-lightbox-gallery-7"><img src="../assets/fastq-quality-encoding.png" class="img-fluid figure-img"></a>
+<a href="../assets/fastq-quality-encoding.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;13.4: FASTQ quality scoring and ASCII offsets. [Source: @sequence-analysis-quality-control; @Hiltemann_2023]"><img src="../assets/fastq-quality-encoding.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-quality-score-ascii-range-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13.4: FASTQ quality scoring and ASCII offsets. <span class="citation" data-cites="sequence-analysis-quality-control Hiltemann_2023">(Source: <a href="../references.html#ref-sequence-analysis-quality-control" role="doc-biblioref">Batut et al.</a>; <a href="../references.html#ref-Hiltemann_2023" role="doc-biblioref">Hiltemann et al. 2023</a>)</span>
@@ -820,10 +820,10 @@ CABDAAFCBAHCEGFFA?FEEAFFHDCFCB?GHDECDCABFGBGA@HDGGEAABCDA@I?IIDIIH85:=;&lt;:;;97
 <p>Lastly, we need to rearrange the quality score equation shown above and plug in <span class="math inline">Q</span> in order to obtain the <em>probability of an incorrect base call</em>:</p>
 <p><span class="math display"> P = 10^{\frac{Q}{-10}} = 10^{\frac{34}{-10}} \approx 0.0004 </span></p>
 <p>Or a 0.9999% <em>base call accuracy</em>.</p>
-<div id="fig-ascii-table" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-ascii-table" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ascii-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="../assets/ASCII-Table-wide.svg" class="lightbox" data-glightbox="description: .lightbox-desc-8" data-gallery="quarto-lightbox-gallery-8"><img src="../assets/ASCII-Table-wide.svg" class="img-fluid figure-img"></a>
+<a href="../assets/ASCII-Table-wide.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;13.5: ASCII table"><img src="../assets/ASCII-Table-wide.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ascii-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13.5: ASCII table
@@ -840,7 +840,7 @@ Figure&nbsp;13.5: ASCII table
 <li>Plug the resulting value into the formula <span class="math inline">P = 10^{\frac{Q}{-10}}</span> to obtain the error probability. </li>
 </ol>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -849,18 +849,38 @@ Exercises
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Given the following read from a sequencer using the current Illumina 1.8 Sanger+33 format.</p>
-<pre><code>@M00984:14:000000000-AA0HF:1:1101:23031:1298 1:N:0:1
-CGTGCCAACGGCACTCGTACACGAGTTGTACAGAAACTGAT
+<pre><code>@M05795:43:000000000-CFLMP:1:1101:6285:5345 2:N:0:68
+GGAGAAACAGGTAGTGGAAAATCAACTTTTATGAATCTCTTATTAAGATGTTAGTCAAGAACCCATGGTAT
 +
-CCCCCGGGGGGGGGGGGGGGGGGFDGGGGGGGFFGGGGG9F</code></pre>
-<ul>
-<li>What is the Phred Quality Score of the first thymine in the following read?</li>
-<li>What is the probability that the final adenine is called correctly?</li>
-<li>Which ASCII characters correspond to the lowest and highest quality score?</li>
-</ul>
+CCCCC8FF8C@FFG;EFFGFCHC,EF9CCFFEFGEFC&lt;,FGGGF6CFC98;*;;3;*;CB@&gt;%5&gt;45)972</code></pre>
+<ol type="1">
+<li>What is the Phred Quality Score of the first cytosine in the following read?</li>
+<li>What is the probability that the last guanine is called correctly?</li>
+<li>Which ASCII characters correspond to the lowest and highest quality score in this read?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>The first <code>C</code> (8th position in the read) was assigned the encoded quality score <code>F</code>. In the ASCII table, we see that the numerical value of <code>F</code> is <code>70</code>. Our read is in the Phred +33 format where a Q score of 0 is represented by the ASCII value <code>33</code> (<code>!</code>). Thus, we need to subtract 33 from our ASCII value to obtain the Q score : <span class="math inline">Q=70-33=37</span>.</li>
+<li>The last <code>G</code> in our read (68th position) was assigned the encoded quality score <code>)</code>. The numerical ASCII value of this character is <code>41</code>. When we subtract 33, we obtain the Q score <span class="math inline">41-33=8</span>. To obtain the error probability, we can use the formula <span class="math inline">P = 10^{\frac{Q}{-10}} = 10^{\frac{8}{-10}} = 0.15</span>, or a 15% chance of an incorrect base call.</li>
+<li>The lowest score in this read is 5 (<code>%</code>), while the highest one is 39 (<code>H</code>).</li>
+</ol>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -896,7 +916,7 @@ FASTQ + Emoji = FASTQE 🤔
 <p>As an exercise, try using it on one of the <code>.fastq</code> files in your data directory. Use the <code>--bin</code> flag to make the output a bit more structured and easy to understand.</p>
 <p>Are they any trends that you notice? How do these relate back to sources of errors that we mentioned earlier?</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -905,7 +925,7 @@ Example output
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> fastqe <span class="at">--bin</span> PF0097_S43_L001_R1_001.fastq.gz</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Filename</span>        Statistic       Qualities</span>
@@ -938,7 +958,7 @@ Example output
 <p>FastQC is one of several QC tools for sequence reads<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. It can process each one of your <code>FASTQ</code> files and generate a report with several metrics and plots on the overall quality of the reads. One of the most useful plots it creates is the <em>per base sequence quality</em> shown below: it shows box-plot distributions of the quality scores per position, averaged over all the reads in a sample. Quality tapers off towards the end, which is a known issue for Illumina reads that we can address via trimming.</p>
 <div class="no-row-height column-margin column-container"><div id="fn7"><p><sup>7</sup>&nbsp;A notable alternative QC program is <a href="https://github.com/OpenGene/fastp">fastp</a>, which can do not just QC, but also trimming and filtering (more on that later).</p></div></div><div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../assets/fastqc-output.png" class="lightbox" data-glightbox="description: .lightbox-desc-9" data-gallery="quarto-lightbox-gallery-9" title="Example output of FastQC. Note the decreasing scores towards the end of the read."><img src="../assets/fastqc-output.png" class="img-fluid figure-img" alt="Example output of FastQC. Note the decreasing scores towards the end of the read."></a></p>
+<p><a href="../assets/fastqc-output.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Example output of FastQC. Note the decreasing scores towards the end of the read."><img src="../assets/fastqc-output.png" class="img-fluid figure-img" alt="Example output of FastQC. Note the decreasing scores towards the end of the read."></a></p>
 <figcaption>Example output of FastQC. Note the decreasing scores towards the end of the read.</figcaption>
 </figure>
 </div>
@@ -960,7 +980,7 @@ Note
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -969,7 +989,7 @@ Exercises
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Try it yourself:</strong></p>
 <ul>
@@ -1006,7 +1026,7 @@ Exercises
 <p>Below we show an example of the output generated by FastQ Screen.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../assets/fastq-screen.png" class="lightbox" data-glightbox="description: .lightbox-desc-10" data-gallery="quarto-lightbox-gallery-10" title="Example output of FastQ Screen for a P. vivax sample."><img src="../assets/fastq-screen.png" class="img-fluid figure-img" alt="Example output of FastQ Screen for a P. vivax sample."></a></p>
+<p><a href="../assets/fastq-screen.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Example output of FastQ Screen for a P. vivax sample."><img src="../assets/fastq-screen.png" class="img-fluid figure-img" alt="Example output of FastQ Screen for a P. vivax sample."></a></p>
 <figcaption>Example output of FastQ Screen for a <em>P. vivax</em> sample.</figcaption>
 </figure>
 </div>
@@ -1071,7 +1091,7 @@ or:
     -version</code></pre>
 <p>We can immediately see that there are two different versions, one for <em>paired-end</em> and one for <em>single-end</em> reads, as well as an option to specify the type of Q score (<code>-phred33</code>, which is <em>not</em> the default!).</p>
 <p>Some of the other important options are <code>trimmomatic</code>:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 18%">
 <col style="width: 81%">
@@ -1258,17 +1278,6 @@ Additional resources
 </div>
 
 
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-2">Library preparation and bridge amplification on flow cell.</span>
-<span class="glightbox-desc lightbox-desc-3">Sequencing-by-synthesis and fluorophore imaging or base calling.</span>
-<span class="glightbox-desc lightbox-desc-4">Figure&nbsp;13.2: Paired-end sequencing and alignment. <span class="citation" data-cites="Illumina_2017">(Source: <a href="../references.html#ref-Illumina_2017" role="doc-biblioref">Illumina 2017</a>)</span></span>
-<span class="glightbox-desc lightbox-desc-5">Figure&nbsp;13.3: Construction of a sequencing library fragment through adapter ligation: P5 (red) / P7 (green) = sequences for anchoring to flow cell; (Rd1 SP (orange) / Rd2 SP (blue) = read 1/2 sequencing primer; index/barcode 1/2 = sample identifiers for multiplexing <span class="citation" data-cites="Illumina_insert_2020">(Source: <a href="../references.html#ref-Illumina_insert_2020" role="doc-biblioref">Illumina 2020</a>)</span>.</span>
-<span class="glightbox-desc lightbox-desc-6">Fluorescent signals from clusters on flow cell <span class="citation" data-cites="Illumina_overview_video">(Source: <a href="../references.html#ref-Illumina_overview_video" role="doc-biblioref">Illumina 2016</a>)</span>.</span>
-<span class="glightbox-desc lightbox-desc-7">Figure&nbsp;13.4: FASTQ quality scoring and ASCII offsets. <span class="citation" data-cites="sequence-analysis-quality-control Hiltemann_2023">(Source: <a href="../references.html#ref-sequence-analysis-quality-control" role="doc-biblioref">Batut et al.</a>; <a href="../references.html#ref-Hiltemann_2023" role="doc-biblioref">Hiltemann et al. 2023</a>)</span></span>
-<span class="glightbox-desc lightbox-desc-8">Figure&nbsp;13.5: ASCII table</span>
-<span class="glightbox-desc lightbox-desc-9">Example output of FastQC. Note the decreasing scores towards the end of the read.</span>
-<span class="glightbox-desc lightbox-desc-10">Example output of FastQ Screen for a <em>P. vivax</em> sample.</span>
-</div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-sequence-analysis-quality-control" class="csl-entry" role="listitem">
 Batut, Bérénice, Maria Doyle, Alexandre Cormier, Anthony Bretaudeau, Laura Leroi, Erwan Corre, Stéphanie Robin, gallantries, and Cameron Hyde. <span>“Quality Control (Galaxy Training Materials).”</span> <a href="https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html">https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html</a>.
@@ -1361,18 +1370,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1404,7 +1402,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1412,7 +1432,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1751,7 +1771,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Unless otherwise noted, all content on this site is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>. <br> © <a href="https://pmoris.github.io">Pieter Moris</a> - <a href="https://research.itg.be/en/organisations/malariology">ITM Malariology</a>, 2024.</p>
+<p>Unless otherwise noted, all content on this site is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. <a href="https://creativecommons.org/licenses/by/4.0/"><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="CC" height="30"></a> <a href="https://creativecommons.org/licenses/by/4.0/"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="BY" height="30"></a> <br> © <a href="https://pmoris.github.io">Pieter Moris</a> - <a href="https://research.itg.be/en/organisations/malariology">ITM Malariology</a>, 2024.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
@@ -1761,30 +1781,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom","closeEffect":"zoom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
     }
-  });
-
-};
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
           </script>
 
 
