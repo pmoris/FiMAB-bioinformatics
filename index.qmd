@@ -17,14 +17,12 @@ Section 1-2 are online self-paced modules, whereas the others will include class
 
 We hope that this course can teach you a few computational thinking and problem solving skills that will help you along your bioinformatics journey. The learning curve in computational biology can be quite steep at times and the path is littered with arcane commands and obtuse syntax, but as you practice the concepts introduced in this course on your own, your command-line efficiency will improve and you will start to spot similarities across different types of environments and languages. Through this course, we hope to arm you with the necessary skills to make tasks like running custom analysis scripts or installing bioinformatics software seem a little less daunting, and enough knowledge and experience to be able to explore more advanced topics on your own.
 
-# Acknowledgements {.unnumbered}
-
-<!-- This course was made possible thanks to the support of [VLIR-UOS](https://www.vliruos.be) and the [Institute of Tropical Medicine](https://www.itg.be/en). -->
-
-Development of this course was supported by [VLIR-UOS](https://www.vliruos.be), the [Institute of Tropical Medicine](https://www.itg.be/en) and the [University of Antwerp](https://www.uantwerpen.be/en/).
-
 # Re-using these materials and how to cite us [![](https://mirrors.creativecommons.org/presskit/icons/cc.svg){fig-alt="CC" height=1em}](https://creativecommons.org/licenses/by/4.0/) [![](https://mirrors.creativecommons.org/presskit/icons/by.svg){fig-alt="BY" height=1em}](https://creativecommons.org/licenses/by/4.0/) {.unnumbered}
 
 This work is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
 This (loosely-speaking) means that you are free to copy, redistribute or adapt any of the primary content on this website and in the git repository as you see fit, provided that you give us appropriate credit. Ideally, you do this by citing the Zenodo DOI (_url to be included here after initial release_). Please make sure to also provide proper attribution to the primary sources that we cite ourselves, whenever this is applicable.
+
+# Acknowledgements {.unnumbered}
+
+Development of these materials was supported by [VLIR-UOS](https://www.vliruos.be), the [Institute of Tropical Medicine](https://www.itg.be/en) and the [University of Antwerp](https://www.uantwerpen.be/en/). The entire Fighting Malaria Across Borders (FiMAB) International Training Programme was made possible by a team of ITM instructors ([Dr. Johanna Helena Kattenberg](https://orcid.org/0000-0002-2971-5136) - molecular surveillance and population genetics; [Mathijs Mutsaers](https://orcid.org/0000-0002-7633-6438) - main organiser and lab training) and guest lecturers ([Dr. Anita Ghansah](https://orcid.org/0000-0003-4639-1249) - applications of molecular surveillance; [Dr. Conor Meehan](https://orcid.org/0000-0003-0724-8343) - [introduction to phylogenetics](https://conmeehan.github.io/PathogenDataCourse/IntroToPhylogenetics); [Dr. Jody Phelan](https://orcid.org/0000-0001-8323-7019) - [malaria genomic analyses](https://jodyphelan.github.io/malaria-training/)), as well as the VLIR-UOS [Interational Training Progamme 2024](https://www.vliruos.be/get-funded/calls/international-training-programme-2024) funding and the [University of Antwerp](https://www.uantwerpen.be/) as an organising partner.
