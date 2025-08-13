@@ -1,0 +1,67 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Bioinformatics training - Fighting Malaria Across Borders
+  (FiMAB)
+message: Please cite these course materials using these metadata.
+type: dataset
+authors:
+  - given-names: Pieter
+    family-names: Moris
+    email: pmoris@itg.be
+    affiliation: Institute of Tropical Medicine Antwerp
+    orcid: "https://orcid.org/0000-0003-4242-4939"
+  - name: Institute of Tropical Medicine Antwerp
+    website: "https://www.itg.be/"
+identifiers:
+  - type: doi
+    value: 10.0000/TODO.0000
+    description: >-
+      Release of course materials as they were taught in
+      April 2024
+repository-code: "https://github.com/pmoris/FiMAB-bioinformatics"
+url: "https://pmoris.github.io/FiMAB-bioinformatics/"
+abstract: >-
+  This repository houses the course notes for the
+  Bioinformatics Module of the Fighting Malaria Across
+  Borders (FiMAB) International Training Programme that ran
+  in April 2024. FiMAB ITP was a VLIR-UOS sponsored project
+  created by the Institute of Tropical Medicine (ITM) in
+  Antwerp (Belgium). The primary goal of the overall program
+  is to support the implementation of targeted sequencing
+  assays (in particular, AmpliSeq) to strengthen malaria
+  molecular surveillance and help guide national control
+  programmes. In conjunction with laboratory training, this
+  bioinformatics course module is intended to allow young
+  academics around the globe to become familiar with
+  molecular surveillance as a key activity to monitor
+  transmission, sources of epidemics and the emergence and
+  spread of drug resistance mutations in the _Plasmodium_
+  parasite.
+
+
+  Currently, these course notes for the bioinformatics
+  module focus on an introduction to the Unix command line
+  and data manipulation using R, followed by an introduction
+  to targeted/whole genome sequencing analysis pipelines.
+  Course materials aimed at more in-depth downstream
+  population genetic analyses or marker discovery and
+  interpretation were only made available on the ITM Moodle
+  platorm, but might be added to these online notes too at a
+  later time.
+
+  Released using CFF.
+keywords:
+  - malaria
+  - genomics
+  - surveillance
+  - bioinformatics
+  - command line
+  - linux
+  - R
+license: CC-BY-4.0
+commit: 5eeedf3609131190b344d203ea2df674104d815a
+version: "1.0"
+date-released: "2025-08-13"
