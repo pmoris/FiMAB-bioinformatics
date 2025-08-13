@@ -1,0 +1,1 @@
+Sitemap: https://pmoris.github.io/FiMAB-bioinformatics/sitemap.xml
