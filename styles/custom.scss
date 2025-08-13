@@ -8,38 +8,142 @@ $font-family-monospace: "Qwigley";
 $bs-body-font-family: "Qwigley";
 */
 
-$web-font-path: "No";
+// $web-font-path: "No";
+$web-font-path: false; // disable Google Fonts
 /* Disable web import in flatly theme, see https://github.com/thomaspark/bootswatch/blob/v5/dist/flatly/_bootswatch.scss */
 
 /*-- scss:rules --*/
+
+// other fonts to consider: source sans variable, lato, mulish
 
 /* ********** */
 /* Sans serif */
 /* ********** */
 
-// CSS was included in github release
-// @font-face {
-//      font-family: 'Source Sans Variable';
-//      font-weight: 200 900;
-//      font-style: normal;
-//      font-stretch: normal;
-//      src: url('./styles/fonts/source-sans-pro-3.006R/WOFF2/VAR/SourceSansVariable-Roman.ttf.woff2') format('woff2'),
-//           url('./styles/fonts/source-sans-pro-3.006R/WOFF/VAR/SourceSansVariable-Roman.ttf.woff') format('woff'),
-//           url('./styles/fonts/source-sans-pro-3.006R/VAR/SourceSansVariable-Roman.ttf') format('truetype');
-// }
+// created using https://gwfh.mranftl.com/fonts/atkinson-hyperlegible-next?subsets=latin
 
-// @font-face {
-//      font-family: 'Source Sans Variable';
-//      font-weight: 200 900;
-//      font-style: italic;
-//      font-stretch: normal;
-//      src: url('./styles/fonts/source-sans-pro-3.006R/WOFF2/VAR/SourceSansVariable-Italic.ttf.woff2') format('woff2'),
-//           url('./styles/fonts/source-sans-pro-3.006R/WOFF/VAR/SourceSansVariable-Italic.ttf.woff') format('woff'),
-//           url('./styles/fonts/source-sans-pro-3.006R/VAR/SourceSansVariable-Italic.ttf') format('truetype');
-// }
+/* atkinson-hyperlegible-next-200 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: normal;
+  font-weight: 200;
+  src: url("./styles/fonts/atkinson-hyperlegible-next-v6-latin/atkinson-hyperlegible-next-v6-latin-200.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 
-// alternative option: web font import
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+/* atkinson-hyperlegible-next-200italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: italic;
+  font-weight: 200;
+  src: url("./styles/fonts/atkinson-hyperlegible-next-v6-latin/atkinson-hyperlegible-next-v6-latin-200italic.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* atkinson-hyperlegible-next-300 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./styles/fonts/atkinson-hyperlegible-next-v6-latin/atkinson-hyperlegible-next-v6-latin-300.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* atkinson-hyperlegible-next-300italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: italic;
+  font-weight: 300;
+  src: url("./styles/fonts/atkinson-hyperlegible-next-v6-latin/atkinson-hyperlegible-next-v6-latin-300italic.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* atkinson-hyperlegible-next-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./styles/fonts/atkinson-hyperlegible-next-v6-latin/atkinson-hyperlegible-next-v6-latin-regular.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* atkinson-hyperlegible-next-italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: italic;
+  font-weight: 400;
+  src: url("./styles/fonts/atkinson-hyperlegible-next-v6-latin/atkinson-hyperlegible-next-v6-latin-italic.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* atkinson-hyperlegible-next-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./styles/fonts/atkinson-hyperlegible-next-v6-latin/atkinson-hyperlegible-next-v6-latin-500.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* atkinson-hyperlegible-next-500italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: italic;
+  font-weight: 500;
+  src: url("./styles/fonts/atkinson-hyperlegible-next-v6-latin/atkinson-hyperlegible-next-v6-latin-500italic.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* atkinson-hyperlegible-next-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: normal;
+  font-weight: 600;
+  src: url("./styles/fonts/atkinson-hyperlegible-next-v6-latin/atkinson-hyperlegible-next-v6-latin-600.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* atkinson-hyperlegible-next-600italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: italic;
+  font-weight: 600;
+  src: url("./styles/fonts/atkinson-hyperlegible-next-v6-latin/atkinson-hyperlegible-next-v6-latin-600italic.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* atkinson-hyperlegible-next-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./styles/fonts/atkinson-hyperlegible-next-v6-latin/atkinson-hyperlegible-next-v6-latin-700.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* atkinson-hyperlegible-next-700italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: italic;
+  font-weight: 700;
+  src: url("./styles/fonts/atkinson-hyperlegible-next-v6-latin/atkinson-hyperlegible-next-v6-latin-700italic.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+// alternative option: web font import - not GDPR compliant
+// @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
 /* ********* */
 /* Monospace */
@@ -49,30 +153,33 @@ $web-font-path: "No";
 
 /* fira-code-regular - latin */
 @font-face {
-     font-display: swap;
-     /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-     font-family: 'Fira Code';
-     font-style: normal;
-     font-weight: 400;
-     src: url('./styles/fonts/fira-code-v21/fira-code-v21-latin-regular.woff2') format('woff2'),
-          /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-          url('./styles/fonts/fira-code-v21/fira-code-v21-latin-regular.ttf') format('truetype');
-     /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./styles/fonts/fira-code-v21/fira-code-v21-latin-regular.woff2")
+      format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url("./styles/fonts/fira-code-v21/fira-code-v21-latin-regular.ttf")
+      format("truetype");
+  /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
 
 /* fira-code-700 - latin */
 @font-face {
-     font-display: swap;
-     /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-     font-family: 'Fira Code';
-     font-style: normal;
-     font-weight: 700;
-     src: url('./styles/fonts/fira-code-v21/fira-code-v21-latin-700.woff2') format('woff2'),
-          /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-          url('./styles/fonts/fira-code-v21/fira-code-v21-latin-700.ttf') format('truetype');
-     /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./styles/fonts/fira-code-v21/fira-code-v21-latin-700.woff2")
+      format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url("./styles/fonts/fira-code-v21/fira-code-v21-latin-700.ttf")
+      format("truetype");
+  /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
-
 
 /*-- scss:defaults --*/
 $code-block-border-left: true !default;
@@ -83,13 +190,10 @@ $code-block-border-left: #3badbe;
 // $link-color: #005b67;
 $link-color: #26737e;
 
-
-
-
 // Base document colors
 // $body-bg: #181818;
 // $body-color: rgb(161, 21, 21);
 // $link-color: #0a4379;
 
 // Code blocks
-$code-block-bg-alpha: -.5;
+$code-block-bg-alpha: -0.5;

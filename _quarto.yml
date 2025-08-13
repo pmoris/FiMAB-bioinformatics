@@ -182,12 +182,11 @@ format:
       # If there is no navbar present, but a sidebar has been specified, the toggle will appear in the same location that the sidebar tools appears (adjacent to the title or logo in the sidebar).
       # If there is no navbar or sidebar present, the toggle will appear in the top right corner of the page.
     highlight-style: arrow # monokai nord dracula arrow
-    mainfont: 'Source Sans 3'
-    # mainfont: 'Source Sans Variable'
-    # mainfont: \"Source Sans 3 VF\"
+    mainfont: "Atkinson Hyperlegible Next"
+    # mainfont: "Source Sans 3"
     # mainfont: 'Mulish'
     # mainfont: 'Lato'
-    monofont: 'Fira Code'
+    monofont: "Fira Code"
     linestretch: 1.5
     code-fold: true
     html-math-method: katex
