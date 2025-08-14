@@ -36,18 +36,17 @@
 	"customizations": {
 		"vscode": {
 			"settings": {
-				"workbench.colorTheme": "Sonokai Maia",
 				"workbench.editor.highlightModifiedTabs": true,
 				"workbench.tree.renderIndentGuides": "always",
+				"indentRainbow.lightIndicatorStyleLineWidth": 5,
+				"indentRainbow.indicatorStyle": "light",
 				"workbench.editor.wrapTabs": true,
 				"explorer.compactFolders": false,
 				"files.eol": "\n",
 				"editor.wordWrap": "on",
-				"editor.bracketPairColorization.enabled": true,
-				"indentRainbow.lightIndicatorStyleLineWidth": 5,
-				"indentRainbow.indicatorStyle": "light",
-				// "terminal.integrated.scrollback": 10000,
 				"editor.renderWhitespace": "trailing",
+				"editor.bracketPairColorization.enabled": true,
+				// "terminal.integrated.scrollback": 10000,
 				"files.trimFinalNewlines": true,
 				"files.trimTrailingWhitespace": true,
 				"editor.formatOnType": true,
@@ -55,25 +54,20 @@
 			},
 			"extensions": [
 				// bash extensions
-				"mads-hartmann.bash-ide-vscode",
 				"foxundermoon.shell-format",
+				"mads-hartmann.bash-ide-vscode",
 				"timonwong.shellcheck",
-
 				// QoL
 				"streetsidesoftware.code-spell-checker",
 				"oderwat.indent-rainbow",
 				"mechatroner.rainbow-csv",
 				"ionutvmi.path-autocomplete",
-				"fabiospampinato.vscode-diff",
-
 				// R
 				"REditorSupport.r",
-
+				"REditorSupport.r-syntax",
 				// general formatting
 				"esbenp.prettier-vscode",
-
 				// theming
-				"sainnhe.sonokai",
 				// "reageyao.biosyntax"
 			]
 		},
